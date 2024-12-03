@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.10+1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -88,3 +89,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_assets:
+  assets_path: assets
+  output_path: lib/core/utils
+  filename: app_assets.dart
+  classname: AppAssets
+  field_prefix:
+  ignore_comments: true
