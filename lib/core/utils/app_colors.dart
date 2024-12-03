@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 class AppColors {
+  static const Color white = Color(0xffffffff);
+  static const Color black = Color(0xff000000);
+
   // Netural Colour
   static const Color grayDark = Color(0xff484848);
   static const Color grayMedium = Color(0xff797979);
