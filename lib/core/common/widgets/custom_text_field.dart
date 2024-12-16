@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
@@ -43,9 +44,7 @@ class CustomTextField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       style: AppStyles.normalRegularText,
-      validator: (value) {
-        return validator!(value);
-      },
+      validator: validator,
       onChanged: onChanged,
       keyboardType: keyboardType,
       obscureText: obscureText,
@@ -57,7 +56,7 @@ class CustomTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
-          borderSide: const BorderSide(color: AppColors.primaryDarker),
+          borderSide: const BorderSide(color: AppColors.grayLighter),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
@@ -71,15 +70,14 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           borderSide: const BorderSide(color: Colors.red),
         ),
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
         filled: filled,
         fillColor: fillColour,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         hintText: hintText,
-        hintStyle: AppStyles.smallRegularText,
-        errorStyle: AppStyles.extraSmallRegularText,
+        hintStyle: AppStyles.smallRegularText.copyWith(color: Colors.grey),
+        errorStyle: AppStyles.extraSmallRegularText.copyWith(color: Colors.red),
       ),
     );
   }
