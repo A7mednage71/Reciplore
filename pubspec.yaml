@@ -42,6 +42,7 @@ dependencies:
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
   lottie: ^3.2.0
+  pinput: ^5.0.0
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
   retrofit_generator: ^9.1.5
@@ -82,7 +83,6 @@ flutter:
           weight: 500
         - asset: assets/fonts/poppins/Poppins-Regular.ttf
           weight: 400
-
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
