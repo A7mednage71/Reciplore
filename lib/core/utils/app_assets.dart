@@ -2,8 +2,8 @@
 class AppAssets {
   AppAssets._();
   
-  static const String facebookIcon = "assets/facebook_icon.svg";
+  static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
 
-  static const String googleIcon = "assets/google_icon.svg";
+  static const String imagesGoogleIcon = "assets/images/google_icon.svg";
 }
 
