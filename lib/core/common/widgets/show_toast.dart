@@ -10,6 +10,7 @@ class ShowToast {
         backgroundColor: Colors.green,
         textColor: Colors.white,
         fontSize: 16,
+        fontAsset: 'assets/fonts/poppins/Poppins-Medium.ttf',
       );
 
   static void showFailureToast(String message) => Fluttertoast.showToast(
@@ -20,5 +21,6 @@ class ShowToast {
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16,
+        fontAsset: 'assets/fonts/poppins/Poppins-Medium.ttf',
       );
 }
