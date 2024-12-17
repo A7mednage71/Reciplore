@@ -17,7 +17,7 @@ abstract class ApiService {
     @Body() LoginRequestModel body,
   );
 
-  @POST(ApiConstants.verifyLogin)
+  @GET(ApiConstants.verifyLogin)
   Future<VerifyResponseModel> verifyLogin(
     @Body() VerifyRequestModel body,
   );
