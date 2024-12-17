@@ -14,7 +14,7 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://localhost:3000/';
+    baseUrl ??= 'http://10.0.2.2:3000/';
   }
 
   final Dio _dio;
@@ -28,7 +28,8 @@ class _ApiService implements ApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = body;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<LoginResponseModel>(Options(
       method: 'POST',
       headers: _headers,
