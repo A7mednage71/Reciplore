@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/widgets/email_text_form.dart';
 import 'package:looqma/features/login/presentation/widgets/password_text_form.dart';
 
@@ -11,11 +13,24 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late LoginCubit _cubit;
+  @override
+  void initState() {
+    _cubit = context.read<LoginCubit>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _cubit.emailController.dispose();
+    _cubit.passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: _cubit.formKey,
       autovalidateMode: AutovalidateMode.always,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
