@@ -13,10 +13,24 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
+  late LoginCubit _cubit;
+  @override
+  void initState() {
+    _cubit = context.read<LoginCubit>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _cubit.emailController.dispose();
+    _cubit.passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context.read<LoginCubit>().formKey,
+      key: _cubit.formKey,
       autovalidateMode: AutovalidateMode.always,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
