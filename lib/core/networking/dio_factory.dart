@@ -15,7 +15,7 @@ class DioFactory {
         ..options.receiveTimeout = timeOut;
       // for better readability and conversion.
       dio!.options.headers = {
-        'Accept': 'application/json',
+        'Content-Type': 'application/json',
         // 'Authorization':
         //     // ignore: lines_longer_than_80_chars
         //     'Bearer ${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
