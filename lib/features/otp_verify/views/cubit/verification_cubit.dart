@@ -11,18 +11,24 @@ class VerificationCubit extends Cubit<VerificationState> {
 
   final VerficationRepo _repo;
 
-  Future<void> verifyOtp(
-      {required VerifyRequestModel verifyRequestModel}) async {
-    emit(const VerificationState.loading());
-    final result =
-        await _repo.verifyLogin(verifyRequestModel: verifyRequestModel);
+  String otpCode = '';
 
+  Future<void> verifyLogin() async {
+    if (otpCode == '' || otpCode.length != 6) {
+      emit(const VerificationState.failure('the code must be 6 digits!'));
+      return;
+    }
+    emit(const VerificationState.loading());
+
+    final result = await _repo.verifyLogin(
+        verifyRequestModel: VerifyRequestModel(code: otpCode));
     result.when(
       success: (successResponse) => emit(
         VerificationState.success(successResponse.message),
       ),
-      failure: (failureResponse) =>
-          emit(VerificationState.failure(failureResponse.errMessages)),
+      failure: (failureResponse) => emit(
+        VerificationState.failure(failureResponse.errMessages),
+      ),
     );
   }
 }
