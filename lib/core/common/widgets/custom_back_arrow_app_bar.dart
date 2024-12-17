@@ -18,6 +18,8 @@ class CustombackArrowAppbar extends StatelessWidget
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.transparent,
       leading: InkWell(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onTap: () => context.pop(),
         child: const Icon(
           Icons.arrow_back_ios_new_sharp,
