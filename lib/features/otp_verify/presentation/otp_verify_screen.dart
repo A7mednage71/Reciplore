@@ -14,32 +14,35 @@ class OtpVerifyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: const CustombackArrowAppbar(),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 50.h),
-              Center(
-                child: Lottie.asset(
-                  AppAssets.imagesVerify,
-                  height: 200.h,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 50.h),
+                Center(
+                  child: Lottie.asset(
+                    AppAssets.imagesVerify,
+                    height: 200.h,
+                  ),
                 ),
-              ),
-              SizedBox(height: 50.h),
-              Text(
-                "Verification Code",
-                style: AppStyles.largeBoldText,
-              ),
-              Text(
-                "Enter the code sent to your Email Address",
-                style: AppStyles.smallRegularText,
-              ),
-              SizedBox(height: 20.h),
-              const VerifyCodeWidget(),
-              SizedBox(height: 20.h),
-              const ConfirmCodeButton(),
-            ],
+                SizedBox(height: 50.h),
+                Text(
+                  "Verification Code",
+                  style: AppStyles.largeBoldText,
+                ),
+                Text(
+                  "Enter the code sent to your Email Address",
+                  style: AppStyles.smallRegularText,
+                ),
+                SizedBox(height: 20.h),
+                const VerifyCodeWidget(),
+                SizedBox(height: 20.h),
+                const ConfirmCodeButton(),
+                SizedBox(height: 20.h),
+              ],
+            ),
           ),
         ));
   }

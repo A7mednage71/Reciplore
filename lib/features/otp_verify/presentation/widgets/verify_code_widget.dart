@@ -17,7 +17,7 @@ class VerifyCodeWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Pinput(
-          length: 5,
+          length: 6,
           onCompleted: (otp) {
             log("Completed: $otp");
           },
