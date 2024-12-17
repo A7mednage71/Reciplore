@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/forget_password/presentation/widgets/forget_password_email_field.dart';
-import 'package:looqma/features/forget_password/presentation/widgets/forget_password_reset_button.dart';
+import 'package:looqma/features/forget_password/presentation/views/widgets/forget_password_email_field.dart';
+import 'package:looqma/features/forget_password/presentation/views/widgets/forget_password_reset_button.dart';
 import 'package:lottie/lottie.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
