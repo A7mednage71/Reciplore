@@ -11,4 +11,5 @@ class LoginRequestModel {
 
   factory LoginRequestModel.fromJson(Map<String, dynamic> json) =>
       _$LoginRequestModelFromJson(json);
+  Map<String, dynamic> toJson() => _$LoginRequestModelToJson(this);
 }
