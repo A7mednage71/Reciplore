@@ -7,6 +7,8 @@ import 'package:looqma/features/home/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/views/cubit/login_cubit.dart';
 import 'package:looqma/features/login/views/presentation/login_screen.dart';
+import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
+import 'package:looqma/features/otp_verify/views/cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/views/presentation/otp_verify_screen.dart';
 import 'package:looqma/features/sigh_up/views/presentation/sighn_up_screen.dart';
 
@@ -23,7 +25,10 @@ class AppRouter {
         );
       case Routes.verification:
         return MaterialPageRoute(
-          builder: (_) => const OtpVerifyScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => VerificationCubit(getIt<VerficationRepo>()),
+            child: const OtpVerifyScreen(),
+          ),
         );
       case Routes.sighnUp:
         return MaterialPageRoute(
