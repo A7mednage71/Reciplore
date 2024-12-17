@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/login/views/cubit/login_cubit.dart';
-import 'package:looqma/features/login/views/presentation/widgets/email_text_form.dart';
-import 'package:looqma/features/login/views/presentation/widgets/password_text_form.dart';
+import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
+import 'package:looqma/features/login/presentation/views/widgets/email_text_form.dart';
+import 'package:looqma/features/login/presentation/views/widgets/password_text_form.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});

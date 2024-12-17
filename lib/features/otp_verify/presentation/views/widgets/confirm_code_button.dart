@@ -6,7 +6,7 @@ import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/otp_verify/views/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 
 class ConfirmCodeButton extends StatelessWidget {
   const ConfirmCodeButton({super.key});

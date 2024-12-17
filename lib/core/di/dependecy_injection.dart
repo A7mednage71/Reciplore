@@ -3,9 +3,9 @@ import 'package:get_it/get_it.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
-import 'package:looqma/features/login/views/cubit/login_cubit.dart';
+import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
-import 'package:looqma/features/otp_verify/views/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 
 final getIt = GetIt.instance;
 
