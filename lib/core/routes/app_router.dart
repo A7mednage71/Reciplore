@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
+import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home/home_screen.dart';
+import 'package:looqma/features/login/data/repos/login_repo.dart';
+import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/login_screen.dart';
 import 'package:looqma/features/sigh_up/presentation/sighn_up_screen.dart';
 
@@ -11,7 +15,10 @@ class AppRouter {
     switch (settings.name) {
       case Routes.login:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => LoginCubit(getIt<LoginRepo>()),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.sighnUp:
         return MaterialPageRoute(
