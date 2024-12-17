@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/confirm_password_text_field.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/phone_text_form_field.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/sign_up_email_text_field.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/sign_up_password_text_field.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/user_text_form_field.dart';
+import 'package:looqma/features/sigh_up/views/presentation/widgets/confirm_password_text_field.dart';
+import 'package:looqma/features/sigh_up/views/presentation/widgets/phone_text_form_field.dart';
+import 'package:looqma/features/sigh_up/views/presentation/widgets/sign_up_email_text_field.dart';
+import 'package:looqma/features/sigh_up/views/presentation/widgets/sign_up_password_text_field.dart';
+import 'package:looqma/features/sigh_up/views/presentation/widgets/user_text_form_field.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});

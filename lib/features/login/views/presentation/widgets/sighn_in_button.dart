@@ -6,7 +6,7 @@ import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
+import 'package:looqma/features/login/views/cubit/login_cubit.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({super.key});
