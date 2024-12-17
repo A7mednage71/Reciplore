@@ -47,7 +47,8 @@ class ServerFailure extends ApiError {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response as String);
     } else if (statusCode == 404) {
-      return ServerFailure('Your request not found, Please try later!');
+      // 'Your request not found, Please try later!'
+      return ServerFailure(response as String);
     } else if (statusCode == 500) {
       return ServerFailure(
         'There is the problem with server, Please try later',

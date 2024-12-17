@@ -2,23 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 
-class SignInButton extends StatelessWidget {
-  const SignInButton({super.key});
+class ConfirmCodeButton extends StatelessWidget {
+  const ConfirmCodeButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginCubit, LoginState>(
+    return BlocConsumer<VerificationCubit, VerificationState>(
       listener: (context, state) {
-        state.mapOrNull(
-          success: (message) {
-            ShowToast.showSuccessToast(message.successMessage);
+        state.whenOrNull(
+          success: (successMessage) {
+            ShowToast.showSuccessToast(successMessage);
+            context.pushNamedAndRemoveUntil(Routes.home);
           },
-          error: (message) {
-            ShowToast.showFailureToast(message.errorMessage);
+          failure: (failureMessage) {
+            ShowToast.showFailureToast(failureMessage);
           },
         );
       },
@@ -41,7 +44,7 @@ class SignInButton extends StatelessWidget {
           orElse: () {
             return InkWell(
               onTap: () {
-                validate(context);
+                context.read<VerificationCubit>().verifyLogin();
               },
               child: Container(
                 width: double.infinity,
@@ -52,7 +55,7 @@ class SignInButton extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "Sign In",
+                    "Confirm Code",
                     style:
                         AppStyles.normalBoldText.copyWith(color: Colors.white),
                   ),
@@ -63,12 +66,5 @@ class SignInButton extends StatelessWidget {
         );
       },
     );
-  }
-
-  void validate(BuildContext context) {
-    final cubit = context.read<LoginCubit>();
-    if (cubit.formKey.currentState!.validate()) {
-      cubit.login();
-    }
   }
 }

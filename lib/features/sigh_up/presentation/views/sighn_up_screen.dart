@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/already_have_account.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/sighn_up_form.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/sighn_up_top_info.dart';
-import 'package:looqma/features/sigh_up/presentation/widgets/sign_up_button.dart';
+import 'package:looqma/features/sigh_up/presentation/views/widgets/already_have_account.dart';
+import 'package:looqma/features/sigh_up/presentation/views/widgets/sighn_up_form.dart';
+import 'package:looqma/features/sigh_up/presentation/views/widgets/sighn_up_top_info.dart';
+import 'package:looqma/features/sigh_up/presentation/views/widgets/sign_up_button.dart';
 
 class SighnUpScreen extends StatelessWidget {
   const SighnUpScreen({super.key});
