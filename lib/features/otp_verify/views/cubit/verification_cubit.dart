@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 
@@ -23,12 +27,14 @@ class VerificationCubit extends Cubit<VerificationState> {
     final result = await _repo.verifyLogin(
         verifyRequestModel: VerifyRequestModel(code: otpCode));
     result.when(
-      success: (successResponse) => emit(
-        VerificationState.success(successResponse.message),
-      ),
-      failure: (failureResponse) => emit(
-        VerificationState.failure(failureResponse.errMessages),
-      ),
+      success: (successResponse) {
+        log('access token: ${successResponse.token}');
+        SecureStorage.setSecuredData(
+            SecureStorageKeys.accessToken, successResponse.token ?? '');
+        emit(VerificationState.success(successResponse.message));
+      },
+      failure: (failureResponse) =>
+          emit(VerificationState.failure(failureResponse.errMessages)),
     );
   }
 }
