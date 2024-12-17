@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -16,6 +18,7 @@ class SignInButton extends StatelessWidget {
         state.mapOrNull(
           success: (message) {
             ShowToast.showSuccessToast(message.successMessage);
+            context.pushNamed(Routes.verification);
           },
           error: (message) {
             ShowToast.showFailureToast(message.errorMessage);

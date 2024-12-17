@@ -7,6 +7,7 @@ import 'package:looqma/features/home/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/login_screen.dart';
+import 'package:looqma/features/otp_verify/presentation/otp_verify_screen.dart';
 import 'package:looqma/features/sigh_up/presentation/sighn_up_screen.dart';
 
 class AppRouter {
@@ -19,6 +20,10 @@ class AppRouter {
             create: (context) => LoginCubit(getIt<LoginRepo>()),
             child: const LoginScreen(),
           ),
+        );
+      case Routes.verification:
+        return MaterialPageRoute(
+          builder: (_) => const OtpVerifyScreen(),
         );
       case Routes.sighnUp:
         return MaterialPageRoute(
