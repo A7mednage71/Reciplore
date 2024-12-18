@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp(
-            title: 'Looqma',
+            title: 'nageh',
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.getRoute,
             initialRoute: Routes.login,
