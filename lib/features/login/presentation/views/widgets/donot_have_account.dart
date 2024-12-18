@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
@@ -15,7 +17,9 @@ class DonotHaveAccount extends StatelessWidget {
           style: AppStyles.smallRegularText,
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushReplacementNamed(Routes.sighnUp);
+          },
           child: Text(
             "Sign Up",
             style: AppStyles.smallBoldText
