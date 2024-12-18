@@ -6,6 +6,8 @@ import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/login/data/models/login_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
+import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
+import 'package:looqma/features/sigh_up/data/models/sign_up_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
@@ -27,5 +29,10 @@ abstract class ApiService {
   @GET(ApiConstants.forgetPassword)
   Future<ForgetPasswordResponse> forgetPassword(
     @Body() ForgetPasswordRequestModel body,
+  );
+
+  @POST(ApiConstants.signUp)
+  Future<SignUpResponseModel> signUp(
+    @Body() SignUpRequestModel body,
   );
 }
