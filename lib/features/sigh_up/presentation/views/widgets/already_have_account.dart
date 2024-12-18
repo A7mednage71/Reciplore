@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
@@ -12,7 +14,9 @@ class AleardyHaveAccount extends StatelessWidget {
       children: [
         Text("Already have an account? ", style: AppStyles.smallRegularText),
         TextButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushReplacementNamed(Routes.login);
+          },
           child: Text(
             "Sign In",
             style: AppStyles.smallBoldText

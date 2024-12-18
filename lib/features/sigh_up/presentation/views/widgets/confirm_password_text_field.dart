@@ -25,7 +25,7 @@ class _ConfirmPasswordTextFieldState extends State<ConfirmPasswordTextField> {
         Text("Confirm Password", style: AppStyles.smallRegularText),
         SizedBox(height: 5.h),
         CustomTextField(
-          controller: context.read<SighnUpCubit>().nameController,
+          controller: context.read<SighnUpCubit>().confirmPasswordController,
           validator: (value) {
             String password =
                 context.read<SighnUpCubit>().passwordController.text;
