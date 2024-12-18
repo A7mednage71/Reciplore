@@ -8,6 +8,8 @@ import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
+import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
+import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -31,5 +33,9 @@ Future<void> setupGetIt() async {
     ..registerLazySingleton<ForgetPasswordRepo>(
         () => ForgetPasswordRepo(getIt<ApiService>()))
     ..registerFactory<ForgetPasswordCubit>(
-        () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()));
+        () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()))
+
+    // create sign up repository instance
+    ..registerLazySingleton<SighnUpRepo>(() => SighnUpRepo(getIt<ApiService>()))
+    ..registerFactory<SighnUpCubit>(() => SighnUpCubit(getIt<SighnUpRepo>()));
 }

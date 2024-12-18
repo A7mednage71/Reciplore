@@ -13,6 +13,8 @@ import 'package:looqma/features/login/presentation/views/login_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
+import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
+import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 import 'package:looqma/features/sigh_up/presentation/views/sighn_up_screen.dart';
 
 class AppRouter {
@@ -43,7 +45,10 @@ class AppRouter {
         );
       case Routes.sighnUp:
         return MaterialPageRoute(
-          builder: (_) => const SighnUpScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => SighnUpCubit(getIt<SighnUpRepo>()),
+            child: const SighnUpScreen(),
+          ),
         );
       case Routes.home:
         return MaterialPageRoute(
