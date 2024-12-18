@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/forget_password/presentation/views/widgets/forget_password_email_field.dart';
@@ -12,13 +13,13 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustombackArrowAppbar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.w),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 50.h),
               Center(
                 child: Lottie.asset(
                   AppAssets.imagesForgetPassword,
