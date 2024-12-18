@@ -23,7 +23,7 @@ class NoInternetConnection extends StatelessWidget {
               style: AppStyles.mediumBoldText
                   .copyWith(color: AppColors.secondaryDarker)),
           SizedBox(height: 50.h),
-          Lottie.asset(AppAssets.imagesAnimation1734552569479),
+          Lottie.asset(AppAssets.imagesNoInternet),
           SizedBox(height: 50.h),
           Text(
             'Please check your internet connection and try again.',
