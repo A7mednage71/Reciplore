@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
@@ -12,11 +13,13 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
 
   final ForgetPasswordRepo _forgetPasswordRepo;
 
-  Future<void> forgetPassword({required String email}) async {
+  TextEditingController emailController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  Future<void> forgetPassword() async {
     emit(const ForgetPasswordState.loading());
     final result = await _forgetPasswordRepo.forgetPassword(
-      requestModel: ForgetPasswordRequestModel(email: email),
-    );
+        requestModel: ForgetPasswordRequestModel(email: emailController.text));
 
     result.when(
       success: (successResponse) => emit(
