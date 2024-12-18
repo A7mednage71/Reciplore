@@ -1,103 +1,116 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppStyles {
   // Poppins - Bold
-  static TextStyle titleBoldText = TextStyle(
+  static const TextStyle titleBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 50.sp,
+    fontSize: 50,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+    height: 75,
   );
-  static TextStyle headerBoldText = TextStyle(
+  static const TextStyle headerBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 30.sp,
+    fontSize: 30,
     fontWeight: FontWeight.bold,
     color: Colors.black,
-  );
-
-  static TextStyle largeBoldText = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 20.sp,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
+    height: 45,
   );
 
-  static TextStyle mediumBoldText = TextStyle(
+  static const TextStyle largeBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 18.sp,
+    fontSize: 20,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+    height: 30,
   );
 
-  static TextStyle normalBoldText = TextStyle(
+  static const TextStyle mediumBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 16.sp,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+    height: 27,
   );
 
-  static TextStyle smallBoldText = TextStyle(
+  static const TextStyle normalBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 14.sp,
+    fontSize: 16,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+    height: 24,
   );
 
-  static TextStyle extraSmallBoldText = TextStyle(
+  static const TextStyle smallBoldText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 11.sp,
+    fontSize: 14,
     fontWeight: FontWeight.bold,
     color: Colors.black,
+    height: 21,
+  );
+
+  static const TextStyle extraSmallBoldText = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 11,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    height: 17,
   );
 
   // Poppins - Regular
-  static TextStyle titleRegularText = TextStyle(
+  static const TextStyle titleRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 50.sp,
+    fontSize: 50,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 75,
   );
 
-  static TextStyle headerRegularText = TextStyle(
+  static const TextStyle headerRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 30.sp,
+    fontSize: 30,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 45,
   );
 
-  static TextStyle largeRegularText = TextStyle(
+  static const TextStyle largeRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 20.sp,
+    fontSize: 20,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 30,
   );
 
-  static TextStyle mediumRegularText = TextStyle(
+  static const TextStyle mediumRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 18.sp,
+    fontSize: 18,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 27,
   );
 
-  static TextStyle normalRegularText = TextStyle(
+  static const TextStyle normalRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 16.sp,
+    fontSize: 16,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 24,
   );
 
-  static TextStyle smallRegularText = TextStyle(
+  static const TextStyle smallRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 14.sp,
+    fontSize: 14,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 21,
   );
 
-  static TextStyle extraSmallRegularText = TextStyle(
+  static const TextStyle extraSmallRegularText = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 11.sp,
+    fontSize: 11,
     fontWeight: FontWeight.normal,
     color: Colors.black,
+    height: 17,
   );
 }
