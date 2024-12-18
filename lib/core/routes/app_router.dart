@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
+import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
+import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
 import 'package:looqma/features/home/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -21,6 +24,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => LoginCubit(getIt<LoginRepo>()),
             child: const LoginScreen(),
+          ),
+        );
+      case Routes.forgetPassword:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                ForgetPasswordCubit(getIt<ForgetPasswordRepo>()),
+            child: const ForgetPasswordScreen(),
           ),
         );
       case Routes.verification:

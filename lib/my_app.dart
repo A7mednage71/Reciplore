@@ -12,10 +12,10 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (context, child) {
           return MaterialApp(
-            title: 'Looqma',
+            title: 'nageh',
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRouter.getRoute,
-            initialRoute: Routes.verification,
+            initialRoute: Routes.login,
             navigatorKey: GlobalKey<NavigatorState>(),
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
