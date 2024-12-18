@@ -1,4 +1,5 @@
 class Routes {
+  static const String onBording = 'onBording_Screen';
   static const String home = 'Home_Screen';
   static const String login = 'login_Screen';
   static const String verification = 'verification_Screen';

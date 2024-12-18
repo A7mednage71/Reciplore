@@ -11,6 +11,7 @@ import 'package:looqma/features/home/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
@@ -22,6 +23,10 @@ class AppRouter {
   static Route<void> getRoute(RouteSettings settings) {
     final argument = settings.arguments;
     switch (settings.name) {
+      case Routes.onBording:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingScreen(),
+        );
       case Routes.login:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
