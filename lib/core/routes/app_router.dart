@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
@@ -53,6 +54,10 @@ class AppRouter {
       case Routes.home:
         return MaterialPageRoute(
           builder: (_) => const MyHomePage(),
+        );
+      case Routes.noInternet:
+        return MaterialPageRoute(
+          builder: (_) => const NoInternetConnection(),
         );
       default:
         return MaterialPageRoute(

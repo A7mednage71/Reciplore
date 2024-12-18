@@ -2,6 +2,8 @@
 class AppAssets {
   AppAssets._();
   
+  static const String imagesAnimation1734552569479 = "assets/images/Animation - 1734552569479.json";
+
   static const String imagesArrowLeft = "assets/images/arrow-left.svg";
 
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";

@@ -4,4 +4,5 @@ class Routes {
   static const String verification = 'verification_Screen';
   static const String forgetPassword = 'forgetPassword_Screen';
   static const String sighnUp = 'sighnUp_Screen';
+  static const String noInternet = 'noInternet_Screen';
 }
