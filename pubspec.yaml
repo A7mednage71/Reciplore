@@ -41,10 +41,12 @@ dependencies:
   freezed: ^2.5.2
   freezed_annotation: ^2.4.4
   get_it: ^8.0.2
+  iconly: ^1.0.1
   internet_connection_checker_plus: ^2.6.0
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
   lottie: ^3.2.0
+  persistent_bottom_nav_bar: ^6.2.1
   pinput: ^5.0.0
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
