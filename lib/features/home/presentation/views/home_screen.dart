@@ -21,7 +21,6 @@ class MyHomePage extends StatelessWidget {
           const NewRecipes(),
         ],
       ),
-      // bottomNavigationBar:
     );
   }
 }

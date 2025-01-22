@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           title: 'Looqma',
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.getRoute,
-          initialRoute: Routes.home,
+          initialRoute: Routes.navBarScreensSwitcher,
           navigatorKey: GlobalKey<NavigatorState>(),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),

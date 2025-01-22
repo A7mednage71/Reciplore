@@ -11,6 +11,7 @@ import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
@@ -55,6 +56,10 @@ class AppRouter {
             create: (context) => SighnUpCubit(getIt<SighnUpRepo>()),
             child: const SighnUpScreen(),
           ),
+        );
+      case Routes.navBarScreensSwitcher:
+        return MaterialPageRoute(
+          builder: (_) => const NavBarScreensSwitcher(),
         );
       case Routes.home:
         return MaterialPageRoute(
