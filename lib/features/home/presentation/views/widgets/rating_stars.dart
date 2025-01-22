@@ -18,13 +18,13 @@ class RatingStars extends StatelessWidget {
     List<Widget> stars = List.generate(maxStars, (index) {
       if (index < rating.floor()) {
         // Full star
-        return Icon(Icons.star, color: AppColors.ratingColor, size: 20.w);
+        return Icon(Icons.star, color: AppColors.ratingColor, size: 14.w);
       } else if (index < rating && rating % 1 != 0) {
         // Half star
-        return Icon(Icons.star_half, color: AppColors.ratingColor, size: 20.w);
+        return Icon(Icons.star_half, color: AppColors.ratingColor, size: 14.w);
       } else {
         // Empty star
-        return Icon(Icons.star_border, color: Colors.grey, size: 20.w);
+        return Icon(Icons.star_border, color: Colors.grey, size: 14.w);
       }
     });
 

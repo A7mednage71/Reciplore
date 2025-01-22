@@ -57,7 +57,7 @@ class _RecipesViewState extends State<RecipesView>
         ),
         SizedBox(height: 70.h),
         SizedBox(
-          height: 231.h,
+          height: 200.h,
           child: ListView.builder(
             padding: EdgeInsets.only(left: 30.w),
             clipBehavior: Clip.none,
