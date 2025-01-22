@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/features/home/presentation/views/widgets/recipes_view.dart';
 import 'package:looqma/features/home/presentation/views/widgets/search_recipe.dart';
 import 'package:looqma/features/home/presentation/views/widgets/user_info.dart';
 
@@ -14,6 +15,8 @@ class MyHomePage extends StatelessWidget {
         SizedBox(height: 30.h),
         const UserInfo(),
         const SearchRecipe(),
+        SizedBox(height: 20.h),
+        const RecipesView(),
       ],
     ));
   }
