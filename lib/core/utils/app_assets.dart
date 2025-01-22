@@ -18,9 +18,15 @@ class AppAssets {
 
   static const String imagesOnboardingTopLogo = "assets/images/onboarding_top_logo.png";
 
+  static const String imagesRateStar = "assets/images/rateStar.png";
+
+  static const String imagesSavedRecipeIcon = "assets/images/savedRecipeIcon.png";
+
   static const String imagesSearchIcon = "assets/images/searchIcon.png";
 
   static const String imagesSearchSvg = "assets/images/searchSvg.svg";
+
+  static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
 
   static const String imagesUserImage = "assets/images/userImage.png";
 
