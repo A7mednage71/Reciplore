@@ -18,7 +18,7 @@ class ConfirmCodeButton extends StatelessWidget {
         state.whenOrNull(
           success: (successMessage) {
             ShowToast.showSuccessToast(successMessage);
-            context.pushNamedAndRemoveUntil(Routes.home);
+            context.pushNamedAndRemoveUntil(Routes.navBarScreensSwitcher);
           },
           failure: (failureMessage) {
             ShowToast.showFailureToast(failureMessage);
