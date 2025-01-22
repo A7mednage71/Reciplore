@@ -7,7 +7,7 @@ import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
-import 'package:looqma/features/home/home_screen.dart';
+import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';

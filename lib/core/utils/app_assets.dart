@@ -16,6 +16,8 @@ class AppAssets {
 
   static const String imagesOnboardingTopLogo = "assets/images/onboarding_top_logo.png";
 
+  static const String imagesUserImage = "assets/images/userImage.png";
+
   static const String imagesVerify = "assets/images/verify.json";
 }
 
