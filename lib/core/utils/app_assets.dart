@@ -26,6 +26,8 @@ class AppAssets {
 
   static const String imagesSearchSvg = "assets/images/searchSvg.svg";
 
+  static const String imagesSearchTest = "assets/images/search_test.png";
+
   static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
 
   static const String imagesUserImage = "assets/images/userImage.png";

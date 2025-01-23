@@ -12,6 +12,9 @@ class SearchRecipesAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 0,
+      surfaceTintColor: Colors.transparent,
+      backgroundColor: Colors.transparent,
       leading: InkWell(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
