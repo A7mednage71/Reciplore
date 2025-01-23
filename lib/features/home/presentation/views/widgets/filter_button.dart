@@ -15,6 +15,8 @@ class FilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: enabled ? () {} : null,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: Container(
         width: 40.w,
         height: 40.h,
