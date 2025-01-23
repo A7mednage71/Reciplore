@@ -6,12 +6,15 @@ import 'package:looqma/core/utils/app_colors.dart';
 class FilterButton extends StatelessWidget {
   const FilterButton({
     super.key,
+    this.enabled = true,
   });
+
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: enabled ? () {} : null,
       child: Container(
         width: 40.w,
         height: 40.h,

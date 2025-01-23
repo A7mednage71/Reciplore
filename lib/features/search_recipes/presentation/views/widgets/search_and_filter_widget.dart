@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_text_field.dart';
-import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/features/home/presentation/views/widgets/filter_button.dart';
 
-class SearchRecipeSection extends StatelessWidget {
-  const SearchRecipeSection({super.key});
+class SearchAndFilterWidget extends StatelessWidget {
+  const SearchAndFilterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +27,10 @@ class SearchRecipeSection extends StatelessWidget {
                 width: 20.w,
               ),
               hintText: "Search recipe",
-              readOnly: true,
-              onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamed(Routes.searchScreen);
-              },
             ),
           ),
           SizedBox(width: 20.w),
-          const FilterButton(),
+          const FilterButton(enabled: true),
         ],
       ),
     );
