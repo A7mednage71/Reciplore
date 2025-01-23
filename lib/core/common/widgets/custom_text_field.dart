@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.maxLines = 1,
     this.contentPadding,
+    this.onTap,
   });
 
   final String? Function(String?)? validator;
@@ -39,10 +40,12 @@ class CustomTextField extends StatelessWidget {
   final TextStyle? hintStyle;
   final int? maxLength;
   final int? maxLines;
+  final void Function()? onTap;
   final EdgeInsetsGeometry? contentPadding;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       controller: controller,
       style: AppStyles.normalRegularText,
       validator: validator,
