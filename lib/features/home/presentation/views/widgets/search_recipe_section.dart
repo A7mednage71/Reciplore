@@ -28,6 +28,7 @@ class SearchRecipeSection extends StatelessWidget {
                 width: 20.w,
               ),
               hintText: "Search recipe",
+              readOnly: true,
               onTap: () {
                 Navigator.of(context, rootNavigator: true)
                     .pushNamed(Routes.searchScreen);
