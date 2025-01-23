@@ -9,30 +9,27 @@ class SearchAndFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: Row(
-        children: [
-          Expanded(
-            child: CustomTextField(
-              controller: TextEditingController(),
-              validator: null,
-              onChanged: (value) => null,
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              keyboardType: TextInputType.text,
-              prefixIcon: Image.asset(
-                AppAssets.imagesSearchIcon,
-                height: 20.h,
-                width: 20.w,
-              ),
-              hintText: "Search recipe",
+    return Row(
+      children: [
+        Expanded(
+          child: CustomTextField(
+            controller: TextEditingController(),
+            validator: null,
+            onChanged: (value) => null,
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            keyboardType: TextInputType.text,
+            prefixIcon: Image.asset(
+              AppAssets.imagesSearchIcon,
+              height: 20.h,
+              width: 20.w,
             ),
+            hintText: "Search recipe",
           ),
-          SizedBox(width: 20.w),
-          const FilterButton(enabled: true),
-        ],
-      ),
+        ),
+        SizedBox(width: 20.w),
+        const FilterButton(enabled: true),
+      ],
     );
   }
 }

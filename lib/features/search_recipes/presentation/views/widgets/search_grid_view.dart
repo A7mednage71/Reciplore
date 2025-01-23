@@ -7,19 +7,16 @@ class SearchRecipesGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 15.w,
-          mainAxisSpacing: 15.h,
-        ),
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return const SearchRecipeItem();
-        },
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 15.w,
+        mainAxisSpacing: 15.h,
       ),
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const SearchRecipeItem();
+      },
     );
   }
 }
