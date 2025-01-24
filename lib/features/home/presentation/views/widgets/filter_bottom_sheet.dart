@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/presentation/views/widgets/filter_rates_listview.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet({super.key});
@@ -13,8 +14,8 @@ class FilterBottomSheet extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
+            topLeft: Radius.circular(50.r),
+            topRight: Radius.circular(50.r),
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,6 +33,8 @@ class FilterBottomSheet extends StatelessWidget {
             "Rate",
             style: AppStyles.smallBoldText,
           ),
+          SizedBox(height: 10.h),
+          const FilterRatesListView(),
           SizedBox(height: 20.h),
           Text(
             "Category",

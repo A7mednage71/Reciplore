@@ -39,7 +39,7 @@ class FilterButton extends StatelessWidget {
   void showBottomSheet(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
       context: context,
       builder: (context) {
         return const FilterBottomSheet();
