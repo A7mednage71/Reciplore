@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/home/presentation/views/widgets/filter_bottom_sheet.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_bottom_sheet.dart';
 
 class FilterButton extends StatelessWidget {
   const FilterButton({

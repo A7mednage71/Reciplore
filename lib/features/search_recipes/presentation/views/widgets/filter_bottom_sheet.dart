@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/home/presentation/views/widgets/filter_rates_listview.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_rates_listview.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   const FilterBottomSheet({super.key});

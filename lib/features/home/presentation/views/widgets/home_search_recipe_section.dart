@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_text_field.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/features/home/presentation/views/widgets/filter_button.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_button.dart';
 
 class HomeSearchRecipeSection extends StatelessWidget {
   const HomeSearchRecipeSection({super.key});

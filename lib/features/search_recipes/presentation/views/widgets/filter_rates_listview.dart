@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/home/presentation/views/widgets/rate_filter_item.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/rate_filter_item.dart';
 
 class FilterRatesListView extends StatefulWidget {
   const FilterRatesListView({super.key});
