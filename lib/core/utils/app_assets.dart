@@ -24,7 +24,11 @@ class AppAssets {
 
   static const String imagesSearchIcon = "assets/images/searchIcon.png";
 
+  static const String imagesSearchLottie = "assets/images/searchLottie.json";
+
   static const String imagesSearchSvg = "assets/images/searchSvg.svg";
+
+  static const String imagesSearchTest = "assets/images/search_test.png";
 
   static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
 
