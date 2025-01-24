@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/apply_filter.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_categories_list.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_rates_listview.dart';
 
 class FilterBottomSheet extends StatelessWidget {
@@ -40,6 +42,10 @@ class FilterBottomSheet extends StatelessWidget {
             "Category",
             style: AppStyles.smallBoldText,
           ),
+          SizedBox(height: 10.h),
+          const FilterCategoriesList(),
+          SizedBox(height: 20.h),
+          const ApplyFilter()
         ],
       ),
     );
