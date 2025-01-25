@@ -21,6 +21,8 @@ class CustomTextField extends StatelessWidget {
     this.onChanged,
     this.maxLength,
     this.maxLines = 1,
+    this.contentPadding,
+    this.onTap,
   });
 
   final String? Function(String?)? validator;
@@ -38,10 +40,12 @@ class CustomTextField extends StatelessWidget {
   final TextStyle? hintStyle;
   final int? maxLength;
   final int? maxLines;
-
+  final void Function()? onTap;
+  final EdgeInsetsGeometry? contentPadding;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap: onTap,
       controller: controller,
       style: AppStyles.normalRegularText,
       validator: validator,
@@ -70,7 +74,8 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(15),
           borderSide: const BorderSide(color: Colors.red),
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+        contentPadding: contentPadding ??
+            EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
         filled: filled,
         fillColor: fillColour,
         suffixIcon: suffixIcon,

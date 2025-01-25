@@ -4,17 +4,21 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
-import 'package:looqma/features/home/home_screen.dart';
+import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
+import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
+import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 import 'package:looqma/features/sigh_up/presentation/views/sighn_up_screen.dart';
@@ -58,9 +62,25 @@ class AppRouter {
             child: const SighnUpScreen(),
           ),
         );
+      case Routes.navBarScreensSwitcher:
+        return MaterialPageRoute(
+          builder: (_) => const NavBarScreensSwitcher(),
+        );
       case Routes.home:
         return MaterialPageRoute(
           builder: (_) => const MyHomePage(),
+        );
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchRecipes(),
+        );
+      case Routes.chatScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChatScreen(),
+        );
+      case Routes.profile:
+        return MaterialPageRoute(
+          builder: (context) => const MyProfile(),
         );
       case Routes.noInternet:
         return MaterialPageRoute(
