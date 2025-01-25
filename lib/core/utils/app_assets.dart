@@ -2,9 +2,13 @@
 class AppAssets {
   AppAssets._();
   
+  static const String imagesAnimation = "assets/images/Animation.json";
+
   static const String imagesArrowLeft = "assets/images/arrow-left.svg";
 
   static const String imagesDiscord = "assets/images/discord.png";
+
+  static const String imagesEmptyChatLottie = "assets/images/emptyChatLottie.json";
 
   static const String imagesFacebook = "assets/images/facebook.png";
 
@@ -15,6 +19,8 @@ class AppAssets {
   static const String imagesForgetPassword = "assets/images/forget_password.json";
 
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
+
+  static const String imagesHelloChatBot = "assets/images/hello_chat_bot.json";
 
   static const String imagesInstagram = "assets/images/instagram.png";
 

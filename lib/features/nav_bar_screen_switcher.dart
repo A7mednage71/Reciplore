@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -26,7 +27,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
   List<Widget> myScreens = const [
     MyHomePage(),
     MyHomePage(),
-    MyHomePage(),
+    ChatBot(),
     MyHomePage(),
     MyProfile(),
   ];
