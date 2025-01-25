@@ -12,18 +12,19 @@ class MyProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'My Profile',
-          style: AppStyles.mediumBoldText,
-        ),
-      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.w),
         child: Column(
           children: [
-            SizedBox(height: 20.h),
+            SizedBox(height: 60.h),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'My Profile',
+                style: AppStyles.largeBoldText,
+              ),
+            ),
+            SizedBox(height: 40.h),
             const UserData(),
             SizedBox(height: 70.h),
             ProfileListTileItem(
