@@ -6,4 +6,6 @@ class Routes {
   static const String forgetPassword = 'forgetPassword_Screen';
   static const String sighnUp = 'sighnUp_Screen';
   static const String noInternet = 'noInternet_Screen';
+  static const String recipeDetails = 'recipe_details_screen';
+
 }

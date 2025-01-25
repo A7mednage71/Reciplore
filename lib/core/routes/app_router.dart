@@ -18,6 +18,8 @@ import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 import 'package:looqma/features/sigh_up/presentation/views/sighn_up_screen.dart';
+import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
+
 
 class AppRouter {
   static Route<void> getRoute(RouteSettings settings) {
@@ -63,6 +65,10 @@ class AppRouter {
       case Routes.noInternet:
         return MaterialPageRoute(
           builder: (_) => const NoInternetConnection(),
+        );
+      case Routes.recipeDetails:
+        return MaterialPageRoute(
+          builder: (_) => const RecipeDetailsScreen(),
         );
       default:
         return MaterialPageRoute(

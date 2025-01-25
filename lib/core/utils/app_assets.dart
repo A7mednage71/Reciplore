@@ -17,5 +17,15 @@ class AppAssets {
   static const String imagesOnboardingTopLogo = "assets/images/onboarding_top_logo.png";
 
   static const String imagesVerify = "assets/images/verify.json";
+
+
+
+
+
+  //manually
+  static const String savedRecipe = "assets/images/saved_recipe.jpg";
+  static const String recipeDetails = "assets/images/recipe_details.png";
+  static const String bellIcon = "assets/images/bell_icon.svg";
+  static const String ingredient = "assets/images/ingredient.png";
 }
 
