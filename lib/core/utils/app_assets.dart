@@ -4,6 +4,10 @@ class AppAssets {
   
   static const String imagesArrowLeft = "assets/images/arrow-left.svg";
 
+  static const String imagesDiscord = "assets/images/discord.png";
+
+  static const String imagesFacebook = "assets/images/facebook.png";
+
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
 
   static const String imagesFilter = "assets/images/filter.png";
@@ -11,6 +15,8 @@ class AppAssets {
   static const String imagesForgetPassword = "assets/images/forget_password.json";
 
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
+
+  static const String imagesInstagram = "assets/images/instagram.png";
 
   static const String imagesNoInternet = "assets/images/no_internet.json";
 
@@ -32,7 +38,11 @@ class AppAssets {
 
   static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
 
+  static const String imagesTwitter = "assets/images/twitter.png";
+
   static const String imagesUserImage = "assets/images/userImage.png";
+
+  static const String imagesUserProfile = "assets/images/user_profile.png";
 
   static const String imagesVerify = "assets/images/verify.json";
 }
