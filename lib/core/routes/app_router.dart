@@ -4,6 +4,7 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
@@ -70,6 +71,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchRecipes(),
+        );
+      case Routes.chatScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChatScreen(),
         );
       case Routes.profile:
         return MaterialPageRoute(
