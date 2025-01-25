@@ -11,6 +11,7 @@ import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
@@ -69,6 +70,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchRecipes(),
+        );
+      case Routes.profile:
+        return MaterialPageRoute(
+          builder: (context) => const MyProfile(),
         );
       case Routes.noInternet:
         return MaterialPageRoute(

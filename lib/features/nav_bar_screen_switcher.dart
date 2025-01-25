@@ -4,7 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
-import 'package:looqma/features/my_profile/my_profile.dart';
+import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class NavBarScreensSwitcher extends StatefulWidget {
