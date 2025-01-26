@@ -6,6 +6,7 @@ import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
+import 'package:looqma/features/saved_recipe/presentation/views/saved_recipe_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class NavBarScreensSwitcher extends StatefulWidget {
@@ -26,7 +27,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
 
   List<Widget> myScreens = const [
     MyHomePage(),
-    MyHomePage(),
+    SavedRecipeScreen(),
     ChatBot(),
     MyHomePage(),
     MyProfile(),

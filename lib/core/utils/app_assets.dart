@@ -34,6 +34,8 @@ class AppAssets {
 
   static const String imagesSavedRecipeIcon = "assets/images/savedRecipeIcon.png";
 
+  static const String imagesSavedRecipeTest = "assets/images/SavedRecipeTest.png";
+
   static const String imagesSearchIcon = "assets/images/searchIcon.png";
 
   static const String imagesSearchLottie = "assets/images/searchLottie.json";

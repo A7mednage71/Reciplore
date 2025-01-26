@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/search_recipes/presentation/views/widgets/custom_rate.dart';
+import 'package:looqma/core/common/widgets/custom_rate.dart';
 
 class SearchRecipeItem extends StatelessWidget {
   const SearchRecipeItem({super.key});

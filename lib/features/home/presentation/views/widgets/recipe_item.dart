@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/home/presentation/views/widgets/save_recipe_button.dart';
 
 class RecipeItem extends StatelessWidget {
   const RecipeItem({super.key});
