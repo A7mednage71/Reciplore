@@ -4,6 +4,7 @@ class Routes {
   static const String searchScreen = 'Search_Screen';
   static const String chatScreen = 'Chat_Screen';
   static const String profile = 'Profile_Screen';
+  static const String showRecipeDetails = 'showRecipeDetails_Screen';
   static const String navBarScreensSwitcher = 'Switcher_Screen';
   static const String login = 'login_Screen';
   static const String verification = 'verification_Screen';

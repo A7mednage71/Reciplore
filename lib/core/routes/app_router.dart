@@ -18,6 +18,7 @@ import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
+import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
@@ -71,6 +72,10 @@ class AppRouter {
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchRecipes(),
+        );
+      case Routes.showRecipeDetails:
+        return MaterialPageRoute(
+          builder: (context) => const RecipeDetailsScreen(),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

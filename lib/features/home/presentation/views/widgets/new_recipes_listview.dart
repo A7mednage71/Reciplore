@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home/presentation/views/widgets/new_recipes_item.dart';
 
 class NewRecipesListView extends StatelessWidget {
@@ -16,7 +17,12 @@ class NewRecipesListView extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
-            child: const NewRecipesItem(),
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(Routes.showRecipeDetails);
+                },
+                child: const NewRecipesItem()),
           );
         },
       ),
