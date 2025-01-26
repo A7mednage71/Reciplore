@@ -34,6 +34,7 @@ class _RecipesViewState extends State<RecipesView>
       children: [
         TabBar(
           padding: EdgeInsets.only(left: 30.w),
+          overlayColor: WidgetStateProperty.all(Colors.transparent),
           isScrollable: true,
           tabs: const [
             Tab(text: 'All'),
