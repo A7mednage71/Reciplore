@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_grid_item.dart';
 
 class SearchRecipesGridView extends StatelessWidget {
@@ -15,7 +16,12 @@ class SearchRecipesGridView extends StatelessWidget {
       ),
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const SearchRecipeItem();
+        return GestureDetector(
+            onTap: () {
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(Routes.showRecipeDetails);
+            },
+            child: const SearchRecipeItem());
       },
     );
   }
