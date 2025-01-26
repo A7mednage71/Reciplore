@@ -22,6 +22,8 @@ class AppAssets {
 
   static const String imagesHelloChatBot = "assets/images/hello_chat_bot.json";
 
+  static const String imagesIngrediant = "assets/images/ingrediant.png";
+
   static const String imagesInstagram = "assets/images/instagram.png";
 
   static const String imagesNoInternet = "assets/images/no_internet.json";
@@ -44,7 +46,11 @@ class AppAssets {
 
   static const String imagesSearchTest = "assets/images/search_test.png";
 
+  static const String imagesServeIcon = "assets/images/serveIcon.svg";
+
   static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
+
+  static const String imagesTomato = "assets/images/tomato.png";
 
   static const String imagesTwitter = "assets/images/twitter.png";
 
