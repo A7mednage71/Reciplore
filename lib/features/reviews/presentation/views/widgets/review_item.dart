@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/like_and_dislike.dart';
 
-class CommentItem extends StatelessWidget {
-  const CommentItem({super.key});
+class ReviewItem extends StatelessWidget {
+  const ReviewItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,8 @@ class CommentItem extends StatelessWidget {
                         .copyWith(color: AppColors.grayLight)),
               ],
             ),
+            const Spacer(),
+            const RatingStars(rating: 3)
           ],
         ),
         SizedBox(height: 10.h),

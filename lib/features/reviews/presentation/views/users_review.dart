@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_appbar.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/reviews/presentation/views/widgets/comments_list_view.dart';
-import 'package:looqma/features/reviews/presentation/views/widgets/leave_comment.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/rate_and_share_opinion.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/reviews_list_view.dart';
 
 class UsersReview extends StatelessWidget {
   const UsersReview({super.key});
@@ -22,15 +22,17 @@ class UsersReview extends StatelessWidget {
               SizedBox(height: 20.h),
               Align(
                 alignment: Alignment.topRight,
-                child: Text('200 Comment',
-                    style: AppStyles.smallRegularText.copyWith(
-                      color: AppColors.grayLight,
-                    )),
+                child: Text(
+                  '200 reviews',
+                  style: AppStyles.smallRegularText.copyWith(
+                    color: AppColors.grayLight,
+                  ),
+                ),
               ),
               SizedBox(height: 7.h),
-              const LeaveComment(),
-              SizedBox(height: 30.h),
-              const CommentsListView(),
+              const RateAndShareOpinion(),
+              SizedBox(height: 20.h),
+              const ReviewsListView(),
             ],
           ),
         ),
