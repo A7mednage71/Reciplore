@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:looqma/features/reviews/presentation/views/widgets/comment_item.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/review_item.dart';
 
-class CommentsListView extends StatelessWidget {
-  const CommentsListView({super.key});
+class ReviewsListView extends StatelessWidget {
+  const ReviewsListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class CommentsListView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 6,
       itemBuilder: (context, index) {
-        return const CommentItem();
+        return const ReviewItem();
       },
     );
   }
