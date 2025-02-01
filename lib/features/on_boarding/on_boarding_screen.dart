@@ -29,7 +29,7 @@ class OnBoardingScreen extends StatelessWidget {
                 style: AppStyles.mediumBoldText.copyWith(color: Colors.white)),
             SizedBox(height: 222.h),
             Text(
-              'Get',
+              'Let’s',
               style: AppStyles.titleBoldText.copyWith(color: Colors.white),
             ),
             Text(
