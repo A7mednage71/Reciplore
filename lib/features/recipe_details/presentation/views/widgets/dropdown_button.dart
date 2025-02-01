@@ -26,16 +26,16 @@ class _CustomPopUpMenueButtonState extends State<CustomPopUpMenueButton> {
         ],
       ),
     ),
-    PopupMenuItem(
-      value: "rate",
-      child: Row(
-        children: [
-          const Icon(Icons.star, color: AppColors.black),
-          SizedBox(width: 16.w),
-          Text('Rate Recipe', style: AppStyles.smallRegularText),
-        ],
-      ),
-    ),
+    // PopupMenuItem(
+    //   value: "rate",
+    //   child: Row(
+    //     children: [
+    //       const Icon(Icons.star, color: AppColors.black),
+    //       SizedBox(width: 16.w),
+    //       Text('Rate Recipe', style: AppStyles.smallRegularText),
+    //     ],
+    //   ),
+    // ),
     PopupMenuItem(
       value: "review",
       child: Row(
