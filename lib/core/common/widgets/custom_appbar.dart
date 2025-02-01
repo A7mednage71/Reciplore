@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
-class SearchRecipesAppBar extends StatelessWidget
-    implements PreferredSizeWidget {
-  const SearchRecipesAppBar({
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({
     super.key,
+    required this.title,
   });
-
+  final String title;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -25,7 +25,7 @@ class SearchRecipesAppBar extends StatelessWidget
         ),
       ),
       title: Text(
-        'Search Recipes',
+        title,
         style: AppStyles.mediumBoldText,
       ),
       centerTitle: true,
