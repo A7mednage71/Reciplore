@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
@@ -69,7 +70,23 @@ class _CustomPopUpMenueButtonState extends State<CustomPopUpMenueButton> {
         size: 24,
       ),
       color: AppColors.white,
-      onSelected: (String value) {},
+      onSelected: (String value) {
+        switch (value) {
+          case "share":
+            // Implement share functionality
+            break;
+          case "rate":
+            // Navigate to Rate Screen
+            break;
+          case "review":
+            // Navigate to Review Screen
+            Navigator.pushNamed(context, Routes.reviewScreen);
+            break;
+          case "unsave":
+            // Implement unsave logic
+            break;
+        }
+      },
       itemBuilder: (BuildContext context) {
         return dropdownItems;
       },
