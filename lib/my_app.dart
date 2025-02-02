@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/app/constants.dart';
 import 'package:looqma/core/app/internet_checker.dart';
 import 'package:looqma/core/routes/app_router.dart';
 import 'package:looqma/core/routes/routes.dart';
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
           title: 'Looqma',
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.getRoute,
-          initialRoute: Routes.onBording,
+          initialRoute:
+              isUserlogged ? Routes.navBarScreensSwitcher : Routes.onBording,
           navigatorKey: GlobalKey<NavigatorState>(),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
