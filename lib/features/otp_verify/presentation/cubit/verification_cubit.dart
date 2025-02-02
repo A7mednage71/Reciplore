@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/networking/dio_factory.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
@@ -31,6 +32,7 @@ class VerificationCubit extends Cubit<VerificationState> {
         log('access token: ${successResponse.token}');
         SecureStorage.setSecuredData(
             SecureStorageKeys.accessToken, successResponse.token ?? '');
+        DioFactory.refreshHeaders(token: successResponse.token ?? '');
         emit(VerificationState.success(successResponse.message));
       },
       failure: (failureResponse) =>

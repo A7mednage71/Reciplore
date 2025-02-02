@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
@@ -16,9 +18,9 @@ class DioFactory {
       // for better readability and conversion.
       dio!.options.headers = {
         'Content-Type': 'application/json',
-        // 'Authorization':
-        //     // ignore: lines_longer_than_80_chars
-        //     'Bearer ${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
+        'Authorization':
+            // ignore: lines_longer_than_80_chars
+            'Bearer ${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
       };
 
       addDioInterceptors();
