@@ -9,6 +9,7 @@ import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/widgets/confirm_code_button.dart';
 import 'package:looqma/features/otp_verify/presentation/views/widgets/verify_code_widget.dart';
 import 'package:lottie/lottie.dart';
@@ -106,6 +107,10 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         splashColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          context
+                              .read<VerificationCubit>()
+                              .otpController
+                              .clear();
                           context.read<ResendOtpCubit>().email = widget.email;
                           await context.read<ResendOtpCubit>().resendOtp();
                           startTimer();

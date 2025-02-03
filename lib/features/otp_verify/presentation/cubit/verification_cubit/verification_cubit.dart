@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/core/networking/api_constants.dart';
@@ -17,23 +18,26 @@ class VerificationCubit extends Cubit<VerificationState> {
 
   final VerficationRepo _repo;
 
-  String otpCode = '';
+  TextEditingController otpController = TextEditingController();
 
   Future<void> verifyLogin() async {
-    if (otpCode == '' || otpCode.length != 6) {
+    String code = otpController.text.trim();
+
+    if (code == '' || code.length != 6) {
       emit(const VerificationState.failure('the code must be 6 digits!'));
       return;
     }
     emit(const VerificationState.loading());
 
     final result = await _repo.verifyLogin(
-        verifyRequestModel: VerifyRequestModel(code: otpCode));
+        verifyRequestModel: VerifyRequestModel(code: code));
+
     result.when(
       success: (successResponse) {
         log('access token: ${ApiConstants.accessTokenPrefix}${successResponse.token}');
 
-        SecureStorage.setSecuredData(SecureStorageKeys.accessToken,
-            '${ApiConstants.accessTokenPrefix}${successResponse.token}');
+        SecureStorage.setSecuredData(
+            SecureStorageKeys.accessToken, '${successResponse.token}');
         DioFactory.refreshHeaders(
             token: '${ApiConstants.accessTokenPrefix}${successResponse.token}');
 

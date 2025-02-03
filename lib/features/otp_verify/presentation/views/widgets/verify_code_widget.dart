@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,14 +17,8 @@ class VerifyCodeWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Pinput(
+          controller: context.read<VerificationCubit>().otpController,
           length: 6,
-          onCompleted: (otp) {
-            log("otp verified: $otp");
-            context.read<VerificationCubit>().otpCode = otp;
-          },
-          onChanged: (otp) {
-            context.read<VerificationCubit>().otpCode = otp;
-          },
           defaultPinTheme: PinTheme(
             width: 50.w,
             height: 50.h,
