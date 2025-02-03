@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -20,7 +21,7 @@ class DioFactory {
         'Content-Type': 'application/json',
         'Authorization':
             // ignore: lines_longer_than_80_chars
-            'Bearer ${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
+            'Bearer ${ApiConstants.accessTokenPrefix}${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
       };
 
       addDioInterceptors();
