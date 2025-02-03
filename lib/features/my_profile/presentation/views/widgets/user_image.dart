@@ -6,8 +6,9 @@ import 'package:looqma/core/utils/app_colors.dart';
 class UserImage extends StatelessWidget {
   const UserImage({
     super.key,
+    required this.userImage,
   });
-
+  final String? userImage;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -17,9 +18,11 @@ class UserImage extends StatelessWidget {
           backgroundColor: AppColors.primaryDarker,
           child: CircleAvatar(
             radius: 40.r,
-            backgroundImage: const AssetImage(
-              AppAssets.imagesUserProfile,
-            ),
+            backgroundImage: userImage != null
+                ? NetworkImage(userImage!)
+                : const AssetImage(
+                    AppAssets.imagesUserProfile,
+                  ),
           ),
         ),
         Positioned(

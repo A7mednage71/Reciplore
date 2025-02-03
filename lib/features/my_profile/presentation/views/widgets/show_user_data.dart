@@ -16,7 +16,9 @@ class ShowUserData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const UserImage(),
+        UserImage(
+            userImage:
+                userProfileModel?.profileImage?.profileImage.secureProfileUrl),
         SizedBox(height: 10.h),
         Text(
           userProfileModel?.userName ?? "User Name",
