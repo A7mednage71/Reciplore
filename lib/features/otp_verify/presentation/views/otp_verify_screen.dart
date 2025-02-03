@@ -11,8 +11,8 @@ import 'package:looqma/features/otp_verify/presentation/views/widgets/verify_cod
 import 'package:lottie/lottie.dart';
 
 class OtpVerifyScreen extends StatefulWidget {
-  const OtpVerifyScreen({super.key});
-
+  const OtpVerifyScreen({super.key, required this.email});
+  final String email;
   @override
   State<OtpVerifyScreen> createState() => _OtpVerifyScreenState();
 }

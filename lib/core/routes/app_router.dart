@@ -16,7 +16,7 @@ import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
-import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
@@ -49,10 +49,11 @@ class AppRouter {
           ),
         );
       case Routes.verification:
+        final email = argument as String;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => VerificationCubit(getIt<VerficationRepo>()),
-            child: const OtpVerifyScreen(),
+            child: OtpVerifyScreen(email: email),
           ),
         );
       case Routes.sighnUp:

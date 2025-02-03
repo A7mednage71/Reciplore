@@ -17,8 +17,9 @@ class SignInButton extends StatelessWidget {
       listener: (context, state) {
         state.mapOrNull(
           success: (message) {
+            String email = context.read<LoginCubit>().emailController.text;
             ShowToast.showSuccessToast(message.successMessage);
-            context.pushNamed(Routes.verification);
+            context.pushNamed(Routes.verification, arguments: email);
           },
           error: (message) {
             ShowToast.showFailureToast(message.errorMessage);
