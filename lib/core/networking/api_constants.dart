@@ -8,6 +8,7 @@ class ApiConstants {
   static const String forgetPassword = '/auth/forget-password';
   static const String signUp = '/auth/register';
   static const String userProfile = '/auth/get-profile';
+  static const String uploadUserImage = '/auth/upload-profileImg';
 
   // tokens for authentication
   static const String accessTokenPrefix = 'accessToken_';
