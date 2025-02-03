@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,7 +13,7 @@ class FailureState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: hight + 40.h,
+      height: hight + 60.h,
       width: width ?? double.infinity,
       child: Column(
         children: [
@@ -22,7 +23,9 @@ class FailureState extends StatelessWidget {
             width: hight,
           ),
           SizedBox(height: 10.h),
-          Text('Failure Fetch Data', style: AppStyles.smallBoldText)
+          Text('Oops Something went wrong ,try again',
+              style: AppStyles.smallBoldText
+                  .copyWith(color: AppColors.secondaryDarker)),
         ],
       ),
     );
