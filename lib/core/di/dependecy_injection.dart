@@ -6,6 +6,8 @@ import 'package:looqma/features/forget_password/data/repos/forget_password_repo.
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
+import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
@@ -40,5 +42,11 @@ Future<void> setupGetIt() async {
 
     // create sign up repository instance
     ..registerLazySingleton<SighnUpRepo>(() => SighnUpRepo(getIt<ApiService>()))
-    ..registerFactory<SighnUpCubit>(() => SighnUpCubit(getIt<SighnUpRepo>()));
+    ..registerFactory<SighnUpCubit>(() => SighnUpCubit(getIt<SighnUpRepo>()))
+
+    // create get user profile repository instance
+    ..registerLazySingleton<UserProfileRepo>(
+        () => UserProfileRepo(getIt<ApiService>()))
+    ..registerFactory<GetUserProfileCubit>(
+        () => GetUserProfileCubit(getIt<UserProfileRepo>()));
 }
