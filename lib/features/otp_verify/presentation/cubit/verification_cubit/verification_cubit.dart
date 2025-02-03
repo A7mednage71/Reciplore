@@ -34,12 +34,17 @@ class VerificationCubit extends Cubit<VerificationState> {
 
     result.when(
       success: (successResponse) {
-        log('access token: ${ApiConstants.accessTokenPrefix}${successResponse.token}');
+        log('access token: ${ApiConstants.accessTokenPrefix}${successResponse.accessToken}');
+        log('refresh token: ${successResponse.refreshToken}');
 
         SecureStorage.setSecuredData(
-            SecureStorageKeys.accessToken, '${successResponse.token}');
+            SecureStorageKeys.accessToken, successResponse.accessToken);
+        SecureStorage.setSecuredData(
+            SecureStorageKeys.refreshToken, successResponse.refreshToken);
+
         DioFactory.refreshHeaders(
-            token: '${ApiConstants.accessTokenPrefix}${successResponse.token}');
+            token:
+                '${ApiConstants.accessTokenPrefix}${successResponse.accessToken}');
 
         emit(VerificationState.success(successResponse.message));
       },

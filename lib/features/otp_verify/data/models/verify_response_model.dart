@@ -5,12 +5,16 @@ part 'verify_response_model.g.dart';
 @JsonSerializable()
 class VerifyResponseModel {
   final String message;
-  final String? token;
-
-  VerifyResponseModel({required this.message, this.token});
+  final String accessToken;
+  final String refreshToken;
 
   factory VerifyResponseModel.fromJson(Map<String, dynamic> json) =>
       _$VerifyResponseModelFromJson(json);
+
+  VerifyResponseModel(
+      {required this.message,
+      required this.accessToken,
+      required this.refreshToken});
 
   Map<String, dynamic> toJson() => _$VerifyResponseModelToJson(this);
 }
