@@ -1,14 +1,51 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_assets.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/otp_verify/presentation/views/widgets/confirm_code_button.dart';
 import 'package:looqma/features/otp_verify/presentation/views/widgets/verify_code_widget.dart';
 import 'package:lottie/lottie.dart';
 
-class OtpVerifyScreen extends StatelessWidget {
+class OtpVerifyScreen extends StatefulWidget {
   const OtpVerifyScreen({super.key});
+
+  @override
+  State<OtpVerifyScreen> createState() => _OtpVerifyScreenState();
+}
+
+class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
+  int _seconds = 60;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    startTimer();
+    super.initState();
+  }
+
+  void startTimer() {
+    _timer?.cancel();
+    _seconds = 60;
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_seconds > 0) {
+        setState(() {
+          _seconds--;
+        });
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +75,31 @@ class OtpVerifyScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
                 const VerifyCodeWidget(),
-                SizedBox(height: 20.h),
+                if (_seconds > 0)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Resend code available in $_seconds sec",
+                      style: AppStyles.extraSmallRegularText,
+                    ),
+                  ),
+                if (_seconds == 0)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        startTimer();
+                      },
+                      child: Text(
+                        "Resend Code",
+                        style: AppStyles.smallRegularText
+                            .copyWith(color: AppColors.secondaryDark),
+                      ),
+                    ),
+                  ),
+                SizedBox(height: 10.h),
                 const ConfirmCodeButton(),
                 SizedBox(height: 20.h),
               ],
