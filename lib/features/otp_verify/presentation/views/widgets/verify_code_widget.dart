@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:pinput/pinput.dart';
 
 class VerifyCodeWidget extends StatelessWidget {

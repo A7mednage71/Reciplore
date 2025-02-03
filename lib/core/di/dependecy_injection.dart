@@ -7,7 +7,7 @@ import 'package:looqma/features/forget_password/presentation/cubit/forget_passwo
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
-import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 
