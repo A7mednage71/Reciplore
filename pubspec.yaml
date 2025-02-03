@@ -54,6 +54,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.4.1
   retrofit_generator: ^9.1.5
+  skeletonizer: ^1.4.3
   very_good_analysis: ^6.0.0
 
 dev_dependencies:
