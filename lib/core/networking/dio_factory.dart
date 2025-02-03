@@ -19,9 +19,8 @@ class DioFactory {
       // for better readability and conversion.
       dio!.options.headers = {
         'Content-Type': 'application/json',
-        'Authorization':
-            // ignore: lines_longer_than_80_chars
-            'Bearer ${ApiConstants.accessTokenPrefix}${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
+        'accessToken':
+            '${ApiConstants.accessTokenPrefix}${await SecureStorage.getSecuredData(SecureStorageKeys.accessToken)}',
       };
 
       addDioInterceptors();
@@ -34,7 +33,7 @@ class DioFactory {
   static refreshHeaders({required String token}) {
     debugPrint('Refreshed Headers : $token');
     dio!.options.headers = {
-      'Authorization': 'Bearer $token',
+      'accessToken': token,
     };
   }
 
