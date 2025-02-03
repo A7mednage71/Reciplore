@@ -7,6 +7,7 @@ class ApiConstants {
   static const String resendOtp = '/auth/resend-otp';
   static const String forgetPassword = '/auth/forget-password';
   static const String signUp = '/auth/register';
+  static const String userProfile = '/auth/get-profile';
 
   // tokens for authentication
   static const String accessTokenPrefix = 'accessToken_';

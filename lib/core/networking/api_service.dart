@@ -4,6 +4,7 @@ import 'package:looqma/features/forget_password/data/models/forget_password_requ
 import 'package:looqma/features/forget_password/data/models/forget_password_response.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/login/data/models/login_response_model.dart';
+import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
@@ -42,4 +43,7 @@ abstract class ApiService {
   Future<ResendOtpResponseModel> resendOtp(
     @Body() ResendOtpRequestModel body,
   );
+
+  @GET(ApiConstants.userProfile)
+  Future<UserProfileResponseModel> getUserProfile();
 }
