@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
@@ -29,10 +30,13 @@ class VerificationCubit extends Cubit<VerificationState> {
         verifyRequestModel: VerifyRequestModel(code: otpCode));
     result.when(
       success: (successResponse) {
-        log('access token: ${successResponse.token}');
-        SecureStorage.setSecuredData(
-            SecureStorageKeys.accessToken, successResponse.token ?? '');
-        DioFactory.refreshHeaders(token: successResponse.token ?? '');
+        log('access token: ${ApiConstants.accessTokenPrefix}${successResponse.token}');
+
+        SecureStorage.setSecuredData(SecureStorageKeys.accessToken,
+            '${ApiConstants.accessTokenPrefix}${successResponse.token}');
+        DioFactory.refreshHeaders(
+            token: '${ApiConstants.accessTokenPrefix}${successResponse.token}');
+
         emit(VerificationState.success(successResponse.message));
       },
       failure: (failureResponse) =>

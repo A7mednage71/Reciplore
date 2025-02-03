@@ -5,6 +5,9 @@ class ApiConstants {
   static const String login = 'auth/login';
   static const String verifyLogin = 'auth/verify-login';
   static const String forgetPassword = '/auth/forget-password';
-
   static const String signUp = '/auth/register';
+
+  // tokens for authentication
+  static const String accessTokenPrefix = 'accessToken_';
+  static const String refreshToken = '/auth/refresh-token';
 }

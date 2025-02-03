@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +28,7 @@ void main() async {
 Future<void> checkUserLogging() async {
   String? userToken =
       await SecureStorage.getSecuredData(SecureStorageKeys.accessToken);
+  log(userToken.toString());
   if (userToken != "" && userToken.isNotEmpty) {
     isUserlogged = true;
   } else {
