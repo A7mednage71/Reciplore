@@ -19,13 +19,12 @@ UserProfileResponseModel _$UserProfileResponseModelFromJson(
       phoneNumbers: (json['phoneNumbers'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      userAddresses: (json['addresses'] as List<dynamic>)
-          .map((e) => e as String?)
-          .toList(),
+      userAddresses:
+          (json['addresses'] as List<dynamic>).map((e) => e as String).toList(),
       userRole: json['role'] as String,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,
-      userAge: json['age'] as String?,
+      userAge: (json['age'] as num?)?.toInt(),
       nOfUpdate: (json['__v'] as num).toInt(),
     );
 
@@ -47,21 +46,10 @@ Map<String, dynamic> _$UserProfileResponseModelToJson(
 
 UserProfileImage _$UserProfileImageFromJson(Map<String, dynamic> json) =>
     UserProfileImage(
-      profileImage: SecureProfileUrl.fromJson(
-          json['profileImage'] as Map<String, dynamic>),
+      secureProfileUrl: json['secure_url'] as String?,
     );
 
 Map<String, dynamic> _$UserProfileImageToJson(UserProfileImage instance) =>
-    <String, dynamic>{
-      'profileImage': instance.profileImage,
-    };
-
-SecureProfileUrl _$SecureProfileUrlFromJson(Map<String, dynamic> json) =>
-    SecureProfileUrl(
-      secureProfileUrl: json['secure_url'] as String,
-    );
-
-Map<String, dynamic> _$SecureProfileUrlToJson(SecureProfileUrl instance) =>
     <String, dynamic>{
       'secure_url': instance.secureProfileUrl,
     };

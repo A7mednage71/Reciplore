@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_profile_response_model.g.dart';
+
 @JsonSerializable()
 class UserProfileResponseModel {
   @JsonKey(name: '_id')
@@ -15,7 +16,7 @@ class UserProfileResponseModel {
   final List<String> phoneNumbers;
 
   @JsonKey(name: 'addresses')
-  final List<String?> userAddresses;
+  final List<String> userAddresses;
 
   @JsonKey(name: 'role')
   final String userRole;
@@ -24,23 +25,24 @@ class UserProfileResponseModel {
   final String updatedAt;
 
   @JsonKey(name: 'age')
-  final String? userAge;
+  final int? userAge;
 
   @JsonKey(name: '__v')
   final int nOfUpdate;
 
-  UserProfileResponseModel(
-      {required this.userId,
-      required this.userName,
-      required this.profileImage,
-      required this.email,
-      required this.phoneNumbers,
-      required this.userAddresses,
-      required this.userRole,
-      required this.createdAt,
-      required this.updatedAt,
-      required this.userAge,
-      required this.nOfUpdate});
+  UserProfileResponseModel({
+    required this.userId,
+    required this.userName,
+    required this.profileImage,
+    required this.email,
+    required this.phoneNumbers,
+    required this.userAddresses,
+    required this.userRole,
+    required this.createdAt,
+    required this.updatedAt,
+    this.userAge,
+    required this.nOfUpdate,
+  });
 
   factory UserProfileResponseModel.fromJson(Map<String, dynamic> json) =>
       _$UserProfileResponseModelFromJson(json);
@@ -50,25 +52,13 @@ class UserProfileResponseModel {
 
 @JsonSerializable()
 class UserProfileImage {
-  final SecureProfileUrl profileImage;
+  @JsonKey(name: 'secure_url')
+  final String? secureProfileUrl;
 
-  UserProfileImage({required this.profileImage});
+  UserProfileImage({this.secureProfileUrl});
 
   factory UserProfileImage.fromJson(Map<String, dynamic> json) =>
       _$UserProfileImageFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserProfileImageToJson(this);
-}
-
-@JsonSerializable()
-class SecureProfileUrl {
-  @JsonKey(name: 'secure_url')
-  final String secureProfileUrl;
-
-  SecureProfileUrl({required this.secureProfileUrl});
-
-  factory SecureProfileUrl.fromJson(Map<String, dynamic> json) =>
-      _$SecureProfileUrlFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SecureProfileUrlToJson(this);
 }
