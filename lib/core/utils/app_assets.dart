@@ -14,6 +14,8 @@ class AppAssets {
 
   static const String imagesFacebookIcon = "assets/images/facebook_icon.svg";
 
+  static const String imagesFailureState = "assets/images/failure_state.json";
+
   static const String imagesFilter = "assets/images/filter.png";
 
   static const String imagesForgetPassword = "assets/images/forget_password.json";
