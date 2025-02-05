@@ -1,6 +1,11 @@
 class ApiConstants {
-  static const String baseUrl = 'http://localhost:3000/';
+  // base url for local server
+  static const String baseUrlLocalServer = 'http://localhost:3000/';
   static const String baseUrlEmulator = 'http://10.0.2.2:3000/';
+
+  // base url for deployed server
+  static const String baseUrlDeployedServer =
+      'https://graduation-project-ev6n-yous0001s-projects.vercel.app/';
 
   static const String login = 'auth/login';
   static const String verifyLogin = 'auth/verify-login';

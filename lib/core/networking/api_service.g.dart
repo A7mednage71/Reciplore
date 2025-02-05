@@ -14,7 +14,8 @@ class _ApiService implements ApiService {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'http://10.0.2.2:3000/';
+    baseUrl ??=
+        'https://graduation-project-ev6n-yous0001s-projects.vercel.app/';
   }
 
   final Dio _dio;
