@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
@@ -43,7 +44,10 @@ class MyProfile extends StatelessWidget {
               ProfileListTileItem(
                 title: "Change Password",
                 icon: Icons.lock_outline,
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(Routes.changePassword);
+                },
               ),
               ProfileListTileItem(
                 title: "About",

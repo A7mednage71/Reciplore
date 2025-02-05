@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +23,6 @@ class ShowUserDataBlocBuilder extends StatelessWidget {
             return const Skeletonizer(child: ShowUserData());
           },
           success: (successResponse) {
-            log('ShowUserData');
             return ShowUserData(userProfileModel: successResponse);
           },
           failure: () {
