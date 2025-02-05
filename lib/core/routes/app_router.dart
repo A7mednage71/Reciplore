@@ -4,6 +4,8 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
+import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
@@ -98,6 +100,13 @@ class AppRouter {
       case Routes.profile:
         return MaterialPageRoute(
           builder: (context) => const MyProfile(),
+        );
+      case Routes.changePassword:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ChangePasswordCubit>(),
+            child: const ChangeUserPassword(),
+          ),
         );
       case Routes.noInternet:
         return MaterialPageRoute(

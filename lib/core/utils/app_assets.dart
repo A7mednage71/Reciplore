@@ -6,6 +6,8 @@ class AppAssets {
 
   static const String imagesArrowLeft = "assets/images/arrow-left.svg";
 
+  static const String imagesChangePassword = "assets/images/change_password.json";
+
   static const String imagesDiscord = "assets/images/discord.png";
 
   static const String imagesEmptyChatLottie = "assets/images/emptyChatLottie.json";
