@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/app/constants.dart';
+import 'package:iconly/iconly.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/user_image_circle_avatar.dart';
 
-class UserImage extends StatelessWidget {
-  const UserImage({
+class UserImageSection extends StatelessWidget {
+  const UserImageSection({
     super.key,
     required this.userImage,
   });
@@ -29,21 +30,7 @@ class UserImage extends StatelessWidget {
       },
       child: Stack(
         children: [
-          CircleAvatar(
-            radius: 43.r,
-            backgroundColor: AppColors.primaryDarker,
-            child: CircleAvatar(
-              radius: 40.r,
-              backgroundColor: AppColors.white,
-              backgroundImage: userImage != null
-                  ? NetworkImage(
-                      userImage!,
-                    )
-                  : NetworkImage(
-                      defaultUserImage,
-                    ),
-            ),
-          ),
+          UserImageCircleAvatar(userImage: userImage),
           Positioned(
             right: 0,
             bottom: 0,
@@ -61,7 +48,7 @@ class UserImage extends StatelessWidget {
                   shape: BoxShape.rectangle,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-                child: const Icon(Icons.edit),
+                child: const Icon(IconlyLight.camera, color: AppColors.white),
               ),
             ),
           ),

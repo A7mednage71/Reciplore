@@ -267,13 +267,13 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<DeleteProfileImageModel>(Options(
-      method: 'PUT',
+      method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/auth/upload-profileImg',
+          '/auth/delete-profileImg',
           queryParameters: queryParameters,
           data: _data,
         )

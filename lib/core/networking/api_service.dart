@@ -54,6 +54,6 @@ abstract class ApiService {
     @Body() FormData file,
   );
 
-  @PUT(ApiConstants.deleteUserImage)
+  @DELETE(ApiConstants.deleteUserImage)
   Future<DeleteProfileImageModel> deleteUserImage();
 }

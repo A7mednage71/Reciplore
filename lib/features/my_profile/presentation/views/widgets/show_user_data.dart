@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/user_image.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/user_image_section.dart';
 
 class ShowUserData extends StatelessWidget {
   const ShowUserData({
@@ -16,9 +16,8 @@ class ShowUserData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        UserImage(
-            userImage:
-                userProfileModel?.profileImage?.secureProfileUrl),
+        UserImageSection(
+            userImage: userProfileModel?.profileImage?.secureProfileUrl),
         SizedBox(height: 10.h),
         Text(
           userProfileModel?.userName ?? "User Name",
