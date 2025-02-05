@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
+import 'package:looqma/features/change_password/data/repos/change_password_repo.dart';
+import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
@@ -56,5 +58,10 @@ Future<void> setupGetIt() async {
         () => UploadUserImageCubit(getIt<UserProfileRepo>()))
     // delete profile image
     ..registerFactory<DeleteUserImageCubit>(
-        () => DeleteUserImageCubit(getIt<UserProfileRepo>()));
+        () => DeleteUserImageCubit(getIt<UserProfileRepo>()))
+    // change password
+    ..registerLazySingleton<ChangePasswordRepo>(
+        () => ChangePasswordRepo(getIt<ApiService>()))
+    ..registerFactory<ChangePasswordCubit>(
+        () => ChangePasswordCubit(getIt<ChangePasswordRepo>()));
 }
