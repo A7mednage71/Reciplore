@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/join_community.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/logout_button.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/profile_listtile_item.dart';
@@ -14,8 +15,15 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<GetUserProfileCubit>()..getUserProfile(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetUserProfileCubit>()..getUserProfile(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<UploadUserImageCubit>(),
+        ),
+      ],
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),

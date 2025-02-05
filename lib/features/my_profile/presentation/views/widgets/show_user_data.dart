@@ -18,7 +18,7 @@ class ShowUserData extends StatelessWidget {
       children: [
         UserImage(
             userImage:
-                userProfileModel?.profileImage?.profileImage.secureProfileUrl),
+                userProfileModel?.profileImage?.secureProfileUrl),
         SizedBox(height: 10.h),
         Text(
           userProfileModel?.userName ?? "User Name",

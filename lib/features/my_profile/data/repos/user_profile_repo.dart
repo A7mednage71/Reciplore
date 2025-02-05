@@ -44,8 +44,10 @@ class UserProfileRepo {
 
   Future<FormData> convertImageToFormData(XFile file) async {
     final formdata = FormData();
-    formdata.files
-        .add(MapEntry('file', await MultipartFile.fromFile(file.path)));
+    formdata.files.add(MapEntry(
+        'profileImg',
+        await MultipartFile.fromFile(file.path,
+            contentType: DioMediaType('image', file.path.split('.').last))));
     return formdata;
   }
 }
