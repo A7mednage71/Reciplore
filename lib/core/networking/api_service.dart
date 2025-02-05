@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:looqma/core/networking/api_constants.dart';
+import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
+import 'package:looqma/features/change_password/data/models/change_password_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_response.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
@@ -56,4 +58,9 @@ abstract class ApiService {
 
   @DELETE(ApiConstants.deleteUserImage)
   Future<DeleteProfileImageModel> deleteUserImage();
+
+  @PUT(ApiConstants.changePassword)
+  Future<ChangePasswordResponseModel> changePassword(
+    @Body() ChangePasswordRequestModel body,
+  );
 }
