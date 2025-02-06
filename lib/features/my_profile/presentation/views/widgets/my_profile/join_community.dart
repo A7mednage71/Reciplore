@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/social_media_section.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/social_media_section.dart';
 
 class JoinCommunityWidget extends StatelessWidget {
   const JoinCommunityWidget({

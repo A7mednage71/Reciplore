@@ -15,6 +15,7 @@ import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
 import 'package:looqma/features/my_profile/presentation/views/my_profile.dart';
+import 'package:looqma/features/my_profile/presentation/views/update_profile_info.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
@@ -100,6 +101,10 @@ class AppRouter {
       case Routes.profile:
         return MaterialPageRoute(
           builder: (context) => const MyProfile(),
+        );
+      case Routes.updateProfileInfo:
+        return MaterialPageRoute(
+          builder: (context) => const UpdateProfileInfo(),
         );
       case Routes.changePassword:
         return MaterialPageRoute(
