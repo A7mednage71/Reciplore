@@ -6,7 +6,7 @@ import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/user_image_circle_avatar.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/user_image_circle_avatar.dart';
 
 class UserImageSection extends StatelessWidget {
   const UserImageSection({

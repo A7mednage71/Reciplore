@@ -58,6 +58,8 @@ class AppAssets {
 
   static const String imagesTwitter = "assets/images/twitter.png";
 
+  static const String imagesUpdateProfile = "assets/images/update_profile.json";
+
   static const String imagesUserImage = "assets/images/userImage.png";
 
   static const String imagesUserProfile = "assets/images/user_profile.png";

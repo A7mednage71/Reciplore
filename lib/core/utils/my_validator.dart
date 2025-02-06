@@ -61,4 +61,28 @@ class MyValidators {
     }
     return null;
   }
+
+  static String? ageValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your age';
+    }
+    final age = int.tryParse(value);
+
+    if (age == null) {
+      return 'Please enter a valid age';
+    } else if (age < 0 || age > 100) {
+      return 'Please enter a valid age (0-100)';
+    }
+    return null;
+  }
+
+  static String? addressValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your address';
+    }
+    if (value.length < 5) {
+      return 'Address must be at least 5 characters';
+    }
+    return null;
+  }
 }

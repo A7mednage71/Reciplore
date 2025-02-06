@@ -6,7 +6,7 @@ import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/Delete_image_dialog.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/Delete_image_dialog.dart';
 
 class UserImageCircleAvatar extends StatelessWidget {
   const UserImageCircleAvatar({

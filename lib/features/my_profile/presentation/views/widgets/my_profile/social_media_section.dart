@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/social_media_item.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/social_media_item.dart';
 
 class SocialMediaSection extends StatelessWidget {
   const SocialMediaSection({

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
-import 'package:looqma/features/my_profile/presentation/views/widgets/show_user_data.dart';
+import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/show_user_data.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ShowUserDataBlocBuilder extends StatelessWidget {
