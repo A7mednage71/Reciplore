@@ -29,46 +29,48 @@ class MyProfile extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
-            children: [
-              SizedBox(height: 40.h),
-              Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'My Profile',
-                  style: AppStyles.largeBoldText,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 40.h),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'My Profile',
+                    style: AppStyles.largeBoldText,
+                  ),
                 ),
-              ),
-              SizedBox(height: 20.h),
-              const ShowUserDataBlocBuilder(),
-              SizedBox(height: 40.h),
-              ProfileListTileItem(
-                title: "Update Info",
-                icon: IconlyLight.edit_square,
-                onTap: () {
-                  Navigator.of(context, rootNavigator: true)
-                      .pushNamed(Routes.updateProfileInfo);
-                },
-              ),
-              ProfileListTileItem(
-                title: "Change Password",
-                icon: Icons.lock_outline,
-                onTap: () {
-                  Navigator.of(context, rootNavigator: true)
-                      .pushNamed(Routes.changePassword);
-                },
-              ),
-              ProfileListTileItem(
-                title: "About",
-                icon: Icons.info_outline_rounded,
-                onTap: () {},
-              ),
-              SizedBox(height: 20.h),
-              const LogoutButton(),
-              const Spacer(),
-              const JoinCommunityWidget(),
-              SizedBox(height: 40.h),
-            ],
+                SizedBox(height: 20.h),
+                const ShowUserDataBlocBuilder(),
+                SizedBox(height: 20.h),
+                ProfileListTileItem(
+                  title: "Update Info",
+                  icon: IconlyLight.edit_square,
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed(Routes.updateProfileInfo);
+                  },
+                ),
+                ProfileListTileItem(
+                  title: "Change Password",
+                  icon: Icons.lock_outline,
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed(Routes.changePassword);
+                  },
+                ),
+                ProfileListTileItem(
+                  title: "About",
+                  icon: Icons.info_outline_rounded,
+                  onTap: () {},
+                ),
+                SizedBox(height: 20.h),
+                const LogoutButton(),
+                SizedBox(height: 10.h),
+                const JoinCommunityWidget(),
+                SizedBox(height: 40.h),
+              ],
+            ),
           ),
         ),
       ),

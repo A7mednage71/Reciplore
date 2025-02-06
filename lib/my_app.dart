@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: AppRouter.getRoute,
           initialRoute:
-              isUserlogged ? Routes.updateProfileInfo : Routes.onBording,
+              isUserlogged ? Routes.navBarScreensSwitcher : Routes.onBording,
           navigatorKey: GlobalKey<NavigatorState>(),
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
