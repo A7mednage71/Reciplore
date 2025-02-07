@@ -11,13 +11,17 @@ class GetUserProfileCubit extends Cubit<GetUserProfileState> {
       : super(const GetUserProfileState.initial());
   final UserProfileRepo _userProfileRepo;
 
+  UserProfileResponseModel? userProfile;
+
   Future<void> getUserProfile() async {
     emit(const GetUserProfileState.loading());
     final result = await _userProfileRepo.getUserProfile();
 
     result.when(
-      success: (successResponse) =>
-          emit(GetUserProfileState.success(successResponse)),
+      success: (successResponse) {
+        userProfile = successResponse;
+        emit(GetUserProfileState.success(successResponse));
+      },
       failure: (failureResponse) => emit(const GetUserProfileState.failure()),
     );
   }

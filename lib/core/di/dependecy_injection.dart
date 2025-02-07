@@ -11,6 +11,7 @@ import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/update_user_profile/update_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
@@ -59,6 +60,8 @@ Future<void> setupGetIt() async {
     // delete profile image
     ..registerFactory<DeleteUserImageCubit>(
         () => DeleteUserImageCubit(getIt<UserProfileRepo>()))
+    ..registerFactory<UpdateUserProfileCubit>(
+        () => UpdateUserProfileCubit(getIt<UserProfileRepo>()))
     // change password
     ..registerLazySingleton<ChangePasswordRepo>(
         () => ChangePasswordRepo(getIt<ApiService>()))

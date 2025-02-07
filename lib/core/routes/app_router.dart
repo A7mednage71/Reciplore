@@ -14,6 +14,8 @@ import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/update_user_profile/update_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/update_profile_info.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
@@ -103,8 +105,12 @@ class AppRouter {
           builder: (context) => const MyProfile(),
         );
       case Routes.updateProfileInfo:
+        final userProfile = argument as UserProfileResponseModel;
         return MaterialPageRoute(
-          builder: (context) => const UpdateProfileInfo(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<UpdateUserProfileCubit>(),
+            child: UpdateProfileInfo(userProfile: userProfile),
+          ),
         );
       case Routes.changePassword:
         return MaterialPageRoute(

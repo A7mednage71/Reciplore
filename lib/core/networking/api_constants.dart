@@ -14,6 +14,7 @@ class ApiConstants {
   static const String signUp = '/auth/register';
   static const String userProfile = '/auth/get-profile';
   static const String uploadUserImage = '/auth/upload-profileImg';
+  static const String updateUser = '/auth/update-user';
   static const String deleteUserImage = '/auth/delete-profileImg';
   static const String changePassword = '/auth/change-password';
 

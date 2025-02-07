@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
 import 'package:looqma/features/saved_recipe/presentation/views/saved_recipe_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -25,12 +28,15 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
     super.initState();
   }
 
-  List<Widget> myScreens = const [
-    MyHomePage(),
-    SavedRecipeScreen(),
-    ChatBot(),
-    MyHomePage(),
-    MyProfile(),
+  List<Widget> myScreens = [
+    const MyHomePage(),
+    const SavedRecipeScreen(),
+    const ChatBot(),
+    const MyHomePage(),
+    BlocProvider(
+      create: (context) => getIt<GetUserProfileCubit>()..getUserProfile(),
+      child: const MyProfile(),
+    ),
   ];
 
   @override
