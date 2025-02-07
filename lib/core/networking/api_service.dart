@@ -7,6 +7,8 @@ import 'package:looqma/features/forget_password/data/models/forget_password_resp
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/login/data/models/login_response_model.dart';
 import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
+import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
+import 'package:looqma/features/my_profile/data/models/update_user_info_response_model.dart';
 import 'package:looqma/features/my_profile/data/models/upload_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
@@ -50,6 +52,11 @@ abstract class ApiService {
 
   @GET(ApiConstants.userProfile)
   Future<UserProfileResponseModel> getUserProfile();
+
+  @PUT(ApiConstants.updateUser)
+  Future<UpdateUserinfoResponseModel> updateUserInfo(
+    @Body() UpdateUserInfoRequestModel body,
+  );
 
   @POST(ApiConstants.uploadUserImage)
   Future<UploadProfileImageModel> uploadUserImage(
