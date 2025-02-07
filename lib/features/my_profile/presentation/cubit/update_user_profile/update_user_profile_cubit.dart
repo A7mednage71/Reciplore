@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
+import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
 
 part 'update_user_profile_cubit.freezed.dart';
@@ -12,6 +13,8 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
       : super(const UpdateUserProfileState.initial());
 
   final UserProfileRepo _profileRepo;
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -34,12 +37,22 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
 
     result.when(
       success: (successResponse) {
-        emit(UpdateUserProfileState.success(message:  successResponse.message));
+        emit(UpdateUserProfileState.success(message: successResponse.message));
       },
       failure: (failureResponse) {
         emit(UpdateUserProfileState.failure(
             message: failureResponse.errMessages));
       },
     );
+  }
+
+  void setInitialData(UserProfileResponseModel? userProfile) {
+    nameController.text = userProfile!.userName;
+    phoneController.text = userProfile.phoneNumbers.first;
+    ageController.text =
+        userProfile.userAge == null ? '' : userProfile.userAge.toString();
+    addressController.text = userProfile.userAddresses.isNotEmpty
+        ? userProfile.userAddresses.first
+        : '';
   }
 }

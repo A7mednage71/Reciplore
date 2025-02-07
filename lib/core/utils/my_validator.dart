@@ -5,7 +5,7 @@ class MyValidators {
     if (value == null || value.isEmpty) {
       return 'Please enter a username';
     } else if (!usernameRegExp.hasMatch(value)) {
-      return 'Invalid username must be at least 3+ chars: letters, numbers, dots, underscores, hyphens';
+      return 'Invalid username must be at least 3+ chars:\nletters, numbers, dots, underscores, hyphens';
     }
     return null;
   }
@@ -29,7 +29,7 @@ class MyValidators {
     if (value == null || value.isEmpty) {
       return 'Please enter a password';
     } else if (!passwordRegExp.hasMatch(value)) {
-      return 'Password must be at least 8 characters long and contain both letters and numbers';
+      return 'Password must be at least 8 characters\nlong and contain both letters and numbers';
     }
     return null;
   }

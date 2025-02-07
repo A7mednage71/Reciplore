@@ -15,6 +15,7 @@ class MyProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final getUserProfileCubit = context.read<GetUserProfileCubit>();
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.w),
@@ -35,14 +36,8 @@ class MyProfile extends StatelessWidget {
               ProfileListTileItem(
                 title: "Update Info",
                 icon: IconlyLight.edit_square,
-                onTap: () {
-                  final userProfile =
-                      context.read<GetUserProfileCubit>().userProfile;
-                  if (userProfile != null) {
-                    Navigator.of(context, rootNavigator: true).pushNamed(
-                        Routes.updateProfileInfo,
-                        arguments: userProfile);
-                  }
+                onTap: () async {
+                  await updateUserInfo(getUserProfileCubit, context);
                 },
               ),
               ProfileListTileItem(
@@ -68,5 +63,18 @@ class MyProfile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> updateUserInfo(GetUserProfileCubit getUserProfileCubit, BuildContext context) async {
+      final userProfile = getUserProfileCubit.userProfile;
+    if (userProfile != null) {
+      final result =
+          await Navigator.of(context, rootNavigator: true)
+              .pushNamed(Routes.updateProfileInfo,
+                  arguments: userProfile);
+      if (result == true) {
+        getUserProfileCubit.getUserProfile();
+      }
+    }
   }
 }
