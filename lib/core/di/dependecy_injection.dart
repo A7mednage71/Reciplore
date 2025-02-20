@@ -7,6 +7,7 @@ import 'package:looqma/features/change_password/presentation/cubit/change_passwo
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
+import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -72,5 +73,7 @@ Future<void> setupGetIt() async {
     // home screen dependencies
     ..registerLazySingleton<HomeRepo>(() => HomeRepo(getIt<ApiService>()))
     ..registerFactory<GetCountriesCubit>(
-        () => GetCountriesCubit(getIt<HomeRepo>()));
+        () => GetCountriesCubit(getIt<HomeRepo>()))
+    ..registerFactory<GetCategoriesCubit>(
+        () => GetCategoriesCubit(getIt<HomeRepo>()));
 }
