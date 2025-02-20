@@ -32,7 +32,7 @@ class CountriesTabsWidget extends StatelessWidget {
         dividerColor: Colors.transparent,
         indicator: BoxDecoration(
           shape: BoxShape.rectangle,
-          color: isloading ? AppColors.grayLighter : AppColors.primaryDark,
+          color: isloading ? AppColors.loadingColor : AppColors.primaryDark,
           borderRadius: BorderRadius.circular(15),
         ),
         onTap: (value) {},

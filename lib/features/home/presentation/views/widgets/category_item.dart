@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
@@ -33,6 +34,14 @@ class CategoryItem extends StatelessWidget {
               return CircleAvatar(
                 radius: 40.r,
                 backgroundColor: Colors.transparent,
+                backgroundImage:
+                    const AssetImage(AppConstants.defaultCategoryImage),
+              );
+            },
+            placeholder: (context, url) {
+              return CircleAvatar(
+                radius: 40.r,
+                backgroundColor: AppColors.loadingColor,
                 backgroundImage:
                     const AssetImage(AppConstants.defaultCategoryImage),
               );
