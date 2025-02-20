@@ -33,4 +33,7 @@ class AppColors {
 
   // Success Color
   static const Color successColor = Color(0xff31B057);
+
+  // loading Color
+  static const Color loadingColor = Color(0xffEBEBF4);
 }

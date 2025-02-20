@@ -21,4 +21,8 @@ class ApiConstants {
   // tokens for authentication
   static const String accessTokenPrefix = 'accessToken_';
   static const String refreshToken = '/auth/refresh-token';
+
+  // home screen end points
+  static const String allCountries = '/country';
+  static const String allCategories = '/category';
 }

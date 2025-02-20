@@ -23,7 +23,7 @@ class FailureState extends StatelessWidget {
             width: hight,
           ),
           SizedBox(height: 10.h),
-          Text('Oops Something went wrong ,try again',
+          Text('Oops ,try again',
               style: AppStyles.smallBoldText
                   .copyWith(color: AppColors.secondaryDarker)),
         ],

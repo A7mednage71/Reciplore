@@ -1,6 +1,6 @@
 class MyValidators {
   static String? displayNamevalidator(String? value) {
-    final usernameRegExp = RegExp(r'^[a-zA-Z0-9._-]{3,}$');
+    final usernameRegExp = RegExp(r'^[a-zA-Z0-9._-]+( [a-zA-Z0-9._-]+)*$');
 
     if (value == null || value.isEmpty) {
       return 'Please enter a username';
