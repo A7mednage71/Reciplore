@@ -377,7 +377,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          '/country/',
+          '/country',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -390,6 +390,39 @@ class _ApiService implements ApiService {
     late AllCountriesModel _value;
     try {
       _value = AllCountriesModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AllCategoriesModel> getAllCategories() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<AllCategoriesModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/category',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AllCategoriesModel _value;
+    try {
+      _value = AllCategoriesModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

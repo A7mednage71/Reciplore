@@ -4,6 +4,7 @@ import 'package:looqma/features/change_password/data/models/change_password_requ
 import 'package:looqma/features/change_password/data/models/change_password_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_response.dart';
+import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/login/data/models/login_response_model.dart';
@@ -75,4 +76,7 @@ abstract class ApiService {
   // home screen services
   @GET(ApiConstants.allCountries)
   Future<AllCountriesModel> getAllCountries();
+
+  @GET(ApiConstants.allCategories)
+  Future<AllCategoriesModel> getAllCategories();
 }
