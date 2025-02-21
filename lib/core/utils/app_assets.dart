@@ -38,6 +38,8 @@ class AppAssets {
 
   static const String imagesRateStar = "assets/images/rateStar.png";
 
+  static const String imagesReciploreLogo = "assets/images/Reciplore_logo.png";
+
   static const String imagesSavedRecipeIcon = "assets/images/savedRecipeIcon.png";
 
   static const String imagesSavedRecipeTest = "assets/images/SavedRecipeTest.png";
