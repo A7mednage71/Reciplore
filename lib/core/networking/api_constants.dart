@@ -25,4 +25,5 @@ class ApiConstants {
   // home screen end points
   static const String allCountries = '/country';
   static const String allCategories = '/category';
+  static const String getRecipes = '/recipe';
 }
