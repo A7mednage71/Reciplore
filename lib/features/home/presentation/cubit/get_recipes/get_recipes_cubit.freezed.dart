@@ -20,7 +20,7 @@ mixin _$GetRecipesState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(FetchedRecipesData fetchedRecipes) success,
+    required TResult Function(List<RecipeModel> recipes) success,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$GetRecipesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult? Function(List<RecipeModel> recipes)? success,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$GetRecipesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult Function(List<RecipeModel> recipes)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -132,7 +132,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(FetchedRecipesData fetchedRecipes) success,
+    required TResult Function(List<RecipeModel> recipes) success,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -143,7 +143,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult? Function(List<RecipeModel> recipes)? success,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -154,7 +154,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult Function(List<RecipeModel> recipes)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -249,7 +249,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(FetchedRecipesData fetchedRecipes) success,
+    required TResult Function(List<RecipeModel> recipes) success,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -260,7 +260,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult? Function(List<RecipeModel> recipes)? success,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -271,7 +271,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult Function(List<RecipeModel> recipes)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -329,7 +329,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({FetchedRecipesData fetchedRecipes});
+  $Res call({List<RecipeModel> recipes});
 }
 
 /// @nodoc
@@ -345,13 +345,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fetchedRecipes = null,
+    Object? recipes = null,
   }) {
     return _then(_$SuccessImpl(
-      null == fetchedRecipes
-          ? _value.fetchedRecipes
-          : fetchedRecipes // ignore: cast_nullable_to_non_nullable
-              as FetchedRecipesData,
+      null == recipes
+          ? _value._recipes
+          : recipes // ignore: cast_nullable_to_non_nullable
+              as List<RecipeModel>,
     ));
   }
 }
@@ -359,14 +359,19 @@ class __$$SuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.fetchedRecipes);
+  const _$SuccessImpl(final List<RecipeModel> recipes) : _recipes = recipes;
 
+  final List<RecipeModel> _recipes;
   @override
-  final FetchedRecipesData fetchedRecipes;
+  List<RecipeModel> get recipes {
+    if (_recipes is EqualUnmodifiableListView) return _recipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recipes);
+  }
 
   @override
   String toString() {
-    return 'GetRecipesState.success(fetchedRecipes: $fetchedRecipes)';
+    return 'GetRecipesState.success(recipes: $recipes)';
   }
 
   @override
@@ -374,12 +379,12 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            (identical(other.fetchedRecipes, fetchedRecipes) ||
-                other.fetchedRecipes == fetchedRecipes));
+            const DeepCollectionEquality().equals(other._recipes, _recipes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fetchedRecipes);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_recipes));
 
   /// Create a copy of GetRecipesState
   /// with the given fields replaced by the non-null parameter values.
@@ -394,10 +399,10 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(FetchedRecipesData fetchedRecipes) success,
+    required TResult Function(List<RecipeModel> recipes) success,
     required TResult Function(String message) failure,
   }) {
-    return success(fetchedRecipes);
+    return success(recipes);
   }
 
   @override
@@ -405,10 +410,10 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult? Function(List<RecipeModel> recipes)? success,
     TResult? Function(String message)? failure,
   }) {
-    return success?.call(fetchedRecipes);
+    return success?.call(recipes);
   }
 
   @override
@@ -416,12 +421,12 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult Function(List<RecipeModel> recipes)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(fetchedRecipes);
+      return success(recipes);
     }
     return orElse();
   }
@@ -465,10 +470,9 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements GetRecipesState {
-  const factory _Success(final FetchedRecipesData fetchedRecipes) =
-      _$SuccessImpl;
+  const factory _Success(final List<RecipeModel> recipes) = _$SuccessImpl;
 
-  FetchedRecipesData get fetchedRecipes;
+  List<RecipeModel> get recipes;
 
   /// Create a copy of GetRecipesState
   /// with the given fields replaced by the non-null parameter values.
@@ -547,7 +551,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(FetchedRecipesData fetchedRecipes) success,
+    required TResult Function(List<RecipeModel> recipes) success,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -558,7 +562,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult? Function(List<RecipeModel> recipes)? success,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -569,7 +573,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(FetchedRecipesData fetchedRecipes)? success,
+    TResult Function(List<RecipeModel> recipes)? success,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
