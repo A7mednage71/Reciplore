@@ -1,6 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:looqma/features/home/data/models/all_categories_model.dart';
-import 'package:looqma/features/home/data/models/all_countries_model.dart';
 
 part 'get_recipes_response_model.g.dart';
 
@@ -48,16 +46,16 @@ class RecipeModel {
   @JsonKey(name: '_id')
   final String id;
   final String name;
-  final String slug;
   final String description;
   final String directions;
   final String videoLink;
   final List<String> tags;
-  final CategoryModel category;
-  final CountryModel country;
-  @JsonKey(name: 'Average_Rating')
+  final RecipeCategoryModel category;
+  final RecipeCountryModel country;
+  @JsonKey(name: 'Average_rating')
   final double averageRating;
   final int views;
+  final CreatedByModel createdBy;
   @JsonKey(name: 'Images')
   final RecipeImages images;
   final List<IngredientModel> ingredients;
@@ -65,17 +63,17 @@ class RecipeModel {
   RecipeModel({
     required this.id,
     required this.name,
-    required this.slug,
     required this.description,
-    required this.images,
-    required this.ingredients,
+    required this.directions,
+    required this.videoLink,
     required this.tags,
     required this.category,
     required this.country,
     required this.averageRating,
     required this.views,
-    required this.videoLink,
-    required this.directions,
+    required this.createdBy,
+    required this.images,
+    required this.ingredients,
   });
 
   factory RecipeModel.fromJson(Map<String, dynamic> json) =>
@@ -85,12 +83,52 @@ class RecipeModel {
 }
 
 @JsonSerializable()
+class RecipeCategoryModel {
+  @JsonKey(name: '_id')
+  final String id;
+  final String name;
+
+  RecipeCategoryModel({required this.id, required this.name});
+
+  factory RecipeCategoryModel.fromJson(Map<String, dynamic> json) =>
+      _$RecipeCategoryModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RecipeCategoryModelToJson(this);
+}
+
+@JsonSerializable()
+class RecipeCountryModel {
+  @JsonKey(name: '_id')
+  final String id;
+  final String name;
+
+  RecipeCountryModel({required this.id, required this.name});
+
+  factory RecipeCountryModel.fromJson(Map<String, dynamic> json) =>
+      _$RecipeCountryModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RecipeCountryModelToJson(this);
+}
+
+@JsonSerializable()
+class CreatedByModel {
+  final String username;
+  final ImageURL profileImage;
+
+  CreatedByModel({required this.username, required this.profileImage});
+
+  factory CreatedByModel.fromJson(Map<String, dynamic> json) =>
+      _$CreatedByModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreatedByModelToJson(this);
+}
+
+@JsonSerializable()
 class RecipeImages {
   @JsonKey(name: 'URLs')
   final List<ImageURL> urls;
-  final String customID;
 
-  RecipeImages({required this.urls, required this.customID});
+  RecipeImages({required this.urls});
 
   factory RecipeImages.fromJson(Map<String, dynamic> json) =>
       _$RecipeImagesFromJson(json);
@@ -102,12 +140,8 @@ class RecipeImages {
 class ImageURL {
   @JsonKey(name: 'secure_url')
   final String secureUrl;
-  @JsonKey(name: 'public_id')
-  final String publicId;
-  @JsonKey(name: '_id')
-  final String? id;
 
-  ImageURL({required this.secureUrl, required this.publicId, required this.id});
+  ImageURL({required this.secureUrl});
 
   factory ImageURL.fromJson(Map<String, dynamic> json) =>
       _$ImageURLFromJson(json);
@@ -117,6 +151,7 @@ class ImageURL {
 
 @JsonSerializable()
 class IngredientModel {
+  @JsonKey(name: 'ingredient')
   final IngredientDataModel ingredientData;
   final String amount;
 
@@ -133,11 +168,10 @@ class IngredientDataModel {
   @JsonKey(name: '_id')
   final String id;
   final String name;
-  final String slug;
   final double basePrice;
   final double appliedPrice;
   final int stock;
-  @JsonKey(name: 'Average_Rating')
+  @JsonKey(name: 'Average_rating')
   final double averageRating;
   final Discount discount;
   final ImageURL image;
@@ -145,7 +179,6 @@ class IngredientDataModel {
   IngredientDataModel({
     required this.id,
     required this.name,
-    required this.slug,
     required this.basePrice,
     required this.appliedPrice,
     required this.stock,

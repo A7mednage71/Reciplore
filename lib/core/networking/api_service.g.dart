@@ -444,7 +444,7 @@ class _ApiService implements ApiService {
     )
         .compose(
           _dio.options,
-          '/recipe',
+          '/recipe/list',
           queryParameters: queryParameters,
           data: _data,
         )

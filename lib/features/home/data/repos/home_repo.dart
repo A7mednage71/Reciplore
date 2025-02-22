@@ -4,8 +4,8 @@ import 'package:looqma/core/networking/api_result.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_request.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 
 class HomeRepo {
   final ApiService _apiService;
