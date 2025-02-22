@@ -6,10 +6,12 @@ import 'package:looqma/core/utils/app_styles.dart';
 import 'package:lottie/lottie.dart';
 
 class FailureState extends StatelessWidget {
-  const FailureState({super.key, required this.hight, this.width});
+  const FailureState(
+      {super.key, required this.hight, this.width, this.message});
 
   final double hight;
   final double? width;
+  final String? message;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,7 +25,7 @@ class FailureState extends StatelessWidget {
             width: hight,
           ),
           SizedBox(height: 10.h),
-          Text('Oops ,try again',
+          Text(message ?? 'Oops ,try again',
               style: AppStyles.smallBoldText
                   .copyWith(color: AppColors.secondaryDarker)),
         ],
