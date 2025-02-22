@@ -37,7 +37,8 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
         BlocProvider(
           create: (context) => getIt<GetCountriesCubit>()..getCountries(),
         ),
-        BlocProvider(create: (context) => getIt<GetRecipesCubit>()),
+        BlocProvider(
+            create: (context) => getIt<GetRecipesCubit>()..getRecipes()),
         BlocProvider(
           create: (context) => getIt<GetCategoriesCubit>()..getCategories(),
         ),
