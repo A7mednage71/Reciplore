@@ -1,13 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
+import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 
 class RecipeItem extends StatelessWidget {
-  const RecipeItem({super.key});
-
+  const RecipeItem({super.key, required this.recipeModel});
+  final RecipeModel? recipeModel;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -17,7 +20,7 @@ class RecipeItem extends StatelessWidget {
           height: 176.h,
           width: 150.w,
           decoration: BoxDecoration(
-            color: AppColors.grayLighter,
+            color:  AppColors.grayLighter,
             borderRadius: BorderRadius.all(Radius.circular(12.r)),
           ),
           child: Padding(
@@ -28,7 +31,7 @@ class RecipeItem extends StatelessWidget {
                   height: 66.h,
                 ),
                 Text(
-                  "Classic Greek Salad",
+                  recipeModel?.country.name ?? "Country name",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: AppStyles.smallBoldText,
@@ -48,7 +51,7 @@ class RecipeItem extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              "4.5 ",
+                              "${recipeModel?.averageRating ?? "0.0"} ",
                               style: AppStyles.smallRegularText,
                             ),
                             SizedBox(height: 5.h),
@@ -66,15 +69,36 @@ class RecipeItem extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -50.h,
-          right: 17.w,
-          child: Image.asset(
-            AppAssets.imagesTestRecipe,
-            height: 120.h,
-            width: 120.w,
-            fit: BoxFit.cover,
-          ),
-        ),
+            top: -50.h,
+            right: 35.w,
+            child: CachedNetworkImage(
+              imageUrl: recipeModel?.images.urls.first.secureUrl ??
+                  AppConstants.defaultCategoryImage,
+              imageBuilder: (context, imageProvider) {
+                return CircleAvatar(
+                  radius: 40.r,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: imageProvider,
+                );
+              },
+              fit: BoxFit.fill,
+              errorWidget: (context, url, error) {
+                return CircleAvatar(
+                  radius: 40.r,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage:
+                      const AssetImage(AppConstants.defaultCategoryImage),
+                );
+              },
+              placeholder: (context, url) {
+                return CircleAvatar(
+                  radius: 40.r,
+                  backgroundColor: AppColors.loadingColor,
+                  backgroundImage:
+                      const AssetImage(AppConstants.defaultCategoryImage),
+                );
+              },
+            )),
       ],
     );
   }

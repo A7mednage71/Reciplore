@@ -6,6 +6,8 @@ import 'package:looqma/features/forget_password/data/models/forget_password_requ
 import 'package:looqma/features/forget_password/data/models/forget_password_response.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
+import 'package:looqma/features/home/data/models/get_recipes_request.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/login/data/models/login_response_model.dart';
 import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
@@ -79,4 +81,9 @@ abstract class ApiService {
 
   @GET(ApiConstants.allCategories)
   Future<AllCategoriesModel> getAllCategories();
+
+  @GET(ApiConstants.getRecipes)
+  Future<GetRecipesResponseModel> getRecipes(
+    @Queries() GetRecipesRequest request,
+  );
 }

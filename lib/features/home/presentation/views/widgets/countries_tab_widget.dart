@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
+import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_cubit.dart';
 
 class CountriesTabsWidget extends StatelessWidget {
   const CountriesTabsWidget({
@@ -35,7 +37,13 @@ class CountriesTabsWidget extends StatelessWidget {
           color: isloading ? AppColors.loadingColor : AppColors.primaryDark,
           borderRadius: BorderRadius.circular(15),
         ),
-        onTap: (value) {},
+        onTap: (value) {
+          if (value == 0) {
+            context.read<GetRecipesCubit>().changeCountry(null);
+            return;
+          }
+          context.read<GetRecipesCubit>().changeCountry(countries[value - 1].countryId);
+        },
       ),
     );
   }

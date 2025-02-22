@@ -9,6 +9,7 @@ import 'package:looqma/features/forget_password/presentation/cubit/forget_passwo
 import 'package:looqma/features/home/data/repos/home_repo.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
+import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
@@ -75,5 +76,7 @@ Future<void> setupGetIt() async {
     ..registerFactory<GetCountriesCubit>(
         () => GetCountriesCubit(getIt<HomeRepo>()))
     ..registerFactory<GetCategoriesCubit>(
-        () => GetCategoriesCubit(getIt<HomeRepo>()));
+        () => GetCategoriesCubit(getIt<HomeRepo>()))
+    ..registerFactory<GetRecipesCubit>(
+        () => GetRecipesCubit(getIt<HomeRepo>()));
 }
