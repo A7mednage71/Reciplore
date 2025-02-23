@@ -26,6 +26,7 @@ import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
+import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_video_player.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -97,6 +98,11 @@ class AppRouter {
       case Routes.reviewScreen:
         return MaterialPageRoute(
           builder: (context) => const UsersReview(),
+        );
+      case Routes.watchRecipeVideo:
+        final recipeModel = argument as RecipeModel;
+        return MaterialPageRoute(
+          builder: (context) => YouTubeVideoScreen(recipeModel: recipeModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
