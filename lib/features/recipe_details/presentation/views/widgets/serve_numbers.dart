@@ -6,8 +6,13 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
 class ServeNumbers extends StatelessWidget {
-  const ServeNumbers({super.key, required this.stepsIsCounted});
+  const ServeNumbers({
+    super.key,
+    required this.stepsIsCounted,
+    required this.length,
+  });
   final bool stepsIsCounted;
+  final int length;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -25,13 +30,13 @@ class ServeNumbers extends StatelessWidget {
         const Spacer(),
         if (stepsIsCounted)
           Text(
-            "10 Steps",
+            "$length Steps",
             style: AppStyles.extraSmallRegularText
                 .copyWith(color: AppColors.grayLight),
           ),
         if (!stepsIsCounted)
           Text(
-            "10 Items",
+            "$length Items",
             style: AppStyles.extraSmallRegularText
                 .copyWith(color: AppColors.grayLight),
           ),

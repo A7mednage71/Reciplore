@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/dropdown_button.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_image.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/view_recipe_ingrediants_and_procedure.dart';
 
 class RecipeDetailsScreen extends StatelessWidget {
-  const RecipeDetailsScreen({super.key});
+  const RecipeDetailsScreen({super.key, required this.recipeModel});
+  final RecipeModel recipeModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,14 @@ class RecipeDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const RecipeImage(),
+            RecipeImage(recipeModel: recipeModel),
             SizedBox(height: 20.h),
             Row(
               children: [
                 Flexible(
                   flex: 2,
                   child: Text(
-                    "Spicy chicken burger with French fries",
+                    recipeModel.name,
                     style: AppStyles.smallBoldText,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
@@ -47,7 +49,9 @@ class RecipeDetailsScreen extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20.h),
-            const Expanded(child: ViewRecipeIngredientsAndProcedure()),
+            Expanded(
+                child: ViewRecipeIngredientsAndProcedure(
+                    recipeModel: recipeModel)),
           ],
         ),
       ),

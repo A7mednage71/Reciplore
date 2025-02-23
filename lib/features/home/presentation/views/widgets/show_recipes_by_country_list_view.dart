@@ -31,7 +31,7 @@ class _ShowRecipesByCountryListViewState
     final cubit = context.read<GetRecipesByCountryCubit>();
 
     if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent - 150 &&
+            _scrollController.position.maxScrollExtent - 200 &&
         !cubit.isFetching &&
         cubit.hasNextPage) {
       cubit.getRecipesByCountry(countryId: cubit.selectedCountryId);
@@ -49,6 +49,7 @@ class _ShowRecipesByCountryListViewState
     return SizedBox(
       height: 200.h,
       child: BlocBuilder<GetRecipesByCountryCubit, GetRecipesByCountryState>(
+        buildWhen: (previous, current) => previous != current,
         builder: (context, state) {
           return state.when(
             initial: () => const SizedBox.shrink(),
@@ -68,8 +69,9 @@ class _ShowRecipesByCountryListViewState
                     padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context, rootNavigator: true)
-                            .pushNamed(Routes.showRecipeDetails);
+                        Navigator.of(context, rootNavigator: true).pushNamed(
+                            Routes.showRecipeDetails,
+                            arguments: recipes[index]);
                       },
                       child: RecipeItem(
                         recipeModel: recipes[index],

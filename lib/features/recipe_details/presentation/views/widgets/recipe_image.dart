@@ -3,10 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_assets.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 
 class RecipeImage extends StatelessWidget {
-  const RecipeImage({super.key});
-
+  const RecipeImage({
+    super.key,
+    required this.recipeModel,
+  });
+  final RecipeModel recipeModel;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -32,12 +36,12 @@ class RecipeImage extends StatelessWidget {
             ),
           ),
           padding: EdgeInsets.all(10.w),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              CustomRate(rate: "5.6"),
-              Spacer(),
-              SaveRecipeButton(),
+              CustomRate(rate: recipeModel.averageRating.toString()),
+              const Spacer(),
+              const SaveRecipeButton(),
             ],
           ),
         ),

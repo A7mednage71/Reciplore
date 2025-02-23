@@ -4,8 +4,10 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
 class ProcedureItem extends StatelessWidget {
-  const ProcedureItem({super.key});
-
+  const ProcedureItem(
+      {super.key, required this.step, required this.stepNumber});
+  final String step;
+  final int stepNumber;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,10 +28,10 @@ class ProcedureItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 10.h),
-                  Text("Step 1", style: AppStyles.smallBoldText),
+                  Text("Step $stepNumber", style: AppStyles.smallBoldText),
                   SizedBox(height: 5.h),
                   Text(
-                    "Lorem Ipsum tempor incididunt ut labore et dolore,in voluptate velit esse cillum dolore eu fugiat nulla pariatur?",
+                    step,
                     style: AppStyles.smallRegularText
                         .copyWith(color: AppColors.grayLight),
                   ),
