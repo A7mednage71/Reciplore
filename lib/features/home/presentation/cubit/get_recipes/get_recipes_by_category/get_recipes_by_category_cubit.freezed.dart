@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_recipes_cubit.dart';
+part of 'get_recipes_by_category_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$GetRecipesState {
+mixin _$GetRecipesByCategoryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,23 +69,24 @@ mixin _$GetRecipesState {
 }
 
 /// @nodoc
-abstract class $GetRecipesStateCopyWith<$Res> {
-  factory $GetRecipesStateCopyWith(
-          GetRecipesState value, $Res Function(GetRecipesState) then) =
-      _$GetRecipesStateCopyWithImpl<$Res, GetRecipesState>;
+abstract class $GetRecipesByCategoryStateCopyWith<$Res> {
+  factory $GetRecipesByCategoryStateCopyWith(GetRecipesByCategoryState value,
+          $Res Function(GetRecipesByCategoryState) then) =
+      _$GetRecipesByCategoryStateCopyWithImpl<$Res, GetRecipesByCategoryState>;
 }
 
 /// @nodoc
-class _$GetRecipesStateCopyWithImpl<$Res, $Val extends GetRecipesState>
-    implements $GetRecipesStateCopyWith<$Res> {
-  _$GetRecipesStateCopyWithImpl(this._value, this._then);
+class _$GetRecipesByCategoryStateCopyWithImpl<$Res,
+        $Val extends GetRecipesByCategoryState>
+    implements $GetRecipesByCategoryStateCopyWith<$Res> {
+  _$GetRecipesByCategoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -98,13 +99,13 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$GetRecipesStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$GetRecipesByCategoryStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -115,7 +116,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'GetRecipesState.initial()';
+    return 'GetRecipesByCategoryState.initial()';
   }
 
   @override
@@ -202,7 +203,7 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements GetRecipesState {
+abstract class _Initial implements GetRecipesByCategoryState {
   const factory _Initial() = _$InitialImpl;
 }
 
@@ -215,13 +216,13 @@ abstract class _$$LoadingImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$GetRecipesStateCopyWithImpl<$Res, _$LoadingImpl>
+    extends _$GetRecipesByCategoryStateCopyWithImpl<$Res, _$LoadingImpl>
     implements _$$LoadingImplCopyWith<$Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
 }
 
@@ -232,7 +233,7 @@ class _$LoadingImpl implements _Loading {
 
   @override
   String toString() {
-    return 'GetRecipesState.loading()';
+    return 'GetRecipesByCategoryState.loading()';
   }
 
   @override
@@ -319,7 +320,7 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements GetRecipesState {
+abstract class _Loading implements GetRecipesByCategoryState {
   const factory _Loading() = _$LoadingImpl;
 }
 
@@ -334,13 +335,13 @@ abstract class _$$SuccessImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$GetRecipesStateCopyWithImpl<$Res, _$SuccessImpl>
+    extends _$GetRecipesByCategoryStateCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -371,7 +372,7 @@ class _$SuccessImpl implements _Success {
 
   @override
   String toString() {
-    return 'GetRecipesState.success(recipes: $recipes)';
+    return 'GetRecipesByCategoryState.success(recipes: $recipes)';
   }
 
   @override
@@ -386,7 +387,7 @@ class _$SuccessImpl implements _Success {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_recipes));
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -469,12 +470,12 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements GetRecipesState {
+abstract class _Success implements GetRecipesByCategoryState {
   const factory _Success(final List<RecipeModel> recipes) = _$SuccessImpl;
 
   List<RecipeModel> get recipes;
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -492,13 +493,13 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$GetRecipesStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$GetRecipesByCategoryStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -524,7 +525,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'GetRecipesState.failure(message: $message)';
+    return 'GetRecipesByCategoryState.failure(message: $message)';
   }
 
   @override
@@ -538,7 +539,7 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -621,12 +622,12 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements GetRecipesState {
+abstract class _Failure implements GetRecipesByCategoryState {
   const factory _Failure(final String message) = _$FailureImpl;
 
   String get message;
 
-  /// Create a copy of GetRecipesState
+  /// Create a copy of GetRecipesByCategoryState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>

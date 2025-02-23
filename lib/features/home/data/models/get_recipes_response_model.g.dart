@@ -46,12 +46,16 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) => RecipeModel(
       name: json['name'] as String,
       description: json['description'] as String,
       directions: json['directions'] as String,
-      videoLink: json['videoLink'] as String,
+      videoLink: json['videoLink'] as String?,
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      category: RecipeCategoryModel.fromJson(
-          json['category'] as Map<String, dynamic>),
-      country:
-          RecipeCountryModel.fromJson(json['country'] as Map<String, dynamic>),
+      category: json['category'] == null
+          ? null
+          : RecipeCategoryModel.fromJson(
+              json['category'] as Map<String, dynamic>),
+      country: json['country'] == null
+          ? null
+          : RecipeCountryModel.fromJson(
+              json['country'] as Map<String, dynamic>),
       averageRating: (json['Average_rating'] as num).toDouble(),
       views: (json['views'] as num).toInt(),
       createdBy:

@@ -1,0 +1,64 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/features/home/data/models/get_recipes_request.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/features/home/data/repos/home_repo.dart';
+
+part 'get_recipes_by_category_cubit.freezed.dart';
+part 'get_recipes_by_category_state.dart';
+
+class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
+  GetRecipesByCategoryCubit(this._homeRepo)
+      : super(const GetRecipesByCategoryState.initial());
+
+  final HomeRepo _homeRepo;
+
+  List<RecipeModel> recipes = [];
+
+  String? selectedCategoryId;
+
+  int currentPage = 1;
+  bool hasNextPage = true;
+  bool isFetching = false;
+
+  Future<void> getRecipesByCategory(
+      {String? categoryId, bool isRefresh = false}) async {
+    if (isFetching || (!hasNextPage && !isRefresh)) return;
+
+    if (isRefresh || selectedCategoryId != categoryId) {
+      currentPage = 1;
+      recipes.clear();
+      hasNextPage = true;
+      selectedCategoryId = categoryId;
+    }
+
+    isFetching = true;
+    emit(const GetRecipesByCategoryState.loading());
+
+    final result = await _homeRepo.getRecipes(
+      request: GetRecipesRequest(
+        page: currentPage,
+        limit: 5,
+        categoryId: selectedCategoryId,
+      ),
+    );
+
+    result.when(
+      success: (getRecipesResponseModel) {
+        final newRecipes =
+            getRecipesResponseModel.fetchedRecipesData.recipesList;
+        hasNextPage = getRecipesResponseModel.fetchedRecipesData.hasNextPage;
+
+        recipes.addAll(newRecipes);
+        currentPage++;
+
+        isFetching = false;
+        emit(GetRecipesByCategoryState.success(recipes));
+      },
+      failure: (error) {
+        isFetching = false;
+        emit(GetRecipesByCategoryState.failure(error.errMessages));
+      },
+    );
+  }
+}

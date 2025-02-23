@@ -20,7 +20,7 @@ class RecipeItem extends StatelessWidget {
           height: 176.h,
           width: 150.w,
           decoration: BoxDecoration(
-            color:  AppColors.grayLighter,
+            color: AppColors.grayLighter,
             borderRadius: BorderRadius.all(Radius.circular(12.r)),
           ),
           child: Padding(
@@ -31,7 +31,7 @@ class RecipeItem extends StatelessWidget {
                   height: 66.h,
                 ),
                 Text(
-                  recipeModel?.country.name ?? "Country name",
+                  recipeModel?.country?.name ?? "Country name",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: AppStyles.smallBoldText,
@@ -70,13 +70,13 @@ class RecipeItem extends StatelessWidget {
         ),
         Positioned(
             top: -50.h,
-            right: 35.w,
+            right: 25.w,
             child: CachedNetworkImage(
               imageUrl: recipeModel?.images.urls.first.secureUrl ??
                   AppConstants.defaultCategoryImage,
               imageBuilder: (context, imageProvider) {
                 return CircleAvatar(
-                  radius: 40.r,
+                  radius: 50.r,
                   backgroundColor: Colors.transparent,
                   backgroundImage: imageProvider,
                 );
@@ -84,7 +84,7 @@ class RecipeItem extends StatelessWidget {
               fit: BoxFit.fill,
               errorWidget: (context, url, error) {
                 return CircleAvatar(
-                  radius: 40.r,
+                  radius: 50.r,
                   backgroundColor: Colors.transparent,
                   backgroundImage:
                       const AssetImage(AppConstants.defaultCategoryImage),
@@ -92,7 +92,7 @@ class RecipeItem extends StatelessWidget {
               },
               placeholder: (context, url) {
                 return CircleAvatar(
-                  radius: 40.r,
+                  radius: 50.r,
                   backgroundColor: AppColors.loadingColor,
                   backgroundImage:
                       const AssetImage(AppConstants.defaultCategoryImage),

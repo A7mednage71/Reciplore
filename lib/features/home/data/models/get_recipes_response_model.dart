@@ -48,10 +48,10 @@ class RecipeModel {
   final String name;
   final String description;
   final String directions;
-  final String videoLink;
+  final String? videoLink;
   final List<String> tags;
-  final RecipeCategoryModel category;
-  final RecipeCountryModel country;
+  final RecipeCategoryModel? category;
+  final RecipeCountryModel? country;
   @JsonKey(name: 'Average_rating')
   final double averageRating;
   final int views;

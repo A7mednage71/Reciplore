@@ -8,7 +8,7 @@ import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
-import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_cubit.dart';
+import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
@@ -38,7 +38,8 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
           create: (context) => getIt<GetCountriesCubit>()..getCountries(),
         ),
         BlocProvider(
-            create: (context) => getIt<GetRecipesCubit>()..getRecipes()),
+            create: (context) => getIt<GetRecipesByCountryCubit>()
+              ..getRecipesByCountry(isRefresh: true)),
         BlocProvider(
           create: (context) => getIt<GetCategoriesCubit>()..getCategories(),
         ),
