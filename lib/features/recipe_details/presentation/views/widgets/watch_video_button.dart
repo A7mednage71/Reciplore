@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
@@ -12,6 +13,10 @@ class WatchVideoButton extends StatelessWidget {
     return Center(
         child: IconButton(
       onPressed: () {
+        if (recipeModel.videoLink == null) {
+          ShowToast.showFailureToast("Video is not available");
+          return;
+        }
         Navigator.of(context, rootNavigator: true)
             .pushNamed(Routes.watchRecipeVideo, arguments: recipeModel);
       },
