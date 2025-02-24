@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/features/home/data/models/get_recipes_request.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
@@ -23,6 +24,19 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
 
   List<RecipeModel> recipes = [];
 
+  final Debouncer debouncer = Debouncer();
+
+  /// Debounced new Search Function
+  void onSearchChanged(String value) {
+    debouncer.debounce(
+      duration: const Duration(milliseconds: 500),
+      onDebounce: () {
+        searchRecipes(isNewSearch: true);
+      },
+    );
+  }
+
+  /// Search Recipes with Pagination
   Future<void> searchRecipes({bool isNewSearch = false}) async {
     if (isFetching || !hasNextPage) return;
 
