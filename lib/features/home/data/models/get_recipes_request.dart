@@ -13,9 +13,9 @@ class GetRecipesRequest {
 
   GetRecipesRequest({
     required this.page,
-    required this.limit,
-    required this.categoryId,
-    required this.countryId,
+    this.limit,
+    this.categoryId,
+    this.countryId,
   });
 
   factory GetRecipesRequest.fromJson(Map<String, dynamic> json) =>

@@ -14,4 +14,5 @@ class Routes {
   static const String changePassword = 'changePassword_Screen';
   static const String sighnUp = 'sighnUp_Screen';
   static const String noInternet = 'noInternet_Screen';
+  static const String watchRecipeVideo = 'watchRecipeVideo_Screen';
 }

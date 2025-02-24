@@ -10,6 +10,7 @@ import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -25,6 +26,7 @@ import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
+import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_video_player.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -89,12 +91,18 @@ class AppRouter {
           builder: (context) => const SearchRecipes(),
         );
       case Routes.showRecipeDetails:
+        final recipeModel = argument as RecipeModel;
         return MaterialPageRoute(
-          builder: (context) => const RecipeDetailsScreen(),
+          builder: (context) => RecipeDetailsScreen(recipeModel: recipeModel),
         );
       case Routes.reviewScreen:
         return MaterialPageRoute(
           builder: (context) => const UsersReview(),
+        );
+      case Routes.watchRecipeVideo:
+        final recipeModel = argument as RecipeModel;
+        return MaterialPageRoute(
+          builder: (context) => YouTubeVideoScreen(recipeModel: recipeModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/ingredients_list_view.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/procedure_list_view.dart';
 
 class ViewRecipeIngredientsAndProcedure extends StatefulWidget {
-  const ViewRecipeIngredientsAndProcedure({super.key});
+  const ViewRecipeIngredientsAndProcedure(
+      {super.key, required this.recipeModel});
+  final RecipeModel recipeModel;
 
   @override
   State<ViewRecipeIngredientsAndProcedure> createState() =>
@@ -58,7 +61,10 @@ class _ViewRecipeIngredientsAndProcedureState
           Expanded(
             child: TabBarView(
               controller: _clickController,
-              children: const [IngredientsListView(), ProcedureListView()],
+              children: [
+                IngredientsListView(recipeModel: widget.recipeModel),
+                ProcedureListView(recipeModel: widget.recipeModel)
+              ],
             ),
           ),
         ],

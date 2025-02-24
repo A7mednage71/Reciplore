@@ -20,7 +20,7 @@ class RecipeItem extends StatelessWidget {
           height: 176.h,
           width: 150.w,
           decoration: BoxDecoration(
-            color:  AppColors.grayLighter,
+            color: AppColors.grayLighter,
             borderRadius: BorderRadius.all(Radius.circular(12.r)),
           ),
           child: Padding(
@@ -31,7 +31,7 @@ class RecipeItem extends StatelessWidget {
                   height: 66.h,
                 ),
                 Text(
-                  recipeModel?.country.name ?? "Country name",
+                  recipeModel?.name ?? "Recipe name",
                   maxLines: 2,
                   textAlign: TextAlign.center,
                   style: AppStyles.smallBoldText,
@@ -70,34 +70,47 @@ class RecipeItem extends StatelessWidget {
         ),
         Positioned(
             top: -50.h,
-            right: 35.w,
-            child: CachedNetworkImage(
-              imageUrl: recipeModel?.images.urls.first.secureUrl ??
-                  AppConstants.defaultCategoryImage,
-              imageBuilder: (context, imageProvider) {
-                return CircleAvatar(
-                  radius: 40.r,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: imageProvider,
-                );
-              },
-              fit: BoxFit.fill,
-              errorWidget: (context, url, error) {
-                return CircleAvatar(
-                  radius: 40.r,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage:
-                      const AssetImage(AppConstants.defaultCategoryImage),
-                );
-              },
-              placeholder: (context, url) {
-                return CircleAvatar(
-                  radius: 40.r,
-                  backgroundColor: AppColors.loadingColor,
-                  backgroundImage:
-                      const AssetImage(AppConstants.defaultCategoryImage),
-                );
-              },
+            right: 25.w,
+            child: Container(
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.grayLight,
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
+              child: CachedNetworkImage(
+                imageUrl: recipeModel?.images.urls.first.secureUrl ??
+                    AppConstants.defaultCategoryImage,
+                imageBuilder: (context, imageProvider) {
+                  return CircleAvatar(
+                    radius: 50.r,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: imageProvider,
+                  );
+                },
+                fit: BoxFit.fill,
+                errorWidget: (context, url, error) {
+                  return CircleAvatar(
+                    radius: 50.r,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage:
+                        const AssetImage(AppConstants.defaultCategoryImage),
+                  );
+                },
+                placeholder: (context, url) {
+                  return CircleAvatar(
+                    radius: 50.r,
+                    backgroundColor: AppColors.loadingColor,
+                    backgroundImage:
+                        const AssetImage(AppConstants.defaultCategoryImage),
+                  );
+                },
+              ),
             )),
       ],
     );
