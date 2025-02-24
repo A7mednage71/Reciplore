@@ -10,6 +10,8 @@ class AppAssets {
 
   static const String imagesDiscord = "assets/images/discord.png";
 
+  static const String imagesEmptyBox = "assets/images/empty_box.json";
+
   static const String imagesEmptyChatLottie = "assets/images/emptyChatLottie.json";
 
   static const String imagesFacebook = "assets/images/facebook.png";

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/empty_state.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
@@ -58,6 +59,9 @@ class _ShowRecipesByCountryListViewState
               return const ShowRecipesByCountryLoading();
             },
             success: (recipes) {
+              if (recipes.isEmpty) {
+                return const Center(child: EmptyState());
+              }
               return ListView.builder(
                 controller: _scrollController,
                 padding: EdgeInsets.only(left: 30.w),
