@@ -4,12 +4,14 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
+import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
@@ -103,6 +105,11 @@ class AppRouter {
         final recipeModel = argument as RecipeModel;
         return MaterialPageRoute(
           builder: (context) => YouTubeVideoScreen(recipeModel: recipeModel),
+        );
+      case Routes.categoryRecipes:
+        final categoryModel = argument as CategoryModel;
+        return MaterialPageRoute(
+          builder: (context) => CategoryRecipes(category: categoryModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

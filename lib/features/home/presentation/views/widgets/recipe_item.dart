@@ -85,7 +85,7 @@ class RecipeItem extends StatelessWidget {
               ),
               child: CachedNetworkImage(
                 imageUrl: recipeModel?.images.urls.first.secureUrl ??
-                    AppConstants.defaultCategoryImage,
+                    AppConstants.defaultRecipeItemImage,
                 imageBuilder: (context, imageProvider) {
                   return CircleAvatar(
                     radius: 50.r,
@@ -99,7 +99,7 @@ class RecipeItem extends StatelessWidget {
                     radius: 50.r,
                     backgroundColor: Colors.transparent,
                     backgroundImage:
-                        const AssetImage(AppConstants.defaultCategoryImage),
+                        const AssetImage(AppConstants.defaultRecipeItemImage),
                   );
                 },
                 placeholder: (context, url) {
@@ -107,7 +107,7 @@ class RecipeItem extends StatelessWidget {
                     radius: 50.r,
                     backgroundColor: AppColors.loadingColor,
                     backgroundImage:
-                        const AssetImage(AppConstants.defaultCategoryImage),
+                        const AssetImage(AppConstants.defaultRecipeItemImage),
                   );
                 },
               ),
