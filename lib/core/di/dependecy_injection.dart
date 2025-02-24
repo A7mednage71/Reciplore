@@ -21,6 +21,8 @@ import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
+import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
+import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 
@@ -81,5 +83,9 @@ Future<void> setupGetIt() async {
     ..registerFactory<GetRecipesByCategoryCubit>(
         () => GetRecipesByCategoryCubit(getIt<HomeRepo>()))
     ..registerFactory<GetRecipesByCountryCubit>(
-        () => GetRecipesByCountryCubit(getIt<HomeRepo>()));
+        () => GetRecipesByCountryCubit(getIt<HomeRepo>()))
+    // search screen
+    ..registerLazySingleton<SearchRepo>(() => SearchRepo(getIt<ApiService>()))
+    ..registerFactory<SearchRecipeCubit>(
+        () => SearchRecipeCubit(getIt<SearchRepo>()));
 }
