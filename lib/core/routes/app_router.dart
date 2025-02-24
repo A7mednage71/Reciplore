@@ -11,6 +11,7 @@ import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
+import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
@@ -106,8 +107,9 @@ class AppRouter {
           builder: (context) => YouTubeVideoScreen(recipeModel: recipeModel),
         );
       case Routes.categoryRecipes:
+        final categoryModel = argument as CategoryModel;
         return MaterialPageRoute(
-          builder: (context) => const CategoryRecipes(),
+          builder: (context) => CategoryRecipes(category: categoryModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

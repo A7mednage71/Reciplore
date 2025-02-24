@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/custom_appbar.dart';
+import 'package:looqma/features/category_recipes/presentation/views/widgets/category_recipes_grid_view.dart';
+import 'package:looqma/features/category_recipes/presentation/views/widgets/search_incategory_recipes.dart';
+import 'package:looqma/features/home/data/models/all_categories_model.dart';
 
 class CategoryRecipes extends StatelessWidget {
-  const CategoryRecipes({super.key});
+  const CategoryRecipes({super.key, required this.category});
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Category Recipes'),
-      ),
-      body: const Center(
-        child: Text('Category Recipes'),
+      appBar: CustomAppBar(title: '${category.categoryName} Recipes'),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: Column(
+          children: [
+            SizedBox(height: 20.h),
+            SearchInCategoryRecipes(category: category),
+            SizedBox(height: 10.h),
+            const Expanded(
+              child: CategoryRecipesGridView(),
+            ),
+          ],
+        ),
       ),
     );
   }
