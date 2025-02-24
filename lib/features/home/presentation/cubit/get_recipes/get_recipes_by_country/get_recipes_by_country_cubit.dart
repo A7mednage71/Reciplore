@@ -39,7 +39,7 @@ class GetRecipesByCountryCubit extends Cubit<GetRecipesByCountryState> {
       request: GetRecipesRequest(
         page: currentPage,
         limit: 5,
-        countryId: selectedCountryId,
+        country: selectedCountryId,
       ),
     );
 

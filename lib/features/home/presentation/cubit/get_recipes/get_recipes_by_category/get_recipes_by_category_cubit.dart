@@ -39,7 +39,7 @@ class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
       request: GetRecipesRequest(
         page: currentPage,
         limit: 5,
-        categoryId: selectedCategoryId,
+        category: selectedCategoryId,
       ),
     );
 
