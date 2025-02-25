@@ -1,18 +1,19 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_grid_view.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_result_length.dart';
 
 class SearchResult extends StatelessWidget {
-  const SearchResult({super.key});
-
+  const SearchResult({super.key, required this.recipes});
+  final List<RecipeModel> recipes;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SearchResultLength(),
+        SearchResultLength(searchResultLength: recipes.length),
         SizedBox(height: 20.h),
-        const Expanded(child: SearchRecipesGridView()),
+        Expanded(child: SearchRecipesGridView(recipes: recipes)),
       ],
     );
   }
