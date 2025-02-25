@@ -1,10 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 
@@ -69,49 +68,24 @@ class RecipeItem extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: -50.h,
-            right: 25.w,
-            child: Container(
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.grayLight,
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: CachedNetworkImage(
-                imageUrl: recipeModel?.images.urls.first.secureUrl ??
-                    AppConstants.defaultRecipeItemImage,
-                imageBuilder: (context, imageProvider) {
-                  return CircleAvatar(
-                    radius: 50.r,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: imageProvider,
-                  );
-                },
-                fit: BoxFit.fill,
-                errorWidget: (context, url, error) {
-                  return CircleAvatar(
-                    radius: 50.r,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage:
-                        const AssetImage(AppConstants.defaultRecipeItemImage),
-                  );
-                },
-                placeholder: (context, url) {
-                  return CircleAvatar(
-                    radius: 50.r,
-                    backgroundColor: AppColors.loadingColor,
-                    backgroundImage:
-                        const AssetImage(AppConstants.defaultRecipeItemImage),
-                  );
-                },
-              ),
-            )),
+          top: -50.h,
+          right: 25.w,
+          child: Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.grayLight,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: CachedNetworkCircleAvatar(
+                image: recipeModel?.images.urls.first.secureUrl, radius: 50.r),
+          ),
+        ),
       ],
     );
   }
