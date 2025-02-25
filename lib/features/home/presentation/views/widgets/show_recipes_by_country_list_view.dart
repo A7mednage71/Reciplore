@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/empty_state.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/core/utils/app_colors.dart';
+import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/widgets/recipe_item.dart';
 import 'package:looqma/features/home/presentation/views/widgets/show_recipes_by_country_loading.dart';
@@ -47,6 +49,7 @@ class _ShowRecipesByCountryListViewState
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<GetRecipesByCountryCubit>();
     return SizedBox(
       height: 200.h,
       child: BlocBuilder<GetRecipesByCountryCubit, GetRecipesByCountryState>(
@@ -62,27 +65,42 @@ class _ShowRecipesByCountryListViewState
               if (recipes.isEmpty) {
                 return const Center(child: EmptyState());
               }
-              return ListView.builder(
-                controller: _scrollController,
-                padding: EdgeInsets.only(left: 30.w),
-                clipBehavior: Clip.none,
-                scrollDirection: Axis.horizontal,
-                itemCount: recipes.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context, rootNavigator: true).pushNamed(
-                            Routes.showRecipeDetails,
-                            arguments: recipes[index]);
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      padding: EdgeInsets.only(left: 30.w),
+                      clipBehavior: Clip.none,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: recipes.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context, rootNavigator: true)
+                                  .pushNamed(Routes.showRecipeDetails,
+                                      arguments: recipes[index]);
+                            },
+                            child: RecipeItem(
+                              recipeModel: recipes[index],
+                            ),
+                          ),
+                        );
                       },
-                      child: RecipeItem(
-                        recipeModel: recipes[index],
-                      ),
                     ),
-                  );
-                },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 20.w),
+                    child: Text(
+                      '${recipes.length} /${cubit.totalRecipesLength} Recipes',
+                      style: AppStyles.extraSmallRegularText
+                          .copyWith(color: AppColors.grayLight),
+                    ),
+                  )
+                ],
               );
             },
           );

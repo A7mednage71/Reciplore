@@ -14,6 +14,7 @@ class GetRecipesByCountryCubit extends Cubit<GetRecipesByCountryState> {
   final HomeRepo _homeRepo;
 
   List<RecipeModel> countryRecipes = [];
+  int totalRecipesLength = 0;
 
   String? selectedCountryId;
 
@@ -30,6 +31,7 @@ class GetRecipesByCountryCubit extends Cubit<GetRecipesByCountryState> {
       countryRecipes.clear();
       hasNextPage = true;
       selectedCountryId = countryId;
+      totalRecipesLength = 0;
       emit(const GetRecipesByCountryState.loading());
     }
 
@@ -48,6 +50,9 @@ class GetRecipesByCountryCubit extends Cubit<GetRecipesByCountryState> {
         final newRecipes =
             getRecipesResponseModel.fetchedRecipesData.recipesList;
         hasNextPage = getRecipesResponseModel.fetchedRecipesData.hasNextPage;
+        totalRecipesLength =
+            getRecipesResponseModel.fetchedRecipesData.recipesCount;
+
         countryRecipes.addAll(newRecipes);
         currentPage++;
 
