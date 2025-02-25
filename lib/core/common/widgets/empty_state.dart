@@ -14,7 +14,7 @@ class EmptyState extends StatelessWidget {
     return Opacity(
       opacity: 0.7,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Lottie.asset(
             AppAssets.imagesEmptyBox,
