@@ -47,7 +47,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
 
   /// Search Recipes with Pagination
   Future<void> searchRecipes({bool isNewSearch = false}) async {
-    if (isFetching || !hasNextPage) return;
+    if (isFetching || (!hasNextPage && !isNewSearch)) return;
 
     isFetching = true;
 
