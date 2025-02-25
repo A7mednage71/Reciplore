@@ -13,6 +13,7 @@ GetRecipesRequest _$GetRecipesRequestFromJson(Map<String, dynamic> json) =>
       country: json['country'] as String?,
       category: json['category'] as String?,
       search: json['search'] as String?,
+      rate: json['Average_rating[gte]'] as String? ?? "0",
     );
 
 Map<String, dynamic> _$GetRecipesRequestToJson(GetRecipesRequest instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$GetRecipesRequestToJson(GetRecipesRequest instance) =>
       'country': instance.country,
       'category': instance.category,
       'search': instance.search,
+      'Average_rating[gte]': instance.rate,
     };

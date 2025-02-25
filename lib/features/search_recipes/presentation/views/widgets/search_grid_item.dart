@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
+import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/search_recipe_image.dart';
 
 class SearchRecipeItem extends StatelessWidget {
-  const SearchRecipeItem({super.key});
-
+  const SearchRecipeItem({super.key, required this.recipeModel});
+  final RecipeModel recipeModel;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          AppAssets.imagesSearchTest,
-          width: 150.w,
-          height: 150.h,
-          fit: BoxFit.cover,
-        ),
+        SearchRecipeImage(recipeModel: recipeModel),
         Container(
           width: 150.w,
           height: 150.h,
@@ -37,10 +33,10 @@ class SearchRecipeItem extends StatelessWidget {
             padding: EdgeInsets.all(10.w),
             child: Column(
               children: [
-                const CustomRate(rate: "4.5"),
+                CustomRate(rate: "${recipeModel.averageRating}"),
                 const Spacer(),
                 Text(
-                  "Traditional spare ribs baked",
+                  recipeModel.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppStyles.smallBoldText.copyWith(color: Colors.white),
