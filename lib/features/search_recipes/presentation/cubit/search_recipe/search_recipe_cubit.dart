@@ -19,6 +19,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   int currentPage = 1;
   bool hasNextPage = true;
   bool isFetching = false;
+  int totalRecipesLength = 0;
 
   TextEditingController searchController = TextEditingController();
 
@@ -27,7 +28,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   final Debouncer debouncer = Debouncer();
 
   /// Debounced new Search Function
-  void onSearchChanged(String value) {
+  void onSearchChanged() {
     debouncer.debounce(
       duration: const Duration(milliseconds: 500),
       onDebounce: () {
@@ -44,6 +45,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
 
     if (isNewSearch) {
       currentPage = 1;
+      totalRecipesLength = 0;
       hasNextPage = true;
       recipes.clear();
       emit(const SearchRecipeState.loading());
@@ -51,8 +53,8 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
 
     final result = await _searchRepo.searchRecipes(
       request: GetRecipesRequest(
-        page: 1,
-        search: searchController.text,
+        page: currentPage,
+        search: searchController.text.trim(),
       ),
     );
 
@@ -60,6 +62,9 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
       success: (getRecipesResponseModel) {
         final newRecipes =
             getRecipesResponseModel.fetchedRecipesData.recipesList;
+
+        totalRecipesLength =
+            getRecipesResponseModel.fetchedRecipesData.recipesCount;
         hasNextPage = getRecipesResponseModel.fetchedRecipesData.hasNextPage;
 
         recipes.addAll(newRecipes);
