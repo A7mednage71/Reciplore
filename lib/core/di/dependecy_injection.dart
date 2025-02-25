@@ -10,7 +10,7 @@ import 'package:looqma/features/home/data/repos/home_repo.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
-import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_category/get_recipes_by_category_cubit.dart';
+import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
