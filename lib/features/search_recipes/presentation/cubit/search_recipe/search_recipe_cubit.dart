@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/features/home/data/models/get_recipes_request.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
@@ -21,6 +24,10 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   bool isFetching = false;
   int totalRecipesLength = 0;
 
+  String selectedRate = "0";
+  String? selectedCategoryId;
+  String? selectedCountryId;
+
   TextEditingController searchController = TextEditingController();
 
   List<RecipeModel> recipes = [];
@@ -28,10 +35,10 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   final Debouncer debouncer = Debouncer();
 
   /// Debounced new Search Function
-  void onSearchChanged() {
+  Future<void> onSearchChanged() async {
     debouncer.debounce(
       duration: const Duration(milliseconds: 500),
-      onDebounce: () {
+      onDebounce: () async {
         if (searchController.text.trim().isEmpty) {
           currentPage = 1;
           totalRecipesLength = 0;
@@ -39,7 +46,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
           recipes.clear();
           emit(const SearchRecipeState.initial());
         } else {
-          searchRecipes(isNewSearch: true);
+          await searchRecipes(isNewSearch: true);
         }
       },
     );
@@ -59,10 +66,16 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
       emit(const SearchRecipeState.loading());
     }
 
+    // rate,category and country are used
+    // to filter search results
+
     final result = await _searchRepo.searchRecipes(
       request: GetRecipesRequest(
         page: currentPage,
         search: searchController.text.trim(),
+        rate: selectedRate,
+        category: selectedCategoryId,
+        country: selectedCountryId,
       ),
     );
 
@@ -88,10 +101,29 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
     );
   }
 
-  @override
-  Future<void> close() {
-    debouncer.cancel();
-    searchController.dispose();
-    return super.close();
+  Future<void> applyFilter() async {
+    final searchText = searchController.text.trim();
+    log("searchText: $searchText");
+    if (searchText.isEmpty) {
+      selectedCategoryId = null;
+      selectedCountryId = null;
+      selectedRate = "0";
+      ShowToast.showFailureToast('Please enter a search term first');
+      return;
+    }
+    if (selectedCategoryId != null ||
+        selectedCountryId != null ||
+        selectedRate != "0") {
+      await searchRecipes(isNewSearch: true);
+    } else {
+      ShowToast.showFailureToast('Please select at least one filter');
+    }
+  }
+
+  Future<void> resetFilters() async {
+    selectedRate = "0";
+    selectedCategoryId = null;
+    selectedCountryId = null;
+    await onSearchChanged();
   }
 }

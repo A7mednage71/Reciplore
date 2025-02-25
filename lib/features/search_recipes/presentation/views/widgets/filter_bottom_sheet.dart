@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/apply_filter.dart';
-import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_categories_list.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/filter_rates_listview.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/reset_filter.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/select_category_drop_down_Button.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/select_country_drop_down_button.dart';
 
 class FilterBottomSheet extends StatelessWidget {
-  const FilterBottomSheet({super.key});
+  const FilterBottomSheet({super.key, required this.searchRecipeCubit});
 
+  final SearchRecipeCubit searchRecipeCubit;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +25,6 @@ class FilterBottomSheet extends StatelessWidget {
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: [
           Align(
             alignment: Alignment.center,
@@ -36,16 +39,29 @@ class FilterBottomSheet extends StatelessWidget {
             style: AppStyles.smallBoldText,
           ),
           SizedBox(height: 10.h),
-          const FilterRatesListView(),
+          FilterRatesListView(searchRecipeCubit: searchRecipeCubit),
           SizedBox(height: 20.h),
           Text(
             "Category",
             style: AppStyles.smallBoldText,
           ),
           SizedBox(height: 10.h),
-          const FilterCategoriesList(),
+          SelectCategoryDropDownButton(searchRecipeCubit: searchRecipeCubit),
+          SizedBox(height: 10.h),
+          Text(
+            "Country",
+            style: AppStyles.smallBoldText,
+          ),
+          SizedBox(height: 10.h),
+          SelectCountryDropDownButton(searchRecipeCubit: searchRecipeCubit),
           SizedBox(height: 20.h),
-          const ApplyFilter()
+          Row(
+            children: [
+              ApplyFilter(searchRecipeCubit: searchRecipeCubit),
+              const Spacer(),
+              ResetFilter(searchRecipeCubit: searchRecipeCubit),
+            ],
+          )
         ],
       ),
     );
