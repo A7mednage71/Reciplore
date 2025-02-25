@@ -32,7 +32,15 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
     debouncer.debounce(
       duration: const Duration(milliseconds: 500),
       onDebounce: () {
-        searchRecipes(isNewSearch: true);
+        if (searchController.text.trim().isEmpty) {
+          currentPage = 1;
+          totalRecipesLength = 0;
+          hasNextPage = true;
+          recipes.clear();
+          emit(const SearchRecipeState.initial());
+        } else {
+          searchRecipes(isNewSearch: true);
+        }
       },
     );
   }
@@ -78,5 +86,12 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
         emit(SearchRecipeState.failure(message: failureResponse.errMessages));
       },
     );
+  }
+
+  @override
+  Future<void> close() {
+    debouncer.cancel();
+    searchController.dispose();
+    return super.close();
   }
 }

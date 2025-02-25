@@ -19,39 +19,22 @@ class SearchResultBlocBuilder extends StatelessWidget {
     return BlocBuilder<SearchRecipeCubit, SearchRecipeState>(
       builder: (context, state) {
         return state.when(
-          initial: () {
-            return const SearchLottie();
-          },
-          failure: (errorMessage) {
-            return Expanded(
-              child: Center(
-                child: FailureState(
-                  hight: 100.h,
-                  message: errorMessage,
-                ),
-              ),
-            );
-          },
-          loading: () {
-            return Expanded(
-              child: SpinKitFadingCircle(
-                color: AppColors.primaryDark,
-                size: 60.r,
-              ),
-            );
-          },
-          success: (recipes) {
-            if (recipes.isEmpty) {
-              return const Expanded(
-                child: Center(
-                  child: EmptyState(message: 'No Recipes Found'),
-                ),
-              );
-            }
-            return Expanded(
-              child: SearchResult(recipes: recipes),
-            );
-          },
+          initial: () => const SearchLottie(),
+          failure: (errorMessage) => Expanded(
+            child: Center(
+                child: FailureState(hight: 100.h, message: errorMessage)),
+          ),
+          loading: () => Expanded(
+            child: Center(
+              child:
+                  SpinKitFadingCircle(color: AppColors.primaryDark, size: 60.r),
+            ),
+          ),
+          success: (recipes) => Expanded(
+            child: recipes.isEmpty
+                ? const Center(child: EmptyState(message: 'No Recipes Found'))
+                : SearchResult(recipes: recipes),
+          ),
         );
       },
     );
