@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/utils/app_assets.dart';
+import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dart';
 
 class NewRecipesItem extends StatelessWidget {
-  const NewRecipesItem({super.key});
-
+  const NewRecipesItem({super.key, required this.recipeModel});
+  final RecipeModel? recipeModel;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,7 +28,7 @@ class NewRecipesItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Pilaf sweet with lamb-and-raisins",
+                      recipeModel?.name ?? "Test Recipe Model",
                       style: AppStyles.smallBoldText,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -36,17 +37,14 @@ class NewRecipesItem extends StatelessWidget {
                     SizedBox(height: 10.h),
                     Text("Category",
                         style: AppStyles.smallRegularText
-                            .copyWith(color: AppColors.grayLighter)),
-                    Text("sweets", style: AppStyles.normalRegularText),
+                            .copyWith(color: AppColors.grayLight)),
+                    Text(recipeModel?.category?.name ?? "Category",
+                        style: AppStyles.normalRegularText),
                   ],
                 ),
               ),
-              Image.asset(
-                AppAssets.imagesTestRecipe,
-                height: 110.h,
-                width: 80.w,
-                fit: BoxFit.cover,
-              )
+              CachedNetworkCircleAvatar(
+                  image: recipeModel?.images.urls.first.secureUrl),
             ],
           ),
         ),
