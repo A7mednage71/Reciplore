@@ -7,8 +7,38 @@ import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_reci
 import 'package:looqma/features/home/presentation/views/widgets/new_recipes_item.dart';
 import 'package:looqma/features/home/presentation/views/widgets/show_new_recipes_loading.dart';
 
-class NewRecipesListView extends StatelessWidget {
+class NewRecipesListView extends StatefulWidget {
   const NewRecipesListView({super.key});
+
+  @override
+  State<NewRecipesListView> createState() => _NewRecipesListViewState();
+}
+
+class _NewRecipesListViewState extends State<NewRecipesListView> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final cubit = context.read<GetNewRecipesCubit>();
+
+    if (_scrollController.position.pixels >=
+            _scrollController.position.maxScrollExtent - 200 &&
+        !cubit.isFetching &&
+        cubit.hasNextPage) {
+      cubit.getNewRecipes();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +54,7 @@ class NewRecipesListView extends StatelessWidget {
             },
             success: (recipes) {
               return ListView.builder(
+                controller: _scrollController,
                 clipBehavior: Clip.none,
                 scrollDirection: Axis.horizontal,
                 itemCount: recipes.length,
