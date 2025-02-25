@@ -11,6 +11,7 @@ class GetRecipesRequest {
   final String? search;
   @JsonKey(name: 'Average_rating[gte]')
   final String rate;
+  final String? sort;
 
   GetRecipesRequest({
     required this.page,
@@ -19,6 +20,7 @@ class GetRecipesRequest {
     this.category,
     this.search,
     this.rate = "0",
+    this.sort,
   });
 
   factory GetRecipesRequest.fromJson(Map<String, dynamic> json) =>
