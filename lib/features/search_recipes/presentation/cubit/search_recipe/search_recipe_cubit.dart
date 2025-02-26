@@ -121,6 +121,9 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   }
 
   Future<void> resetFilters() async {
+    if (selectedRate == "0" &&
+        selectedCategoryId == null &&
+        selectedCountryId == null) return;
     selectedRate = "0";
     selectedCategoryId = null;
     selectedCountryId = null;

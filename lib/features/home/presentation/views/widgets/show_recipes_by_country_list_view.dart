@@ -34,7 +34,7 @@ class _ShowRecipesByCountryListViewState
     final cubit = context.read<GetRecipesByCountryCubit>();
 
     if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent - 200 &&
+            _scrollController.position.maxScrollExtent - 300 &&
         !cubit.isFetching &&
         cubit.hasNextPage) {
       cubit.getRecipesByCountry(countryId: cubit.selectedCountryId);

@@ -27,7 +27,7 @@ class _NewRecipesListViewState extends State<NewRecipesListView> {
     final cubit = context.read<GetNewRecipesCubit>();
 
     if (_scrollController.position.pixels >=
-            _scrollController.position.maxScrollExtent - 200 &&
+            _scrollController.position.maxScrollExtent - 250 &&
         !cubit.isFetching &&
         cubit.hasNextPage) {
       cubit.getNewRecipes();
