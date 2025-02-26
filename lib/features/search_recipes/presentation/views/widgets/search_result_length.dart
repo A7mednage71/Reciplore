@@ -20,7 +20,7 @@ class SearchResultLength extends StatelessWidget {
         ),
         const Spacer(),
         Text(
-          '$searchResultLength /${searchCubit.totalRecipesLength} results',
+          '$searchResultLength /${searchCubit.totalRecipesLength} Recipes',
           style: AppStyles.extraSmallRegularText.copyWith(color: Colors.grey),
         ),
       ],

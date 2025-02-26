@@ -63,7 +63,7 @@ class IngredientsItem extends StatelessWidget {
               flex: 2,
               child: Text(
                 ingredientModel.ingredientData.name,
-                style: AppStyles.normalBoldText,
+                style: AppStyles.smallBoldText,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
               ),
