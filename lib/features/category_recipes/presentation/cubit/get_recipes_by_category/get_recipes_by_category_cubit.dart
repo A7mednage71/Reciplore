@@ -14,6 +14,7 @@ class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
   final HomeRepo _homeRepo;
 
   List<RecipeModel> recipes = [];
+  int totalRecipeslength = 0;
 
   String? selectedCategoryId;
 
@@ -25,20 +26,21 @@ class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
       {String? categoryId, bool isRefresh = false}) async {
     if (isFetching || (!hasNextPage && !isRefresh)) return;
 
-    if (isRefresh || selectedCategoryId != categoryId) {
+    if (isRefresh && categoryId != null) {
       currentPage = 1;
+      totalRecipeslength = 0;
       recipes.clear();
       hasNextPage = true;
       selectedCategoryId = categoryId;
+      emit(const GetRecipesByCategoryState.loading());
     }
 
     isFetching = true;
-    emit(const GetRecipesByCategoryState.loading());
 
     final result = await _homeRepo.getRecipes(
       request: GetRecipesRequest(
         page: currentPage,
-        limit: 5,
+        limit: 10,
         category: selectedCategoryId,
       ),
     );
@@ -47,13 +49,15 @@ class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
       success: (getRecipesResponseModel) {
         final newRecipes =
             getRecipesResponseModel.fetchedRecipesData.recipesList;
+        totalRecipeslength =
+            getRecipesResponseModel.fetchedRecipesData.recipesCount;
         hasNextPage = getRecipesResponseModel.fetchedRecipesData.hasNextPage;
 
         recipes.addAll(newRecipes);
         currentPage++;
 
         isFetching = false;
-        emit(GetRecipesByCategoryState.success(recipes));
+        emit(GetRecipesByCategoryState.success(List.from(recipes)));
       },
       failure: (error) {
         isFetching = false;
