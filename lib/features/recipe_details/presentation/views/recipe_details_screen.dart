@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/dropdown_button.dart';
@@ -21,6 +22,11 @@ class RecipeDetailsScreen extends StatelessWidget {
             child: const CustomPopUpMenueButton(),
           ),
         ],
+        elevation: 0,
+        title: Text(
+          recipeModel.name,
+          style: AppStyles.mediumBoldText,
+        ),
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -36,16 +42,21 @@ class RecipeDetailsScreen extends StatelessWidget {
             SizedBox(height: 20.h),
             Row(
               children: [
-                Flexible(
-                  flex: 2,
-                  child: Text(
-                    recipeModel.name,
-                    style: AppStyles.smallBoldText,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
+                Text("Category : ",
+                    style: AppStyles.smallRegularText
+                        .copyWith(color: AppColors.grayLight)),
+                Text(
+                  recipeModel.category?.name ?? "Category",
+                  style: AppStyles.smallBoldText,
                 ),
                 const Spacer(),
+                Text("Country : ",
+                    style: AppStyles.smallRegularText
+                        .copyWith(color: AppColors.grayLight)),
+                Text(
+                  recipeModel.country?.name ?? "Country",
+                  style: AppStyles.smallBoldText,
+                )
               ],
             ),
             SizedBox(height: 20.h),
