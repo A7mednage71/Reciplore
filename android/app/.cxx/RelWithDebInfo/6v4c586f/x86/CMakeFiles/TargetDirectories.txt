@@ -1,0 +1,2 @@
+C:/projects flutter/looqma/android/app/.cxx/RelWithDebInfo/6v4c586f/x86/CMakeFiles/edit_cache.dir
+C:/projects flutter/looqma/android/app/.cxx/RelWithDebInfo/6v4c586f/x86/CMakeFiles/rebuild_cache.dir
