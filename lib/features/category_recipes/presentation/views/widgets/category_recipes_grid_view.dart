@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
@@ -43,26 +44,37 @@ class _CategoryRecipesGridViewState extends State<CategoryRecipesGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      controller: _scrollController,
-      padding: EdgeInsets.only(top: 60.h),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 10.w,
-        mainAxisSpacing: 50.h,
-        childAspectRatio: 0.8,
+    return AnimationLimiter(
+      child: GridView.builder(
+        controller: _scrollController,
+        padding: EdgeInsets.only(top: 60.h),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10.w,
+          mainAxisSpacing: 50.h,
+          childAspectRatio: 0.8,
+        ),
+        itemCount: widget.recipes.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context, rootNavigator: true).pushNamed(
+                  Routes.showRecipeDetails,
+                  arguments: widget.recipes[index]);
+            },
+            child: AnimationConfiguration.staggeredGrid(
+              position: index,
+              columnCount: 2,
+              duration: const Duration(milliseconds: 500),
+              child: SlideAnimation(
+                verticalOffset: 100.0,
+                child: FadeInAnimation(
+                    child: RecipeItem(recipeModel: widget.recipes[index])),
+              ),
+            ),
+          );
+        },
       ),
-      itemCount: widget.recipes.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.of(context, rootNavigator: true).pushNamed(
-                Routes.showRecipeDetails,
-                arguments: widget.recipes[index]);
-          },
-          child: RecipeItem(recipeModel: widget.recipes[index]),
-        );
-      },
     );
   }
 }

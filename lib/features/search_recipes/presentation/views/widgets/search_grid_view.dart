@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
@@ -42,23 +43,36 @@ class _SearchRecipesGridViewState extends State<SearchRecipesGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 15.w,
-        mainAxisSpacing: 15.h,
-      ),
-      itemCount: widget.recipes.length,
-      controller: _scrollController,
-      itemBuilder: (context, index) {
-        return GestureDetector(
+    return AnimationLimiter(
+      child: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 15.w,
+          mainAxisSpacing: 15.h,
+        ),
+        itemCount: widget.recipes.length,
+        controller: _scrollController,
+        itemBuilder: (context, index) {
+          return GestureDetector(
             onTap: () {
               Navigator.of(context, rootNavigator: true).pushNamed(
                   Routes.showRecipeDetails,
                   arguments: widget.recipes[index]);
             },
-            child: SearchRecipeItem(recipeModel: widget.recipes[index]));
-      },
+            child: AnimationConfiguration.staggeredGrid(
+              columnCount: 2,
+              position: index,
+              duration: const Duration(milliseconds: 500),
+              child: SlideAnimation(
+                verticalOffset: 100.0,
+                child: FadeInAnimation(
+                  child: SearchRecipeItem(recipeModel: widget.recipes[index]),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }
