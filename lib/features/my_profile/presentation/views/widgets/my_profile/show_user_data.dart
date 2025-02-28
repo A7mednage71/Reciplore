@@ -43,10 +43,10 @@ class ShowUserData extends StatelessWidget {
                 "123 Main Street, Cairo, Egypt",
           ),
         SizedBox(height: 5.h),
-        if (userProfileModel?.userAddresses.isNotEmpty ?? false)
+        if (userProfileModel?.userAge != null)
           UserDataItem(
             icon: Icons.date_range,
-            content: userProfileModel?.userAddresses.first ?? "50",
+            content: userProfileModel?.userAge.toString() ?? "00",
           )
       ],
     );

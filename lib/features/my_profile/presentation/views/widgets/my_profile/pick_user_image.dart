@@ -29,12 +29,12 @@ class PickUserImage extends StatelessWidget {
       return state.maybeWhen(
         loading: () {
           return Container(
-            width: 24.w,
-            height: 24.w,
-            decoration: const BoxDecoration(
+            width: 25.w,
+            height: 25.w,
+            decoration: BoxDecoration(
               color: AppColors.primaryMedium,
               shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(10.r)),
             ),
             child: Padding(
               padding: EdgeInsets.all(5.w),
@@ -54,12 +54,12 @@ class PickUserImage extends StatelessWidget {
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
             child: Container(
-              width: 24.w,
-              height: 24.w,
-              decoration: const BoxDecoration(
+              width: 25.w,
+              height: 25.w,
+              decoration: BoxDecoration(
                 color: AppColors.primaryMedium,
                 shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderRadius: BorderRadius.all(Radius.circular(10.r)),
               ),
               child: const Icon(IconlyLight.camera, color: AppColors.white),
             ),

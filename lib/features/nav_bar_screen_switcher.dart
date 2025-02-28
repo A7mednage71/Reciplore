@@ -11,6 +11,7 @@ import 'package:looqma/features/home/presentation/cubit/get_countries/get_countr
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
+import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
 import 'package:looqma/features/saved_recipe/presentation/views/saved_recipe_screen.dart';
@@ -54,8 +55,15 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
     const SavedRecipeScreen(),
     const ChatBot(),
     const ChatBot(),
-    BlocProvider(
-      create: (context) => getIt<GetUserProfileCubit>()..getUserProfile(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<GetUserProfileCubit>()..getUserProfile(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<DeleteUserImageCubit>(),
+        ),
+      ],
       child: const MyProfile(),
     ),
   ];

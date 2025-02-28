@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
+import 'package:lottie/lottie.dart';
 
 class DeleteImageAlertDialog extends StatelessWidget {
   const DeleteImageAlertDialog({
@@ -12,9 +15,21 @@ class DeleteImageAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        title: const Text('Delete Image'),
-        content: Text('Are you sure you want to delete your image?',
-            style: AppStyles.smallRegularText),
+        title: Text(
+          'Delete Image',
+          style: AppStyles.mediumBoldText,
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.asset(
+              AppAssets.imagesWorningLottie,
+              height: 100.h,
+            ),
+            Text('Are you sure you want to delete your image?',
+                style: AppStyles.smallRegularText),
+          ],
+        ),
         actions: [
           TextButton(
             child: Text(
