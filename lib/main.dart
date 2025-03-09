@@ -33,7 +33,11 @@ void main() async {
 Future<void> checkUserLogging() async {
   String? userToken =
       await SecureStorage.getSecuredData(SecureStorageKeys.accessToken);
+  String? resfrshToken =
+      await SecureStorage.getSecuredData(SecureStorageKeys.refreshToken);
+
   log(userToken.toString());
+  log(resfrshToken.toString());
   if (userToken != "" && userToken.isNotEmpty) {
     isUserlogged = true;
   } else {
