@@ -5,6 +5,8 @@ import 'package:looqma/core/app/internet_checker.dart';
 import 'package:looqma/core/routes/app_router.dart';
 import 'package:looqma/core/routes/routes.dart';
 
+final navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: AppRouter.getRoute,
           initialRoute:
               isUserlogged ? Routes.navBarScreensSwitcher : Routes.onBording,
-          navigatorKey: GlobalKey<NavigatorState>(),
+          navigatorKey: navigatorKey,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
