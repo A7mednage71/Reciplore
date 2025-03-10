@@ -55,6 +55,7 @@ class RecipeModel {
   @JsonKey(name: 'Average_rating')
   final double averageRating;
   final int views;
+  final bool isFavourite;
   final CreatedByModel createdBy;
   @JsonKey(name: 'Images')
   final RecipeImages images;
@@ -71,6 +72,7 @@ class RecipeModel {
     required this.country,
     required this.averageRating,
     required this.views,
+    required this.isFavourite,
     required this.createdBy,
     required this.images,
     required this.ingredients,
