@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 
 class SavedRecipeDetails extends StatelessWidget {
-  const SavedRecipeDetails({super.key});
-
+  const SavedRecipeDetails({super.key, required this.recipeModel});
+  final RecipeModel recipeModel;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,7 +20,7 @@ class SavedRecipeDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'spice roasted chicken with flavored rice',
+                recipeModel.name,
                 style: AppStyles.smallBoldText.copyWith(
                   color: AppColors.white,
                 ),
@@ -31,15 +32,15 @@ class SavedRecipeDetails extends StatelessWidget {
                   style: AppStyles.smallRegularText.copyWith(
                     color: AppColors.grayLight,
                   )),
-              Text('Ribs',
+              Text(recipeModel.category?.name ?? "",
                   style: AppStyles.smallRegularText
                       .copyWith(color: AppColors.white)),
             ],
           ),
         ),
-        const Flexible(
+         Flexible(
           flex: 1,
-          child: SaveRecipeButton(),
+          child: SaveRecipeButton(recipeModel: recipeModel),
         ),
       ],
     );

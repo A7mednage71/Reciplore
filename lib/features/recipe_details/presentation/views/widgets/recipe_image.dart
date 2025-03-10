@@ -46,8 +46,12 @@ class RecipeImage extends StatelessWidget {
               CustomRate(rate: recipeModel.averageRating.toString()),
               SizedBox(height: 10.h),
               WatchVideoButton(recipeModel: recipeModel),
-              const Align(
-                  alignment: Alignment.bottomRight, child: SaveRecipeButton()),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: SaveRecipeButton(
+                  recipeModel: recipeModel,
+                ),
+              ),
             ],
           ),
         ),

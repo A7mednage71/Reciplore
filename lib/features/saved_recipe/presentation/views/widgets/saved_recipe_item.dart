@@ -1,47 +1,64 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
-import 'package:looqma/core/utils/app_assets.dart';
+import 'package:looqma/core/utils/app_colors.dart';
+import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/saved_recipe/presentation/views/widgets/saved_recipe_details.dart';
 
 class SavedRecipeItem extends StatelessWidget {
-  const SavedRecipeItem({super.key});
+  const SavedRecipeItem({
+    super.key,
+    required this.recipeModel,
+    this.isloading = false,
+  });
+
+  final RecipeModel recipeModel;
+  final bool isloading;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 20.h),
-      child: SizedBox(
-        height: 150.h,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10.r)),
-            image: const DecorationImage(
-              image: AssetImage(AppAssets.imagesSavedRecipeTest),
+    return SizedBox(
+      height: 150.h,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10.r),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            CachedNetworkImage(
+              imageUrl: recipeModel.images.urls.first.secureUrl,
               fit: BoxFit.cover,
+              fadeInDuration: const Duration(milliseconds: 500),
+              placeholder: (context, url) => Container(
+                color: AppColors.grayLighter,
+              ),
+              errorWidget: (context, url, error) =>
+                  const Icon(Icons.error, color: Colors.red),
             ),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(10.r)),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withOpacity(0.7),
+            Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: isloading
+                      ? [AppColors.white, AppColors.white]
+                      : [
+                          Colors.transparent,
+                          // ignore: deprecated_member_use
+                          AppColors.black.withOpacity(0.7),
+                        ],
+                ),
+              ),
+              padding: EdgeInsets.all(10.w),
+              child: Column(
+                children: [
+                  CustomRate(rate: recipeModel.averageRating.toString()),
+                  const Spacer(),
+                  SavedRecipeDetails(recipeModel: recipeModel),
                 ],
               ),
             ),
-            padding: EdgeInsets.all(10.w),
-            child: const Column(
-              children: [
-                CustomRate(rate: "5.6"),
-                Spacer(),
-                SavedRecipeDetails(),
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );
