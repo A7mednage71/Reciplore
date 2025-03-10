@@ -96,4 +96,7 @@ abstract class ApiService {
 
   @POST(ApiConstants.recipeSaveToggle)
   Future<RecipeSaveToggleReponseModel> recipeSaveToggle(@Path('id') String id);
+
+  @GET(ApiConstants.getSavedRecipes)
+  Future<GetRecipesResponseModel> getSavedRecipes();
 }

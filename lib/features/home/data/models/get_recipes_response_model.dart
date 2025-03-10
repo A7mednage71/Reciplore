@@ -55,7 +55,7 @@ class RecipeModel {
   @JsonKey(name: 'Average_rating')
   final double averageRating;
   final int views;
-  final bool isFavourite;
+  final bool? isFavourite;
   final CreatedByModel createdBy;
   @JsonKey(name: 'Images')
   final RecipeImages images;
