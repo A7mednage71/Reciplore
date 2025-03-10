@@ -16,7 +16,7 @@ class MyHomePage extends StatelessWidget {
         children: [
           SizedBox(height: 30.h),
           const UserInfo(),
-          const HomeSearchRecipeSection(),
+          const HomeSearchRecipeSection(hintText: "Search for recipe",),
           SizedBox(height: 20.h),
           const RecipesView(),
           const HomeCategoriesSection(),

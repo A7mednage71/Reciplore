@@ -11,6 +11,7 @@ import 'package:looqma/features/home/presentation/cubit/get_countries/get_countr
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
+import 'package:looqma/features/home_market/presentation/views/home_market_screen.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
@@ -54,7 +55,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
     ),
     const SavedRecipeScreen(),
     const ChatBot(),
-    const ChatBot(),
+    const HomeMarketScreen(),
     MultiBlocProvider(
       providers: [
         BlocProvider(

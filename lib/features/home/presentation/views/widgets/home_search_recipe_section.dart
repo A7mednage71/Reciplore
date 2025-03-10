@@ -5,8 +5,8 @@ import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 
 class HomeSearchRecipeSection extends StatelessWidget {
-  const HomeSearchRecipeSection({super.key});
-
+  const HomeSearchRecipeSection({super.key, required this.hintText});
+  final String hintText;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,7 +24,7 @@ class HomeSearchRecipeSection extends StatelessWidget {
             height: 20.h,
             width: 20.w,
           ),
-          hintText: "Search recipe",
+          hintText: hintText,
           readOnly: true,
           onTap: () {
             Navigator.of(context, rootNavigator: true)
