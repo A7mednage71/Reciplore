@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:looqma/core/common/recipe_save_toggle/models/recipe_save_toggle_reponse_model.dart';
 import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/networking/refresh_token/refresh_token_response_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
@@ -92,4 +93,7 @@ abstract class ApiService {
   Future<GetRecipesResponseModel> getRecipes(
     @Queries() GetRecipesRequest request,
   );
+
+  @POST(ApiConstants.recipeSaveToggle)
+  Future<RecipeSaveToggleReponseModel> recipeSaveToggle(@Path('id') String id);
 }
