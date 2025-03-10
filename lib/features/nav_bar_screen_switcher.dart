@@ -53,10 +53,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
       ],
       child: const MyHomePage(),
     ),
-    BlocProvider(
-      create: (context) => getIt<GetSavedRecipesCubit>()..getSavedRecipes(),
-      child: const SavedRecipeScreen(),
-    ),
+    const SavedRecipeScreen(),
     const ChatBot(),
     const ChatBot(),
     MultiBlocProvider(
@@ -82,6 +79,11 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
         screens: myScreens,
         navBarHeight: 65.h,
         hideNavigationBarWhenKeyboardAppears: true,
+        onItemSelected: (value) {
+          if (value == 1) {
+            context.read<GetSavedRecipesCubit>().getSavedRecipes();
+          }
+        },
         popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
         decoration: NavBarDecoration(
           colorBehindNavBar: Colors.white,

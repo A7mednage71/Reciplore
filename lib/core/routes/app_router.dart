@@ -31,6 +31,7 @@ import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_video_player.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
+import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -84,7 +85,11 @@ class AppRouter {
         );
       case Routes.navBarScreensSwitcher:
         return MaterialPageRoute(
-          builder: (_) => const NavBarScreensSwitcher(),
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                getIt<GetSavedRecipesCubit>()..getSavedRecipes(),
+            child: const NavBarScreensSwitcher(),
+          ),
         );
       case Routes.home:
         return MaterialPageRoute(

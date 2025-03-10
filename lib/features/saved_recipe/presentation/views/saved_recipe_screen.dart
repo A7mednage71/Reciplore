@@ -14,7 +14,7 @@ class SavedRecipeScreen extends StatelessWidget {
           SizedBox(height: 40.h),
           Text('Saved recipes', style: AppStyles.mediumBoldText),
           SizedBox(height: 10.h),
-          const SavedRecipesBlocBuilder(),
+          const Expanded(child: SavedRecipesBlocBuilder()),
         ],
       ),
     );
