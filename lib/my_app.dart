@@ -7,6 +7,10 @@ import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_c
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/app_router.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
+import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
+import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
+import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -18,8 +22,25 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => getIt<RecipeSaveToggleCubit>(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<RecipeSaveToggleCubit>(),
+            ),
+            BlocProvider(
+              create: (context) =>
+                  getIt<GetSavedRecipesCubit>()..getSavedRecipes(),
+            ),
+            BlocProvider(
+                create: (context) => getIt<GetRecipesByCategoryCubit>()),
+            BlocProvider(
+              create: (context) =>
+                  getIt<GetNewRecipesCubit>()..getNewRecipes(isRefresh: true),
+            ),
+            BlocProvider(
+                create: (context) => getIt<GetRecipesByCountryCubit>()
+                  ..getRecipesByCountry(isRefresh: true)),
+          ],
           child: MaterialApp(
             title: 'Looqma',
             debugShowCheckedModeBanner: false,
