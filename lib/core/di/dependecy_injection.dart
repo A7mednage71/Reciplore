@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_cubit.dart';
+import 'package:looqma/core/common/recipe_save_toggle/repos/recipe_save_toggle_repo.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
+import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/change_password/data/repos/change_password_repo.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
@@ -10,7 +13,6 @@ import 'package:looqma/features/home/data/repos/home_repo.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
-import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -22,6 +24,8 @@ import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
+import 'package:looqma/features/saved_recipe/data/repos/saved_recipes_repo.dart';
+import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -90,5 +94,15 @@ Future<void> setupGetIt() async {
     // search screen
     ..registerLazySingleton<SearchRepo>(() => SearchRepo(getIt<ApiService>()))
     ..registerFactory<SearchRecipeCubit>(
-        () => SearchRecipeCubit(getIt<SearchRepo>()));
+        () => SearchRecipeCubit(getIt<SearchRepo>()))
+    // recipe save toggle
+    ..registerLazySingleton<RecipeSaveToggleRepo>(
+        () => RecipeSaveToggleRepo(getIt<ApiService>()))
+    ..registerFactory<RecipeSaveToggleCubit>(
+        () => RecipeSaveToggleCubit(getIt<RecipeSaveToggleRepo>()))
+    // get saved recipes
+    ..registerLazySingleton<SavedRecipesRepo>(
+        () => SavedRecipesRepo(getIt<ApiService>()))
+    ..registerFactory<GetSavedRecipesCubit>(
+        () => GetSavedRecipesCubit(getIt<SavedRecipesRepo>()));
 }

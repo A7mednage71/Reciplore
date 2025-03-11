@@ -4,7 +4,6 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
@@ -114,12 +113,7 @@ class AppRouter {
       case Routes.categoryRecipes:
         final categoryModel = argument as CategoryModel;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<GetRecipesByCategoryCubit>()
-              ..getRecipesByCategory(
-                  categoryId: categoryModel.categoryId, isRefresh: true),
-            child: CategoryRecipes(category: categoryModel),
-          ),
+          builder: (context) => CategoryRecipes(category: categoryModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(

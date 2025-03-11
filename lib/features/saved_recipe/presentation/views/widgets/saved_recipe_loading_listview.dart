@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
-import 'package:looqma/features/home/presentation/views/widgets/recipe_item.dart';
+import 'package:looqma/features/saved_recipe/presentation/views/widgets/saved_recipe_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ShowRecipesByCountryLoading extends StatelessWidget {
-  const ShowRecipesByCountryLoading({
-    super.key,
-  });
+class SavedRecipesLoading extends StatelessWidget {
+  const SavedRecipesLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<RecipeModel> recipes = List.generate(
-      2,
+      4,
       (index) => RecipeModel(
         id: '',
         name: 'Recipe name',
@@ -35,20 +33,17 @@ class ShowRecipesByCountryLoading extends StatelessWidget {
         ingredients: [],
       ),
     );
-
-    return Skeletonizer(
-      child: SizedBox(
-        height: 200.h,
+    return Expanded(
+      child: Skeletonizer(
+        ignoreContainers: false,
         child: ListView.builder(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 30.w),
-          clipBehavior: Clip.none,
-          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.symmetric(horizontal: 30.h, vertical: 15.h),
           itemCount: recipes.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
-              child: RecipeItem(recipeModel: recipes[index]),
+              padding: EdgeInsets.only(top: index == 0 ? 0 : 15.h),
+              child:
+                  SavedRecipeItem(recipeModel: recipes[index], isloading: true),
             );
           },
         ),
