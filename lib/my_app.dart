@@ -24,13 +24,8 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(
-              create: (context) => getIt<RecipeSaveToggleCubit>(),
-            ),
-            BlocProvider(
-              create: (context) =>
-                  getIt<GetSavedRecipesCubit>()..getSavedRecipes(),
-            ),
+            BlocProvider(create: (context) => getIt<RecipeSaveToggleCubit>()),
+            BlocProvider(create: (context) => getIt<GetSavedRecipesCubit>()),
             BlocProvider(
                 create: (context) => getIt<GetRecipesByCategoryCubit>()),
             BlocProvider(
