@@ -4,7 +4,6 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
@@ -14,7 +13,6 @@ import 'package:looqma/features/forget_password/presentation/cubit/forget_passwo
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
-import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
@@ -32,7 +30,6 @@ import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_video_player.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
-import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -86,18 +83,7 @@ class AppRouter {
         );
       case Routes.navBarScreensSwitcher:
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                  create: (context) => getIt<GetRecipesByCountryCubit>()
-                    ..getRecipesByCountry(isRefresh: true)),
-              BlocProvider(
-                create: (context) =>
-                    getIt<GetSavedRecipesCubit>()..getSavedRecipes(),
-              ),
-            ],
-            child: const NavBarScreensSwitcher(),
-          ),
+          builder: (_) => const NavBarScreensSwitcher(),
         );
       case Routes.home:
         return MaterialPageRoute(
@@ -127,12 +113,7 @@ class AppRouter {
       case Routes.categoryRecipes:
         final categoryModel = argument as CategoryModel;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<GetRecipesByCategoryCubit>()
-              ..getRecipesByCategory(
-                  categoryId: categoryModel.categoryId, isRefresh: true),
-            child: CategoryRecipes(category: categoryModel),
-          ),
+          builder: (context) => CategoryRecipes(category: categoryModel),
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
