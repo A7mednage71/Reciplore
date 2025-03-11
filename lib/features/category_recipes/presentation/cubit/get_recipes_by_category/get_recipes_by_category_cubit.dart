@@ -65,4 +65,18 @@ class GetRecipesByCategoryCubit extends Cubit<GetRecipesByCategoryState> {
       },
     );
   }
+
+  /// ✅ **NEW METHOD TO TOGGLE FAVORITE STATUS**
+  void toggleRecipeFavoriteStatus(String recipeId) {
+    recipes = recipes.map((recipe) {
+      if (recipe.id == recipeId) {
+        bool isFov = recipe.isFavourite ?? false;
+        final updatedRecipe = recipe.copyWith(isFavourite: !isFov);
+        return updatedRecipe;
+      }
+      return recipe;
+    }).toList();
+
+    emit(GetRecipesByCategoryState.success(List.from(recipes)));
+  }
 }

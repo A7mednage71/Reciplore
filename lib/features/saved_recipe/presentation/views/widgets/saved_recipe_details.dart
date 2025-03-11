@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_cubit.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 
 class SavedRecipeDetails extends StatelessWidget {
   const SavedRecipeDetails({super.key, required this.recipeModel});
@@ -38,9 +41,20 @@ class SavedRecipeDetails extends StatelessWidget {
             ],
           ),
         ),
-         Flexible(
+        Flexible(
           flex: 1,
-          child: SaveRecipeButton(recipeModel: recipeModel),
+          child: SaveRecipeButton(
+            isSaved: recipeModel.isFavourite ?? true,
+            onPressed: () async {
+              await context
+                  .read<RecipeSaveToggleCubit>()
+                  .toggleSave(recipeId: recipeModel.id);
+              if (!context.mounted) return;
+              context
+                  .read<GetSavedRecipesCubit>()
+                  .removeRecipe(recipeModel.id, context);
+            },
+          ),
         ),
       ],
     );
