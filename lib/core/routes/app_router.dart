@@ -15,6 +15,7 @@ import 'package:looqma/features/forget_password/presentation/views/forget_passwo
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
+import 'package:looqma/features/ingredient_details/presentation/views/ingredient_details_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
@@ -101,6 +102,10 @@ class AppRouter {
         final recipeModel = argument as RecipeModel;
         return MaterialPageRoute(
           builder: (context) => RecipeDetailsScreen(recipeModel: recipeModel),
+        );
+      case Routes.showIngredientDetails:
+        return MaterialPageRoute(
+          builder: (context) => const IngredientDetailsScreen(),
         );
       case Routes.reviewScreen:
         return MaterialPageRoute(
