@@ -4,23 +4,23 @@ import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
-class IngredientItem extends StatelessWidget {
-  const IngredientItem({super.key});
+class MarketIngredientItem extends StatelessWidget {
+  const MarketIngredientItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        boxShadow: const [
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
           BoxShadow(
-            color: AppColors.grayLight,
-            blurRadius: 1,
-            offset: Offset(2, 2), // Shadow position
+            color: Colors.grey.withValues(alpha: 0.2),
+            spreadRadius: 1,
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
         ],
-        color: AppColors.white,
-        border: Border.all(color: AppColors.white),
-        borderRadius: BorderRadius.all(Radius.circular(15.r)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,7 +54,7 @@ class IngredientItem extends StatelessWidget {
                           style: AppStyles.smallRegularText
                               .copyWith(color: AppColors.successColor)),
                       TextSpan(
-                          text: "/kg",
+                          text: "/ kg",
                           style: AppStyles.extraSmallRegularText
                               .copyWith(color: AppColors.grayLight)),
                     ],
@@ -66,16 +66,33 @@ class IngredientItem extends StatelessWidget {
                 Text('Rp 14,000 ',
                     style: AppStyles.extraSmallRegularText.copyWith(
                         decoration: TextDecoration.lineThrough,
+                        decorationColor: AppColors.grayLight,
                         color: AppColors.grayLight)),
                 Row(
                   children: [
                     const Spacer(),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.add_circle_outline_outlined,
-                          color: AppColors.primaryDark,
-                        )),
+                    Padding(
+                      padding: EdgeInsets.only(right: 5.r, bottom: 5.r),
+                      child: Container(
+                        width: 25.w,
+                        height: 25.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.primaryDark,
+                            width: 1.8,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: InkWell(
+                          onTap: () {},
+                          child: const Icon(
+                            Icons.add,
+                            size: 20,
+                            color: AppColors.primaryDark,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ],

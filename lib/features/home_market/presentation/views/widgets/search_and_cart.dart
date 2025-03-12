@@ -10,15 +10,10 @@ class SearchAndCart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8.r),
-      child: Row(
+      child: const Row(
         children: [
-          const Expanded(
-              child: HomeSearchRecipeSection(hintText: "Search for ingredients")),
-          CircleAvatar(
-            backgroundColor: AppColors.primaryMedium,
-            radius: 18.r,
-            child: IconButton(
-                onPressed: () {}, icon: const Icon(Icons.shopping_cart_outlined)),
+          Expanded(
+            child: HomeSearchRecipeSection(hintText: "Search for ingredients"),
           ),
         ],
       ),

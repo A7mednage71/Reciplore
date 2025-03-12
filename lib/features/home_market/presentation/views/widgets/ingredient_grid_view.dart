@@ -8,20 +8,20 @@ class IngredientGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: 6,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 20,
-            crossAxisSpacing: 12,
-            childAspectRatio: 0.7),
-        itemBuilder: (context, index) {
-          return IngredientItem();
-        },
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        child: GridView.builder(
+          itemCount: 6,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 12,
+              childAspectRatio: 0.7),
+          itemBuilder: (context, index) {
+            return const MarketIngredientItem();
+          },
+        ),
       ),
     );
   }
