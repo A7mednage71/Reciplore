@@ -1,8 +1,10 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
+  static const Color black26 = Colors.black26;
+  static const Color red = Colors.red;
 
   // Netural Colour
   static const Color grayDark = Color(0xff484848);

@@ -16,4 +16,5 @@ class Routes {
   static const String noInternet = 'noInternet_Screen';
   static const String watchRecipeVideo = 'watchRecipeVideo_Screen';
   static const String categoryRecipes = 'categoryRecipes_Screen';
+  static const String cart = 'cart_Screen';
 }

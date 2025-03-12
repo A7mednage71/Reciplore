@@ -4,6 +4,7 @@ import 'package:looqma/core/common/screens/no_internet_connection.dart';
 import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/cart/presentation/views/cart_screen.dart';
 import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
@@ -118,6 +119,10 @@ class AppRouter {
       case Routes.chatScreen:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
+        );
+      case Routes.cart:
+        return MaterialPageRoute(
+          builder: (context) => const CartScreen(),
         );
       case Routes.profile:
         return MaterialPageRoute(
