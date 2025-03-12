@@ -16,6 +16,7 @@ import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/ingredient_details/presentation/views/ingredient_details_screen.dart';
+import 'package:looqma/features/ingredient_details/presentation/views/widgets/search_ingredients.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
@@ -91,12 +92,16 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const MyHomePage(),
         );
-      case Routes.searchScreen:
+      case Routes.searchRecipeScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<SearchRecipeCubit>(),
             child: const SearchRecipes(),
           ),
+        );
+        case Routes.searchIngredientsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SearchIngredients(),
         );
       case Routes.showRecipeDetails:
         final recipeModel = argument as RecipeModel;

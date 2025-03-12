@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/ingredient_details/presentation/views/widgets/customized_app_bar.dart';
 import 'package:looqma/features/ingredient_details/presentation/views/widgets/ingredient_content.dart';
+import 'package:looqma/features/ingredient_details/presentation/views/widgets/quantity_and_add_to_cart.dart';
 
 class IngredientDetailsScreen extends StatelessWidget {
   const IngredientDetailsScreen({super.key});
@@ -10,22 +12,22 @@ class IngredientDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(100),
-        child: CustomizedAppBar(),
+      bottomSheet: Padding(
+        padding: EdgeInsets.all(18.r),
+        child: const QuantityAndAddToCart(),
       ),
+      appBar: const CustombackArrowAppbar(arrowBackColor: AppColors.white),
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.5, // Adjust height as needed
+            height: MediaQuery.of(context).size.height * 0.5,
             width: double.infinity,
             child: Image.asset(
               AppAssets.imagesFresh,
               fit: BoxFit.fill,
             ),
           ),
-
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -37,12 +39,13 @@ class IngredientDetailsScreen extends StatelessWidget {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 10,
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 child: const IngredientContent(),
               ),
             ),
