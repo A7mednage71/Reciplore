@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_text_field.dart';
-import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 
 class MarketSearchTextField extends StatelessWidget {
@@ -22,10 +21,7 @@ class MarketSearchTextField extends StatelessWidget {
       ),
       hintText: "Search for ingredients...",
       readOnly: true,
-      onTap: () {
-        Navigator.of(context, rootNavigator: true)
-            .pushNamed(Routes.searchMarket);
-      },
+      onTap: () {},
     );
   }
 }

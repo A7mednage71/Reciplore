@@ -17,7 +17,7 @@ class AddIngredientToCartHomeButton extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.primaryDark,
-            width: 1.8,
+            width: 1.2,
           ),
           borderRadius: BorderRadius.circular(10.r),
         ),

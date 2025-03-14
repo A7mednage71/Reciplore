@@ -43,7 +43,7 @@ class MarketIngredientItem extends StatelessWidget {
                       TextSpan(
                           text: "Rp 12,000",
                           style: AppStyles.smallRegularText
-                              .copyWith(color: AppColors.successColor)),
+                              .copyWith(color: AppColors.primaryMoreLight)),
                       TextSpan(
                           text: "/ kg",
                           style: AppStyles.extraSmallRegularText
