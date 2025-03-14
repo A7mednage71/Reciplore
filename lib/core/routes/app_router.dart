@@ -15,11 +15,10 @@ import 'package:looqma/features/forget_password/presentation/views/forget_passwo
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
-import 'package:looqma/features/market_ingredient_details/presentation/views/market_ingredient_details_screen.dart';
-import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/search_ingredients.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
+import 'package:looqma/features/market_ingredient_details/presentation/views/market_ingredient_details_screen.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/update_user_profile/update_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
@@ -98,10 +97,6 @@ class AppRouter {
             create: (context) => getIt<SearchRecipeCubit>(),
             child: const SearchRecipes(),
           ),
-        );
-      case Routes.searchMarket:
-        return MaterialPageRoute(
-          builder: (context) => const MarketSearchScreen(),
         );
       case Routes.showRecipeDetails:
         final recipeModel = argument as RecipeModel;
