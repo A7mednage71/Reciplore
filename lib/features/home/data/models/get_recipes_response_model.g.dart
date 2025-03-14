@@ -58,6 +58,7 @@ RecipeModel _$RecipeModelFromJson(Map<String, dynamic> json) => RecipeModel(
               json['country'] as Map<String, dynamic>),
       averageRating: (json['Average_rating'] as num).toDouble(),
       views: (json['views'] as num).toInt(),
+      isFavourite: json['isFavourite'] as bool?,
       createdBy:
           CreatedByModel.fromJson(json['createdBy'] as Map<String, dynamic>),
       images: RecipeImages.fromJson(json['Images'] as Map<String, dynamic>),
@@ -78,6 +79,7 @@ Map<String, dynamic> _$RecipeModelToJson(RecipeModel instance) =>
       'country': instance.country,
       'Average_rating': instance.averageRating,
       'views': instance.views,
+      'isFavourite': instance.isFavourite,
       'createdBy': instance.createdBy,
       'Images': instance.images,
       'ingredients': instance.ingredients,

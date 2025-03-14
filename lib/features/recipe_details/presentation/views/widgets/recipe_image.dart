@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
-import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_details_saved_button.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/watch_video_button.dart';
 
 class RecipeImage extends StatelessWidget {
@@ -34,6 +34,7 @@ class RecipeImage extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
+                // ignore: deprecated_member_use
                 Colors.black.withOpacity(0.7),
               ],
             ),
@@ -46,8 +47,7 @@ class RecipeImage extends StatelessWidget {
               CustomRate(rate: recipeModel.averageRating.toString()),
               SizedBox(height: 10.h),
               WatchVideoButton(recipeModel: recipeModel),
-              const Align(
-                  alignment: Alignment.bottomRight, child: SaveRecipeButton()),
+              RecipeDetailsSavedButton(recipeModel: recipeModel)
             ],
           ),
         ),

@@ -51,7 +51,7 @@ class GetNewRecipesCubit extends Cubit<GetNewRecipesState> {
 
         recipes.addAll(newRecipes);
         currentPage++;
-        
+
         isFetching = false;
         emit(GetNewRecipesState.success(List.from(recipes)));
       },
@@ -60,5 +60,18 @@ class GetNewRecipesCubit extends Cubit<GetNewRecipesState> {
         emit(GetNewRecipesState.failure(error.errMessages));
       },
     );
+  }
+
+  void toggleRecipeFavoriteStatus(String recipeId) {
+    recipes = recipes.map((recipe) {
+      if (recipe.id == recipeId) {
+        bool isFov = recipe.isFavourite ?? false;
+        final updatedRecipe = recipe.copyWith(isFavourite: !isFov);
+        return updatedRecipe;
+      }
+      return recipe;
+    }).toList();
+
+    emit(GetNewRecipesState.success(List.from(recipes)));
   }
 }

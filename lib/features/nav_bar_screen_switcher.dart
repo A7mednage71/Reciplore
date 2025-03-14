@@ -8,13 +8,12 @@ import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
-import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
-import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/home_market/presentation/views/home_market_screen.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/views/screens/my_profile.dart';
+import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 import 'package:looqma/features/saved_recipe/presentation/views/saved_recipe_screen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -41,14 +40,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
           create: (context) => getIt<GetCountriesCubit>()..getCountries(),
         ),
         BlocProvider(
-            create: (context) => getIt<GetRecipesByCountryCubit>()
-              ..getRecipesByCountry(isRefresh: true)),
-        BlocProvider(
           create: (context) => getIt<GetCategoriesCubit>()..getCategories(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              getIt<GetNewRecipesCubit>()..getNewRecipes(isRefresh: true),
         ),
       ],
       child: const MyHomePage(),
@@ -79,6 +71,11 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
         screens: myScreens,
         navBarHeight: 65.h,
         hideNavigationBarWhenKeyboardAppears: true,
+        onItemSelected: (value) {
+          if (value == 1) {
+            context.read<GetSavedRecipesCubit>().getSavedRecipes();
+          }
+        },
         popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
         decoration: NavBarDecoration(
           colorBehindNavBar: Colors.white,
