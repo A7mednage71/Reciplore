@@ -15,8 +15,8 @@ import 'package:looqma/features/forget_password/presentation/views/forget_passwo
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
-import 'package:looqma/features/ingredient_details/presentation/views/ingredient_details_screen.dart';
-import 'package:looqma/features/ingredient_details/presentation/views/widgets/search_ingredients.dart';
+import 'package:looqma/features/market_ingredient_details/presentation/views/market_ingredient_details_screen.dart';
+import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/search_ingredients.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
@@ -99,18 +99,18 @@ class AppRouter {
             child: const SearchRecipes(),
           ),
         );
-        case Routes.searchIngredientsScreen:
+      case Routes.searchMarket:
         return MaterialPageRoute(
-          builder: (context) => const SearchIngredients(),
+          builder: (context) => const MarketSearchScreen(),
         );
       case Routes.showRecipeDetails:
         final recipeModel = argument as RecipeModel;
         return MaterialPageRoute(
           builder: (context) => RecipeDetailsScreen(recipeModel: recipeModel),
         );
-      case Routes.showIngredientDetails:
+      case Routes.marketIngredientsDetails:
         return MaterialPageRoute(
-          builder: (context) => const IngredientDetailsScreen(),
+          builder: (context) => const MarketIngredientDetailsScreen(),
         );
       case Routes.reviewScreen:
         return MaterialPageRoute(

@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/ingredient_details/presentation/views/widgets/ingredient_content.dart';
-import 'package:looqma/features/ingredient_details/presentation/views/widgets/quantity_and_add_to_cart.dart';
+import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/ingredient_content.dart';
+import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/quantity_and_add_to_cart.dart';
 
-class IngredientDetailsScreen extends StatelessWidget {
-  const IngredientDetailsScreen({super.key});
+class MarketIngredientDetailsScreen extends StatelessWidget {
+  const MarketIngredientDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

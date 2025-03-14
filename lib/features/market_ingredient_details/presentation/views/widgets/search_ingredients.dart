@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_appbar.dart';
 
-class SearchIngredients extends StatelessWidget {
-  const SearchIngredients({super.key});
+class MarketSearchScreen extends StatelessWidget {
+  const MarketSearchScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
