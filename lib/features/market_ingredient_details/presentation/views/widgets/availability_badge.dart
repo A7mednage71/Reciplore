@@ -17,8 +17,7 @@ class AvailabilityBadge extends StatelessWidget {
           isAvailable ? 'In Stock' : 'Unavailable',
           style: AppStyles.smallBoldText.copyWith(color: AppColors.white),
         ),
-        backgroundColor:
-            isAvailable ? AppColors.primaryMoreLight : AppColors.red,
+        backgroundColor: isAvailable ? AppColors.primarybright : AppColors.red,
         avatar: Icon(
           isAvailable ? Icons.check_circle : Icons.cancel,
           color: AppColors.white,

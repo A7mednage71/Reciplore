@@ -14,7 +14,7 @@ class MarketIngredientDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height * 0.5;
     return Scaffold(
-      appBar: const CustombackArrowAppbar(arrowBackColor: AppColors.white),
+      appBar: const CustombackArrowAppbar(),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColors.white,
       body: const Stack(

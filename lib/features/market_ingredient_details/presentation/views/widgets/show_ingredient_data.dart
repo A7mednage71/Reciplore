@@ -27,7 +27,7 @@ class ShowIngredientData extends StatelessWidget {
                       TextSpan(
                           text: "Rp 12,000",
                           style: AppStyles.largeBoldText
-                              .copyWith(color: AppColors.primaryMoreLight)),
+                              .copyWith(color: AppColors.primarybright)),
                       TextSpan(
                           text: " / kg",
                           style: AppStyles.mediumRegularText
