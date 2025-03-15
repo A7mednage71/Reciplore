@@ -10,65 +10,69 @@ class MarketIngredientItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const IngredientCachedImage(),
-        Container(
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(16.r),
-              bottomRight: Radius.circular(16.r),
-            ),
-            boxShadow: const [
-              BoxShadow(
-                color: AppColors.primaryDarker,
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: Offset(0, 3),
+    return SizedBox(
+      width: 150.w,
+      height: 250.h,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const IngredientCachedImage(),
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.white,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16.r),
+                bottomRight: Radius.circular(16.r),
               ),
-            ],
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(10.r),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Fresh Red Chili', style: AppStyles.smallBoldText),
-                SizedBox(height: 8.h),
-                RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                          text: "Rp 12,000",
-                          style: AppStyles.smallRegularText
-                              .copyWith(color: AppColors.primaryMoreLight)),
-                      TextSpan(
-                          text: "/ kg",
-                          style: AppStyles.extraSmallRegularText
-                              .copyWith(color: AppColors.grayLight)),
-                    ],
-                  ),
+              boxShadow: const [
+                BoxShadow(
+                  color: AppColors.primaryDarker,
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 3),
                 ),
-                SizedBox(height: 10.h),
-                Text(
-                  'Rp 14,000 ',
-                  style: AppStyles.extraSmallRegularText.copyWith(
-                    decoration: TextDecoration.lineThrough,
-                    decorationColor: AppColors.grayLight,
-                    color: AppColors.grayLight,
-                  ),
-                ),
-                SizedBox(height: 10.h),
-                const Align(
-                    alignment: Alignment.topRight,
-                    child: AddIngredientToCartHomeButton()),
               ],
             ),
+            child: Padding(
+              padding: EdgeInsets.all(10.r),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Fresh Red Chili', style: AppStyles.smallBoldText),
+                  SizedBox(height: 8.h),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: "Rp 12,000",
+                            style: AppStyles.smallRegularText
+                                .copyWith(color: AppColors.primarybright)),
+                        TextSpan(
+                            text: "/ kg",
+                            style: AppStyles.extraSmallRegularText
+                                .copyWith(color: AppColors.grayLight)),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  Text(
+                    'Rp 14,000 ',
+                    style: AppStyles.extraSmallRegularText.copyWith(
+                      decoration: TextDecoration.lineThrough,
+                      decorationColor: AppColors.grayLight,
+                      color: AppColors.grayLight,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  const Align(
+                      alignment: Alignment.topRight,
+                      child: AddIngredientToCartHomeButton()),
+                ],
+              ),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

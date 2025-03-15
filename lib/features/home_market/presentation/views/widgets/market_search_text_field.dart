@@ -8,20 +8,23 @@ class MarketSearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomTextField(
-      controller: TextEditingController(),
-      validator: null,
-      onChanged: (value) => null,
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-      keyboardType: TextInputType.text,
-      prefixIcon: Image.asset(
-        AppAssets.imagesSearchIcon,
-        height: 20.h,
-        width: 20.w,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: CustomTextField(
+        controller: TextEditingController(),
+        validator: null,
+        onChanged: (value) => null,
+        contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        keyboardType: TextInputType.text,
+        prefixIcon: Image.asset(
+          AppAssets.imagesSearchIcon,
+          height: 20.h,
+          width: 20.w,
+        ),
+        hintText: "Search for ingredients...",
+        readOnly: true,
+        onTap: () {},
       ),
-      hintText: "Search for ingredients...",
-      readOnly: true,
-      onTap: () {},
     );
   }
 }
