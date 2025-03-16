@@ -21,7 +21,6 @@ import 'package:looqma/features/otp_verify/data/models/resend_otp_response_model
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
 import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
-import 'package:looqma/features/sigh_up/data/models/sign_up_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
@@ -51,7 +50,7 @@ abstract class ApiService {
   );
 
   @POST(ApiConstants.signUp)
-  Future<SignUpResponseModel> signUp(
+  Future<ResponseMessageModel> signUp(
     @Body() SignUpRequestModel body,
   );
 
