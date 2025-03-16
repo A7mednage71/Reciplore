@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:looqma/core/common/recipe_save_toggle/models/recipe_save_toggle_reponse_model.dart';
 import 'package:looqma/core/networking/api_error.dart';
 import 'package:looqma/core/networking/api_result.dart';
 import 'package:looqma/core/networking/api_service.dart';
+import 'package:looqma/core/networking/response_message_model.dart';
 
 class RecipeSaveToggleRepo {
   final ApiService _apiService;
 
   RecipeSaveToggleRepo(this._apiService);
 
-  Future<ApiResult<RecipeSaveToggleReponseModel>> recipeSaveToggle(
+  Future<ApiResult<ResponseMessageModel>> recipeSaveToggle(
       {required String recipeId}) async {
     try {
       final result = await _apiService.recipeSaveToggle(recipeId);
