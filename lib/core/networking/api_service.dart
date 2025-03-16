@@ -13,7 +13,6 @@ import 'package:looqma/features/home/data/models/get_recipes_response_model.dart
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
-import 'package:looqma/features/my_profile/data/models/update_user_info_response_model.dart';
 import 'package:looqma/features/my_profile/data/models/upload_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
@@ -62,7 +61,7 @@ abstract class ApiService {
   Future<UserProfileResponseModel> getUserProfile();
 
   @PUT(ApiConstants.updateUser)
-  Future<UpdateUserinfoResponseModel> updateUserInfo(
+  Future<ResponseMessageModel> updateUserInfo(
     @Body() UpdateUserInfoRequestModel body,
   );
 
