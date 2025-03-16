@@ -17,6 +17,6 @@ class Routes {
   static const String watchRecipeVideo = 'watchRecipeVideo_Screen';
   static const String categoryRecipes = 'categoryRecipes_Screen';
   static const String cart = 'cart_Screen';
-  static const String showIngredientDetails = 'showIngredientDetails_Screen';
-  static const String searchIngredientsScreen = 'searchIngredientsScreen_Screen';
+  static const String marketIngredientsDetails = 'marketIngredientsDetails_Screen';
+  static const String searchMarket = 'searchMarket_Screen';
 }

@@ -6,6 +6,8 @@ class AppAssets {
 
   static const String imagesArrowLeft = "assets/images/arrow-left.svg";
 
+  static const String imagesCart = "assets/images/Cart.svg";
+
   static const String imagesChangePassword = "assets/images/change_password.json";
 
   static const String imagesDiscord = "assets/images/discord.png";
@@ -44,6 +46,8 @@ class AppAssets {
 
   static const String imagesReciploreSplash = "assets/images/Reciplore_splash.png";
 
+  static const String imagesRedChili = "assets/images/red_chili.jpg";
+
   static const String imagesSavedRecipeIcon = "assets/images/savedRecipeIcon.png";
 
   static const String imagesSavedRecipeTest = "assets/images/SavedRecipeTest.png";
@@ -73,11 +77,5 @@ class AppAssets {
   static const String imagesVerify = "assets/images/verify.json";
 
   static const String imagesWorningLottie = "assets/images/worning_lottie.json";
-
-
-  //manual
-  static const String imagesRedChili = "assets/images/red_chili.jpg";
-  static const String imagesFresh = "assets/images/fresh carrots.jpg";
-  static const String imagesCart = "assets/images/Cart.svg";
 }
 

@@ -1,4 +1,4 @@
 bool isUserlogged = false;
 
 String defaultUserImage =
-    'https://www.tenforums.com/attachments/user-accounts-family-safety/322690d1615743307-user-account-image-log-user.png';
+    'https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png';
