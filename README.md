@@ -24,7 +24,7 @@ Reciplore allows users to explore and discover recipes based on categories, coun
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/reciplore.git
+   git clone https://github.com/A7mednage71/Reciplore.git
    ```
 2. **Navigate to the project directory:**
    ```sh
