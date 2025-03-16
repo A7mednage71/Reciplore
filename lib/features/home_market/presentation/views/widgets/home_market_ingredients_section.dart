@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/home_market_ingredients_list_view.dart';
@@ -18,7 +19,10 @@ class HomeMarketIngredientsSection extends StatelessWidget {
               Text('Ingredients', style: AppStyles.mediumBoldText),
               const Spacer(),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context, rootNavigator: true)
+                      .pushNamed(Routes.allIngredients);
+                },
                 child: Row(
                   children: [
                     Text('See All',

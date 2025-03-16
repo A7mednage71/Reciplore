@@ -19,4 +19,5 @@ class Routes {
   static const String cart = 'cart_Screen';
   static const String marketIngredientsDetails = 'marketIngredientsDetails_Screen';
   static const String searchMarket = 'searchMarket_Screen';
+  static const String allIngredients = 'allIngredients_Screen';
 }
