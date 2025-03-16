@@ -6,7 +6,6 @@ import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
-import 'package:looqma/features/forget_password/data/models/forget_password_response.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_request.dart';
@@ -47,7 +46,7 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.forgetPassword)
-  Future<ForgetPasswordResponse> forgetPassword(
+  Future<ResponseMessageModel> forgetPassword(
     @Body() ForgetPasswordRequestModel body,
   );
 

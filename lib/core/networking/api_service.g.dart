@@ -105,7 +105,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ForgetPasswordResponse> forgetPassword(
+  Future<ResponseMessageModel> forgetPassword(
     ForgetPasswordRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -113,7 +113,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<ForgetPasswordResponse>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -124,9 +124,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ForgetPasswordResponse _value;
+    late ResponseMessageModel _value;
     try {
-      _value = ForgetPasswordResponse.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
