@@ -4,14 +4,16 @@ import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 
 class AllIngredientsGridView extends StatelessWidget {
-  const AllIngredientsGridView({super.key});
+  const AllIngredientsGridView({super.key, required this.scrollController});
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-        itemCount: 10,
+        itemCount: 100,
         padding: EdgeInsets.all(20.w),
+        controller: scrollController,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.h,

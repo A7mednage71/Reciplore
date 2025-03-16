@@ -1,15 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_appbar.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/all_ingredients/presentation/views/widgets/all_ingredients_grid_view.dart';
 
-class AllIngredientsScreen extends StatelessWidget {
+class AllIngredientsScreen extends StatefulWidget {
   const AllIngredientsScreen({super.key});
 
   @override
+  State<AllIngredientsScreen> createState() => _AllIngredientsScreenState();
+}
+
+class _AllIngredientsScreenState extends State<AllIngredientsScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(title: 'All Ingredients'),
-      body: AllIngredientsGridView(),
+    return Scaffold(
+      appBar: const CustomAppBar(title: 'All Ingredients'),
+      body: AllIngredientsGridView(scrollController: _scrollController),
+      floatingActionButton: Padding(
+        padding: EdgeInsets.only(bottom: 10.w),
+        child: Align(
+          alignment: Alignment.bottomRight,
+          child: FloatingActionButton(
+            backgroundColor: AppColors.primaryDarker,
+            onPressed: _scrollToTop,
+            child: const Icon(Icons.arrow_upward, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }
