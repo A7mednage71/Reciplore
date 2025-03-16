@@ -17,7 +17,6 @@ class IngredientCachedImage extends StatelessWidget {
       imageBuilder: (context, imageProvider) {
         return Container(
           height: 110.h,
-          width: 150.w,
           decoration: BoxDecoration(
             color: Colors.red,
             borderRadius: BorderRadius.only(
@@ -35,7 +34,6 @@ class IngredientCachedImage extends StatelessWidget {
         return Skeletonizer(
           child: Container(
             height: 110.h,
-            width: 150.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12.r),
