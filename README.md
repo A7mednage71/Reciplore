@@ -17,9 +17,8 @@ Reciplore allows users to explore and discover recipes based on categories, coun
 
 - **Frontend:** Flutter (for cross-platform mobile development)
 - **Backend:** Node.js (API for handling data and business logic)
-- **State Management:** GetX
+- **State Management:** cubit/bloc
 - **Database:** PostgreSQL / MongoDB (to store recipes, reviews, and user data)
-- **Video Streaming:** YouTube API
 
 ## 🚀 Installation
 
@@ -44,8 +43,6 @@ Reciplore allows users to explore and discover recipes based on categories, coun
 
 - **Node.js API** – Handles requests for recipes, reviews, and user authentication.
 - **PostgreSQL / MongoDB** – Stores recipes, user reviews, and categories.
-- **YouTube API** – Fetches instructional recipe videos.
-- **E-commerce API (Optional)** – Links to marketplaces for ingredient purchases.
 
 ## 🤝 Contribution
 
