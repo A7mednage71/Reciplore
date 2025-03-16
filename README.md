@@ -44,6 +44,14 @@ Reciplore allows users to explore and discover recipes based on categories, coun
 - **Node.js API** – Handles requests for recipes, reviews, and user authentication.
 - **PostgreSQL / MongoDB** – Stores recipes, user reviews, and categories.
 
+## 📱 Firebase App Distribution
+
+The app is distributed via Firebase App Distribution for testing purposes. You can download the latest version from the following link:
+
+Download Reciplore
+
+https://appdistribution.firebase.google.com/testerapps/1:833514715472:android:3fc9ba03ddfe9d9d2f9455/releases/0frs6p502nks0?utm_source=firebase-console
+
 ## 🤝 Contribution
 
 1. **Fork the repository**.
