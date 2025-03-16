@@ -248,12 +248,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UploadProfileImageModel> uploadUserImage(FormData file) async {
+  Future<ResponseMessageModel> uploadUserImage(FormData file) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = file;
-    final _options = _setStreamType<UploadProfileImageModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -264,9 +264,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UploadProfileImageModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = UploadProfileImageModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

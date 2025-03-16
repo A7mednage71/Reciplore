@@ -8,7 +8,6 @@ import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
-import 'package:looqma/features/my_profile/data/models/upload_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 
 class UserProfileRepo {
@@ -29,7 +28,7 @@ class UserProfileRepo {
     }
   }
 
-  Future<ApiResult<UploadProfileImageModel>> uploadProfileImage(
+  Future<ApiResult<ResponseMessageModel>> uploadProfileImage(
       {required XFile file}) async {
     try {
       // convert image to formdata
