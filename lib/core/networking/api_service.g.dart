@@ -49,13 +49,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<LoginResponseModel> login(LoginRequestModel body) async {
+  Future<ResponseMessageModel> login(LoginRequestModel body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<LoginResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -66,9 +66,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late LoginResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = LoginResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -105,7 +105,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ForgetPasswordResponse> forgetPassword(
+  Future<ResponseMessageModel> forgetPassword(
     ForgetPasswordRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -113,7 +113,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<ForgetPasswordResponse>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -124,9 +124,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ForgetPasswordResponse _value;
+    late ResponseMessageModel _value;
     try {
-      _value = ForgetPasswordResponse.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -135,13 +135,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<SignUpResponseModel> signUp(SignUpRequestModel body) async {
+  Future<ResponseMessageModel> signUp(SignUpRequestModel body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<SignUpResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -152,9 +152,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SignUpResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = SignUpResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -163,13 +163,13 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ResendOtpResponseModel> resendOtp(ResendOtpRequestModel body) async {
+  Future<ResponseMessageModel> resendOtp(ResendOtpRequestModel body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<ResendOtpResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -180,9 +180,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ResendOtpResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = ResendOtpResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -218,7 +218,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UpdateUserinfoResponseModel> updateUserInfo(
+  Future<ResponseMessageModel> updateUserInfo(
     UpdateUserInfoRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -226,7 +226,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<UpdateUserinfoResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -237,9 +237,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UpdateUserinfoResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = UpdateUserinfoResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -248,12 +248,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<UploadProfileImageModel> uploadUserImage(FormData file) async {
+  Future<ResponseMessageModel> uploadUserImage(FormData file) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = file;
-    final _options = _setStreamType<UploadProfileImageModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -264,9 +264,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late UploadProfileImageModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = UploadProfileImageModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -275,12 +275,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<DeleteProfileImageModel> deleteUserImage() async {
+  Future<ResponseMessageModel> deleteUserImage() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<DeleteProfileImageModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'DELETE', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -291,9 +291,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late DeleteProfileImageModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = DeleteProfileImageModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -302,7 +302,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ChangePasswordResponseModel> changePassword(
+  Future<ResponseMessageModel> changePassword(
     ChangePasswordRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -310,7 +310,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<ChangePasswordResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -321,9 +321,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ChangePasswordResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = ChangePasswordResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -414,12 +414,12 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<RecipeSaveToggleReponseModel> recipeSaveToggle(String id) async {
+  Future<ResponseMessageModel> recipeSaveToggle(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RecipeSaveToggleReponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -430,9 +430,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RecipeSaveToggleReponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = RecipeSaveToggleReponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

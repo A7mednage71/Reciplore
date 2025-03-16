@@ -5,10 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:looqma/core/networking/api_error.dart';
 import 'package:looqma/core/networking/api_result.dart';
 import 'package:looqma/core/networking/api_service.dart';
-import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
+import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
-import 'package:looqma/features/my_profile/data/models/update_user_info_response_model.dart';
-import 'package:looqma/features/my_profile/data/models/upload_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 
 class UserProfileRepo {
@@ -29,7 +27,7 @@ class UserProfileRepo {
     }
   }
 
-  Future<ApiResult<UploadProfileImageModel>> uploadProfileImage(
+  Future<ApiResult<ResponseMessageModel>> uploadProfileImage(
       {required XFile file}) async {
     try {
       // convert image to formdata
@@ -54,7 +52,7 @@ class UserProfileRepo {
     return formdata;
   }
 
-  Future<ApiResult<DeleteProfileImageModel>> deleteProfileImage() async {
+  Future<ApiResult<ResponseMessageModel>> deleteProfileImage() async {
     try {
       final result = await _apiService.deleteUserImage();
       return ApiResult.success(result);
@@ -66,7 +64,7 @@ class UserProfileRepo {
     }
   }
 
-  Future<ApiResult<UpdateUserinfoResponseModel>> updateUserInfo(
+  Future<ApiResult<ResponseMessageModel>> updateUserInfo(
       {required UpdateUserInfoRequestModel body}) async {
     try {
       final result = await _apiService.updateUserInfo(body);
