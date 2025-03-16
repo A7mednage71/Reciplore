@@ -4,7 +4,6 @@ import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/networking/refresh_token/refresh_token_response_model.dart';
 import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
-import 'package:looqma/features/change_password/data/models/change_password_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
@@ -72,7 +71,7 @@ abstract class ApiService {
   Future<ResponseMessageModel> deleteUserImage();
 
   @PUT(ApiConstants.changePassword)
-  Future<ChangePasswordResponseModel> changePassword(
+  Future<ResponseMessageModel> changePassword(
     @Body() ChangePasswordRequestModel body,
   );
 

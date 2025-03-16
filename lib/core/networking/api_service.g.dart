@@ -302,7 +302,7 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<ChangePasswordResponseModel> changePassword(
+  Future<ResponseMessageModel> changePassword(
     ChangePasswordRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -310,7 +310,7 @@ class _ApiService implements ApiService {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
-    final _options = _setStreamType<ChangePasswordResponseModel>(
+    final _options = _setStreamType<ResponseMessageModel>(
       Options(method: 'PUT', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -321,9 +321,9 @@ class _ApiService implements ApiService {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ChangePasswordResponseModel _value;
+    late ResponseMessageModel _value;
     try {
-      _value = ChangePasswordResponseModel.fromJson(_result.data!);
+      _value = ResponseMessageModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
