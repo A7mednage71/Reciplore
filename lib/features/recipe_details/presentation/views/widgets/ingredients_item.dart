@@ -12,14 +12,14 @@ class IngredientsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: EdgeInsets.symmetric(vertical: 10.h),
       child: Container(
         width: double.infinity,
         height: 76.h,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: AppColors.grayLighter,
           borderRadius: BorderRadius.all(
-            Radius.circular(12),
+            Radius.circular(12.r),
           ),
         ),
         child: Row(
@@ -46,8 +46,8 @@ class IngredientsItem extends StatelessWidget {
                     child: Container(
                       width: 52.w,
                       height: 52.h,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(12.r)),
                         color: AppColors.loadingColor,
                       ),
                     ),

@@ -16,7 +16,32 @@ class MarketIngredientItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const IngredientCachedImage(),
+          Stack(
+            children: [
+              const IngredientCachedImage(),
+              Positioned(
+                top: 0.h,
+                right: 0.w,
+                child: Container(
+                  height: 20.h,
+                  width: 40.w,
+                  decoration: BoxDecoration(
+                    color: AppColors.red,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(10.r),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '-20%',
+                      style: AppStyles.extraSmallRegularText
+                          .copyWith(color: AppColors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Container(
             decoration: BoxDecoration(
               color: AppColors.white,
