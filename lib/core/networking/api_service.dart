@@ -17,7 +17,6 @@ import 'package:looqma/features/my_profile/data/models/update_user_info_response
 import 'package:looqma/features/my_profile/data/models/upload_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
-import 'package:looqma/features/otp_verify/data/models/resend_otp_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
 import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
@@ -55,7 +54,7 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.resendOtp)
-  Future<ResendOtpResponseModel> resendOtp(
+  Future<ResponseMessageModel> resendOtp(
     @Body() ResendOtpRequestModel body,
   );
 
