@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:looqma/core/common/recipe_save_toggle/models/recipe_save_toggle_reponse_model.dart';
 import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/networking/refresh_token/refresh_token_response_model.dart';
+import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
@@ -11,7 +12,6 @@ import 'package:looqma/features/home/data/models/all_countries_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_request.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
-import 'package:looqma/features/login/data/models/login_response_model.dart';
 import 'package:looqma/features/my_profile/data/models/delete_profile_image_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_response_model.dart';
@@ -37,7 +37,7 @@ abstract class ApiService {
   );
 
   @POST(ApiConstants.login)
-  Future<LoginResponseModel> login(
+  Future<ResponseMessageModel> login(
     @Body() LoginRequestModel body,
   );
 
