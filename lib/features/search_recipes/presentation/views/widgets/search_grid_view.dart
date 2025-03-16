@@ -45,6 +45,7 @@ class _SearchRecipesGridViewState extends State<SearchRecipesGridView> {
   Widget build(BuildContext context) {
     return AnimationLimiter(
       child: GridView.builder(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 15.w,
