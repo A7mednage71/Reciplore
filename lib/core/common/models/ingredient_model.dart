@@ -22,6 +22,7 @@ class IngredientDataModel {
   @JsonKey(name: '_id')
   final String id;
   final String name;
+  final String? description;
   final double basePrice;
   final double appliedPrice;
   final int stock;
@@ -33,6 +34,7 @@ class IngredientDataModel {
   IngredientDataModel({
     required this.id,
     required this.name,
+    required this.description,
     required this.basePrice,
     required this.appliedPrice,
     required this.stock,

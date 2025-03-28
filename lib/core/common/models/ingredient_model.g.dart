@@ -23,6 +23,7 @@ IngredientDataModel _$IngredientDataModelFromJson(Map<String, dynamic> json) =>
     IngredientDataModel(
       id: json['_id'] as String,
       name: json['name'] as String,
+      description: json['description'] as String?,
       basePrice: (json['basePrice'] as num).toDouble(),
       appliedPrice: (json['appliedPrice'] as num).toDouble(),
       stock: (json['stock'] as num).toInt(),
@@ -36,6 +37,7 @@ Map<String, dynamic> _$IngredientDataModelToJson(
     <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,
+      'description': instance.description,
       'basePrice': instance.basePrice,
       'appliedPrice': instance.appliedPrice,
       'stock': instance.stock,
