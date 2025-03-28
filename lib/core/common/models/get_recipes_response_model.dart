@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:looqma/core/common/models/ingredient_model.dart';
 
 part 'get_recipes_response_model.g.dart';
 
@@ -182,61 +183,4 @@ class ImageURL {
       _$ImageURLFromJson(json);
 
   Map<String, dynamic> toJson() => _$ImageURLToJson(this);
-}
-
-@JsonSerializable()
-class IngredientModel {
-  @JsonKey(name: 'ingredient')
-  final IngredientDataModel ingredientData;
-  final String amount;
-
-  IngredientModel({required this.ingredientData, required this.amount});
-
-  factory IngredientModel.fromJson(Map<String, dynamic> json) =>
-      _$IngredientModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IngredientModelToJson(this);
-}
-
-@JsonSerializable()
-class IngredientDataModel {
-  @JsonKey(name: '_id')
-  final String id;
-  final String name;
-  final double basePrice;
-  final double appliedPrice;
-  final int stock;
-  @JsonKey(name: 'Average_rating')
-  final double averageRating;
-  final Discount discount;
-  final ImageURL image;
-
-  IngredientDataModel({
-    required this.id,
-    required this.name,
-    required this.basePrice,
-    required this.appliedPrice,
-    required this.stock,
-    required this.averageRating,
-    required this.discount,
-    required this.image,
-  });
-
-  factory IngredientDataModel.fromJson(Map<String, dynamic> json) =>
-      _$IngredientDataModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$IngredientDataModelToJson(this);
-}
-
-@JsonSerializable()
-class Discount {
-  final double amount;
-  final String type;
-
-  Discount({required this.amount, required this.type});
-
-  factory Discount.fromJson(Map<String, dynamic> json) =>
-      _$DiscountFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DiscountToJson(this);
 }

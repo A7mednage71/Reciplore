@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 
 class WatchVideoButton extends StatelessWidget {
   const WatchVideoButton({super.key, required this.recipeModel});

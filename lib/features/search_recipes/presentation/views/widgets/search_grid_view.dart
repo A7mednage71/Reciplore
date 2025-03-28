@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_grid_item.dart';
 

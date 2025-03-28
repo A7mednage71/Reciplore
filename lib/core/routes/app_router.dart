@@ -14,7 +14,7 @@ import 'package:looqma/features/forget_password/data/repos/forget_password_repo.
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';

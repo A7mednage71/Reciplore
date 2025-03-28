@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_cubit.dart';
 import 'package:looqma/core/common/widgets/save_recipe_button.dart';
 import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 
 class RecipeDetailsSavedButton extends StatefulWidget {

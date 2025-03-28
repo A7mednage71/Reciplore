@@ -7,7 +7,7 @@ import 'package:looqma/features/change_password/data/models/change_password_requ
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
