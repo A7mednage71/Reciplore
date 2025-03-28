@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:looqma/core/common/models/get_recipes_query_model.dart';
 import 'package:looqma/core/networking/api_constants.dart';
-import 'package:looqma/core/networking/refresh_token/refresh_token_response_model.dart';
+import 'package:looqma/core/common/models/refresh_token_response_model.dart';
 import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
