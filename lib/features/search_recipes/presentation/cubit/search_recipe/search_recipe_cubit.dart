@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/common/models/get_recipes_query_model.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
-import 'package:looqma/features/home/data/models/get_recipes_request.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
 
@@ -70,7 +70,7 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
     // to filter search results
 
     final result = await _searchRepo.searchRecipes(
-      request: GetRecipesRequest(
+      request: GetRecipesQueryModel(
         page: currentPage,
         search: searchController.text.trim(),
         rate: selectedRate,

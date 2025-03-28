@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_recipes_request.dart';
+part of 'get_recipes_query_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetRecipesRequest _$GetRecipesRequestFromJson(Map<String, dynamic> json) =>
-    GetRecipesRequest(
+GetRecipesQueryModel _$GetRecipesQueryModelFromJson(
+        Map<String, dynamic> json) =>
+    GetRecipesQueryModel(
       page: (json['page'] as num?)?.toInt(),
       limit: (json['limit'] as num?)?.toInt(),
       country: json['country'] as String?,
@@ -17,7 +18,8 @@ GetRecipesRequest _$GetRecipesRequestFromJson(Map<String, dynamic> json) =>
       sort: json['sort'] as String?,
     );
 
-Map<String, dynamic> _$GetRecipesRequestToJson(GetRecipesRequest instance) =>
+Map<String, dynamic> _$GetRecipesQueryModelToJson(
+        GetRecipesQueryModel instance) =>
     <String, dynamic>{
       'page': instance.page,
       'limit': instance.limit,

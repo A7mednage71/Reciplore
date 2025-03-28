@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:looqma/features/home/data/models/get_recipes_request.dart';
+import 'package:looqma/core/common/models/get_recipes_query_model.dart';
 import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
 
@@ -38,7 +38,7 @@ class GetRecipesByCountryCubit extends Cubit<GetRecipesByCountryState> {
     isFetching = true;
 
     final result = await _homeRepo.getRecipes(
-      request: GetRecipesRequest(
+      request: GetRecipesQueryModel(
         page: currentPage,
         limit: 5,
         country: selectedCountryId,

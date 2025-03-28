@@ -386,7 +386,9 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetRecipesResponseModel> getRecipes(GetRecipesRequest request) async {
+  Future<GetRecipesResponseModel> getRecipes(
+    GetRecipesQueryModel request,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(request.toJson());
