@@ -1,0 +1,25 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'get_ingredients_query_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+GetIngredientsQueryModel _$GetIngredientsQueryModelFromJson(
+        Map<String, dynamic> json) =>
+    GetIngredientsQueryModel(
+      page: (json['page'] as num?)?.toInt(),
+      limit: (json['limit'] as num?)?.toInt(),
+      search: json['search'] as String?,
+      sort: json['sort'] as String?,
+    );
+
+Map<String, dynamic> _$GetIngredientsQueryModelToJson(
+        GetIngredientsQueryModel instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'limit': instance.limit,
+      'search': instance.search,
+      'sort': instance.sort,
+    };
