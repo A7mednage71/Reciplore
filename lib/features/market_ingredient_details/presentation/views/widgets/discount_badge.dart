@@ -22,7 +22,7 @@ class DiscountBadge extends StatelessWidget {
           Icon(Icons.local_offer, color: AppColors.white, size: 18.r),
           SizedBox(width: 4.w),
           Text(
-            '$discountPercentage% OFF',
+            '$discountPercentage % OFF',
             style: AppStyles.smallRegularText.copyWith(color: AppColors.white),
           ),
         ],

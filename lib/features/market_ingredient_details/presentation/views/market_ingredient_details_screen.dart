@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/models/ingredient_model.dart';
 import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/discount_badge.dart';
@@ -8,8 +9,9 @@ import 'package:looqma/features/market_ingredient_details/presentation/views/wid
 import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/show_ingredient_data.dart';
 
 class MarketIngredientDetailsScreen extends StatelessWidget {
-  const MarketIngredientDetailsScreen({super.key});
-
+  const MarketIngredientDetailsScreen(
+      {super.key, required this.ingredientDataModel});
+  final IngredientDataModel ingredientDataModel;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height * 0.5;
@@ -17,15 +19,19 @@ class MarketIngredientDetailsScreen extends StatelessWidget {
       appBar: const CustombackArrowAppbar(),
       extendBodyBehindAppBar: true,
       backgroundColor: AppColors.white,
-      body: const Stack(
+      body: Stack(
         children: [
-          IngredientDetailsCachedImage(),
-          Positioned(
-            top: 40,
-            right: 20,
-            height: 40,
-            child: DiscountBadge(discountPercentage: 15),
-          ),
+          IngredientDetailsCachedImage(
+              image: ingredientDataModel.image.secureUrl),
+          if (ingredientDataModel.discount.amount > 4)
+            Positioned(
+              top: 40,
+              right: 20,
+              height: 40,
+              child: DiscountBadge(
+                discountPercentage: ingredientDataModel.discount.amount.toInt(),
+              ),
+            ),
         ],
       ),
       bottomSheet: Container(
@@ -36,7 +42,7 @@ class MarketIngredientDetailsScreen extends StatelessWidget {
             top: Radius.circular(30.r),
           ),
         ),
-        child: const ShowIngredientData(),
+        child: ShowIngredientData(ingredient: ingredientDataModel),
       ),
       bottomNavigationBar: const IngredientQuantityAndCartButton(),
     );
