@@ -20,7 +20,7 @@ class MarketIngredientItem extends StatelessWidget {
           Stack(
             children: [
               IngredientCachedImage(image: ingredient.image.secureUrl),
-              if (ingredient.discount.amount > 4)
+              if (ingredient.discount.amount > 0)
                 Positioned(
                   top: 0.h,
                   right: 0.w,
@@ -88,7 +88,9 @@ class MarketIngredientItem extends StatelessWidget {
                   ),
                   SizedBox(height: 10.h),
                   Text(
-                    "\$${ingredient.basePrice}",
+                    ingredient.discount.amount > 0
+                        ? "\$${ingredient.basePrice}"
+                        : "",
                     style: AppStyles.smallRegularText.copyWith(
                       decoration: TextDecoration.lineThrough,
                       decorationColor: AppColors.grayLight,

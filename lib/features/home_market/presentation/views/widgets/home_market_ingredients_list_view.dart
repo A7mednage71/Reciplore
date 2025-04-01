@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
+import 'package:looqma/features/home_market/presentation/views/widgets/loading_ingredients_listview.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 
 class HomeMarketIngredientsListView extends StatelessWidget {
@@ -20,10 +21,10 @@ class HomeMarketIngredientsListView extends StatelessWidget {
           return state.maybeWhen(
             orElse: () => const SizedBox.shrink(),
             failure: (failure) => FailureState(hight: 50.h, message: failure),
-            loading: () => const CircularProgressIndicator(),
+            loading: () => const LoadingIngredientsListView(),
             fetchIngredientsSuccess: (ingredients) {
               return ListView.builder(
-                itemCount: 10,
+                itemCount: ingredients.length,
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.only(left: 20.w, right: 20.w),

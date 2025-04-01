@@ -38,11 +38,12 @@ class ShowIngredientData extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 12.w),
-                Text("\$${ingredient.basePrice}",
-                    style: AppStyles.smallRegularText.copyWith(
-                        color: AppColors.grayLight,
-                        decorationColor: AppColors.grayLight,
-                        decoration: TextDecoration.lineThrough)),
+                if (ingredient.discount.amount > 0)
+                  Text("\$${ingredient.basePrice}",
+                      style: AppStyles.smallRegularText.copyWith(
+                          color: AppColors.grayLight,
+                          decorationColor: AppColors.grayLight,
+                          decoration: TextDecoration.lineThrough)),
               ],
             ),
             SizedBox(height: 15.h),

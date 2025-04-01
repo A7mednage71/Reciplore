@@ -43,11 +43,21 @@ class IngredientCachedImage extends StatelessWidget {
           ),
         );
       },
-      errorWidget: (context, url, error) => const Icon(
-        Icons.error,
-        color: AppColors.red,
+      errorWidget: (context, url, error) => Center(
+        child: Container(
+          height: 110.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12.r),
+              topRight: Radius.circular(12.r),
+            ),
+          ),
+          child: const Icon(
+            Icons.error,
+            color: AppColors.red,
+          ),
+        ),
       ),
-      fit: BoxFit.fill,
     );
   }
 }

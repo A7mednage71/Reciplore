@@ -23,7 +23,7 @@ class MarketIngredientDetailsScreen extends StatelessWidget {
         children: [
           IngredientDetailsCachedImage(
               image: ingredientDataModel.image.secureUrl),
-          if (ingredientDataModel.discount.amount > 4)
+          if (ingredientDataModel.discount.amount > 0)
             Positioned(
               top: 40,
               right: 20,
