@@ -11,9 +11,9 @@ class GetIngredientsQueryModel {
 
   GetIngredientsQueryModel({
     required this.page,
-    required this.limit,
-    required this.search,
-    required this.sort,
+    this.limit,
+    this.search,
+    this.sort,
   });
 
   factory GetIngredientsQueryModel.fromJson(Map<String, dynamic> json) =>
