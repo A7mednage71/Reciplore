@@ -17,6 +17,7 @@ import 'package:looqma/features/forget_password/presentation/cubit/forget_passwo
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
+import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/login/presentation/views/login_screen.dart';
@@ -135,8 +136,12 @@ class AppRouter {
           builder: (context) => const CartScreen(),
         );
       case Routes.allIngredients:
+        final homeMarketCubit = argument as HomeMarketCubit;
         return MaterialPageRoute(
-          builder: (context) => const AllIngredientsScreen(),
+          builder: (context) => BlocProvider.value(
+            value: homeMarketCubit,
+            child: const AllIngredientsScreen(),
+          ),
         );
       case Routes.profile:
         return MaterialPageRoute(

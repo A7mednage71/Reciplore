@@ -49,7 +49,8 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
     const SavedRecipeScreen(),
     const ChatBot(),
     BlocProvider(
-      create: (context) => getIt<HomeMarketCubit>()..getIngredients(),
+      create: (context) =>
+          getIt<HomeMarketCubit>()..getIngredients(isRefresh: true),
       child: const HomeMarketScreen(),
     ),
     MultiBlocProvider(

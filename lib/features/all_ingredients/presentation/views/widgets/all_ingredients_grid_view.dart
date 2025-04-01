@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/core/utils/app_colors.dart';
+import 'package:looqma/features/all_ingredients/presentation/views/widgets/all_ingredients_loading_grid_view.dart';
+import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 
 class AllIngredientsGridView extends StatelessWidget {
@@ -10,23 +16,58 @@ class AllIngredientsGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GridView.builder(
-        itemCount: 100,
-        padding: EdgeInsets.all(20.w),
-        controller: scrollController,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10.h,
-          crossAxisSpacing: 15.w,
-          childAspectRatio: 0.65,
-        ),
-        itemBuilder: (context, index) {
-          return GestureDetector(
-              onTap: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamed(Routes.marketIngredientsDetails);
-              },
-              child: const MarketIngredientItem());
+      child: BlocBuilder<HomeMarketCubit, HomeMarketState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            orElse: () => const SizedBox.shrink(),
+            failure: (failure) => FailureState(hight: 50.h, message: failure),
+            loading: () => const AllIngredientsLoadingGridView(),
+            fetchIngredientsSuccess: (ingredients) {
+              return RefreshIndicator(
+                color: AppColors.primaryDarker,
+                onRefresh: () async {
+                  context
+                      .read<HomeMarketCubit>()
+                      .getIngredients(isRefresh: true);
+                },
+                child: AnimationLimiter(
+                  child: GridView.builder(
+                    itemCount: ingredients.length,
+                    padding: EdgeInsets.all(20.w),
+                    controller: scrollController,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 10.h,
+                      crossAxisSpacing: 15.w,
+                      childAspectRatio: 0.65,
+                    ),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context, rootNavigator: true).pushNamed(
+                              Routes.marketIngredientsDetails,
+                              arguments: ingredients[index]);
+                        },
+                        child: AnimationConfiguration.staggeredGrid(
+                          position: index,
+                          columnCount: 2,
+                          duration: const Duration(milliseconds: 500),
+                          child: SlideAnimation(
+                            verticalOffset: 100.0,
+                            child: FadeInAnimation(
+                              child: MarketIngredientItem(
+                                ingredient: ingredients[index],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              );
+            },
+          );
         },
       ),
     );

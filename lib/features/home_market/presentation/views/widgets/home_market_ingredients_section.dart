@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/home_market_ingredients_list_view.dart';
 
 class HomeMarketIngredientsSection extends StatelessWidget {
@@ -10,6 +12,7 @@ class HomeMarketIngredientsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homemarketcubit = context.read<HomeMarketCubit>();
     return Column(
       children: [
         Padding(
@@ -20,8 +23,9 @@ class HomeMarketIngredientsSection extends StatelessWidget {
               const Spacer(),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context, rootNavigator: true)
-                      .pushNamed(Routes.allIngredients);
+                  Navigator.of(context, rootNavigator: true).pushNamed(
+                      Routes.allIngredients,
+                      arguments: homemarketcubit);
                 },
                 child: Row(
                   children: [

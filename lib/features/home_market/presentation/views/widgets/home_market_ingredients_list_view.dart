@@ -24,7 +24,7 @@ class HomeMarketIngredientsListView extends StatelessWidget {
             loading: () => const LoadingIngredientsListView(),
             fetchIngredientsSuccess: (ingredients) {
               return ListView.builder(
-                itemCount: ingredients.length,
+                itemCount: 10,
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.only(left: 20.w, right: 20.w),

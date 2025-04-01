@@ -33,8 +33,6 @@ class HomeMarketCubit extends Cubit<HomeMarketState> {
 
     isFetching = true;
 
-    emit(const HomeMarketState.loading());
-
     final result = await _homeMarketRepo.getIngredients(
       query: GetIngredientsQueryModel(page: currentPage, limit: 10),
     );
