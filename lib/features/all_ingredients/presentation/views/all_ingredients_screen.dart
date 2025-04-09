@@ -24,11 +24,12 @@ class _AllIngredientsScreenState extends State<AllIngredientsScreen> {
 
   void _onScroll() {
     final cubit = context.read<HomeMarketCubit>();
-
+    final currentState = cubit.state;
+    
     if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent * 0.6 &&
-        !cubit.isFetching &&
-        cubit.hasNextPage) {
+        !currentState.isFetching &&
+        currentState.hasNextPage) {
       cubit.getIngredients();
     }
   }
