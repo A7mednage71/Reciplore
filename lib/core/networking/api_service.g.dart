@@ -386,7 +386,9 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<GetRecipesResponseModel> getRecipes(GetRecipesRequest request) async {
+  Future<GetRecipesResponseModel> getRecipes(
+    GetRecipesQueryModel request,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     queryParameters.addAll(request.toJson());
@@ -460,6 +462,36 @@ class _ApiService implements ApiService {
     late GetRecipesResponseModel _value;
     try {
       _value = GetRecipesResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<GetIngredientsResponseModel> getIngredients(
+    GetIngredientsQueryModel request,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(request.toJson());
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<GetIngredientsResponseModel>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/ingredient/list',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late GetIngredientsResponseModel _value;
+    try {
+      _value = GetIngredientsResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

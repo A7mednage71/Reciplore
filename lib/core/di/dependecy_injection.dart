@@ -14,6 +14,8 @@ import 'package:looqma/features/home/presentation/cubit/get_categories/get_categ
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_new_recipes/get_new_recipes_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
+import 'package:looqma/features/home_market/data/repos/home_market_repo.dart';
+import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/login/data/repos/login_repo.dart';
 import 'package:looqma/features/login/presentation/cubit/login_cubit.dart';
 import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
@@ -104,5 +106,11 @@ Future<void> setupGetIt() async {
     ..registerLazySingleton<SavedRecipesRepo>(
         () => SavedRecipesRepo(getIt<ApiService>()))
     ..registerFactory<GetSavedRecipesCubit>(
-        () => GetSavedRecipesCubit(getIt<SavedRecipesRepo>()));
+        () => GetSavedRecipesCubit(getIt<SavedRecipesRepo>()))
+
+    // home market
+    ..registerLazySingleton<HomeMarketRepo>(
+        () => HomeMarketRepo(getIt<ApiService>()))
+    ..registerFactory<HomeMarketCubit>(
+        () => HomeMarketCubit(getIt<HomeMarketRepo>()));
 }

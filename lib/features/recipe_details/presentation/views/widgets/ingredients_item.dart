@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/models/ingredient_model.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class IngredientsItem extends StatelessWidget {

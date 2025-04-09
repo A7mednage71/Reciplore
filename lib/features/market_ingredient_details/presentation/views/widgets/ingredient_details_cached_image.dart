@@ -7,14 +7,14 @@ import 'package:skeletonizer/skeletonizer.dart';
 class IngredientDetailsCachedImage extends StatelessWidget {
   const IngredientDetailsCachedImage({
     super.key,
+    required this.image,
   });
-
+  final String image;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height * 0.45;
     return CachedNetworkImage(
-      imageUrl:
-          'https://res.cloudinary.com/dfdmgqhwa/image/upload/v1739636779/recipesSystem/ingredients/zxvs3jhve2pdviflgp7v.png',
+      imageUrl: image,
       imageBuilder: (context, imageProvider) {
         return Container(
           height: height,

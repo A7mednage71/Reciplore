@@ -1,18 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:looqma/core/common/models/get_recipes_query_model.dart';
+import 'package:looqma/core/common/models/get_ingredients_query_model.dart';
+import 'package:looqma/core/common/models/get_ingredients_response_model.dart';
 import 'package:looqma/core/networking/api_error.dart';
 import 'package:looqma/core/networking/api_result.dart';
 import 'package:looqma/core/networking/api_service.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 
-class SearchRepo {
-  SearchRepo(this._apiService);
+class HomeMarketRepo {
   final ApiService _apiService;
 
-  Future<ApiResult<GetRecipesResponseModel>> searchRecipes(
-      {required GetRecipesQueryModel request}) async {
+  HomeMarketRepo(this._apiService);
+
+  Future<ApiResult<GetIngredientsResponseModel>> getIngredients({
+    required GetIngredientsQueryModel query,
+  }) async {
     try {
-      final result = await _apiService.getRecipes(request);
+      final result = await _apiService.getIngredients(query);
       return ApiResult.success(result);
     } catch (e) {
       if (e is DioException) {

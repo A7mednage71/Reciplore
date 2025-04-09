@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YouTubeVideoScreen extends StatefulWidget {

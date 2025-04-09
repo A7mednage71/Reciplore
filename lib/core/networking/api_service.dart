@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:looqma/core/common/models/get_ingredients_query_model.dart';
+import 'package:looqma/core/common/models/get_ingredients_response_model.dart';
+import 'package:looqma/core/common/models/get_recipes_query_model.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/models/refresh_token_response_model.dart';
 import 'package:looqma/core/networking/api_constants.dart';
-import 'package:looqma/core/networking/refresh_token/refresh_token_response_model.dart';
 import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
-import 'package:looqma/features/home/data/models/get_recipes_request.dart';
-import 'package:looqma/features/home/data/models/get_recipes_response_model.dart';
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
@@ -83,7 +85,7 @@ abstract class ApiService {
 
   @GET(ApiConstants.getRecipes)
   Future<GetRecipesResponseModel> getRecipes(
-    @Queries() GetRecipesRequest request,
+    @Queries() GetRecipesQueryModel request,
   );
 
   @POST(ApiConstants.recipeSaveToggle)
@@ -91,4 +93,10 @@ abstract class ApiService {
 
   @GET(ApiConstants.getSavedRecipes)
   Future<GetRecipesResponseModel> getSavedRecipes();
+
+  // home market services
+  @GET(ApiConstants.getIngredients)
+  Future<GetIngredientsResponseModel> getIngredients(
+    @Queries() GetIngredientsQueryModel request,
+  );
 }

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/models/ingredient_model.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dart';
 import 'package:looqma/features/market_ingredient_details/presentation/views/widgets/availability_badge.dart';
 
 class ShowIngredientData extends StatelessWidget {
-  const ShowIngredientData({super.key});
+  const ShowIngredientData({super.key, required this.ingredient});
+  final IngredientDataModel ingredient;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class ShowIngredientData extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20.h),
-            Text('Fresh Carrot', style: AppStyles.largeBoldText),
+            Text(ingredient.name, style: AppStyles.largeBoldText),
             SizedBox(height: 10.h),
             Row(
               children: [
@@ -25,7 +27,7 @@ class ShowIngredientData extends StatelessWidget {
                   text: TextSpan(
                     children: [
                       TextSpan(
-                          text: "Rp 12,000",
+                          text: "\$${ingredient.appliedPrice}",
                           style: AppStyles.largeBoldText
                               .copyWith(color: AppColors.primarybright)),
                       TextSpan(
@@ -36,15 +38,16 @@ class ShowIngredientData extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 12.w),
-                Text('Rp 21,000',
-                    style: AppStyles.smallRegularText.copyWith(
-                        color: AppColors.grayLight,
-                        decorationColor: AppColors.grayLight,
-                        decoration: TextDecoration.lineThrough)),
+                if (ingredient.discount.amount > 0)
+                  Text("\$${ingredient.basePrice}",
+                      style: AppStyles.smallRegularText.copyWith(
+                          color: AppColors.grayLight,
+                          decorationColor: AppColors.grayLight,
+                          decoration: TextDecoration.lineThrough)),
               ],
             ),
             SizedBox(height: 15.h),
-            const AvailabilityBadge(isAvailable: true),
+            AvailabilityBadge(isAvailable: ingredient.stock > 0),
             SizedBox(height: 12.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -52,13 +55,14 @@ class ShowIngredientData extends StatelessWidget {
                 Text("Description",
                     style: AppStyles.mediumRegularText
                         .copyWith(color: AppColors.grayLight)),
-                const RatingStars(rating: 3),
+                RatingStars(rating: ingredient.averageRating),
               ],
             ),
             SizedBox(height: 12.h),
             Text(
-                'A fresh carrot is a vibrant orange root vegetable known for its crisp texture and sweet flavor. Rich in vitamins, particularly vitamin A, and antioxidants, it is commonly eaten raw, cooked, or juiced. Carrots are widely used in salads, soups, and snacks',
-                style: AppStyles.smallRegularText),
+              ingredient.description ?? "",
+              style: AppStyles.smallRegularText,
+            ),
           ],
         ),
       ),

@@ -28,4 +28,7 @@ class ApiConstants {
   static const String getRecipes = '/recipe/list';
   static const String recipeSaveToggle = '/auth/toogle-favourite/{id}';
   static const String getSavedRecipes = '/auth/get-favourite';
+
+  // market end points
+  static const String getIngredients = '/ingredient/list';
 }
