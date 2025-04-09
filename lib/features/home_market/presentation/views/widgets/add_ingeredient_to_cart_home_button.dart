@@ -23,8 +23,8 @@ class AddIngredientToCartHomeButton extends StatelessWidget {
         ),
         child: Center(
           child: Icon(
-            Icons.add,
-            size: 25.r,
+            Icons.remove_shopping_cart,
+            size: 20.r,
             color: AppColors.primaryDark,
           ),
         ),
