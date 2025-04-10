@@ -31,4 +31,11 @@ class ApiConstants {
 
   // market end points
   static const String getIngredients = '/ingredient/list';
+
+  // cart end points
+  static const String getCart = '/cart/';
+  static const String addToCart = '/cart/add';
+  static const String removeFromCart = '/cart/remove/{id}';
+  static const String updateCart = '/cart/update/{id}';
+  static const String clearCart = '/cart/clear';
 }

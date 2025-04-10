@@ -6,6 +6,9 @@ import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/models/refresh_token_response_model.dart';
 import 'package:looqma/core/networking/api_constants.dart';
 import 'package:looqma/core/networking/response_message_model.dart';
+import 'package:looqma/features/cart/data/models/add_to_cart_request_model.dart';
+import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
+import 'package:looqma/features/cart/data/models/update_cart_request_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
@@ -99,4 +102,25 @@ abstract class ApiService {
   Future<GetIngredientsResponseModel> getIngredients(
     @Queries() GetIngredientsQueryModel request,
   );
+
+  // cart services
+  @GET(ApiConstants.getCart)
+  Future<GetCartReponseModel> getCart();
+
+  @POST(ApiConstants.addToCart)
+  Future<ResponseMessageModel> addToCart(
+    @Body() AddToCartRequestModel body,
+  );
+
+  @PUT(ApiConstants.removeFromCart)
+  Future<ResponseMessageModel> removeFromCart(@Path('id') String id);
+
+  @PUT(ApiConstants.updateCart)
+  Future<ResponseMessageModel> updateCart(
+    @Path('id') String id,
+    @Body() UpdateCartRequestModel body,
+  );
+
+  @DELETE(ApiConstants.clearCart)
+  Future<ResponseMessageModel> clearCart();
 }
