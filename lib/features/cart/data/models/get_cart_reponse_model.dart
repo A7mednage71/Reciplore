@@ -5,10 +5,10 @@ part 'get_cart_reponse_model.g.dart';
 
 @JsonSerializable()
 class GetCartReponseModel {
-  final CartDataModel cart;
+  final CartDataModel? cart;
   GetCartReponseModel({required this.cart});
 
-  factory GetCartReponseModel.fromJson(Map<String, dynamic> json) =>
+  factory GetCartReponseModel.fromJson(dynamic json) =>
       _$GetCartReponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetCartReponseModelToJson(this);

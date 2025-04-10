@@ -8,7 +8,9 @@ part of 'get_cart_reponse_model.dart';
 
 GetCartReponseModel _$GetCartReponseModelFromJson(Map<String, dynamic> json) =>
     GetCartReponseModel(
-      cart: CartDataModel.fromJson(json['cart'] as Map<String, dynamic>),
+      cart: json['cart'] == null
+          ? null
+          : CartDataModel.fromJson(json['cart'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GetCartReponseModelToJson(

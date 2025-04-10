@@ -15,7 +15,7 @@ class CartScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartIngredients = cartReponseModel.cart.ingredients;
+    final cartIngredients = cartReponseModel.cart!.ingredients;
     return Column(
       children: [
         Expanded(
@@ -37,7 +37,7 @@ class CartScreenBody extends StatelessWidget {
             ),
           ),
         ),
-        CartTotalSection(cartDataModel: cartReponseModel.cart),
+        CartTotalSection(cartDataModel: cartReponseModel.cart!),
       ],
     );
   }

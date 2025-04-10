@@ -47,8 +47,8 @@ class _CartScreenState extends State<CartScreen> {
               child:
                   SpinKitFadingCircle(color: AppColors.primaryDark, size: 60.r),
             );
-          } else if (state.getCartReponseModel == null ||
-              state.getCartReponseModel!.cart.ingredients.isEmpty) {
+          } else if (state.getCartReponseModel?.cart == null ||
+              state.getCartReponseModel!.cart!.ingredients.isEmpty) {
             return EmptyState(message: 'Cart is empty', value: 250.h);
           } else {
             return CartScreenBody(cartReponseModel: state.getCartReponseModel!);

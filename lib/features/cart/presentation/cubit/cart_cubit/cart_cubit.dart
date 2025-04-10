@@ -58,15 +58,15 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         // get removed cart ingredient
-        final cartIngredientModel = state.getCartReponseModel!.cart.ingredients
+        final cartIngredientModel = state.getCartReponseModel!.cart!.ingredients
             .firstWhere((element) => element.ingredient.id == id);
         // update subTotal after removing
-        final newSubTotal = state.getCartReponseModel!.cart.subTotal -
+        final newSubTotal = state.getCartReponseModel!.cart!.subTotal -
             (cartIngredientModel.price * cartIngredientModel.quantity);
         // update cart list
-        final updatedCart = state.getCartReponseModel!.cart.copyWith(
+        final updatedCart = state.getCartReponseModel!.cart!.copyWith(
             subTotal: newSubTotal,
-            ingredients: state.getCartReponseModel!.cart.ingredients
+            ingredients: state.getCartReponseModel!.cart!.ingredients
                 .where((element) => element.ingredient.id != id)
                 .toList());
 
@@ -95,17 +95,17 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         // get updated cart ingredient
-        final cartIngredientModel = state.getCartReponseModel!.cart.ingredients
+        final cartIngredientModel = state.getCartReponseModel!.cart!.ingredients
             .firstWhere((element) => element.ingredient.id == id);
         // update subTotal after update quantity
-        final newSubTotal = state.getCartReponseModel!.cart.subTotal +
+        final newSubTotal = state.getCartReponseModel!.cart!.subTotal +
             ((updateCartRequestModel.quantity - cartIngredientModel.quantity) *
                 cartIngredientModel.price);
         // update cart list
-        final updatedCart = state.getCartReponseModel!.cart.copyWith(
+        final updatedCart = state.getCartReponseModel!.cart!.copyWith(
           subTotal: newSubTotal,
           ingredients:
-              state.getCartReponseModel!.cart.ingredients.map((element) {
+              state.getCartReponseModel!.cart!.ingredients.map((element) {
             if (element.ingredient.id == id) {
               return cartIngredientModel.copyWith(
                   quantity: updateCartRequestModel.quantity);
