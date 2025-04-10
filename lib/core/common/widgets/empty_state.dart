@@ -11,21 +11,23 @@ class EmptyState extends StatelessWidget {
   final double? value;
   @override
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: 0.7,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Lottie.asset(
-            AppAssets.imagesEmptyBox,
-            height: value ?? 150.h,
-            width: value ?? 200.w,
-          ),
-          Text(message ?? 'No Recipes Found',
-              style: AppStyles.smallBoldText.copyWith(
-                color: AppColors.secondaryDarker,
-              )),
-        ],
+    return Center(
+      child: Opacity(
+        opacity: 0.7,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Lottie.asset(
+              AppAssets.imagesEmptyBox,
+              height: value ?? 150.h,
+              width: value ?? 200.w,
+            ),
+            Text(message ?? 'No Recipes Found',
+                style: AppStyles.smallBoldText.copyWith(
+                  color: AppColors.secondaryDarker,
+                )),
+          ],
+        ),
       ),
     );
   }
