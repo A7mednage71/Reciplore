@@ -7,6 +7,7 @@ import 'package:looqma/core/common/screens/no_route_screen.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/all_ingredients/presentation/views/all_ingredients_screen.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/cart/presentation/views/cart_screen.dart';
 import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
@@ -132,8 +133,12 @@ class AppRouter {
           builder: (context) => const ChatScreen(),
         );
       case Routes.cart:
+        final CartCubit cartCubit = argument as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => const CartScreen(),
+          builder: (context) => BlocProvider.value(
+            value: cartCubit,
+            child: const CartScreen(),
+          ),
         );
       case Routes.allIngredients:
         final homeMarketCubit = argument as HomeMarketCubit;
