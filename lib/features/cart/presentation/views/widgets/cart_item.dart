@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/cart/presentation/views/widgets/update_amount_of_cart_item.dart';
+import 'package:looqma/features/home_market/presentation/views/widgets/ingredient_cached_image.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
-
+  const CartItem({super.key, required this.cartIngredientModel});
+  final CartIngredientModel cartIngredientModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +23,11 @@ class CartItem extends StatelessWidget {
           extentRatio: 0.2,
           children: [
             SlidableAction(
-              onPressed: (context) {},
+              onPressed: (context) async {
+                await context
+                    .read<CartCubit>()
+                    .removeFromCart(cartIngredientModel.ingredient.id);
+              },
               backgroundColor: AppColors.red,
               foregroundColor: AppColors.white,
               icon: Icons.clear,
@@ -38,10 +45,10 @@ class CartItem extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  AppAssets.imagesIngrediant,
+                SizedBox(
                   width: 100.w,
-                  height: 100.h,
+                  child: IngredientCachedImage(
+                      image: cartIngredientModel.ingredient.image.secureUrl),
                 ),
                 10.w.horizontalSpace,
                 Expanded(
@@ -50,7 +57,7 @@ class CartItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Baby Plum Tomatoes',
+                        cartIngredientModel.ingredient.name,
                         style: AppStyles.smallBoldText,
                       ),
                       5.h.verticalSpace,
@@ -61,7 +68,7 @@ class CartItem extends StatelessWidget {
                       ),
                       10.h.verticalSpace,
                       Text(
-                        '\$20.00',
+                        '\$${(cartIngredientModel.price * cartIngredientModel.quantity).toStringAsFixed(2)}',
                         style: AppStyles.smallBoldText
                             .copyWith(color: AppColors.primaryDark),
                       ),
@@ -69,7 +76,8 @@ class CartItem extends StatelessWidget {
                   ),
                 ),
                 5.w.horizontalSpace,
-                const UpdateAmountOfCartItem(),
+                UpdateAmountOfCartItem(
+                    cartIngredientModel: cartIngredientModel),
               ],
             ),
           ),
