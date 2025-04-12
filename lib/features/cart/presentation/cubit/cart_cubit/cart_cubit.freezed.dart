@@ -19,7 +19,9 @@ mixin _$CartState {
   CartStatus get status => throw _privateConstructorUsedError;
   GetCartReponseModel? get getCartReponseModel =>
       throw _privateConstructorUsedError;
+  CartActionType? get actionType => throw _privateConstructorUsedError;
   String? get responseMessage => throw _privateConstructorUsedError;
+  String? get lastAffectedIngredientId => throw _privateConstructorUsedError;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -36,7 +38,9 @@ abstract class $CartStateCopyWith<$Res> {
   $Res call(
       {CartStatus status,
       GetCartReponseModel? getCartReponseModel,
-      String? responseMessage});
+      CartActionType? actionType,
+      String? responseMessage,
+      String? lastAffectedIngredientId});
 }
 
 /// @nodoc
@@ -56,7 +60,9 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
   $Res call({
     Object? status = null,
     Object? getCartReponseModel = freezed,
+    Object? actionType = freezed,
     Object? responseMessage = freezed,
+    Object? lastAffectedIngredientId = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -67,9 +73,17 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
           ? _value.getCartReponseModel
           : getCartReponseModel // ignore: cast_nullable_to_non_nullable
               as GetCartReponseModel?,
+      actionType: freezed == actionType
+          ? _value.actionType
+          : actionType // ignore: cast_nullable_to_non_nullable
+              as CartActionType?,
       responseMessage: freezed == responseMessage
           ? _value.responseMessage
           : responseMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastAffectedIngredientId: freezed == lastAffectedIngredientId
+          ? _value.lastAffectedIngredientId
+          : lastAffectedIngredientId // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -86,7 +100,9 @@ abstract class _$$CartStateImplCopyWith<$Res>
   $Res call(
       {CartStatus status,
       GetCartReponseModel? getCartReponseModel,
-      String? responseMessage});
+      CartActionType? actionType,
+      String? responseMessage,
+      String? lastAffectedIngredientId});
 }
 
 /// @nodoc
@@ -104,7 +120,9 @@ class __$$CartStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? getCartReponseModel = freezed,
+    Object? actionType = freezed,
     Object? responseMessage = freezed,
+    Object? lastAffectedIngredientId = freezed,
   }) {
     return _then(_$CartStateImpl(
       status: null == status
@@ -115,9 +133,17 @@ class __$$CartStateImplCopyWithImpl<$Res>
           ? _value.getCartReponseModel
           : getCartReponseModel // ignore: cast_nullable_to_non_nullable
               as GetCartReponseModel?,
+      actionType: freezed == actionType
+          ? _value.actionType
+          : actionType // ignore: cast_nullable_to_non_nullable
+              as CartActionType?,
       responseMessage: freezed == responseMessage
           ? _value.responseMessage
           : responseMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastAffectedIngredientId: freezed == lastAffectedIngredientId
+          ? _value.lastAffectedIngredientId
+          : lastAffectedIngredientId // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -129,7 +155,9 @@ class _$CartStateImpl implements _CartState {
   const _$CartStateImpl(
       {this.status = CartStatus.initial,
       this.getCartReponseModel,
-      this.responseMessage});
+      this.actionType,
+      this.responseMessage,
+      this.lastAffectedIngredientId});
 
   @override
   @JsonKey()
@@ -137,11 +165,15 @@ class _$CartStateImpl implements _CartState {
   @override
   final GetCartReponseModel? getCartReponseModel;
   @override
+  final CartActionType? actionType;
+  @override
   final String? responseMessage;
+  @override
+  final String? lastAffectedIngredientId;
 
   @override
   String toString() {
-    return 'CartState(status: $status, getCartReponseModel: $getCartReponseModel, responseMessage: $responseMessage)';
+    return 'CartState(status: $status, getCartReponseModel: $getCartReponseModel, actionType: $actionType, responseMessage: $responseMessage, lastAffectedIngredientId: $lastAffectedIngredientId)';
   }
 
   @override
@@ -152,13 +184,18 @@ class _$CartStateImpl implements _CartState {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.getCartReponseModel, getCartReponseModel) ||
                 other.getCartReponseModel == getCartReponseModel) &&
+            (identical(other.actionType, actionType) ||
+                other.actionType == actionType) &&
             (identical(other.responseMessage, responseMessage) ||
-                other.responseMessage == responseMessage));
+                other.responseMessage == responseMessage) &&
+            (identical(
+                    other.lastAffectedIngredientId, lastAffectedIngredientId) ||
+                other.lastAffectedIngredientId == lastAffectedIngredientId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, getCartReponseModel, responseMessage);
+  int get hashCode => Object.hash(runtimeType, status, getCartReponseModel,
+      actionType, responseMessage, lastAffectedIngredientId);
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
@@ -173,14 +210,20 @@ abstract class _CartState implements CartState {
   const factory _CartState(
       {final CartStatus status,
       final GetCartReponseModel? getCartReponseModel,
-      final String? responseMessage}) = _$CartStateImpl;
+      final CartActionType? actionType,
+      final String? responseMessage,
+      final String? lastAffectedIngredientId}) = _$CartStateImpl;
 
   @override
   CartStatus get status;
   @override
   GetCartReponseModel? get getCartReponseModel;
   @override
+  CartActionType? get actionType;
+  @override
   String? get responseMessage;
+  @override
+  String? get lastAffectedIngredientId;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.

@@ -39,13 +39,19 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionSuccess,
-            responseMessage: successResponse.message));
+          status: CartStatus.cartActionSuccess,
+          responseMessage: successResponse.message,
+          lastAffectedIngredientId: addToCartRequestModel.ingredientId,
+          actionType: CartActionType.toggleItem,
+        ));
       },
       failure: (failureResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionFailure,
-            responseMessage: failureResponse.errMessages));
+          status: CartStatus.cartActionFailure,
+          responseMessage: failureResponse.errMessages,
+          lastAffectedIngredientId: null,
+          actionType: null,
+        ));
       },
     );
   }
@@ -93,12 +99,17 @@ class CartCubit extends Cubit<CartState> {
           status: CartStatus.cartActionSuccess,
           getCartReponseModel: updatedGetCartResponse,
           responseMessage: successResponse.message,
+          lastAffectedIngredientId: id,
+          actionType: CartActionType.toggleItem,
         ));
       },
       failure: (failureResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionFailure,
-            responseMessage: failureResponse.errMessages));
+          status: CartStatus.cartActionFailure,
+          responseMessage: failureResponse.errMessages,
+          lastAffectedIngredientId: null,
+          actionType: null,
+        ));
       },
     );
   }
@@ -138,12 +149,17 @@ class CartCubit extends Cubit<CartState> {
           status: CartStatus.cartActionSuccess,
           getCartReponseModel: updatedGetCartResponse,
           responseMessage: successResponse.message,
+          lastAffectedIngredientId: id,
+          actionType: CartActionType.updateCart,
         ));
       },
       failure: (failureResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionFailure,
-            responseMessage: failureResponse.errMessages));
+          status: CartStatus.cartActionFailure,
+          responseMessage: failureResponse.errMessages,
+          lastAffectedIngredientId: null,
+          actionType: null,
+        ));
       },
     );
   }
@@ -155,14 +171,19 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionSuccess,
-            responseMessage: successResponse.message,
-            getCartReponseModel: null));
+          status: CartStatus.cartActionSuccess,
+          responseMessage: successResponse.message,
+          getCartReponseModel: null,
+          lastAffectedIngredientId: null,
+          actionType: CartActionType.clearCart,
+        ));
       },
       failure: (failureResponse) {
         emit(state.copyWith(
-            status: CartStatus.cartActionFailure,
-            responseMessage: failureResponse.errMessages));
+          status: CartStatus.cartActionFailure,
+          responseMessage: failureResponse.errMessages,
+          lastAffectedIngredientId: null,
+        ));
       },
     );
   }

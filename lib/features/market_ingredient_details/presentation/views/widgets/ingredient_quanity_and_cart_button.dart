@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +7,6 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/cart/data/models/add_to_cart_request_model.dart';
 import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
-import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 
 class IngredientQuantityAndCartButton extends StatefulWidget {
   const IngredientQuantityAndCartButton(
@@ -132,13 +129,10 @@ class _IngredientQuantityAndCartButtonState
                       current.status == CartStatus.cartActionSuccess ||
                   current.status == CartStatus.cartActionFailure,
               listener: (context, state) {
-                if (state.status == CartStatus.cartActionSuccess) {
+                if (state.status == CartStatus.cartActionSuccess &&
+                    state.actionType == CartActionType.toggleItem) {
                   isInCart = !isInCart;
-                  log("1111111111111");
                   ShowToast.showSuccessToast(state.responseMessage ?? '');
-                  context
-                      .read<HomeMarketCubit>()
-                      .toggleInCartStatus(widget.ingredientDataModel.id);
                 } else if (state.status == CartStatus.cartActionFailure) {
                   return ShowToast.showFailureToast('Something went wrong');
                 }

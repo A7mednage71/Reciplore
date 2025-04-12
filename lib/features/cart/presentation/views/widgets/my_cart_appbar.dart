@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,7 +8,6 @@ import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
-import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 
 class MyCartAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyCartAppBar({
@@ -47,12 +44,8 @@ class MyCartAppBar extends StatelessWidget implements PreferredSizeWidget {
                     current.status == CartStatus.cartActionSuccess ||
                 current.status == CartStatus.cartActionFailure,
             listener: (context, state) {
-              if (state.status == CartStatus.cartActionSuccess) {
-                log("222222222222222222");
-                ShowToast.showSuccessToast(state.responseMessage ?? '');
-                context.read<HomeMarketCubit>().removeAllfromCart();
-              } else if (state.status == CartStatus.cartActionFailure) {
-                return ShowToast.showFailureToast('Something went wrong');
+              if (state.status == CartStatus.cartActionFailure) {
+                return ShowToast.showFailureToast('fail to clear cart');
               }
             },
             child: InkWell(
