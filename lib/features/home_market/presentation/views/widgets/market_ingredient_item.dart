@@ -97,9 +97,10 @@ class MarketIngredientItem extends StatelessWidget {
                       color: AppColors.grayLight,
                     ),
                   ),
-                  const Align(
+                  Align(
                       alignment: Alignment.topRight,
-                      child: AddIngredientToCartHomeButton()),
+                      child: AddIngredientToCartHomeButton(
+                          ingredient: ingredient)),
                 ],
               ),
             ),

@@ -8,6 +8,27 @@ class HomeMarketCubit extends Cubit<HomeMarketState> {
 
   final HomeMarketRepo _homeMarketRepo;
 
+  Future<void> getMarketBanners() async {
+    emit(state.copyWith(status: HomeMarketStatus.loading));
+
+    final result = await _homeMarketRepo.getMarketBanners();
+
+    result.when(
+      success: (successResponse) {
+        emit(state.copyWith(
+          status: HomeMarketStatus.success,
+          marketBanners: successResponse.banners,
+        ));
+      },
+      failure: (failureResponse) {
+        emit(state.copyWith(
+          status: HomeMarketStatus.failure,
+          message: failureResponse.errMessages,
+        ));
+      },
+    );
+  }
+
   Future<void> getIngredients({bool isRefresh = false}) async {
     if (state.isFetching || (!state.hasNextPage && !isRefresh)) return;
 
@@ -80,5 +101,59 @@ class HomeMarketCubit extends Cubit<HomeMarketState> {
             status: HomeMarketStatus.failure, message: failure.errMessages));
       },
     );
+  }
+
+  // toggle incart status
+  void toggleInCartStatus(String id) {
+    if (state.ingredients.isEmpty && state.bestSellingList.isEmpty) return;
+
+    // Check if the item exists in either list
+    final ingredientIndex =
+        state.ingredients.indexWhere((ingredient) => ingredient.id == id);
+    final bestSellingIndex =
+        state.bestSellingList.indexWhere((ingredient) => ingredient.id == id);
+
+    // Not found anywhere, so do nothing
+    if (ingredientIndex == -1 && bestSellingIndex == -1) {
+      return;
+    }
+
+    final updatedIngredients = state.ingredients.map((ingredient) {
+      if (ingredient.id == id) {
+        return ingredient.copyWith(inCart: !ingredient.inCart!);
+      }
+      return ingredient;
+    }).toList();
+
+    final updatedBestSellingList = state.bestSellingList.map((ingredient) {
+      if (ingredient.id == id) {
+        return ingredient.copyWith(inCart: !ingredient.inCart!);
+      }
+      return ingredient;
+    }).toList();
+
+    // toggle
+    emit(state.copyWith(
+      ingredients: updatedIngredients,
+      bestSellingList: updatedBestSellingList,
+      status: HomeMarketStatus.success,
+    ));
+  }
+
+  void removeAllfromCart() {
+    emit(state.copyWith(
+      ingredients: state.ingredients.map((ingredient) {
+        if (ingredient.inCart!) {
+          return ingredient.copyWith(inCart: false);
+        }
+        return ingredient;
+      }).toList(),
+      bestSellingList: state.bestSellingList.map((ingredient) {
+        if (ingredient.inCart!) {
+          return ingredient.copyWith(inCart: false);
+        }
+        return ingredient;
+      }).toList(),
+    ));
   }
 }

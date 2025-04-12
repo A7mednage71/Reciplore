@@ -7,6 +7,7 @@ import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/all_ingredients/presentation/views/widgets/all_ingredients_loading_grid_view.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_state.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
@@ -17,6 +18,8 @@ class AllIngredientsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeMarketCubit = context.read<HomeMarketCubit>();
+    final cartCubit = context.read<CartCubit>();
     return Expanded(
       child: BlocBuilder<HomeMarketCubit, HomeMarketState>(
         buildWhen: (previous, current) =>
@@ -53,7 +56,11 @@ class AllIngredientsGridView extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context, rootNavigator: true).pushNamed(
                             Routes.marketIngredientsDetails,
-                            arguments: ingredients[index]);
+                            arguments: {
+                              'ingredient': state.ingredients[index],
+                              'cartCubit': cartCubit,
+                              'homeMarketCubit': homeMarketCubit
+                            });
                       },
                       child: AnimationConfiguration.staggeredGrid(
                         position: index,

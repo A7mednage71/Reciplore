@@ -4,6 +4,8 @@ import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_c
 import 'package:looqma/core/common/recipe_save_toggle/repos/recipe_save_toggle_repo.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
+import 'package:looqma/features/cart/data/repos/cart_repo.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/change_password/data/repos/change_password_repo.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
@@ -112,5 +114,9 @@ Future<void> setupGetIt() async {
     ..registerLazySingleton<HomeMarketRepo>(
         () => HomeMarketRepo(getIt<ApiService>()))
     ..registerFactory<HomeMarketCubit>(
-        () => HomeMarketCubit(getIt<HomeMarketRepo>()));
+        () => HomeMarketCubit(getIt<HomeMarketRepo>()))
+
+    // cart
+    ..registerLazySingleton<CartRepo>(() => CartRepo(getIt<ApiService>()))
+    ..registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
 }

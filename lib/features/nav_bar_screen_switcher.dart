@@ -5,6 +5,7 @@ import 'package:iconly/iconly.dart';
 import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
@@ -48,10 +49,18 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
     ),
     const SavedRecipeScreen(),
     const ChatBot(),
-    BlocProvider(
-      create: (context) => getIt<HomeMarketCubit>()
-        ..getIngredients(isRefresh: true)
-        ..getBestSellingIngredients(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<HomeMarketCubit>()
+            ..getMarketBanners()
+            ..getIngredients(isRefresh: true)
+            ..getBestSellingIngredients(),
+        ),
+        BlocProvider(
+          create: (context) => getIt<CartCubit>(),
+        ),
+      ],
       child: const HomeMarketScreen(),
     ),
     MultiBlocProvider(

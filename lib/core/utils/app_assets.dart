@@ -10,6 +10,8 @@ class AppAssets {
 
   static const String imagesChangePassword = "assets/images/change_password.json";
 
+  static const String imagesClearCart = "assets/images/clear_cart.png";
+
   static const String imagesDiscord = "assets/images/discord.png";
 
   static const String imagesEmptyBox = "assets/images/empty_box.json";

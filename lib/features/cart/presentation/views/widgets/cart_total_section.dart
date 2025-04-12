@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
 import 'package:looqma/features/cart/presentation/views/widgets/checkout_button.dart';
 
 class CartTotalSection extends StatelessWidget {
   const CartTotalSection({
     super.key,
+    required this.cartDataModel,
   });
-
+  final CartDataModel cartDataModel;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +38,7 @@ class CartTotalSection extends StatelessWidget {
                       .copyWith(color: AppColors.grayLight)),
               5.h.verticalSpace,
               Text(
-                '\$ 20.00',
+                '\$ ${cartDataModel.subTotal.toStringAsFixed(2)}',
                 style: AppStyles.largeBoldText
                     .copyWith(color: AppColors.primaryDark),
               )

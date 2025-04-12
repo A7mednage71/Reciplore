@@ -30,6 +30,7 @@ IngredientDataModel _$IngredientDataModelFromJson(Map<String, dynamic> json) =>
       averageRating: (json['Average_rating'] as num).toDouble(),
       discount: Discount.fromJson(json['discount'] as Map<String, dynamic>),
       image: ImageURL.fromJson(json['image'] as Map<String, dynamic>),
+      inCart: json['inCart'] as bool?,
     );
 
 Map<String, dynamic> _$IngredientDataModelToJson(
@@ -44,6 +45,7 @@ Map<String, dynamic> _$IngredientDataModelToJson(
       'Average_rating': instance.averageRating,
       'discount': instance.discount,
       'image': instance.image,
+      'inCart': instance.inCart,
     };
 
 Discount _$DiscountFromJson(Map<String, dynamic> json) => Discount(

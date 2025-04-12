@@ -5,7 +5,7 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/best_seller_ingredient_section.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/home_market_ingredients_section.dart';
-import 'package:looqma/features/home_market/presentation/views/widgets/market_banners.dart';
+import 'package:looqma/features/home_market/presentation/views/widgets/market_banners_bloc_builder.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_home_info_data.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_search_text_field.dart';
 
@@ -19,6 +19,7 @@ class HomeMarketScreen extends StatelessWidget {
       onRefresh: () async {
         context.read<HomeMarketCubit>().getIngredients(isRefresh: true);
         context.read<HomeMarketCubit>().getBestSellingIngredients();
+        context.read<HomeMarketCubit>().getMarketBanners();
       },
       child: SingleChildScrollView(
         child: Column(
@@ -29,7 +30,7 @@ class HomeMarketScreen extends StatelessWidget {
             SizedBox(height: 20.h),
             const MarketSearchTextField(),
             SizedBox(height: 20.h),
-            const MarketBanners(),
+            const MarketBannersBlocBuilder(),
             SizedBox(height: 10.h),
             const HomeMarketIngredientsSection(),
             SizedBox(height: 20.h),

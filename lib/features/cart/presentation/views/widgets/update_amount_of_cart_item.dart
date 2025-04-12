@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
+import 'package:looqma/features/cart/data/models/update_cart_request_model.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 
 class UpdateAmountOfCartItem extends StatelessWidget {
   const UpdateAmountOfCartItem({
     super.key,
+    required this.cartIngredientModel,
   });
+
+  final CartIngredientModel cartIngredientModel;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +21,12 @@ class UpdateAmountOfCartItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () async {
+            await context.read<CartCubit>().updateCart(
+                cartIngredientModel.ingredient.id,
+                UpdateCartRequestModel(
+                    quantity: cartIngredientModel.quantity + 1));
+          },
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,
@@ -30,12 +42,18 @@ class UpdateAmountOfCartItem extends StatelessWidget {
         ),
         5.h.verticalSpace,
         Text(
-          '1',
+          '${cartIngredientModel.quantity}',
           style: AppStyles.smallBoldText,
         ),
         5.h.verticalSpace,
         InkWell(
-          onTap: () {},
+          onTap: () async {
+            if (cartIngredientModel.quantity == 1) return;
+            await context.read<CartCubit>().updateCart(
+                cartIngredientModel.ingredient.id,
+                UpdateCartRequestModel(
+                    quantity: cartIngredientModel.quantity - 1));
+          },
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.rectangle,

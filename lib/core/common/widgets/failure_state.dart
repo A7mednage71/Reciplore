@@ -14,21 +14,23 @@ class FailureState extends StatelessWidget {
   final String? message;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: hight + 60.h,
-      width: width ?? double.infinity,
-      child: Column(
-        children: [
-          Lottie.asset(
-            AppAssets.imagesFailureState,
-            height: hight,
-            width: hight,
-          ),
-          SizedBox(height: 10.h),
-          Text(message ?? 'Oops ,try again',
-              style: AppStyles.smallBoldText
-                  .copyWith(color: AppColors.secondaryDarker)),
-        ],
+    return Center(
+      child: SizedBox(
+        height: hight + 60.h,
+        width: width ?? double.infinity,
+        child: Column(
+          children: [
+            Lottie.asset(
+              AppAssets.imagesFailureState,
+              height: hight,
+              width: hight,
+            ),
+            SizedBox(height: 10.h),
+            Text(message ?? 'Oops ,try again',
+                style: AppStyles.smallBoldText
+                    .copyWith(color: AppColors.secondaryDarker)),
+          ],
+        ),
       ),
     );
   }

@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/core/common/models/get_recipes_query_model.dart';
-import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
 
 part 'search_recipe_cubit.freezed.dart';
