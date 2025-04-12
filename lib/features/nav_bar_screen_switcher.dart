@@ -53,6 +53,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
       providers: [
         BlocProvider(
           create: (context) => getIt<HomeMarketCubit>()
+            ..getMarketBanners()
             ..getIngredients(isRefresh: true)
             ..getBestSellingIngredients(),
         ),

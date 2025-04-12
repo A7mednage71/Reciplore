@@ -44,7 +44,9 @@ class MarketIngredientDetailsScreen extends StatelessWidget {
         ),
         child: ShowIngredientData(ingredient: ingredientDataModel),
       ),
-      bottomNavigationBar: const IngredientQuantityAndCartButton(),
+      bottomNavigationBar: IngredientQuantityAndCartButton(
+        ingredientDataModel: ingredientDataModel,
+      ),
     );
   }
 }

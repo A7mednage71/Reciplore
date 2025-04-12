@@ -25,6 +25,7 @@ class AllIngredientsLoadingGridView extends StatelessWidget {
           basePrice: 0,
           discount: Discount(amount: 1, type: ''),
           stock: 0,
+          inCart: false,
         ),
       ),
     );

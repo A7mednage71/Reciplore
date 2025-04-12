@@ -6,8 +6,9 @@ import 'package:looqma/core/utils/app_styles.dart';
 class IngredientDetailsAddToCartButton extends StatelessWidget {
   const IngredientDetailsAddToCartButton({
     super.key,
+    required this.inCart,
   });
-
+  final bool inCart;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

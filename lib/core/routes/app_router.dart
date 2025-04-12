@@ -108,10 +108,23 @@ class AppRouter {
           builder: (context) => RecipeDetailsScreen(recipeModel: recipeModel),
         );
       case Routes.marketIngredientsDetails:
-        final ingredient = argument as IngredientDataModel;
+        final args = argument as Map<String, dynamic>;
+        final homeMarketCubit = args['homeMarketCubit'] as HomeMarketCubit;
+        final cartCubit = args['cartCubit'] as CartCubit;
+        final ingredient = argument['ingredient'] as IngredientDataModel;
         return MaterialPageRoute(
-          builder: (context) => MarketIngredientDetailsScreen(
-            ingredientDataModel: ingredient,
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: homeMarketCubit,
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              ),
+            ],
+            child: MarketIngredientDetailsScreen(
+              ingredientDataModel: ingredient,
+            ),
           ),
         );
       case Routes.reviewScreen:
@@ -133,18 +146,36 @@ class AppRouter {
           builder: (context) => const ChatScreen(),
         );
       case Routes.cart:
-        final CartCubit cartCubit = argument as CartCubit;
+        final args = argument as Map<String, dynamic>;
+        final homeMarketCubit = args['homeMarketCubit'] as HomeMarketCubit;
+        final cartCubit = args['cartCubit'] as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: cartCubit,
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: homeMarketCubit,
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              )
+            ],
             child: const CartScreen(),
           ),
         );
       case Routes.allIngredients:
-        final homeMarketCubit = argument as HomeMarketCubit;
+        final args = argument as Map<String, dynamic>;
+        final homeMarketCubit = args['homeMarketCubit'] as HomeMarketCubit;
+        final cartCubit = args['cartCubit'] as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: homeMarketCubit,
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider.value(
+                value: homeMarketCubit,
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              )
+            ],
             child: const AllIngredientsScreen(),
           ),
         );

@@ -39,7 +39,7 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         emit(state.copyWith(
-            status: CartStatus.success,
+            status: CartStatus.cartActionSuccess,
             responseMessage: successResponse.message));
       },
       failure: (failureResponse) {
@@ -57,26 +57,42 @@ class CartCubit extends Cubit<CartState> {
 
     result.when(
       success: (successResponse) {
+        GetCartReponseModel? updatedGetCartResponse;
         // get removed cart ingredient
-        final cartIngredientModel = state.getCartReponseModel!.cart!.ingredients
-            .firstWhere((element) => element.ingredient.id == id);
-        // update subTotal after removing
-        final newSubTotal = state.getCartReponseModel!.cart!.subTotal -
-            (cartIngredientModel.price * cartIngredientModel.quantity);
-        // update cart list
-        final updatedCart = state.getCartReponseModel!.cart!.copyWith(
-            subTotal: newSubTotal,
-            ingredients: state.getCartReponseModel!.cart!.ingredients
-                .where((element) => element.ingredient.id != id)
-                .toList());
+        if (state.getCartReponseModel != null &&
+            state.getCartReponseModel!.cart != null) {
+          final ingredients =
+              state.getCartReponseModel?.cart?.ingredients ?? [];
 
-        final updatedGetCartResponse = state.getCartReponseModel!.copyWith(
-          cart: updatedCart,
-        );
+          // check if cart has this id
+          CartIngredientModel? cartIngredientModel = ingredients
+                  .any((element) => element.ingredient.id == id)
+              ? ingredients.firstWhere((element) => element.ingredient.id == id)
+              : null;
+
+          // update subTotal after removing
+          if (cartIngredientModel != null) {
+            final newSubTotal = state.getCartReponseModel!.cart!.subTotal -
+                (cartIngredientModel.price * cartIngredientModel.quantity);
+            // update cart list
+            final updatedCart = state.getCartReponseModel!.cart!.copyWith(
+                subTotal: newSubTotal,
+                ingredients: state.getCartReponseModel!.cart!.ingredients
+                    .where((element) => element.ingredient.id != id)
+                    .toList());
+
+            updatedGetCartResponse = state.getCartReponseModel!.copyWith(
+              cart: updatedCart,
+            );
+          } else {
+            updatedGetCartResponse = state.getCartReponseModel;
+          }
+        }
 
         emit(state.copyWith(
-          status: CartStatus.success,
+          status: CartStatus.cartActionSuccess,
           getCartReponseModel: updatedGetCartResponse,
+          responseMessage: successResponse.message,
         ));
       },
       failure: (failureResponse) {
@@ -119,8 +135,9 @@ class CartCubit extends Cubit<CartState> {
         );
 
         emit(state.copyWith(
-          status: CartStatus.success,
+          status: CartStatus.cartActionSuccess,
           getCartReponseModel: updatedGetCartResponse,
+          responseMessage: successResponse.message,
         ));
       },
       failure: (failureResponse) {
@@ -138,7 +155,7 @@ class CartCubit extends Cubit<CartState> {
     result.when(
       success: (successResponse) {
         emit(state.copyWith(
-            status: CartStatus.success,
+            status: CartStatus.cartActionSuccess,
             responseMessage: successResponse.message,
             getCartReponseModel: null));
       },

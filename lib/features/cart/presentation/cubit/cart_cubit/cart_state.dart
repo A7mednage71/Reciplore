@@ -1,6 +1,13 @@
 part of 'cart_cubit.dart';
 
-enum CartStatus { initial, loading, success, failure, cartActionFailure }
+enum CartStatus {
+  initial,
+  loading,
+  success,
+  failure,
+  cartActionSuccess,
+  cartActionFailure
+}
 
 @freezed
 class CartState with _$CartState {

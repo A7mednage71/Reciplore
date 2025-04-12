@@ -21,6 +21,7 @@ mixin _$HomeMarketState {
       throw _privateConstructorUsedError;
   List<IngredientDataModel> get bestSellingList =>
       throw _privateConstructorUsedError;
+  MarketBannersModel? get marketBanners => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
@@ -44,6 +45,7 @@ abstract class $HomeMarketStateCopyWith<$Res> {
       {HomeMarketStatus status,
       List<IngredientDataModel> ingredients,
       List<IngredientDataModel> bestSellingList,
+      MarketBannersModel? marketBanners,
       String? message,
       int currentPage,
       bool hasNextPage,
@@ -69,6 +71,7 @@ class _$HomeMarketStateCopyWithImpl<$Res, $Val extends HomeMarketState>
     Object? status = null,
     Object? ingredients = null,
     Object? bestSellingList = null,
+    Object? marketBanners = freezed,
     Object? message = freezed,
     Object? currentPage = null,
     Object? hasNextPage = null,
@@ -88,6 +91,10 @@ class _$HomeMarketStateCopyWithImpl<$Res, $Val extends HomeMarketState>
           ? _value.bestSellingList
           : bestSellingList // ignore: cast_nullable_to_non_nullable
               as List<IngredientDataModel>,
+      marketBanners: freezed == marketBanners
+          ? _value.marketBanners
+          : marketBanners // ignore: cast_nullable_to_non_nullable
+              as MarketBannersModel?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -124,6 +131,7 @@ abstract class _$$HomeMarketStateImplCopyWith<$Res>
       {HomeMarketStatus status,
       List<IngredientDataModel> ingredients,
       List<IngredientDataModel> bestSellingList,
+      MarketBannersModel? marketBanners,
       String? message,
       int currentPage,
       bool hasNextPage,
@@ -147,6 +155,7 @@ class __$$HomeMarketStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? ingredients = null,
     Object? bestSellingList = null,
+    Object? marketBanners = freezed,
     Object? message = freezed,
     Object? currentPage = null,
     Object? hasNextPage = null,
@@ -166,6 +175,10 @@ class __$$HomeMarketStateImplCopyWithImpl<$Res>
           ? _value._bestSellingList
           : bestSellingList // ignore: cast_nullable_to_non_nullable
               as List<IngredientDataModel>,
+      marketBanners: freezed == marketBanners
+          ? _value.marketBanners
+          : marketBanners // ignore: cast_nullable_to_non_nullable
+              as MarketBannersModel?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -197,6 +210,7 @@ class _$HomeMarketStateImpl implements _HomeMarketState {
       {this.status = HomeMarketStatus.initial,
       final List<IngredientDataModel> ingredients = const [],
       final List<IngredientDataModel> bestSellingList = const [],
+      this.marketBanners,
       this.message,
       this.currentPage = 1,
       this.hasNextPage = true,
@@ -227,6 +241,8 @@ class _$HomeMarketStateImpl implements _HomeMarketState {
   }
 
   @override
+  final MarketBannersModel? marketBanners;
+  @override
   final String? message;
   @override
   @JsonKey()
@@ -243,7 +259,7 @@ class _$HomeMarketStateImpl implements _HomeMarketState {
 
   @override
   String toString() {
-    return 'HomeMarketState(status: $status, ingredients: $ingredients, bestSellingList: $bestSellingList, message: $message, currentPage: $currentPage, hasNextPage: $hasNextPage, isFetching: $isFetching, totalILength: $totalILength)';
+    return 'HomeMarketState(status: $status, ingredients: $ingredients, bestSellingList: $bestSellingList, marketBanners: $marketBanners, message: $message, currentPage: $currentPage, hasNextPage: $hasNextPage, isFetching: $isFetching, totalILength: $totalILength)';
   }
 
   @override
@@ -256,6 +272,8 @@ class _$HomeMarketStateImpl implements _HomeMarketState {
                 .equals(other._ingredients, _ingredients) &&
             const DeepCollectionEquality()
                 .equals(other._bestSellingList, _bestSellingList) &&
+            (identical(other.marketBanners, marketBanners) ||
+                other.marketBanners == marketBanners) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
@@ -273,6 +291,7 @@ class _$HomeMarketStateImpl implements _HomeMarketState {
       status,
       const DeepCollectionEquality().hash(_ingredients),
       const DeepCollectionEquality().hash(_bestSellingList),
+      marketBanners,
       message,
       currentPage,
       hasNextPage,
@@ -294,6 +313,7 @@ abstract class _HomeMarketState implements HomeMarketState {
       {final HomeMarketStatus status,
       final List<IngredientDataModel> ingredients,
       final List<IngredientDataModel> bestSellingList,
+      final MarketBannersModel? marketBanners,
       final String? message,
       final int currentPage,
       final bool hasNextPage,
@@ -306,6 +326,8 @@ abstract class _HomeMarketState implements HomeMarketState {
   List<IngredientDataModel> get ingredients;
   @override
   List<IngredientDataModel> get bestSellingList;
+  @override
+  MarketBannersModel? get marketBanners;
   @override
   String? get message;
   @override

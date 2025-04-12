@@ -30,6 +30,7 @@ class IngredientDataModel {
   final double averageRating;
   final Discount discount;
   final ImageURL image;
+  bool? inCart;
 
   IngredientDataModel({
     required this.id,
@@ -41,12 +42,39 @@ class IngredientDataModel {
     required this.averageRating,
     required this.discount,
     required this.image,
+    this.inCart,
   });
 
   factory IngredientDataModel.fromJson(Map<String, dynamic> json) =>
       _$IngredientDataModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$IngredientDataModelToJson(this);
+
+  IngredientDataModel copyWith({
+    String? id,
+    String? name,
+    String? description,
+    double? basePrice,
+    double? appliedPrice,
+    int? stock,
+    double? averageRating,
+    Discount? discount,
+    ImageURL? image,
+    bool? inCart,
+  }) {
+    return IngredientDataModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      description: description ?? this.description,
+      basePrice: basePrice ?? this.basePrice,
+      appliedPrice: appliedPrice ?? this.appliedPrice,
+      stock: stock ?? this.stock,
+      averageRating: averageRating ?? this.averageRating,
+      discount: discount ?? this.discount,
+      image: image ?? this.image,
+      inCart: inCart ?? this.inCart,
+    );
+  }
 }
 
 @JsonSerializable()
