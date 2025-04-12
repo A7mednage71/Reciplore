@@ -31,6 +31,7 @@ class ApiConstants {
 
   // market end points
   static const String getIngredients = '/ingredient/list';
+  static const String getMarketBanners = '/banner/mobile_market';
 
   // cart end points
   static const String getCart = '/cart/';
