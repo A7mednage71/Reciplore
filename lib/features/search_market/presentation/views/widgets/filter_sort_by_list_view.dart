@@ -23,8 +23,8 @@ class _FilterSortByListViewState extends State<FilterSortByListView> {
   List<SortOptionModel> sortOptions = [
     SortOptionModel(label: "Best Selling", value: "-sellings"),
     SortOptionModel(label: "Newest", value: "-createdAt"),
-    SortOptionModel(label: "Price Low to High", value: "price"),
-    SortOptionModel(label: "Price High to Low", value: "-price"),
+    SortOptionModel(label: "Price Low to High", value: "appliedPrice"),
+    SortOptionModel(label: "Price High to Low", value: "-appliedPrice"),
   ];
 
   @override
@@ -53,6 +53,11 @@ class _FilterSortByListViewState extends State<FilterSortByListView> {
                 setState(() {
                   active = index;
                   widget.onItemSelected(item.value);
+                });
+              } else {
+                setState(() {
+                  active = -1;
+                  widget.onItemSelected('');
                 });
               }
             },

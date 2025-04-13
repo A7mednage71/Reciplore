@@ -40,7 +40,7 @@ class SearchMarketTextFieldAndFilter extends StatelessWidget {
         SizedBox(width: 20.w),
         InkWell(
           onTap: () {
-            showBottomSheet(context);
+            showBottomSheet(context, searchMarketCubit);
           },
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
@@ -60,14 +60,17 @@ class SearchMarketTextFieldAndFilter extends StatelessWidget {
     );
   }
 
-  void showBottomSheet(BuildContext context) {
-    final searchCubit = context.read<SearchMarketCubit>();
+  void showBottomSheet(
+      BuildContext context, SearchMarketCubit searchMarketCubit) {
     showModalBottomSheet(
       isScrollControlled: false,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.r)),
       context: context,
       builder: (context) {
-        return const FilterMarketBottomSheet();
+        return BlocProvider.value(
+          value: searchMarketCubit,
+          child: const FilterMarketBottomSheet(),
+        );
       },
     );
   }

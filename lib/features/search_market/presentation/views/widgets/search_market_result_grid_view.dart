@@ -49,6 +49,7 @@ class _MarketSearchResultGridViewState
   Widget build(BuildContext context) {
     return AnimationLimiter(
       child: GridView.builder(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         itemCount: widget.ingredients.length,
         controller: _scrollController,
         padding: EdgeInsets.all(5.w),

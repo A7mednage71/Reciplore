@@ -21,7 +21,7 @@ class _FilterRatesListViewState extends State<FilterRatesListView> {
 
   @override
   void initState() {
-    if (widget.selectedRate != "0") {
+    if (widget.selectedRate != "0" && widget.selectedRate.isNotEmpty) {
       active = int.parse(widget.selectedRate) - 1;
     }
     super.initState();
@@ -42,6 +42,11 @@ class _FilterRatesListViewState extends State<FilterRatesListView> {
                 setState(() {
                   active = index;
                   widget.onRateSelected("${index + 1}");
+                });
+              } else {
+                setState(() {
+                  active = -1;
+                  widget.onRateSelected('');
                 });
               }
             },

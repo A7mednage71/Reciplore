@@ -8,12 +8,21 @@ class GetIngredientsQueryModel {
   final int? limit;
   final String? search;
   final String? sort;
+  @JsonKey(name: 'Average_rating[gte]')
+  final String? rate;
+  @JsonKey(name: 'appliedPrice[lte]')
+  final String? maxPrice;
+  @JsonKey(name: 'appliedPrice[gte]')
+  final String? minPrice;
 
   GetIngredientsQueryModel({
-    required this.page,
+    this.page,
     this.limit,
     this.search,
     this.sort,
+    this.rate = '0',
+    this.maxPrice = '100',
+    this.minPrice = '0',
   });
 
   factory GetIngredientsQueryModel.fromJson(Map<String, dynamic> json) =>

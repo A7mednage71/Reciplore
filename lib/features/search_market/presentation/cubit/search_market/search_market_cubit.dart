@@ -50,7 +50,13 @@ class SearchMarketCubit extends Cubit<SearchMarketState> {
 
     final result = await _searchMarketRepo.searchIngredients(
       query: GetIngredientsQueryModel(
-          page: state.currentPage, search: searchController.text.trim()),
+        page: state.currentPage,
+        search: searchController.text.trim(),
+        maxPrice: state.maxPrice,
+        minPrice: state.minPrice,
+        rate: state.rate,
+        sort: state.sort,
+      ),
     );
 
     result.when(
@@ -82,5 +88,33 @@ class SearchMarketCubit extends Cubit<SearchMarketState> {
             isFetching: false));
       },
     );
+  }
+
+  /// Apply All Filters
+  void applyFilters({
+    required String minPrice,
+    required String maxPrice,
+    String? sort,
+    String? rate,
+    bool triggerSearch = true,
+  }) {
+    emit(state.copyWith(
+      minPrice: minPrice,
+      maxPrice: maxPrice,
+      sort: sort ?? '',
+      rate: rate ?? '0',
+      status: SearchMarketStatus.initial,
+    ));
+    if (triggerSearch) {
+      searchIngredients(isRefresh: true);
+    }
+  }
+
+  /// Reset Filters
+  void resetFilters() {
+    emit(const SearchMarketState());
+    if (searchController.text.trim().isNotEmpty) {
+      searchIngredients(isRefresh: true);
+    }
   }
 }

@@ -13,6 +13,9 @@ GetIngredientsQueryModel _$GetIngredientsQueryModelFromJson(
       limit: (json['limit'] as num?)?.toInt(),
       search: json['search'] as String?,
       sort: json['sort'] as String?,
+      rate: json['Average_rating[gte]'] as String? ?? '0',
+      maxPrice: json['appliedPrice[lte]'] as String? ?? '100',
+      minPrice: json['appliedPrice[gte]'] as String? ?? '0',
     );
 
 Map<String, dynamic> _$GetIngredientsQueryModelToJson(
@@ -22,4 +25,7 @@ Map<String, dynamic> _$GetIngredientsQueryModelToJson(
       'limit': instance.limit,
       'search': instance.search,
       'sort': instance.sort,
+      'Average_rating[gte]': instance.rate,
+      'appliedPrice[lte]': instance.maxPrice,
+      'appliedPrice[gte]': instance.minPrice,
     };

@@ -20,6 +20,10 @@ mixin _$SearchMarketState {
   List<IngredientDataModel> get ingredients =>
       throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
+  String get minPrice => throw _privateConstructorUsedError;
+  String get maxPrice => throw _privateConstructorUsedError;
+  String? get sort => throw _privateConstructorUsedError;
+  String get rate => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
   bool get isFetching => throw _privateConstructorUsedError;
@@ -42,6 +46,10 @@ abstract class $SearchMarketStateCopyWith<$Res> {
       {SearchMarketStatus status,
       List<IngredientDataModel> ingredients,
       String? message,
+      String minPrice,
+      String maxPrice,
+      String? sort,
+      String rate,
       int currentPage,
       bool hasNextPage,
       bool isFetching,
@@ -66,6 +74,10 @@ class _$SearchMarketStateCopyWithImpl<$Res, $Val extends SearchMarketState>
     Object? status = null,
     Object? ingredients = null,
     Object? message = freezed,
+    Object? minPrice = null,
+    Object? maxPrice = null,
+    Object? sort = freezed,
+    Object? rate = null,
     Object? currentPage = null,
     Object? hasNextPage = null,
     Object? isFetching = null,
@@ -84,6 +96,22 @@ class _$SearchMarketStateCopyWithImpl<$Res, $Val extends SearchMarketState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      minPrice: null == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxPrice: null == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
@@ -116,6 +144,10 @@ abstract class _$$SearchMarketStateImplCopyWith<$Res>
       {SearchMarketStatus status,
       List<IngredientDataModel> ingredients,
       String? message,
+      String minPrice,
+      String maxPrice,
+      String? sort,
+      String rate,
       int currentPage,
       bool hasNextPage,
       bool isFetching,
@@ -138,6 +170,10 @@ class __$$SearchMarketStateImplCopyWithImpl<$Res>
     Object? status = null,
     Object? ingredients = null,
     Object? message = freezed,
+    Object? minPrice = null,
+    Object? maxPrice = null,
+    Object? sort = freezed,
+    Object? rate = null,
     Object? currentPage = null,
     Object? hasNextPage = null,
     Object? isFetching = null,
@@ -156,6 +192,22 @@ class __$$SearchMarketStateImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      minPrice: null == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      maxPrice: null == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as String,
+      sort: freezed == sort
+          ? _value.sort
+          : sort // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as String,
       currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
@@ -183,6 +235,10 @@ class _$SearchMarketStateImpl implements _SearchMarketState {
       {this.status = SearchMarketStatus.initial,
       final List<IngredientDataModel> ingredients = const [],
       this.message,
+      this.minPrice = '0',
+      this.maxPrice = '100',
+      this.sort,
+      this.rate = '0',
       this.currentPage = 1,
       this.hasNextPage = true,
       this.isFetching = false,
@@ -205,6 +261,17 @@ class _$SearchMarketStateImpl implements _SearchMarketState {
   final String? message;
   @override
   @JsonKey()
+  final String minPrice;
+  @override
+  @JsonKey()
+  final String maxPrice;
+  @override
+  final String? sort;
+  @override
+  @JsonKey()
+  final String rate;
+  @override
+  @JsonKey()
   final int currentPage;
   @override
   @JsonKey()
@@ -218,7 +285,7 @@ class _$SearchMarketStateImpl implements _SearchMarketState {
 
   @override
   String toString() {
-    return 'SearchMarketState(status: $status, ingredients: $ingredients, message: $message, currentPage: $currentPage, hasNextPage: $hasNextPage, isFetching: $isFetching, totalILength: $totalILength)';
+    return 'SearchMarketState(status: $status, ingredients: $ingredients, message: $message, minPrice: $minPrice, maxPrice: $maxPrice, sort: $sort, rate: $rate, currentPage: $currentPage, hasNextPage: $hasNextPage, isFetching: $isFetching, totalILength: $totalILength)';
   }
 
   @override
@@ -230,6 +297,12 @@ class _$SearchMarketStateImpl implements _SearchMarketState {
             const DeepCollectionEquality()
                 .equals(other._ingredients, _ingredients) &&
             (identical(other.message, message) || other.message == message) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice) &&
+            (identical(other.sort, sort) || other.sort == sort) &&
+            (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
             (identical(other.hasNextPage, hasNextPage) ||
@@ -246,6 +319,10 @@ class _$SearchMarketStateImpl implements _SearchMarketState {
       status,
       const DeepCollectionEquality().hash(_ingredients),
       message,
+      minPrice,
+      maxPrice,
+      sort,
+      rate,
       currentPage,
       hasNextPage,
       isFetching,
@@ -266,6 +343,10 @@ abstract class _SearchMarketState implements SearchMarketState {
       {final SearchMarketStatus status,
       final List<IngredientDataModel> ingredients,
       final String? message,
+      final String minPrice,
+      final String maxPrice,
+      final String? sort,
+      final String rate,
       final int currentPage,
       final bool hasNextPage,
       final bool isFetching,
@@ -277,6 +358,14 @@ abstract class _SearchMarketState implements SearchMarketState {
   List<IngredientDataModel> get ingredients;
   @override
   String? get message;
+  @override
+  String get minPrice;
+  @override
+  String get maxPrice;
+  @override
+  String? get sort;
+  @override
+  String get rate;
   @override
   int get currentPage;
   @override
