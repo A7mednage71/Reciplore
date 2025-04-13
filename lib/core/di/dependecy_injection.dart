@@ -30,6 +30,8 @@ import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 import 'package:looqma/features/saved_recipe/data/repos/saved_recipes_repo.dart';
 import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
+import 'package:looqma/features/search_market/data/repos/search_market_repo.dart';
+import 'package:looqma/features/search_market/presentation/cubit/search_market/search_market_cubit.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
@@ -115,6 +117,13 @@ Future<void> setupGetIt() async {
         () => HomeMarketRepo(getIt<ApiService>()))
     ..registerFactory<HomeMarketCubit>(
         () => HomeMarketCubit(getIt<HomeMarketRepo>()))
+
+    // search market
+    ..registerLazySingleton<SearchMarketRepo>(
+      () => SearchMarketRepo(getIt<ApiService>()),
+    )
+    ..registerFactory<SearchMarketCubit>(
+        () => SearchMarketCubit(getIt<SearchMarketRepo>()))
 
     // cart
     ..registerLazySingleton<CartRepo>(() => CartRepo(getIt<ApiService>()))

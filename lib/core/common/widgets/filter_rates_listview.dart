@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/rate_filter_item.dart';
 
 class FilterRatesListView extends StatefulWidget {
-  const FilterRatesListView({super.key, required this.searchRecipeCubit});
+  const FilterRatesListView({
+    super.key,
+    required this.selectedRate,
+    required this.onRateSelected,
+  });
 
-  final SearchRecipeCubit searchRecipeCubit;
+  final String selectedRate;
+  final Function(String) onRateSelected;
 
   @override
   State<FilterRatesListView> createState() => _FilterRatesListViewState();
@@ -14,11 +18,11 @@ class FilterRatesListView extends StatefulWidget {
 
 class _FilterRatesListViewState extends State<FilterRatesListView> {
   int active = -1;
+
   @override
   void initState() {
-    // set active to selected rate
-    if (widget.searchRecipeCubit.selectedRate != "0") {
-      active = int.parse(widget.searchRecipeCubit.selectedRate) - 1;
+    if (widget.selectedRate != "0" && widget.selectedRate.isNotEmpty) {
+      active = int.parse(widget.selectedRate) - 1;
     }
     super.initState();
   }
@@ -37,7 +41,12 @@ class _FilterRatesListViewState extends State<FilterRatesListView> {
               if (active != index) {
                 setState(() {
                   active = index;
-                  widget.searchRecipeCubit.selectedRate = "${index + 1}";
+                  widget.onRateSelected("${index + 1}");
+                });
+              } else {
+                setState(() {
+                  active = -1;
+                  widget.onRateSelected('');
                 });
               }
             },

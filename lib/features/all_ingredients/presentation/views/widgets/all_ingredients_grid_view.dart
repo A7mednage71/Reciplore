@@ -59,7 +59,6 @@ class AllIngredientsGridView extends StatelessWidget {
                             arguments: {
                               'ingredient': state.ingredients[index],
                               'cartCubit': cartCubit,
-                              'homeMarketCubit': homeMarketCubit
                             });
                       },
                       child: AnimationConfiguration.staggeredGrid(
