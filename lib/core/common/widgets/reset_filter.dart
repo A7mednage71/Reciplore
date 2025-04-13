@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 
-class ApplyFilter extends StatelessWidget {
-  const ApplyFilter({super.key, required this.searchRecipeCubit});
-  final SearchRecipeCubit searchRecipeCubit;
+class ResetFilter extends StatelessWidget {
+  const ResetFilter({super.key, required this.onTap});
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
       child: InkWell(
-        onTap: () async {
-          searchRecipeCubit.applyFilter();
-          // ignore: use_build_context_synchronously
-          context.pop();
-        },
+        onTap: onTap,
         child: Container(
           height: 40.h,
           width: 150.w,
           decoration: const BoxDecoration(
-            color: AppColors.primaryDark,
+            color: AppColors.secondaryLight,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Center(
             child: Text(
-              "Apply",
+              "Reset",
               style: AppStyles.smallBoldText.copyWith(color: Colors.white),
             ),
           ),
