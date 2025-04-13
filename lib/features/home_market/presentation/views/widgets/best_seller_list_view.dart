@@ -47,7 +47,6 @@ class BestSellerListView extends StatelessWidget {
                             arguments: {
                               'ingredient': state.bestSellingList[index],
                               'cartCubit': cartCubit,
-                              'homeMarketCubit': homeMarketCubit
                             });
                       },
                       child: MarketIngredientItem(

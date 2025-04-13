@@ -117,4 +117,30 @@ class SearchMarketCubit extends Cubit<SearchMarketState> {
       searchIngredients(isRefresh: true);
     }
   }
+
+  // toggle incart status
+  void toggleInCartStatus(String id) {
+    if (state.ingredients.isEmpty) return;
+    // Check if the item exists in search list
+    final ingredientIndex =
+        state.ingredients.indexWhere((ingredient) => ingredient.id == id);
+
+    // Not found anywhere, so do nothing
+    if (ingredientIndex == -1) {
+      return;
+    }
+
+    final updatedIngredients = state.ingredients.map((ingredient) {
+      if (ingredient.id == id) {
+        return ingredient.copyWith(inCart: !ingredient.inCart!);
+      }
+      return ingredient;
+    }).toList();
+
+    // toggle
+    emit(state.copyWith(
+      ingredients: updatedIngredients,
+      status: SearchMarketStatus.success,
+    ));
+  }
 }

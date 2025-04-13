@@ -111,19 +111,11 @@ class AppRouter {
         );
       case Routes.marketIngredientsDetails:
         final args = argument as Map<String, dynamic>;
-        final homeMarketCubit = args['homeMarketCubit'] as HomeMarketCubit;
         final cartCubit = args['cartCubit'] as CartCubit;
         final ingredient = argument['ingredient'] as IngredientDataModel;
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider.value(
-                value: homeMarketCubit,
-              ),
-              BlocProvider.value(
-                value: cartCubit,
-              ),
-            ],
+          builder: (context) => BlocProvider.value(
+            value: cartCubit,
             child: MarketIngredientDetailsScreen(
               ingredientDataModel: ingredient,
             ),
@@ -148,19 +140,10 @@ class AppRouter {
           builder: (context) => const ChatScreen(),
         );
       case Routes.cart:
-        final args = argument as Map<String, dynamic>;
-        final homeMarketCubit = args['homeMarketCubit'] as HomeMarketCubit;
-        final cartCubit = args['cartCubit'] as CartCubit;
+        final cartCubit = argument as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider.value(
-                value: homeMarketCubit,
-              ),
-              BlocProvider.value(
-                value: cartCubit,
-              )
-            ],
+          builder: (context) => BlocProvider.value(
+            value: cartCubit,
             child: const CartScreen(),
           ),
         );
@@ -182,9 +165,17 @@ class AppRouter {
           ),
         );
       case Routes.searchMarket:
+        final cartCubit = argument as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<SearchMarketCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<SearchMarketCubit>(),
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              ),
+            ],
             child: const SearchMarketScreen(),
           ),
         );

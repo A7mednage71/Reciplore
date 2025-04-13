@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
+import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 import 'package:looqma/features/search_market/presentation/cubit/search_market/search_market_cubit.dart';
 
@@ -62,12 +64,11 @@ class _MarketSearchResultGridViewState
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              // Navigator.of(context, rootNavigator: true)
-              //     .pushNamed(Routes.marketIngredientsDetails, arguments: {
-              //   'ingredient': state.ingredients[index],
-              //   'cartCubit': cartCubit,
-              //   'homeMarketCubit': homeMarketCubit
-              // });
+              Navigator.of(context, rootNavigator: true)
+                  .pushNamed(Routes.marketIngredientsDetails, arguments: {
+                'ingredient': widget.ingredients[index],
+                'cartCubit': context.read<CartCubit>(),
+              });
             },
             child: AnimationConfiguration.staggeredGrid(
               position: index,
