@@ -35,6 +35,8 @@ import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit
 import 'package:looqma/features/otp_verify/presentation/views/otp_verify_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/recipe_details_screen.dart';
 import 'package:looqma/features/recipe_details/presentation/views/widgets/recipe_video_player.dart';
+import 'package:looqma/features/reviews/data/models/review_screen_args.dart';
+import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
 import 'package:looqma/features/reviews/presentation/views/users_review.dart';
 import 'package:looqma/features/search_market/presentation/cubit/search_market/search_market_cubit.dart';
 import 'package:looqma/features/search_market/presentation/views/search_market_screen.dart';
@@ -122,8 +124,16 @@ class AppRouter {
           ),
         );
       case Routes.reviewScreen:
+        final args = argument as ReviewScreenArgs;
         return MaterialPageRoute(
-          builder: (context) => const UsersReview(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ReviewsCubit>()
+              ..getReviews(
+                recipeId: args.recipeId,
+                ingredientId: args.ingredientId,
+              ),
+            child: const UsersReview(),
+          ),
         );
       case Routes.watchRecipeVideo:
         final recipeModel = argument as RecipeModel;

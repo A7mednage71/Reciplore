@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/reviews/data/models/review_screen_args.dart';
 
 class CustomPopUpMenueButton extends StatefulWidget {
-  const CustomPopUpMenueButton({super.key});
-
+  const CustomPopUpMenueButton({super.key, required this.recipeId});
+  final String recipeId;
   @override
   State<CustomPopUpMenueButton> createState() => _CustomPopUpMenueButtonState();
 }
@@ -80,7 +81,8 @@ class _CustomPopUpMenueButtonState extends State<CustomPopUpMenueButton> {
             break;
           case "review":
             // Navigate to Review Screen
-            Navigator.pushNamed(context, Routes.reviewScreen);
+            Navigator.pushNamed(context, Routes.reviewScreen,
+                arguments: ReviewScreenArgs(recipeId: widget.recipeId));
             break;
           case "unsave":
             // Implement unsave logic
