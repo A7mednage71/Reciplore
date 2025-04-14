@@ -33,6 +33,11 @@ class ApiConstants {
   static const String getIngredients = '/ingredient/list';
   static const String getMarketBanners = '/banner/mobile_market';
 
+  // reviews and ratings end points
+  static const String addReview = '/review/add';
+  static const String makeReaction = '/review/reaction/{id}/{type}';
+  static const String getReviews = '/review/';
+
   // cart end points
   static const String getCart = '/cart/';
   static const String addToCart = '/cart/add';
