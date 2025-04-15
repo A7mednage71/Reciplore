@@ -7,7 +7,7 @@ class AddReviewModel {
   final String? recipeId;
   final String? ingredientId;
   final String comment;
-  final int rate;
+  final double rate;
 
   AddReviewModel({
     required this.recipeId,

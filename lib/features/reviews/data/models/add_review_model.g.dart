@@ -11,7 +11,7 @@ AddReviewModel _$AddReviewModelFromJson(Map<String, dynamic> json) =>
       recipeId: json['recipeId'] as String?,
       ingredientId: json['ingredientId'] as String?,
       comment: json['comment'] as String,
-      rate: (json['rate'] as num).toInt(),
+      rate: (json['rate'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$AddReviewModelToJson(AddReviewModel instance) =>
