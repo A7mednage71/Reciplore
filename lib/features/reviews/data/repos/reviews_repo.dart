@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:looqma/core/networking/api_error.dart';
 import 'package:looqma/core/networking/api_result.dart';
@@ -32,7 +30,6 @@ class ReviewsRepo {
       final result = await _apiService.addReview(model);
       return ApiResult.success(result);
     } catch (e) {
-      log(e.toString());
       if (e is DioException) {
         return ApiResult.failure(ServerFailure.fromDioError(e));
       }

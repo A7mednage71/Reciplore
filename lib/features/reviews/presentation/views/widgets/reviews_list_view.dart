@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:looqma/core/common/widgets/empty_state.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/empty_reviews.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/review_item.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/review_list_loading_skeleton.dart';
 
@@ -23,7 +23,7 @@ class ReviewsListView extends StatelessWidget {
         } else if (state.status == ReviewsStatus.failure) {
           return FailureState(hight: 60.h, message: state.message);
         } else if (state.reviews.isEmpty) {
-          return const Center(child: EmptyState(message: 'No Reviews'));
+          return const EmptyReviews();
         } else {
           return AnimationLimiter(
             child: ListView.builder(
