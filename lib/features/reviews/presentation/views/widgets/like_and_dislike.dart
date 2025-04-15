@@ -5,8 +5,11 @@ import 'package:looqma/core/utils/app_styles.dart';
 class LikeAndDislike extends StatelessWidget {
   const LikeAndDislike({
     super.key,
+    required this.like,
+    required this.dislike,
   });
-
+  final int like;
+  final int dislike;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -20,7 +23,7 @@ class LikeAndDislike extends StatelessWidget {
           ),
         ),
         Text(
-          '9',
+          '$like',
           style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
         ),
         IconButton(
@@ -28,7 +31,7 @@ class LikeAndDislike extends StatelessWidget {
           highlightColor: Colors.transparent,
           icon: const Icon(Icons.thumb_down_alt_outlined),
         ),
-        Text('2',
+        Text('$dislike',
             style:
                 AppStyles.smallRegularText.copyWith(color: AppColors.grayDark)),
       ],
