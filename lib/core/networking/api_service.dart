@@ -20,7 +20,8 @@ import 'package:looqma/features/my_profile/data/models/user_profile_response_mod
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
-import 'package:looqma/features/reviews/data/models/add_review_model.dart';
+import 'package:looqma/features/reviews/data/models/add_review_request_model.dart';
+import 'package:looqma/features/reviews/data/models/add_review_response_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
 import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -132,8 +133,8 @@ abstract class ApiService {
 
   // rate and review services
   @POST(ApiConstants.addReview)
-  Future<ResponseMessageModel> addReview(
-    @Body() AddReviewModel body,
+  Future<AddReviewResponseModel> addReview(
+    @Body() AddReviewRequestModel body,
   );
 
   @POST(ApiConstants.makeReaction)

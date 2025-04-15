@@ -22,7 +22,7 @@ Map<String, dynamic> _$GetReviewsResponseModelToJson(
 
 ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       id: json['_id'] as String,
-      comment: json['comment'] as String,
+      comment: json['comment'] as String?,
       rate: (json['rate'] as num).toInt(),
       recipe: json['recipe'] as String?,
       ingredient: json['ingredient'] as String?,

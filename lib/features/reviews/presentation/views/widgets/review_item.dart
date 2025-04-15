@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
@@ -15,7 +13,6 @@ class ReviewItem extends StatelessWidget {
   final ReviewModel review;
   @override
   Widget build(BuildContext context) {
-    log(review.createdAt);
     return Column(
       children: [
         Row(
@@ -43,7 +40,7 @@ class ReviewItem extends StatelessWidget {
         ),
         SizedBox(height: 10.h),
         Text(
-          review.comment,
+          review.comment ?? '',
           style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
         ),
         LikeAndDislike(

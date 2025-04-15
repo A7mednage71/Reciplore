@@ -25,7 +25,7 @@ class ServerFailure extends ApiError {
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
           e.response!.statusCode!,
-          e.response?.statusMessage,
+          e.response?.data['message'],
         );
 
       case DioExceptionType.cancel:

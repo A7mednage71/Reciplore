@@ -13,13 +13,21 @@ class GetReviewsResponseModel {
       _$GetReviewsResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetReviewsResponseModelToJson(this);
+
+  GetReviewsResponseModel copyWith({
+    List<ReviewModel>? reviews,
+  }) {
+    return GetReviewsResponseModel(
+      reviews: reviews ?? this.reviews,
+    );
+  }
 }
 
 @JsonSerializable()
 class ReviewModel {
   @JsonKey(name: '_id')
   final String id;
-  final String comment;
+  final String? comment;
   final int rate;
   final String? recipe;
   final String? ingredient;
@@ -45,6 +53,30 @@ class ReviewModel {
       _$ReviewModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReviewModelToJson(this);
+
+  ReviewModel copyWith({
+    String? id,
+    String? comment,
+    int? rate,
+    String? recipe,
+    String? ingredient,
+    String? createdAt,
+    UserReviewModel? user,
+    List<String>? likes,
+    List<String>? dislikes,
+  }) {
+    return ReviewModel(
+      id: id ?? this.id,
+      comment: comment ?? this.comment,
+      rate: rate ?? this.rate,
+      recipe: recipe ?? this.recipe,
+      ingredient: ingredient ?? this.ingredient,
+      createdAt: createdAt ?? this.createdAt,
+      user: user ?? this.user,
+      likes: likes ?? this.likes,
+      dislikes: dislikes ?? this.dislikes,
+    );
+  }
 }
 
 @JsonSerializable()

@@ -1,23 +1,23 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'add_review_model.g.dart';
+part 'add_review_request_model.g.dart';
 
 @JsonSerializable()
-class AddReviewModel {
+class AddReviewRequestModel {
   final String? recipeId;
   final String? ingredientId;
   final String comment;
   final double rate;
 
-  AddReviewModel({
+  AddReviewRequestModel({
     required this.recipeId,
     required this.ingredientId,
     required this.comment,
     required this.rate,
   });
 
-  factory AddReviewModel.fromJson(Map<String, dynamic> json) =>
-      _$AddReviewModelFromJson(json);
+  factory AddReviewRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$AddReviewRequestModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AddReviewModelToJson(this);
+  Map<String, dynamic> toJson() => _$AddReviewRequestModelToJson(this);
 }

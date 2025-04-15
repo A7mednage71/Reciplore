@@ -17,10 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ReviewsState {
   ReviewsStatus get status => throw _privateConstructorUsedError;
+  AddReviewStatus get addReviewStatus => throw _privateConstructorUsedError;
   List<ReviewModel> get reviews => throw _privateConstructorUsedError;
-  String get reviewId => throw _privateConstructorUsedError;
-  String get commentId => throw _privateConstructorUsedError;
-  String get reactionType => throw _privateConstructorUsedError;
+  String? get recipeId => throw _privateConstructorUsedError;
+  String? get ingredientId => throw _privateConstructorUsedError;
+  double get rate => throw _privateConstructorUsedError;
+  String? get comment => throw _privateConstructorUsedError;
+  String? get commentId => throw _privateConstructorUsedError;
+  String? get reactionType => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
 
   /// Create a copy of ReviewsState
@@ -38,10 +42,14 @@ abstract class $ReviewsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {ReviewsStatus status,
+      AddReviewStatus addReviewStatus,
       List<ReviewModel> reviews,
-      String reviewId,
-      String commentId,
-      String reactionType,
+      String? recipeId,
+      String? ingredientId,
+      double rate,
+      String? comment,
+      String? commentId,
+      String? reactionType,
       String? message});
 }
 
@@ -61,10 +69,14 @@ class _$ReviewsStateCopyWithImpl<$Res, $Val extends ReviewsState>
   @override
   $Res call({
     Object? status = null,
+    Object? addReviewStatus = null,
     Object? reviews = null,
-    Object? reviewId = null,
-    Object? commentId = null,
-    Object? reactionType = null,
+    Object? recipeId = freezed,
+    Object? ingredientId = freezed,
+    Object? rate = null,
+    Object? comment = freezed,
+    Object? commentId = freezed,
+    Object? reactionType = freezed,
     Object? message = freezed,
   }) {
     return _then(_value.copyWith(
@@ -72,22 +84,38 @@ class _$ReviewsStateCopyWithImpl<$Res, $Val extends ReviewsState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ReviewsStatus,
+      addReviewStatus: null == addReviewStatus
+          ? _value.addReviewStatus
+          : addReviewStatus // ignore: cast_nullable_to_non_nullable
+              as AddReviewStatus,
       reviews: null == reviews
           ? _value.reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<ReviewModel>,
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      commentId: null == commentId
+      recipeId: freezed == recipeId
+          ? _value.recipeId
+          : recipeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ingredientId: freezed == ingredientId
+          ? _value.ingredientId
+          : ingredientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      commentId: freezed == commentId
           ? _value.commentId
           : commentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reactionType: null == reactionType
+              as String?,
+      reactionType: freezed == reactionType
           ? _value.reactionType
           : reactionType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -106,10 +134,14 @@ abstract class _$$ReviewsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {ReviewsStatus status,
+      AddReviewStatus addReviewStatus,
       List<ReviewModel> reviews,
-      String reviewId,
-      String commentId,
-      String reactionType,
+      String? recipeId,
+      String? ingredientId,
+      double rate,
+      String? comment,
+      String? commentId,
+      String? reactionType,
       String? message});
 }
 
@@ -127,10 +159,14 @@ class __$$ReviewsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? addReviewStatus = null,
     Object? reviews = null,
-    Object? reviewId = null,
-    Object? commentId = null,
-    Object? reactionType = null,
+    Object? recipeId = freezed,
+    Object? ingredientId = freezed,
+    Object? rate = null,
+    Object? comment = freezed,
+    Object? commentId = freezed,
+    Object? reactionType = freezed,
     Object? message = freezed,
   }) {
     return _then(_$ReviewsStateImpl(
@@ -138,22 +174,38 @@ class __$$ReviewsStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as ReviewsStatus,
+      addReviewStatus: null == addReviewStatus
+          ? _value.addReviewStatus
+          : addReviewStatus // ignore: cast_nullable_to_non_nullable
+              as AddReviewStatus,
       reviews: null == reviews
           ? _value._reviews
           : reviews // ignore: cast_nullable_to_non_nullable
               as List<ReviewModel>,
-      reviewId: null == reviewId
-          ? _value.reviewId
-          : reviewId // ignore: cast_nullable_to_non_nullable
-              as String,
-      commentId: null == commentId
+      recipeId: freezed == recipeId
+          ? _value.recipeId
+          : recipeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ingredientId: freezed == ingredientId
+          ? _value.ingredientId
+          : ingredientId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      rate: null == rate
+          ? _value.rate
+          : rate // ignore: cast_nullable_to_non_nullable
+              as double,
+      comment: freezed == comment
+          ? _value.comment
+          : comment // ignore: cast_nullable_to_non_nullable
+              as String?,
+      commentId: freezed == commentId
           ? _value.commentId
           : commentId // ignore: cast_nullable_to_non_nullable
-              as String,
-      reactionType: null == reactionType
+              as String?,
+      reactionType: freezed == reactionType
           ? _value.reactionType
           : reactionType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -167,16 +219,23 @@ class __$$ReviewsStateImplCopyWithImpl<$Res>
 class _$ReviewsStateImpl implements _ReviewsState {
   const _$ReviewsStateImpl(
       {this.status = ReviewsStatus.initial,
+      this.addReviewStatus = AddReviewStatus.initial,
       final List<ReviewModel> reviews = const [],
-      this.reviewId = '',
-      this.commentId = '',
-      this.reactionType = '',
+      this.recipeId,
+      this.ingredientId,
+      this.rate = 2.0,
+      this.comment,
+      this.commentId,
+      this.reactionType,
       this.message})
       : _reviews = reviews;
 
   @override
   @JsonKey()
   final ReviewsStatus status;
+  @override
+  @JsonKey()
+  final AddReviewStatus addReviewStatus;
   final List<ReviewModel> _reviews;
   @override
   @JsonKey()
@@ -187,20 +246,24 @@ class _$ReviewsStateImpl implements _ReviewsState {
   }
 
   @override
-  @JsonKey()
-  final String reviewId;
+  final String? recipeId;
+  @override
+  final String? ingredientId;
   @override
   @JsonKey()
-  final String commentId;
+  final double rate;
   @override
-  @JsonKey()
-  final String reactionType;
+  final String? comment;
+  @override
+  final String? commentId;
+  @override
+  final String? reactionType;
   @override
   final String? message;
 
   @override
   String toString() {
-    return 'ReviewsState(status: $status, reviews: $reviews, reviewId: $reviewId, commentId: $commentId, reactionType: $reactionType, message: $message)';
+    return 'ReviewsState(status: $status, addReviewStatus: $addReviewStatus, reviews: $reviews, recipeId: $recipeId, ingredientId: $ingredientId, rate: $rate, comment: $comment, commentId: $commentId, reactionType: $reactionType, message: $message)';
   }
 
   @override
@@ -209,9 +272,15 @@ class _$ReviewsStateImpl implements _ReviewsState {
         (other.runtimeType == runtimeType &&
             other is _$ReviewsStateImpl &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.addReviewStatus, addReviewStatus) ||
+                other.addReviewStatus == addReviewStatus) &&
             const DeepCollectionEquality().equals(other._reviews, _reviews) &&
-            (identical(other.reviewId, reviewId) ||
-                other.reviewId == reviewId) &&
+            (identical(other.recipeId, recipeId) ||
+                other.recipeId == recipeId) &&
+            (identical(other.ingredientId, ingredientId) ||
+                other.ingredientId == ingredientId) &&
+            (identical(other.rate, rate) || other.rate == rate) &&
+            (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.commentId, commentId) ||
                 other.commentId == commentId) &&
             (identical(other.reactionType, reactionType) ||
@@ -223,8 +292,12 @@ class _$ReviewsStateImpl implements _ReviewsState {
   int get hashCode => Object.hash(
       runtimeType,
       status,
+      addReviewStatus,
       const DeepCollectionEquality().hash(_reviews),
-      reviewId,
+      recipeId,
+      ingredientId,
+      rate,
+      comment,
       commentId,
       reactionType,
       message);
@@ -241,22 +314,34 @@ class _$ReviewsStateImpl implements _ReviewsState {
 abstract class _ReviewsState implements ReviewsState {
   const factory _ReviewsState(
       {final ReviewsStatus status,
+      final AddReviewStatus addReviewStatus,
       final List<ReviewModel> reviews,
-      final String reviewId,
-      final String commentId,
-      final String reactionType,
+      final String? recipeId,
+      final String? ingredientId,
+      final double rate,
+      final String? comment,
+      final String? commentId,
+      final String? reactionType,
       final String? message}) = _$ReviewsStateImpl;
 
   @override
   ReviewsStatus get status;
   @override
+  AddReviewStatus get addReviewStatus;
+  @override
   List<ReviewModel> get reviews;
   @override
-  String get reviewId;
+  String? get recipeId;
   @override
-  String get commentId;
+  String? get ingredientId;
   @override
-  String get reactionType;
+  double get rate;
+  @override
+  String? get comment;
+  @override
+  String? get commentId;
+  @override
+  String? get reactionType;
   @override
   String? get message;
 
