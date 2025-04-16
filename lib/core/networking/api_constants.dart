@@ -35,7 +35,7 @@ class ApiConstants {
 
   // reviews and ratings end points
   static const String addReview = '/review/add';
-  static const String makeReaction = '/review/reaction/{id}/{type}';
+  static const String makeReaction = '/review/reaction/{id}';
   static const String getReviews = '/review/';
 
   // cart end points

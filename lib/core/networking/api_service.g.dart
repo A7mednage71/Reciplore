@@ -704,7 +704,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/review/reaction/${id}/{type}',
+            '/review/reaction/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
