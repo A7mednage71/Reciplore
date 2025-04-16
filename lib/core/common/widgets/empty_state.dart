@@ -22,10 +22,13 @@ class EmptyState extends StatelessWidget {
               height: value ?? 150.h,
               width: value ?? 200.w,
             ),
-            Text(message ?? 'No Recipes Found',
-                style: AppStyles.smallBoldText.copyWith(
-                  color: AppColors.secondaryDarker,
-                )),
+            Text(
+              message ?? 'No Recipes Found',
+              textAlign: TextAlign.center,
+              style: AppStyles.smallBoldText.copyWith(
+                color: AppColors.secondaryDarker,
+              ),
+            ),
           ],
         ),
       ),

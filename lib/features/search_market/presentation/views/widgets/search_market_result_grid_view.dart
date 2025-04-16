@@ -54,12 +54,11 @@ class _MarketSearchResultGridViewState
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         itemCount: widget.ingredients.length,
         controller: _scrollController,
-        padding: EdgeInsets.all(5.w),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.h,
           crossAxisSpacing: 15.w,
-          childAspectRatio: 0.65,
+          childAspectRatio: 0.69,
         ),
         itemBuilder: (context, index) {
           return GestureDetector(

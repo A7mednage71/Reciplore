@@ -17,10 +17,9 @@ class HomeMarketIngredientsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeMarketCubit = context.read<HomeMarketCubit>();
     final cartCubit = context.read<CartCubit>();
     return SizedBox(
-      height: 250.h,
+      height: 240.h,
       child: BlocBuilder<HomeMarketCubit, HomeMarketState>(
         buildWhen: (previous, current) =>
             previous.ingredients != current.ingredients,
@@ -48,7 +47,6 @@ class HomeMarketIngredientsListView extends StatelessWidget {
                         .pushNamed(Routes.marketIngredientsDetails, arguments: {
                       'ingredient': state.ingredients[index],
                       'cartCubit': cartCubit,
-                      'homeMarketCubit': homeMarketCubit
                     });
                   },
                   child: MarketIngredientItem(

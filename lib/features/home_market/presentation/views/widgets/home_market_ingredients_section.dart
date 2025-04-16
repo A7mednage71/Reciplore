@@ -50,7 +50,6 @@ class HomeMarketIngredientsSection extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10.h),
         const HomeMarketIngredientsListView(),
       ],
     );

@@ -11,9 +11,13 @@ class MarketIngredientItem extends StatelessWidget {
   final IngredientDataModel ingredient;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 150.w,
       height: 250.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: AppColors.primaryDarker, width: 1.5.w),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,7 +34,7 @@ class MarketIngredientItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.red,
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(10.r),
+                        topRight: Radius.circular(15.r),
                       ),
                     ),
                     child: Center(
@@ -44,64 +48,58 @@ class MarketIngredientItem extends StatelessWidget {
                 ),
             ],
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(16.r),
-                bottomRight: Radius.circular(16.r),
-              ),
-              boxShadow: const [
-                BoxShadow(
-                  color: AppColors.primaryDarker,
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 3),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(16.r),
+                  bottomRight: Radius.circular(16.r),
                 ),
-              ],
-            ),
-            child: Padding(
-              padding: EdgeInsets.all(10.r),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    ingredient.name,
-                    style: AppStyles.smallBoldText,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: 8.h),
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: "\$${ingredient.appliedPrice}",
-                            style: AppStyles.smallBoldText
-                                .copyWith(color: AppColors.primarybright)),
-                        TextSpan(
-                            text: "/ kg",
-                            style: AppStyles.extraSmallRegularText
-                                .copyWith(color: AppColors.grayLight)),
-                      ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8.r),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      ingredient.name,
+                      style: AppStyles.smallBoldText,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  SizedBox(height: 10.h),
-                  Text(
-                    ingredient.discount.amount > 0
-                        ? "\$${ingredient.basePrice}"
-                        : "",
-                    style: AppStyles.smallRegularText.copyWith(
-                      decoration: TextDecoration.lineThrough,
-                      decorationColor: AppColors.grayLight,
-                      color: AppColors.grayLight,
+                    SizedBox(height: 8.h),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: "\$${ingredient.appliedPrice}",
+                              style: AppStyles.smallBoldText
+                                  .copyWith(color: AppColors.primarybright)),
+                          TextSpan(
+                              text: "/ kg",
+                              style: AppStyles.extraSmallRegularText
+                                  .copyWith(color: AppColors.grayLight)),
+                        ],
+                      ),
                     ),
-                  ),
-                  Align(
-                      alignment: Alignment.topRight,
-                      child: AddIngredientToCartHomeButton(
-                          ingredient: ingredient)),
-                ],
+                    SizedBox(height: 8.h),
+                    Text(
+                      ingredient.discount.amount > 0
+                          ? "\$${ingredient.basePrice}"
+                          : "",
+                      style: AppStyles.smallRegularText.copyWith(
+                        decoration: TextDecoration.lineThrough,
+                        decorationColor: AppColors.grayLight,
+                        color: AppColors.grayLight,
+                      ),
+                    ),
+                    Align(
+                        alignment: Alignment.topRight,
+                        child: AddIngredientToCartHomeButton(
+                            ingredient: ingredient)),
+                  ],
+                ),
               ),
             ),
           ),

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class AllIngredientsLoadingGridView extends StatelessWidget {
-  const AllIngredientsLoadingGridView({super.key});
+class IngredientsGridViewSkeleton extends StatelessWidget {
+  const IngredientsGridViewSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +31,14 @@ class AllIngredientsLoadingGridView extends StatelessWidget {
       ),
     );
     return Skeletonizer(
+      containersColor: AppColors.white,
       child: GridView.builder(
         itemCount: 6,
-        padding: EdgeInsets.all(20.w),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10.h,
           crossAxisSpacing: 15.w,
-          childAspectRatio: 0.65,
+          childAspectRatio: 0.69,
         ),
         itemBuilder: (context, index) {
           return MarketIngredientItem(

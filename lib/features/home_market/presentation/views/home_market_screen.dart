@@ -33,7 +33,7 @@ class HomeMarketScreen extends StatelessWidget {
             const MarketSearchTextField(),
             SizedBox(height: 20.h),
             const MarketBannersBlocBuilder(),
-            SizedBox(height: 10.h),
+            SizedBox(height: 5.h),
             BlocListener<CartCubit, CartState>(
               listenWhen: (previous, current) =>
                   previous.status != CartStatus.cartActionSuccess &&

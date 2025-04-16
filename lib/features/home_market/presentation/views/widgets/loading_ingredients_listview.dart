@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/features/home_market/presentation/views/widgets/market_ingredient_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -31,6 +32,7 @@ class LoadingIngredientsListView extends StatelessWidget {
     );
 
     return Skeletonizer(
+      containersColor: AppColors.white,
       child: ListView.builder(
         itemCount: 3,
         scrollDirection: Axis.horizontal,
