@@ -15,7 +15,7 @@ class SearchMarketScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Search Market'),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
             const SearchMarketTextFieldAndFilter(),

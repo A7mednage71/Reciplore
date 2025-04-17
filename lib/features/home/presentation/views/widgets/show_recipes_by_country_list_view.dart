@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
+import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/cubit/get_recipes/get_recipes_by_country/get_recipes_by_country_cubit.dart';
 import 'package:looqma/features/home/presentation/views/widgets/recipe_item.dart';
 
@@ -82,8 +81,7 @@ class _ShowRecipesByCountryListViewState
           padding: EdgeInsets.only(right: 20.w),
           child: Text(
             '${widget.recipes.length} /${cubit.totalRecipesLength} Recipes',
-            style: AppStyles.extraSmallRegularText
-                .copyWith(color: AppColors.grayLight),
+            style: AppStyles.smallRegularGrayLightText,
           ),
         )
       ],

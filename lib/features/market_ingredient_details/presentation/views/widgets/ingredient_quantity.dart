@@ -40,9 +40,7 @@ class IngredientQuantity extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Center(
-            child: Text('2',
-                style: AppStyles.mediumBoldText
-                    .copyWith(color: AppColors.primaryDarker)),
+            child: Text('2', style: AppStyles.mediumBoldprimaryDarkerText),
           ),
         ),
         SizedBox(width: 10.w),

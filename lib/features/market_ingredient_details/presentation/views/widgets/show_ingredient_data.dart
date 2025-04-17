@@ -32,16 +32,14 @@ class ShowIngredientData extends StatelessWidget {
                               .copyWith(color: AppColors.primarybright)),
                       TextSpan(
                           text: " / kg",
-                          style: AppStyles.mediumRegularText
-                              .copyWith(color: AppColors.grayLight)),
+                          style: AppStyles.mediumRegularGrayLightText),
                     ],
                   ),
                 ),
                 SizedBox(width: 12.w),
                 if (ingredient.discount.amount > 0)
                   Text("\$${ingredient.basePrice}",
-                      style: AppStyles.smallRegularText.copyWith(
-                          color: AppColors.grayLight,
+                      style: AppStyles.smallRegularGrayLightText.copyWith(
                           decorationColor: AppColors.grayLight,
                           decoration: TextDecoration.lineThrough)),
               ],
@@ -53,8 +51,7 @@ class ShowIngredientData extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Description",
-                    style: AppStyles.mediumRegularText
-                        .copyWith(color: AppColors.grayLight)),
+                    style: AppStyles.mediumRegularGrayLightText),
                 RatingStars(rating: ingredient.averageRating),
               ],
             ),

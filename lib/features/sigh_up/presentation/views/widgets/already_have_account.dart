@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
 class AleardyHaveAccount extends StatelessWidget {
@@ -19,8 +18,7 @@ class AleardyHaveAccount extends StatelessWidget {
           },
           child: Text(
             "Sign In",
-            style: AppStyles.smallBoldText
-                .copyWith(color: AppColors.secondaryDark),
+            style: AppStyles.smallBoldsecondaryDarkerText,
           ),
         ),
       ],

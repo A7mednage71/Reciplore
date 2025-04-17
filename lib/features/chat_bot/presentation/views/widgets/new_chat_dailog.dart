@@ -34,8 +34,7 @@ class NewChatDailog extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {},
-          child: Text('OK',
-              style: AppStyles.extraSmallBoldText.copyWith(color: Colors.red)),
+          child: Text('OK', style: AppStyles.extraSmallBoldWarningText),
         ),
       ],
     );

@@ -55,7 +55,7 @@ class UpdateProfileInfoButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Update info",
-                  style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+                  style: AppStyles.normalBoldWhiteText,
                 ),
               ),
             ),

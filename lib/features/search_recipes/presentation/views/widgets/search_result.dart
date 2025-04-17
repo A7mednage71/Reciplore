@@ -12,8 +12,9 @@ class SearchResult extends StatelessWidget {
     return Column(
       children: [
         SearchResultLength(searchResultLength: recipes.length),
-        SizedBox(height: 20.h),
+        SizedBox(height: 10.h),
         Expanded(child: SearchRecipesGridView(recipes: recipes)),
+        SizedBox(height: 5.h),
       ],
     );
   }

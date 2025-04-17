@@ -40,11 +40,17 @@ class CountriesTabsWidget extends StatelessWidget {
         ),
         onTap: (value) {
           if (value == 0) {
-            getRecipesByCountryCubit.getRecipesByCountry(isRefresh: true);
+            if (getRecipesByCountryCubit.selectedCountryId != null) {
+              getRecipesByCountryCubit.getRecipesByCountry(isRefresh: true);
+            }
             return;
+          } else {
+            if (getRecipesByCountryCubit.selectedCountryId !=
+                countries[value - 1].countryId) {
+              getRecipesByCountryCubit.getRecipesByCountry(
+                  countryId: countries[value - 1].countryId, isRefresh: true);
+            }
           }
-          getRecipesByCountryCubit.getRecipesByCountry(
-              countryId: countries[value - 1].countryId, isRefresh: true);
         },
       ),
     );

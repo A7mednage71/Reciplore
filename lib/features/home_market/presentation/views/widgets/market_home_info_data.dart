@@ -26,8 +26,7 @@ class MarketHomeInfoData extends StatelessWidget {
               Text("Reciplore Market", style: AppStyles.largeBoldText),
               SizedBox(height: 5.h),
               Text("Get the best ingredients and\nstart cooking today!",
-                  style: AppStyles.smallRegularText
-                      .copyWith(color: AppColors.grayLight)),
+                  style: AppStyles.smallRegularGrayLightText),
             ],
           ),
           const Spacer(),

@@ -32,8 +32,7 @@ class ProcedureItem extends StatelessWidget {
                   SizedBox(height: 5.h),
                   Text(
                     step,
-                    style: AppStyles.smallRegularText
-                        .copyWith(color: AppColors.grayLight),
+                    style: AppStyles.smallRegularGrayLightText,
                   ),
                   SizedBox(height: 10.h)
                 ],

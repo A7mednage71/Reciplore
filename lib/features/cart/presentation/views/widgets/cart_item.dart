@@ -63,14 +63,12 @@ class CartItem extends StatelessWidget {
                       5.h.verticalSpace,
                       Text(
                         '\$${cartIngredientModel.price} / 1 kg, Price',
-                        style: AppStyles.smallRegularText
-                            .copyWith(color: AppColors.grayLight),
+                        style: AppStyles.smallRegularGrayLightText,
                       ),
                       10.h.verticalSpace,
                       Text(
                         '\$${(cartIngredientModel.price * cartIngredientModel.quantity).toStringAsFixed(2)}',
-                        style: AppStyles.smallBoldText
-                            .copyWith(color: AppColors.primaryDark),
+                        style: AppStyles.smallBoldprimaryDarkText,
                       ),
                     ],
                   ),

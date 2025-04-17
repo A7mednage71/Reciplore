@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
@@ -117,8 +116,7 @@ class _OtpVerifyScreenState extends State<OtpVerifyScreen> {
                         },
                         child: Text(
                           "Resend Code",
-                          style: AppStyles.smallRegularText
-                              .copyWith(color: AppColors.secondaryDark),
+                          style: AppStyles.smallRegularsecondaryDarkText,
                         ),
                       ),
                     ),

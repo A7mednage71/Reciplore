@@ -25,7 +25,7 @@ class LogoutButton extends StatelessWidget {
         child: Center(
           child: Text(
             "Logout",
-            style: AppStyles.smallBoldText.copyWith(color: Colors.white),
+            style: AppStyles.smallBoldWhiteText,
           ),
         ),
       ),

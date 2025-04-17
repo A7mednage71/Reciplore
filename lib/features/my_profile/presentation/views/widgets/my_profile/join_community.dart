@@ -27,8 +27,7 @@ class JoinCommunityWidget extends StatelessWidget {
             ),
             Text(
               "Join us to discover and share amazing recipes together!",
-              style: AppStyles.extraSmallRegularText
-                  .copyWith(color: AppColors.grayMedium),
+              style: AppStyles.extraSmallRegularGrayMediumText,
             ),
             SizedBox(height: 10.h),
             Text("Join us now!", style: AppStyles.extraSmallBoldText),

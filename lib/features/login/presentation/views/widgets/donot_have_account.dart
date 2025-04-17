@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/routes/routes.dart';
-import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 
 class DonotHaveAccount extends StatelessWidget {
@@ -22,8 +21,7 @@ class DonotHaveAccount extends StatelessWidget {
           },
           child: Text(
             "Sign Up",
-            style: AppStyles.smallBoldText
-                .copyWith(color: AppColors.secondaryDark),
+            style: AppStyles.smallBoldsecondaryDarkText,
           ),
         )
       ],

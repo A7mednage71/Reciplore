@@ -21,10 +21,7 @@ class ResetFilter extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
           child: Center(
-            child: Text(
-              "Reset",
-              style: AppStyles.smallBoldText.copyWith(color: Colors.white),
-            ),
+            child: Text("Reset", style: AppStyles.smallBoldWhiteText),
           ),
         ),
       ),

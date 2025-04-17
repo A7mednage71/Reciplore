@@ -21,8 +21,7 @@ class UserInfo extends StatelessWidget {
               Text("Hello Nageh", style: AppStyles.largeBoldText),
               SizedBox(height: 5.h),
               Text("What are you cooking today?",
-                  style: AppStyles.smallRegularText
-                      .copyWith(color: AppColors.grayLight)),
+                  style: AppStyles.smallRegularGrayLightText),
             ],
           ),
           const Spacer(),

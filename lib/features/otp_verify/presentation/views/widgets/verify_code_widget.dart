@@ -31,7 +31,7 @@ class VerifyCodeWidget extends StatelessWidget {
           focusedPinTheme: PinTheme(
             width: 55.w,
             height: 55.h,
-            textStyle: AppStyles.largeRegularText.copyWith(color: Colors.blue),
+            textStyle: AppStyles.largeRegularBlueText,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: AppColors.primaryDarker),
@@ -40,7 +40,7 @@ class VerifyCodeWidget extends StatelessWidget {
           errorPinTheme: PinTheme(
             width: 50.w,
             height: 50.h,
-            textStyle: AppStyles.largeRegularText.copyWith(color: Colors.red),
+            textStyle: AppStyles.largeRegularRedText,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: Colors.red),

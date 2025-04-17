@@ -6,7 +6,7 @@ import 'package:looqma/core/common/widgets/empty_state.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/all_ingredients/presentation/views/widgets/all_ingredients_loading_grid_view.dart';
+import 'package:looqma/core/common/widgets/ingredients_grid_view_skeleton.dart';
 import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_cubit.dart';
 import 'package:looqma/features/home_market/presentation/cubit/cubit/home_market_state.dart';
@@ -18,7 +18,6 @@ class AllIngredientsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeMarketCubit = context.read<HomeMarketCubit>();
     final cartCubit = context.read<CartCubit>();
     return Expanded(
       child: BlocBuilder<HomeMarketCubit, HomeMarketState>(
@@ -28,7 +27,7 @@ class AllIngredientsGridView extends StatelessWidget {
           if (state.status == HomeMarketStatus.initial) {
             return const SizedBox.shrink();
           } else if (state.status == HomeMarketStatus.loading) {
-            return const AllIngredientsLoadingGridView();
+            return const IngredientsGridViewSkeleton();
           } else if (state.status == HomeMarketStatus.failure) {
             return FailureState(hight: 50.h, message: state.message);
           } else if (state.ingredients.isEmpty) {
@@ -43,13 +42,12 @@ class AllIngredientsGridView extends StatelessWidget {
               child: AnimationLimiter(
                 child: GridView.builder(
                   itemCount: ingredients.length,
-                  padding: EdgeInsets.all(20.w),
                   controller: scrollController,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 10.h,
                     crossAxisSpacing: 15.w,
-                    childAspectRatio: 0.65,
+                    childAspectRatio: 0.69,
                   ),
                   itemBuilder: (context, index) {
                     return GestureDetector(

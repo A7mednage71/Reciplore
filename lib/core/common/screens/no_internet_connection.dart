@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:lottie/lottie.dart';
 
@@ -20,8 +19,7 @@ class NoInternetConnection extends StatelessWidget {
           const Spacer(),
           Text("Ooops!", style: AppStyles.headerBoldText),
           Text('No Internet Connection',
-              style: AppStyles.mediumBoldText
-                  .copyWith(color: AppColors.secondaryDarker)),
+              style: AppStyles.mediumBoldsecondaryDarkerText),
           SizedBox(height: 50.h),
           Lottie.asset(AppAssets.imagesNoInternet),
           SizedBox(height: 50.h),

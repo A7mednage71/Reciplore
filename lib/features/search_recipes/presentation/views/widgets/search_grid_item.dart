@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_recipe_image.dart';
 
 class SearchRecipeItem extends StatelessWidget {
@@ -39,7 +39,7 @@ class SearchRecipeItem extends StatelessWidget {
                   recipeModel.name,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: AppStyles.smallBoldText.copyWith(color: Colors.white),
+                  style: AppStyles.smallBoldWhiteText,
                 ),
               ],
             ),

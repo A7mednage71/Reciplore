@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class YouTubeVideoScreen extends StatefulWidget {
@@ -48,7 +48,7 @@ class _YouTubeVideoScreenState extends State<YouTubeVideoScreen> {
         backgroundColor: Colors.black,
         title: Text(
           "${widget.recipeModel.name} Video",
-          style: AppStyles.mediumBoldText.copyWith(color: Colors.white),
+          style: AppStyles.mediumBoldWhiteText,
         ),
         leading: IconButton(
           icon: const Icon(

@@ -1,20 +1,18 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
-import 'package:looqma/features/home/presentation/views/widgets/recipe_item.dart';
+import 'package:looqma/features/search_recipes/presentation/views/widgets/search_grid_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class ShowRecipesByCountryLoading extends StatelessWidget {
-  const ShowRecipesByCountryLoading({
-    super.key,
-  });
+class SearchGridViewSkeleton extends StatelessWidget {
+  const SearchGridViewSkeleton({super.key});
 
   @override
   Widget build(BuildContext context) {
     List<RecipeModel> recipes = List.generate(
-      3,
+      10,
       (index) => RecipeModel(
         id: '',
         name: 'Recipe Recipe name',
@@ -39,21 +37,17 @@ class ShowRecipesByCountryLoading extends StatelessWidget {
 
     return Skeletonizer(
       containersColor: AppColors.white,
-      child: SizedBox(
-        height: 200.h,
-        child: ListView.builder(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 30.w),
-          clipBehavior: Clip.none,
-          scrollDirection: Axis.horizontal,
-          itemCount: recipes.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
-              child: RecipeItem(recipeModel: recipes[index]),
-            );
-          },
+      child: GridView.builder(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 15.w,
+          mainAxisSpacing: 15.h,
         ),
+        itemCount: recipes.length,
+        itemBuilder: (context, index) {
+          return SearchRecipeItem(recipeModel: recipes[index]);
+        },
       ),
     );
   }

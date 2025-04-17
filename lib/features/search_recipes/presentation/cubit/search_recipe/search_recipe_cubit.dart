@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_debouncer/flutter_debouncer.dart';
@@ -102,15 +100,15 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   }
 
   Future<void> applyFilter() async {
-    final searchText = searchController.text.trim();
-    log("searchText: $searchText");
-    if (searchText.isEmpty) {
-      selectedCategoryId = null;
-      selectedCountryId = null;
-      selectedRate = "0";
-      ShowToast.showFailureToast('Please enter a search term first');
-      return;
-    }
+    // final searchText = searchController.text.trim();
+    // log("searchText: $searchText");
+    // if (searchText.isEmpty) {
+    //   selectedCategoryId = null;
+    //   selectedCountryId = null;
+    //   selectedRate = "0";
+    //   ShowToast.showFailureToast('Please enter a search term first');
+    //   return;
+    // }
     if (selectedCategoryId != null ||
         selectedCountryId != null ||
         selectedRate != "0") {
@@ -123,7 +121,9 @@ class SearchRecipeCubit extends Cubit<SearchRecipeState> {
   Future<void> resetFilters() async {
     if (selectedRate == "0" &&
         selectedCategoryId == null &&
-        selectedCountryId == null) return;
+        selectedCountryId == null) {
+      return;
+    }
     selectedRate = "0";
     selectedCategoryId = null;
     selectedCountryId = null;
