@@ -36,8 +36,7 @@ class HomeMarketIngredientsSection extends StatelessWidget {
                 child: Row(
                   children: [
                     Text('See All',
-                        style: AppStyles.smallRegularText
-                            .copyWith(color: AppColors.secondaryDark)),
+                        style: AppStyles.smallRegularsecondaryDarkText),
                     SizedBox(width: 5.w),
                     const Icon(
                       Icons.arrow_forward_ios_rounded,

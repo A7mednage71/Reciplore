@@ -24,7 +24,7 @@ class SendReviewButton extends StatelessWidget {
         child: Center(
           child: Text(
             'Send',
-            style: AppStyles.smallRegularText.copyWith(color: AppColors.white),
+            style: AppStyles.smallRegularWhiteText,
           ),
         ),
       ),

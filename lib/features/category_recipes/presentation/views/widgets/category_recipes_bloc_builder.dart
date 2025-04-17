@@ -29,8 +29,7 @@ class CategoryRecipesBlocBuider extends StatelessWidget {
               children: [
                 Text(
                   '${recipes.length} /${categoryRecipesCubit.totalRecipeslength} Recipes',
-                  style: AppStyles.extraSmallRegularText
-                      .copyWith(color: Colors.grey),
+                  style: AppStyles.extraSmallRegularGrayLightText,
                 ),
                 SizedBox(height: 10.h),
                 Expanded(child: CategoryRecipesGridView(recipes: recipes)),

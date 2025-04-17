@@ -33,9 +33,7 @@ class CartTotalSection extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Total',
-                  style: AppStyles.smallRegularText
-                      .copyWith(color: AppColors.grayLight)),
+              Text('Total', style: AppStyles.smallRegularGrayLightText),
               5.h.verticalSpace,
               Text(
                 '\$ ${cartDataModel.subTotal.toStringAsFixed(2)}',

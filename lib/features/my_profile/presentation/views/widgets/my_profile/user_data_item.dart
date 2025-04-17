@@ -20,9 +20,7 @@ class UserDataItem extends StatelessWidget {
       children: [
         Icon(icon, color: AppColors.primaryMedium),
         SizedBox(width: 10.w),
-        Text(content,
-            style: AppStyles.smallRegularText
-                .copyWith(color: AppColors.grayMedium)),
+        Text(content, style: AppStyles.smallRegularGrayMediumText),
       ],
     );
   }

@@ -27,7 +27,7 @@ class StartCookingButton extends StatelessWidget {
           children: [
             Text(
               "Start Cooking",
-              style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+              style: AppStyles.normalBoldWhiteText,
             ),
             SizedBox(width: 9.w),
             const Icon(Icons.arrow_forward, color: Colors.white)

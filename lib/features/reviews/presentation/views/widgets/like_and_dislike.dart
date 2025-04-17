@@ -21,16 +21,14 @@ class LikeAndDislike extends StatelessWidget {
         ),
         Text(
           '9',
-          style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
+          style: AppStyles.smallRegularGrayDarkText,
         ),
         IconButton(
           onPressed: () {},
           highlightColor: Colors.transparent,
           icon: const Icon(Icons.thumb_down_alt_outlined),
         ),
-        Text('2',
-            style:
-                AppStyles.smallRegularText.copyWith(color: AppColors.grayDark)),
+        Text('2', style: AppStyles.smallRegularGrayDarkText),
       ],
     );
   }

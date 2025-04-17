@@ -85,8 +85,7 @@ class _IngredientQuantityAndCartButtonState
                   ),
                   child: Center(
                     child: Text('$quantity',
-                        style: AppStyles.mediumBoldText
-                            .copyWith(color: AppColors.primaryDarker)),
+                        style: AppStyles.mediumBoldprimaryDarkerText),
                   ),
                 ),
                 SizedBox(width: 10.w),
@@ -168,8 +167,7 @@ class _IngredientQuantityAndCartButtonState
                     children: [
                       Text(
                         isInCart ? 'Remove' : 'Add',
-                        style: AppStyles.smallBoldText
-                            .copyWith(color: AppColors.white),
+                        style: AppStyles.smallBoldWhiteText,
                       ),
                       SizedBox(width: 10.w),
                       Icon(

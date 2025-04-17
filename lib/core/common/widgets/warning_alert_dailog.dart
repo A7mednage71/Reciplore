@@ -43,8 +43,7 @@ class WarningAlertDailog extends StatelessWidget {
           TextButton(
             child: Text(
               'Cancel',
-              style: AppStyles.extraSmallBoldText
-                  .copyWith(color: AppColors.primaryDarker),
+              style: AppStyles.extraSmallBoldprimaryDarkerText,
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -54,8 +53,7 @@ class WarningAlertDailog extends StatelessWidget {
             onPressed: onOkPressed,
             child: Text(
               'Delete',
-              style: AppStyles.extraSmallBoldText
-                  .copyWith(color: AppColors.warningColor),
+              style: AppStyles.extraSmallBoldWarningText,
             ),
           )
         ]);

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
-import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
+import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
+import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dart';
 
 class NewRecipesItem extends StatelessWidget {
@@ -36,8 +35,7 @@ class NewRecipesItem extends StatelessWidget {
                     RatingStars(rating: recipeModel?.averageRating ?? 0),
                     SizedBox(height: 10.h),
                     Text("Category",
-                        style: AppStyles.smallRegularText
-                            .copyWith(color: AppColors.grayLight)),
+                        style: AppStyles.smallRegularGrayLightText),
                     Text(recipeModel?.category?.name ?? "Category",
                         style: AppStyles.smallRegularText),
                   ],

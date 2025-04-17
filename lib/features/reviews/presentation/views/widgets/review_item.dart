@@ -31,8 +31,7 @@ class ReviewItem extends StatelessWidget {
                   style: AppStyles.extraSmallBoldText,
                 ),
                 Text('June 12, 2020 - 19:35',
-                    style: AppStyles.extraSmallRegularText
-                        .copyWith(color: AppColors.grayLight)),
+                    style: AppStyles.extraSmallRegularGrayLightText),
               ],
             ),
             const Spacer(),
@@ -42,7 +41,7 @@ class ReviewItem extends StatelessWidget {
         SizedBox(height: 10.h),
         Text(
           'Lorem Ipsum tempor incididunt ut labore et dolore,inise voluptate velit esse cillum',
-          style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
+          style: AppStyles.smallRegularGrayDarkText,
         ),
         const LikeAndDislike(),
         Divider(

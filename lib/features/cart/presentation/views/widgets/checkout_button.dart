@@ -20,7 +20,7 @@ class CheckoutButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 20.w),
         child: Text(
           'Checkout',
-          style: AppStyles.mediumBoldText.copyWith(color: Colors.white),
+          style: AppStyles.mediumBoldWhiteText,
         ),
       ),
     );

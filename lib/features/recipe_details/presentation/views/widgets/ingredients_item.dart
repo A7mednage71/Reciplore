@@ -73,8 +73,7 @@ class IngredientsItem extends StatelessWidget {
               padding: EdgeInsets.only(right: 10.w),
               child: Text(
                 ingredientModel.amount,
-                style: AppStyles.smallRegularText
-                    .copyWith(color: AppColors.grayLight),
+                style: AppStyles.smallRegularGrayLightText,
               ),
             ),
           ],

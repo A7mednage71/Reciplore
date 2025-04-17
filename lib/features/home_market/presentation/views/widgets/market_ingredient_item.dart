@@ -40,8 +40,7 @@ class MarketIngredientItem extends StatelessWidget {
                     child: Center(
                       child: Text(
                         '${ingredient.discount.amount.toInt()} %',
-                        style: AppStyles.extraSmallRegularText
-                            .copyWith(color: AppColors.white),
+                        style: AppStyles.extraSmallRegularWhiteText,
                       ),
                     ),
                   ),
@@ -74,12 +73,10 @@ class MarketIngredientItem extends StatelessWidget {
                         children: [
                           TextSpan(
                               text: "\$${ingredient.appliedPrice}",
-                              style: AppStyles.smallBoldText
-                                  .copyWith(color: AppColors.primarybright)),
+                              style: AppStyles.smallBoldprimarybrightText),
                           TextSpan(
                               text: "/ kg",
-                              style: AppStyles.extraSmallRegularText
-                                  .copyWith(color: AppColors.grayLight)),
+                              style: AppStyles.extraSmallRegularGrayLightText),
                         ],
                       ),
                     ),
@@ -88,10 +85,9 @@ class MarketIngredientItem extends StatelessWidget {
                       ingredient.discount.amount > 0
                           ? "\$${ingredient.basePrice}"
                           : "",
-                      style: AppStyles.smallRegularText.copyWith(
+                      style: AppStyles.smallRegularGrayLightText.copyWith(
                         decoration: TextDecoration.lineThrough,
                         decorationColor: AppColors.grayLight,
-                        color: AppColors.grayLight,
                       ),
                     ),
                     Align(

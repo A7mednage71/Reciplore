@@ -43,7 +43,7 @@ class ChatBot extends StatelessWidget {
               ),
               child: Text(
                 "Start Chat",
-                style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+                style: AppStyles.normalBoldWhiteText,
               ),
             )
           ],

@@ -56,8 +56,7 @@ class SignUpButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Sign Up",
-                    style:
-                        AppStyles.mediumBoldText.copyWith(color: Colors.white),
+                    style: AppStyles.mediumBoldWhiteText,
                   ),
                 ),
               ),

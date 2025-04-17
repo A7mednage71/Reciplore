@@ -47,8 +47,7 @@ class RecipeItem extends StatelessWidget {
                       children: [
                         Text(
                           "Rate",
-                          style: AppStyles.smallRegularText
-                              .copyWith(color: AppColors.grayLight),
+                          style: AppStyles.smallRegularGrayLightText,
                         ),
                         Row(
                           children: [
