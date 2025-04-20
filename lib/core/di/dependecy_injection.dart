@@ -9,6 +9,8 @@ import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.da
 import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/change_password/data/repos/change_password_repo.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
+import 'package:looqma/features/chat_bot/data/repos/chat_bot_repo.dart';
+import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
@@ -127,5 +129,9 @@ Future<void> setupGetIt() async {
 
     // cart
     ..registerLazySingleton<CartRepo>(() => CartRepo(getIt<ApiService>()))
-    ..registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()));
+    ..registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()))
+
+    // chat Bot
+    ..registerLazySingleton<ChatBotRepo>(() => ChatBotRepo(getIt<ApiService>()))
+    ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()));
 }

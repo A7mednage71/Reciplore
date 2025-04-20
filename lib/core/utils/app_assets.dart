@@ -79,5 +79,8 @@ class AppAssets {
   static const String imagesVerify = "assets/images/verify.json";
 
   static const String imagesWorningLottie = "assets/images/worning_lottie.json";
+
+  //manual
+  static const String imagesLoadingChatBot = "assets/images/loading_chatbot.json";
 }
 
