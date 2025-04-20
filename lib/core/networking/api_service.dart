@@ -10,6 +10,8 @@ import 'package:looqma/features/cart/data/models/add_to_cart_request_model.dart'
 import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
 import 'package:looqma/features/cart/data/models/update_cart_request_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
+import 'package:looqma/features/chat_bot/data/models/chat_bot_request_model.dart';
+import 'package:looqma/features/chat_bot/data/models/chat_bot_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
@@ -114,6 +116,11 @@ abstract class ApiService {
   @POST(ApiConstants.addToCart)
   Future<ResponseMessageModel> addToCart(
     @Body() AddToCartRequestModel body,
+  );
+
+  @POST(ApiConstants.chatBot)
+  Future<ChatBotResponseModel> chatBot(
+    @Body() ChatBotRequestModel body,
   );
 
   @PUT(ApiConstants.removeFromCart)

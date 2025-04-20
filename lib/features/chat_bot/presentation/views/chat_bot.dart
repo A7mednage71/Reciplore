@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:lottie/lottie.dart';
 
 class ChatBot extends StatelessWidget {
@@ -29,8 +31,10 @@ class ChatBot extends StatelessWidget {
             SizedBox(height: 70.h),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context, rootNavigator: true)
-                    .pushNamed(Routes.chatScreen);
+                Navigator.of(context, rootNavigator: true).pushNamed(
+                  Routes.chatScreen,
+                  arguments: getIt<ChatBotCubit>(),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryDark,

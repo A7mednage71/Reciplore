@@ -39,4 +39,7 @@ class ApiConstants {
   static const String removeFromCart = '/cart/remove/{id}';
   static const String updateCart = '/cart/update/{id}';
   static const String clearCart = '/cart/clear';
+
+
+  static const String chatBot = '/ai/chat';
 }

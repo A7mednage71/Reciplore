@@ -23,7 +23,7 @@ class EmptyChatWidget extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Text(
-            "How can I help you..?",
+            'Enter ingredients you have, separated by commas\n(e.g., "pasta, tomatoes, olive oil")',
             style: AppStyles.mediumRegularText,
           ),
           SizedBox(height: 20.h),

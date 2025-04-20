@@ -3,9 +3,12 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/chat_bot/data/models/chat_message.dart';
 
 class UserMessage extends StatelessWidget {
-  const UserMessage({super.key});
+
+  final ChatMessage message;
+  const UserMessage({super.key, required this.message});
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -34,7 +37,7 @@ class UserMessage extends StatelessWidget {
         ),
         child: MarkdownBody(
           selectable: true,
-          data: "user message text text text ",
+          data: message.content,
           styleSheet: MarkdownStyleSheet(
             p: AppStyles.smallRegularText,
           ),
