@@ -13,18 +13,20 @@ class EmptyChatWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 50.h),
           Lottie.asset(
-            AppAssets.imagesEmptyChatLottie,
-            height: 200.h,
+            AppAssets.imagesCookingAnimation,
+            height: 300.h,
             width: double.infinity,
+            backgroundLoading: false,
           ),
+          Text("👋 Let’s cooking!", style: AppStyles.mediumBoldText),
           SizedBox(height: 20.h),
           Text(
-            'Enter ingredients you have, separated by commas\n(e.g., "pasta, tomatoes, olive oil")',
-            style: AppStyles.mediumRegularText,
+            "1) Enter your ingredients, separated by commas\n"
+            "(e.g., pasta, tomatoes, olive oil)\n\n"
+            "2) Tap Send to discover delicious recipes 🍲",
+            style: AppStyles.smallRegularText,
           ),
           SizedBox(height: 20.h),
         ],

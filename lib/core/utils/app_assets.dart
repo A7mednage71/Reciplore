@@ -12,6 +12,8 @@ class AppAssets {
 
   static const String imagesClearCart = "assets/images/clear_cart.png";
 
+  static const String imagesCookingAnimation = "assets/images/cooking_animation.json";
+
   static const String imagesDiscord = "assets/images/discord.png";
 
   static const String imagesEmptyBox = "assets/images/empty_box.json";
@@ -35,6 +37,8 @@ class AppAssets {
   static const String imagesIngrediant = "assets/images/ingrediant.png";
 
   static const String imagesInstagram = "assets/images/instagram.png";
+
+  static const String imagesLoadingChatbot = "assets/images/loading_chatbot.json";
 
   static const String imagesNoInternet = "assets/images/no_internet.json";
 
@@ -79,8 +83,5 @@ class AppAssets {
   static const String imagesVerify = "assets/images/verify.json";
 
   static const String imagesWorningLottie = "assets/images/worning_lottie.json";
-
-  //manual
-  static const String imagesLoadingChatBot = "assets/images/loading_chatbot.json";
 }
 
