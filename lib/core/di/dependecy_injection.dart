@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_cubit.dart';
 import 'package:looqma/core/common/recipe_save_toggle/repos/recipe_save_toggle_repo.dart';
+import 'package:looqma/core/networking/api_local_service.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
 import 'package:looqma/features/cart/data/repos/cart_repo.dart';
@@ -44,9 +45,14 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // create dio factory instance
   Dio dio = await DioFactory.getDio();
+  // create local dio for local services
+  Dio localDio = await DioFactory.getLocalDio();
 
   getIt
+    // deployed services
     ..registerLazySingleton<ApiService>(() => ApiService(dio))
+    // local services
+    ..registerLazySingleton<ApiLocalService>(() => ApiLocalService(localDio))
     // create login repository instance
     ..registerLazySingleton<LoginRepo>(() => LoginRepo(getIt<ApiService>()))
     ..registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepo>()))
@@ -132,6 +138,7 @@ Future<void> setupGetIt() async {
     ..registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()))
 
     // chat Bot
-    ..registerLazySingleton<ChatBotRepo>(() => ChatBotRepo(getIt<ApiService>()))
+    ..registerLazySingleton<ChatBotRepo>(
+        () => ChatBotRepo(getIt<ApiLocalService>()))
     ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()));
 }

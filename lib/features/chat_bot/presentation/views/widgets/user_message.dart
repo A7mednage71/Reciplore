@@ -6,7 +6,6 @@ import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_message.dart';
 
 class UserMessage extends StatelessWidget {
-
   final ChatMessage message;
   const UserMessage({super.key, required this.message});
   @override
@@ -28,7 +27,7 @@ class UserMessage extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
+              color: Colors.grey.withAlpha(76),
               spreadRadius: 5,
               blurRadius: 7,
               offset: const Offset(0, 3),

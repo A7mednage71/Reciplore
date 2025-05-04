@@ -13,7 +13,6 @@ class ChatTextFieldAndSendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ChatBotCubit>();
-
     return Row(
       children: [
         Expanded(

@@ -136,16 +136,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => CategoryRecipes(category: categoryModel),
         );
-
       case Routes.chatScreen:
-        final chatBotCubit = argument as ChatBotCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: chatBotCubit,
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ChatBotCubit>(),
             child: const ChatScreen(),
           ),
         );
-
       case Routes.cart:
         final cartCubit = argument as CartCubit;
         return MaterialPageRoute(

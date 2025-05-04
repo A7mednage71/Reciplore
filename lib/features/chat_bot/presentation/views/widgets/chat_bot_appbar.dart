@@ -6,7 +6,6 @@ import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
-import 'package:looqma/features/chat_bot/presentation/views/widgets/new_chat_dailog.dart';
 
 class ChatBotAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ChatBotAppBar({
@@ -15,7 +14,7 @@ class ChatBotAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit=context.read<ChatBotCubit>();
+    final cubit = context.read<ChatBotCubit>();
     return AppBar(
       elevation: 0,
       surfaceTintColor: Colors.transparent,
@@ -32,18 +31,20 @@ class ChatBotAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         Padding(
-          padding: EdgeInsets.all(8.r),
+          padding: EdgeInsets.only(right: 20.w),
           child: CircleAvatar(
             backgroundColor: AppColors.primaryLight,
             child: IconButton(
+              padding: EdgeInsets.zero,
               icon: const Icon(Icons.add),
               onPressed: () {
                 showDialog(
                   context: context,
                   builder: (context) => WarningAlertDailog(
                     title: 'New Chat',
-                    subtitle: 'Are you sure you want to start a new chat ?',
-                    onOkPressed: (){
+                    subtitle:
+                        'Are you sure you want to delete this chat and start a new chat ?',
+                    onOkPressed: () {
                       cubit.clearChat();
                       context.pop();
                     },
@@ -58,5 +59,5 @@ class ChatBotAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(60.h);
+  Size get preferredSize => Size.fromHeight(50.h);
 }

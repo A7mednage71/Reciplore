@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:lottie/lottie.dart';
 
-class ChatBot extends StatelessWidget {
-  const ChatBot({super.key});
+class ChatBotHome extends StatelessWidget {
+  const ChatBotHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +23,18 @@ class ChatBot extends StatelessWidget {
             SizedBox(height: 10.h),
             Lottie.asset(AppAssets.imagesAnimation),
             Text(
-              "Hi, I’m [Chatbot Name]! \n\nYour cooking companion, ready to help you prepare delicious recipes and plan meals with the ingredients you have. \n\nLet’s cook something amazing together!",
+              "Hi, I’m RecipeBot 👩‍🍳\n\n"
+              "I’m here to be your personal cooking assistant.\n\n"
+              "Tell me what ingredients you have,\n"
+              "and I’ll help you whip up delicious meals in no time.\n\n"
+              "Let’s create something tasty together! 🍲",
               style: AppStyles.smallRegularText,
             ),
             SizedBox(height: 70.h),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context, rootNavigator: true).pushNamed(
-                  Routes.chatScreen,
-                  arguments: getIt<ChatBotCubit>(),
-                );
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamed(Routes.chatScreen);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryDark,
