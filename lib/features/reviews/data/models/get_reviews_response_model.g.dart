@@ -28,9 +28,9 @@ ReviewModel _$ReviewModelFromJson(Map<String, dynamic> json) => ReviewModel(
       ingredient: json['ingredient'] as String?,
       createdAt: json['createdAt'] as String,
       user: UserReviewModel.fromJson(json['userID'] as Map<String, dynamic>),
-      likes: (json['likes'] as List<dynamic>).map((e) => e as String).toList(),
-      dislikes:
-          (json['dislikes'] as List<dynamic>).map((e) => e as String).toList(),
+      likesCount: (json['likesCount'] as num).toInt(),
+      dislikesCount: (json['dislikesCount'] as num).toInt(),
+      userAction: json['userAction'] as String?,
     );
 
 Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
@@ -42,8 +42,9 @@ Map<String, dynamic> _$ReviewModelToJson(ReviewModel instance) =>
       'ingredient': instance.ingredient,
       'createdAt': instance.createdAt,
       'userID': instance.user,
-      'likes': instance.likes,
-      'dislikes': instance.dislikes,
+      'likesCount': instance.likesCount,
+      'dislikesCount': instance.dislikesCount,
+      'userAction': instance.userAction,
     };
 
 UserReviewModel _$UserReviewModelFromJson(Map<String, dynamic> json) =>

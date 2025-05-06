@@ -6,6 +6,7 @@ import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/reviews/data/models/add_review_request_model.dart';
 import 'package:looqma/features/reviews/data/models/add_review_response_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
+import 'package:looqma/features/reviews/data/models/make_reaction_response_model.dart';
 
 class ReviewsRepo {
   final ApiService _apiService;
@@ -37,7 +38,7 @@ class ReviewsRepo {
     }
   }
 
-  Future<ApiResult<ResponseMessageModel>> makeReaction(
+  Future<ApiResult<MakeReactionResponseModel>> makeReaction(
       String id, String reaction) async {
     try {
       final result = await _apiService.makeReaction(id, reaction);

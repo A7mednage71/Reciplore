@@ -43,8 +43,7 @@ class ReviewItem extends StatelessWidget {
           review.comment ?? '',
           style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
         ),
-        LikeAndDislike(
-            dislike: review.dislikes.length, like: review.likes.length),
+        LikeAndDislike(review: review),
         Divider(
           color: AppColors.grayLighter,
           thickness: 1.h,

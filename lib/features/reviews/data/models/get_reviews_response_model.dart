@@ -34,8 +34,9 @@ class ReviewModel {
   final String createdAt;
   @JsonKey(name: 'userID')
   final UserReviewModel user;
-  final List<String> likes;
-  final List<String> dislikes;
+  final int likesCount;
+  final int dislikesCount;
+  final String? userAction;
 
   ReviewModel({
     required this.id,
@@ -45,8 +46,9 @@ class ReviewModel {
     this.ingredient,
     required this.createdAt,
     required this.user,
-    required this.likes,
-    required this.dislikes,
+    required this.likesCount,
+    required this.dislikesCount,
+    this.userAction,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) =>
@@ -62,8 +64,9 @@ class ReviewModel {
     String? ingredient,
     String? createdAt,
     UserReviewModel? user,
-    List<String>? likes,
-    List<String>? dislikes,
+    int? likesCount,
+    int? dislikesCount,
+    String? userAction,
   }) {
     return ReviewModel(
       id: id ?? this.id,
@@ -73,8 +76,9 @@ class ReviewModel {
       ingredient: ingredient ?? this.ingredient,
       createdAt: createdAt ?? this.createdAt,
       user: user ?? this.user,
-      likes: likes ?? this.likes,
-      dislikes: dislikes ?? this.dislikes,
+      likesCount: likesCount ?? this.likesCount,
+      dislikesCount: dislikesCount ?? this.dislikesCount,
+      userAction: userAction ?? this.userAction,
     );
   }
 }

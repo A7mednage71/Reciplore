@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/features/reviews/data/models/add_review_request_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
 import 'package:looqma/features/reviews/data/repos/reviews_repo.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/like_and_dislike.dart';
 
 part 'reviews_cubit.freezed.dart';
 part 'reviews_state.dart';
@@ -59,6 +60,30 @@ class ReviewsCubit extends Cubit<ReviewsState> {
           addReviewStatus: AddReviewStatus.failure,
           message: failure.errMessages,
         ));
+      },
+    );
+  }
+
+  Future<void> makeReaction(String id, UserReaction reaction) async {
+    final result = await _reviewsRepo.makeReaction(id, reaction.name);
+    result.when(
+      success: (data) {
+        final updatedReviews = state.reviews.map((review) {
+          if (review.id == id) {
+            String? oldReaction = review.userAction;
+            return review.copyWith(
+              likesCount: data.likes,
+              dislikesCount: data.dislikes,
+              userAction: oldReaction == reaction.name ? "null" : reaction.name,
+            );
+          }
+          return review;
+        }).toList();
+
+        emit(state.copyWith(reviews: updatedReviews));
+      },
+      failure: (failure) {
+        emit(state.copyWith(message: failure.errMessages));
       },
     );
   }

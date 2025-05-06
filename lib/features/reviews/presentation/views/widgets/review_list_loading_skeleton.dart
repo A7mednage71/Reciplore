@@ -14,18 +14,19 @@ class ReviewListLoadingSkeleton extends StatelessWidget {
       3,
       (index) {
         return ReviewModel(
-            id: '',
-            comment:
-                "Easy to follow recipe and the result was delicious. Will definitely make it again!",
-            rate: 3,
-            createdAt: '2025-04-14T23:16:25.082Z',
-            user: UserReviewModel(
-                id: '',
-                userName: "userName",
-                email: "email",
-                profileImage: ImageURL(secureUrl: defaultUserImage)),
-            likes: [],
-            dislikes: []);
+          id: '',
+          comment:
+              "Easy to follow recipe and the result was delicious. Will definitely make it again!",
+          rate: 3,
+          createdAt: '2025-04-14T23:16:25.082Z',
+          user: UserReviewModel(
+              id: '',
+              userName: "userName",
+              email: "email",
+              profileImage: ImageURL(secureUrl: defaultUserImage)),
+          likesCount: 0,
+          dislikesCount: 0,
+        );
       },
     );
     return Skeletonizer(
