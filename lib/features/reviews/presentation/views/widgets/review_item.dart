@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/cached_network_circle_avatar.dart';
 import 'package:looqma/core/extensions/string_ex.dart';
@@ -6,7 +7,9 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
+import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/like_and_dislike.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/review_options_menu.dart';
 
 class ReviewItem extends StatelessWidget {
   const ReviewItem({super.key, required this.review});
@@ -35,7 +38,18 @@ class ReviewItem extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            RatingStars(rating: review.rate.toDouble())
+            RatingStars(rating: review.rate.toDouble()),
+            const Spacer(),
+            Visibility(
+              visible: review.user.id ==
+                  context.read<ReviewsCubit>().state.currentUserId,
+              child: ReviewOptionsMenu(review: review),
+            ),
+            Visibility(
+              visible: review.user.id !=
+                  context.read<ReviewsCubit>().state.currentUserId,
+              child: const Spacer(),
+            ),
           ],
         ),
         SizedBox(height: 10.h),
