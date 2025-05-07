@@ -14,7 +14,7 @@ class UsersReview extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Reviews'),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,

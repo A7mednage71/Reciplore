@@ -19,15 +19,16 @@ class SendReviewButton extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: BlocConsumer<ReviewsCubit, ReviewsState>(
         listenWhen: (previous, current) =>
-            previous.addReviewStatus != current.addReviewStatus &&
-            current.addReviewStatus == AddReviewStatus.failure,
+            previous.reviewActionStatus != current.reviewActionStatus &&
+            current.reviewActionStatus == ReviewActionStatus.failure,
         listener: (context, state) {
           ShowToast.showFailureToast(state.message ?? '');
         },
         buildWhen: (previous, current) =>
-            previous.addReviewStatus != current.addReviewStatus,
+            previous.reviewActionStatus != current.reviewActionStatus &&
+            current.currentAction == ReviewActionType.add,
         builder: (context, state) {
-          if (state.addReviewStatus == AddReviewStatus.loading) {
+          if (state.reviewActionStatus == ReviewActionStatus.loading) {
             return Container(
               height: 40.h,
               width: 60.w,

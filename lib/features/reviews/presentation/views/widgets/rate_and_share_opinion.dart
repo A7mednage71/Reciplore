@@ -54,7 +54,6 @@ class _RateAndShareOpinionState extends State<RateAndShareOpinion> {
             Icons.star,
             color: Colors.amber,
           ),
-          tapOnlyMode: true,
           allowHalfRating: true,
           onRatingUpdate: (rating) {
             log(" Rating $rating");
