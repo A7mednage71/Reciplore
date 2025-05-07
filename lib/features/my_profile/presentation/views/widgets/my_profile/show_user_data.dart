@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/extensions/string_ex.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/user_data_item.dart';
@@ -20,7 +21,7 @@ class ShowUserData extends StatelessWidget {
             userImage: userProfileModel?.profileImage?.secureProfileUrl),
         SizedBox(height: 10.h),
         Text(
-          userProfileModel?.userName ?? "User Name",
+          userProfileModel?.userName.capitalizeEachWord ?? "User Name",
           style: AppStyles.mediumBoldText,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,

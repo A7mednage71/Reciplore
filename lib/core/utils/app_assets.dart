@@ -54,6 +54,8 @@ class AppAssets {
 
   static const String imagesRedChili = "assets/images/red_chili.jpg";
 
+  static const String imagesReviewLottie = "assets/images/review_lottie.json";
+
   static const String imagesSavedRecipeIcon = "assets/images/savedRecipeIcon.png";
 
   static const String imagesSavedRecipeTest = "assets/images/SavedRecipeTest.png";

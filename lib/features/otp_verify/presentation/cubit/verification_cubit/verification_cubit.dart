@@ -41,9 +41,12 @@ class VerificationCubit extends Cubit<VerificationState> {
             SecureStorageKeys.accessToken, successResponse.accessToken);
         SecureStorage.setSecuredData(
             SecureStorageKeys.refreshToken, successResponse.refreshToken);
+        SecureStorage.setSecuredData(
+            SecureStorageKeys.userId, successResponse.userId);
+        SecureStorage.setSecuredData(
+            SecureStorageKeys.userName, successResponse.userName);
 
         DioFactory.refreshHeaders(token: successResponse.accessToken);
-
         emit(VerificationState.success(successResponse.message));
       },
       failure: (failureResponse) =>

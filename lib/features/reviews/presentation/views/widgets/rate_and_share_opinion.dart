@@ -1,14 +1,37 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_text_field.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/send_review_button.dart';
 
-class RateAndShareOpinion extends StatelessWidget {
+class RateAndShareOpinion extends StatefulWidget {
   const RateAndShareOpinion({super.key});
+
+  @override
+  State<RateAndShareOpinion> createState() => _RateAndShareOpinionState();
+}
+
+class _RateAndShareOpinionState extends State<RateAndShareOpinion> {
+  late GlobalKey<FormState> _formkey;
+  late TextEditingController _commentController;
+
+  @override
+  void initState() {
+    _formkey = GlobalKey<FormState>();
+    _commentController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _commentController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +39,7 @@ class RateAndShareOpinion extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Rate recipe and Share your Opinion',
+          'Rate and Share your Opinion...!',
           style: AppStyles.mediumBoldText,
         ),
         SizedBox(height: 10.h),
@@ -31,28 +54,35 @@ class RateAndShareOpinion extends StatelessWidget {
             Icons.star,
             color: Colors.amber,
           ),
+          allowHalfRating: true,
           onRatingUpdate: (rating) {
             log(" Rating $rating");
+            context.read<ReviewsCubit>().setRate(rating);
           },
         ),
         SizedBox(height: 10.h),
-        CustomTextField(
-          controller: TextEditingController(),
-          hintText: 'Say something...',
-          maxLines: 3,
-          keyboardType: TextInputType.text,
-          validator: (p0) {
-            if (p0!.isEmpty) {
-              return 'Please enter some Words...';
-            }
-            return null;
-          },
+        Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: _formkey,
+          child: CustomTextField(
+            controller: _commentController,
+            hintText: 'Say something...',
+            maxLines: 3,
+            keyboardType: TextInputType.text,
+            validator: (p0) {
+              if (p0!.isEmpty) {
+                return 'Please share your opinion...!';
+              }
+              return null;
+            },
+            onChanged: (comment) {
+              context.read<ReviewsCubit>().setComment(comment!);
+              return null;
+            },
+          ),
         ),
         SizedBox(height: 10.h),
-        const Align(
-          alignment: Alignment.centerRight,
-          child: SendReviewButton(),
-        ),
+        SendReviewButton(formKey: _formkey),
       ],
     );
   }

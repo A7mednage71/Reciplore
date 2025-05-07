@@ -59,7 +59,7 @@ class DioFactory {
           if (error.response?.statusCode == 401) {
             final refreshToken = await _readRefreshToken();
 
-            if (refreshToken != null) {
+            if (refreshToken != null && refreshToken != "") {
               try {
                 final newAccessToken = await refreshTokenApi(refreshToken);
                 refreshHeaders(token: newAccessToken);

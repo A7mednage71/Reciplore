@@ -31,6 +31,8 @@ import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
+import 'package:looqma/features/reviews/data/repos/reviews_repo.dart';
+import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
 import 'package:looqma/features/saved_recipe/data/repos/saved_recipes_repo.dart';
 import 'package:looqma/features/saved_recipe/presentation/cubit/get_saved_recipes/get_saved_recipes_cubit.dart';
 import 'package:looqma/features/search_market/data/repos/search_market_repo.dart';
@@ -137,6 +139,10 @@ Future<void> setupGetIt() async {
     ..registerLazySingleton<CartRepo>(() => CartRepo(getIt<ApiService>()))
     ..registerFactory<CartCubit>(() => CartCubit(getIt<CartRepo>()))
 
+    // reviews
+    ..registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt<ApiService>()))
+    ..registerFactory<ReviewsCubit>(() => ReviewsCubit(getIt<ReviewsRepo>()));
+  
     // chat Bot
     ..registerLazySingleton<ChatBotRepo>(
         () => ChatBotRepo(getIt<ApiLocalService>()))

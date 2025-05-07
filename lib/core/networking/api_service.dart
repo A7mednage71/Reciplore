@@ -20,6 +20,11 @@ import 'package:looqma/features/my_profile/data/models/user_profile_response_mod
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
+import 'package:looqma/features/reviews/data/models/add_review_request_model.dart';
+import 'package:looqma/features/reviews/data/models/add_review_response_model.dart';
+import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
+import 'package:looqma/features/reviews/data/models/make_reaction_response_model.dart';
+import 'package:looqma/features/reviews/data/models/update_review_request_model.dart';
 import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -127,4 +132,31 @@ abstract class ApiService {
 
   @DELETE(ApiConstants.clearCart)
   Future<ResponseMessageModel> clearCart();
+
+  // rate and review services
+  @POST(ApiConstants.addReview)
+  Future<AddReviewResponseModel> addReview(
+    @Body() AddReviewRequestModel body,
+  );
+
+  @DELETE(ApiConstants.deleteReview)
+  Future<ResponseMessageModel> deleteReview(@Path('id') String id);
+
+  @PUT(ApiConstants.updateReview)
+  Future<ResponseMessageModel> updateReview(
+    @Path('id') String id,
+    @Body() UpdateReviewRequestModel body,
+  );
+
+  @POST(ApiConstants.makeReaction)
+  Future<MakeReactionResponseModel> makeReaction(
+    @Path('id') String id,
+    @Query('action') String reaction,
+  );
+
+  @GET(ApiConstants.getReviews)
+  Future<GetReviewsResponseModel> getReviews(
+    @Query('recipeId') String? recipeId,
+    @Query('ingredientId') String? ingredientId,
+  );
 }
