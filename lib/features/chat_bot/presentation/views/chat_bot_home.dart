@@ -6,8 +6,8 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:lottie/lottie.dart';
 
-class ChatBot extends StatelessWidget {
-  const ChatBot({super.key});
+class ChatBotHome extends StatelessWidget {
+  const ChatBotHome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,11 @@ class ChatBot extends StatelessWidget {
             SizedBox(height: 10.h),
             Lottie.asset(AppAssets.imagesAnimation),
             Text(
-              "Hi, I’m [Chatbot Name]! \n\nYour cooking companion, ready to help you prepare delicious recipes and plan meals with the ingredients you have. \n\nLet’s cook something amazing together!",
+              "Hi, I’m RecipeBot 👩‍🍳\n\n"
+              "I’m here to be your personal cooking assistant.\n\n"
+              "Tell me what ingredients you have,\n"
+              "and I’ll help you whip up delicious meals in no time.\n\n"
+              "Let’s create something tasty together! 🍲",
               style: AppStyles.smallRegularText,
             ),
             SizedBox(height: 70.h),
@@ -43,7 +47,7 @@ class ChatBot extends StatelessWidget {
               ),
               child: Text(
                 "Start Chat",
-                style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+                style: AppStyles.normalBoldWhiteText,
               ),
             )
           ],

@@ -47,7 +47,7 @@ class LikeAndDislike extends StatelessWidget {
         ),
         Text(
           '${review.likesCount}',
-          style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
+          style: AppStyles.smallRegularGrayDarkText,
         ),
         IconButton(
           onPressed: () async {
@@ -65,7 +65,7 @@ class LikeAndDislike extends StatelessWidget {
         ),
         Text('${review.dislikesCount}',
             style:
-                AppStyles.smallRegularText.copyWith(color: AppColors.grayDark)),
+                AppStyles.smallRegularGrayDarkText),
       ],
     );
   }

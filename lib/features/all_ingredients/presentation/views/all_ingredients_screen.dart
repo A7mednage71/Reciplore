@@ -25,7 +25,7 @@ class _AllIngredientsScreenState extends State<AllIngredientsScreen> {
   void _onScroll() {
     final cubit = context.read<HomeMarketCubit>();
     final currentState = cubit.state;
-    
+
     if (_scrollController.position.pixels >=
             _scrollController.position.maxScrollExtent * 0.6 &&
         !currentState.isFetching &&
@@ -52,7 +52,10 @@ class _AllIngredientsScreenState extends State<AllIngredientsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(title: 'All Ingredients'),
-      body: AllIngredientsGridView(scrollController: _scrollController),
+      body: Padding(
+        padding: EdgeInsets.all(20.w),
+        child: AllIngredientsGridView(scrollController: _scrollController),
+      ),
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: 10.w),
         child: Align(

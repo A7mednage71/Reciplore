@@ -39,7 +39,8 @@ class ForgetPasswordScreen extends StatelessWidget {
               SizedBox(height: 20.h),
               const ForgetPasswordEmailField(),
               SizedBox(height: 20.h),
-              const ForgetPasswordResetButton()
+              const ForgetPasswordResetButton(),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

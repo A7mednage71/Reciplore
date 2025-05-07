@@ -45,8 +45,7 @@ class _UserInfoState extends State<UserInfo> {
                   style: AppStyles.largeBoldText),
               SizedBox(height: 5.h),
               Text("What are you cooking today?",
-                  style: AppStyles.smallRegularText
-                      .copyWith(color: AppColors.grayLight)),
+                  style: AppStyles.smallRegularGrayLightText),
             ],
           ),
           const Spacer(),

@@ -55,9 +55,7 @@ class ChangePasswordButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Change Password",
-                  style: AppStyles.normalBoldText.copyWith(
-                    color: Colors.white,
-                  ),
+                  style: AppStyles.normalBoldWhiteText,
                 ),
               ),
             ),

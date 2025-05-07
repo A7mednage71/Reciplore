@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:looqma/core/common/recipe_save_toggle/cubit/recipe_save_toggle_cubit.dart';
 import 'package:looqma/core/common/recipe_save_toggle/repos/recipe_save_toggle_repo.dart';
+import 'package:looqma/core/networking/api_local_service.dart';
 import 'package:looqma/core/networking/api_service.dart';
 import 'package:looqma/core/networking/dio_factory.dart';
 import 'package:looqma/features/cart/data/repos/cart_repo.dart';
@@ -9,6 +10,8 @@ import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.da
 import 'package:looqma/features/category_recipes/presentation/cubit/get_recipes_by_category/get_recipes_by_category_cubit.dart';
 import 'package:looqma/features/change_password/data/repos/change_password_repo.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
+import 'package:looqma/features/chat_bot/data/repos/chat_bot_repo.dart';
+import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
@@ -44,9 +47,14 @@ final getIt = GetIt.instance;
 Future<void> setupGetIt() async {
   // create dio factory instance
   Dio dio = await DioFactory.getDio();
+  // create local dio for local services
+  Dio localDio = await DioFactory.getLocalDio();
 
   getIt
+    // deployed services
     ..registerLazySingleton<ApiService>(() => ApiService(dio))
+    // local services
+    ..registerLazySingleton<ApiLocalService>(() => ApiLocalService(localDio))
     // create login repository instance
     ..registerLazySingleton<LoginRepo>(() => LoginRepo(getIt<ApiService>()))
     ..registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepo>()))
@@ -134,4 +142,9 @@ Future<void> setupGetIt() async {
     // reviews
     ..registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt<ApiService>()))
     ..registerFactory<ReviewsCubit>(() => ReviewsCubit(getIt<ReviewsRepo>()));
+  
+    // chat Bot
+    ..registerLazySingleton<ChatBotRepo>(
+        () => ChatBotRepo(getIt<ApiLocalService>()))
+    ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()));
 }

@@ -56,8 +56,7 @@ class ConfirmCodeButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Confirm Code",
-                    style:
-                        AppStyles.normalBoldText.copyWith(color: Colors.white),
+                    style: AppStyles.normalBoldWhiteText,
                   ),
                 ),
               ),

@@ -25,8 +25,7 @@ class OnBoardingScreen extends StatelessWidget {
               AppAssets.imagesOnboardingTopLogo,
             ),
             SizedBox(height: 14.h),
-            Text("100K+ Premium Recipe ",
-                style: AppStyles.mediumBoldText.copyWith(color: Colors.white)),
+            Text("100K+ Premium Recipe ", style: AppStyles.mediumBoldWhiteText),
             SizedBox(height: 222.h),
             Text(
               'Let’s',
@@ -38,7 +37,7 @@ class OnBoardingScreen extends StatelessWidget {
             ),
             Text(
               'Simple way to find Tasty Recipe',
-              style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+              style: AppStyles.normalBoldWhiteText,
             ),
             SizedBox(height: 64.h),
             const StartCookingButton(),

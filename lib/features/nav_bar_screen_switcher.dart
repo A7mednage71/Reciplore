@@ -6,7 +6,7 @@ import 'package:looqma/core/di/dependecy_injection.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
-import 'package:looqma/features/chat_bot/presentation/views/chat_bot.dart';
+import 'package:looqma/features/chat_bot/presentation/views/chat_bot_home.dart';
 import 'package:looqma/features/home/presentation/cubit/get_categories/get_categories_cubit.dart';
 import 'package:looqma/features/home/presentation/cubit/get_countries/get_countries_cubit.dart';
 import 'package:looqma/features/home/presentation/views/home_screen.dart';
@@ -48,7 +48,7 @@ class _NavBarScreensSwitcherState extends State<NavBarScreensSwitcher> {
       child: const MyHomePage(),
     ),
     const SavedRecipeScreen(),
-    const ChatBot(),
+    const ChatBotHome(),
     MultiBlocProvider(
       providers: [
         BlocProvider(

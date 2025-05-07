@@ -23,7 +23,7 @@ class DiscountBadge extends StatelessWidget {
           SizedBox(width: 4.w),
           Text(
             '$discountPercentage % OFF',
-            style: AppStyles.smallRegularText.copyWith(color: AppColors.white),
+            style: AppStyles.smallRegularWhiteText,
           ),
         ],
       ),

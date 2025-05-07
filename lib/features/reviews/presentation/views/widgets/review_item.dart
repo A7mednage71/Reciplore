@@ -33,8 +33,7 @@ class ReviewItem extends StatelessWidget {
                   style: AppStyles.extraSmallBoldText,
                 ),
                 Text(review.createdAt.formatDate,
-                    style: AppStyles.extraSmallRegularText
-                        .copyWith(color: AppColors.grayLight)),
+                    style: AppStyles.extraSmallRegularGrayLightText),
               ],
             ),
             const Spacer(),
@@ -54,7 +53,7 @@ class ReviewItem extends StatelessWidget {
         SizedBox(height: 10.h),
         Text(
           review.comment ?? '',
-          style: AppStyles.smallRegularText.copyWith(color: AppColors.grayDark),
+          style: AppStyles.smallRegularGrayDarkText,
         ),
         LikeAndDislike(review: review),
         Divider(

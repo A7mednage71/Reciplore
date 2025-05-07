@@ -12,6 +12,7 @@ import 'package:looqma/features/cart/presentation/views/cart_screen.dart';
 import 'package:looqma/features/category_recipes/presentation/views/category_recipes.dart';
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
+import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
@@ -147,7 +148,10 @@ class AppRouter {
         );
       case Routes.chatScreen:
         return MaterialPageRoute(
-          builder: (context) => const ChatScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<ChatBotCubit>(),
+            child: const ChatScreen(),
+          ),
         );
       case Routes.cart:
         final cartCubit = argument as CartCubit;

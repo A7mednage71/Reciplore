@@ -12,6 +12,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 class DioFactory {
   DioFactory._();
   static Dio? dio;
+  static Dio? localDio;
 
   static Future<Dio> getDio() async {
     const timeOut = Duration(seconds: 30);
@@ -27,6 +28,16 @@ class DioFactory {
 
     addDioInterceptors();
     return dio!;
+  }
+
+  /// Returns a [Dio] instance configured for the local server with a 60-second
+  /// connection and receive timeout, used for services like AI running on localhost.
+  static Future<Dio> getLocalDio() async {
+    const timeOut = Duration(seconds: 60);
+    localDio ??= Dio()
+      ..options.connectTimeout = timeOut
+      ..options.receiveTimeout = timeOut;
+    return localDio!;
   }
 
   static refreshHeaders({required String token}) {

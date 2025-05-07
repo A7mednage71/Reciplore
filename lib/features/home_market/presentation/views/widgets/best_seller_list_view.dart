@@ -15,10 +15,9 @@ class BestSellerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeMarketCubit = context.read<HomeMarketCubit>();
     final cartCubit = context.read<CartCubit>();
     return SizedBox(
-      height: 250.h,
+      height: 240.h,
       child: BlocBuilder<HomeMarketCubit, HomeMarketState>(
         buildWhen: (previous, current) =>
             previous.bestSellingList != current.bestSellingList,

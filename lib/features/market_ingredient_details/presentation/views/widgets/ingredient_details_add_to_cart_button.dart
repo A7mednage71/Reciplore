@@ -23,7 +23,7 @@ class IngredientDetailsAddToCartButton extends StatelessWidget {
       ),
       child: Text(
         'Add to Cart',
-        style: AppStyles.smallBoldText.copyWith(color: AppColors.white),
+        style: AppStyles.smallBoldWhiteText,
       ),
     );
   }

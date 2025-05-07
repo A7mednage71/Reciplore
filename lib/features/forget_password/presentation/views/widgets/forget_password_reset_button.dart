@@ -53,7 +53,7 @@ class ForgetPasswordResetButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Reset Password",
-                  style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+                  style: AppStyles.normalBoldWhiteText,
                 ),
               ),
             ),

@@ -40,16 +40,13 @@ class LogoutAlertDialog extends StatelessWidget {
         actions: [
           TextButton(
             child: Text('Cancel',
-                style: AppStyles.extraSmallBoldText
-                    .copyWith(color: AppColors.primaryDarker)),
+                style: AppStyles.extraSmallBoldprimaryDarkerText),
             onPressed: () {
               Navigator.of(context).pop();
             },
           ),
           TextButton(
-            child: Text('Logout',
-                style:
-                    AppStyles.extraSmallBoldText.copyWith(color: Colors.red)),
+            child: Text('Logout', style: AppStyles.extraSmallBoldWarningText),
             onPressed: () async {
               await SecureStorage.removeSecuredData(
                   SecureStorageKeys.accessToken);

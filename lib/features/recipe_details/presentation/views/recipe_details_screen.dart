@@ -42,17 +42,13 @@ class RecipeDetailsScreen extends StatelessWidget {
             SizedBox(height: 20.h),
             Row(
               children: [
-                Text("Category : ",
-                    style: AppStyles.smallRegularText
-                        .copyWith(color: AppColors.grayLight)),
+                Text("Category : ", style: AppStyles.smallRegularGrayLightText),
                 Text(
                   recipeModel.category?.name ?? "Category",
                   style: AppStyles.smallBoldText,
                 ),
                 const Spacer(),
-                Text("Country : ",
-                    style: AppStyles.smallRegularText
-                        .copyWith(color: AppColors.grayLight)),
+                Text("Country : ", style: AppStyles.smallRegularGrayLightText),
                 Text(
                   recipeModel.country?.name ?? "Country",
                   style: AppStyles.smallBoldText,

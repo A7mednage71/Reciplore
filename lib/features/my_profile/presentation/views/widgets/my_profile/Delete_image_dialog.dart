@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_assets.dart';
-import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/delete_user_image_cubit.dart';
 import 'package:lottie/lottie.dart';
@@ -34,8 +33,7 @@ class DeleteImageAlertDialog extends StatelessWidget {
           TextButton(
             child: Text(
               'Cancel',
-              style: AppStyles.extraSmallBoldText
-                  .copyWith(color: AppColors.primaryDarker),
+              style: AppStyles.extraSmallBoldprimaryDarkerText,
             ),
             onPressed: () {
               Navigator.of(context).pop();
@@ -44,8 +42,7 @@ class DeleteImageAlertDialog extends StatelessWidget {
           TextButton(
             child: Text(
               'Delete',
-              style: AppStyles.extraSmallBoldText
-                  .copyWith(color: AppColors.warningColor),
+              style: AppStyles.extraSmallBoldWarningText,
             ),
             onPressed: () async {
               await context.read<DeleteUserImageCubit>().deleteImage();

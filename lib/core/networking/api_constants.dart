@@ -29,6 +29,9 @@ class ApiConstants {
   static const String recipeSaveToggle = '/auth/toogle-favourite/{id}';
   static const String getSavedRecipes = '/auth/get-favourite';
 
+  // Ai end points
+  static const String chatBot = '/ai/chat/ingredients';
+
   // market end points
   static const String getIngredients = '/ingredient/list';
   static const String getMarketBanners = '/banner/mobile_market';
