@@ -1,7 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:looqma/features/reviews/data/models/add_review_request_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
+import 'package:looqma/features/reviews/data/models/update_review_request_model.dart';
 import 'package:looqma/features/reviews/data/repos/reviews_repo.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/like_and_dislike.dart';
 
@@ -20,6 +23,9 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       status: ReviewsStatus.loading,
     ));
 
+    final currentUserId =
+        await SecureStorage.getSecuredData(SecureStorageKeys.userId);
+
     final result = await _reviewsRepo.getReviews(
       recipeId: recipeId,
       ingredientId: ingredientId,
@@ -28,7 +34,10 @@ class ReviewsCubit extends Cubit<ReviewsState> {
     result.when(
       success: (data) {
         emit(state.copyWith(
-            status: ReviewsStatus.success, reviews: data.reviews));
+          status: ReviewsStatus.success,
+          reviews: data.reviews,
+          currentUserId: currentUserId,
+        ));
       },
       failure: (failure) {
         emit(state.copyWith(
@@ -38,7 +47,10 @@ class ReviewsCubit extends Cubit<ReviewsState> {
   }
 
   Future<void> addReview() async {
-    emit(state.copyWith(addReviewStatus: AddReviewStatus.loading));
+    emit(state.copyWith(
+      currentAction: ReviewActionType.add,
+      reviewActionStatus: ReviewActionStatus.loading,
+    ));
 
     final result = await _reviewsRepo.addReview(AddReviewRequestModel(
         comment: state.comment!,
@@ -52,12 +64,12 @@ class ReviewsCubit extends Cubit<ReviewsState> {
 
         emit(state.copyWith(
           reviews: updatedReviews,
-          addReviewStatus: AddReviewStatus.success,
+          reviewActionStatus: ReviewActionStatus.success,
         ));
       },
       failure: (failure) {
         emit(state.copyWith(
-          addReviewStatus: AddReviewStatus.failure,
+          reviewActionStatus: ReviewActionStatus.failure,
           message: failure.errMessages,
         ));
       },
@@ -80,10 +92,71 @@ class ReviewsCubit extends Cubit<ReviewsState> {
           return review;
         }).toList();
 
-        emit(state.copyWith(reviews: updatedReviews));
+        emit(state.copyWith(
+          reviews: updatedReviews,
+          reviewActionStatus: ReviewActionStatus.success,
+        ));
       },
       failure: (failure) {
-        emit(state.copyWith(message: failure.errMessages));
+        emit(state.copyWith(
+          message: failure.errMessages,
+          reviewActionStatus: ReviewActionStatus.failure,
+        ));
+      },
+    );
+  }
+
+  Future<void> deleteReview(String id) async {
+    final result = await _reviewsRepo.deleteReview(id);
+    result.when(
+      success: (data) {
+        final updatedReviews =
+            state.reviews.where((review) => review.id != id).toList();
+        emit(state.copyWith(
+            reviews: updatedReviews,
+            reviewActionStatus: ReviewActionStatus.success));
+      },
+      failure: (failure) {
+        emit(state.copyWith(
+          message: failure.errMessages,
+          reviewActionStatus: ReviewActionStatus.failure,
+        ));
+      },
+    );
+  }
+
+  Future<void> updateReview(String id) async {
+    emit(state.copyWith(
+        reviewActionStatus: ReviewActionStatus.loading,
+        currentAction: ReviewActionType.update));
+
+    final result = await _reviewsRepo.updateReview(
+      id,
+      UpdateReviewRequestModel(
+          comment: state.updatedcomment!, rate: state.updatedrate),
+    );
+
+    result.when(
+      success: (data) {
+        final updatedReviews = state.reviews.map((review) {
+          if (review.id == id) {
+            return review.copyWith(
+              comment: state.updatedcomment,
+              rate: state.updatedrate,
+            );
+          }
+          return review;
+        }).toList();
+
+        emit(state.copyWith(
+            reviews: updatedReviews,
+            reviewActionStatus: ReviewActionStatus.success));
+      },
+      failure: (failure) {
+        emit(state.copyWith(
+          message: failure.errMessages,
+          reviewActionStatus: ReviewActionStatus.failure,
+        ));
       },
     );
   }
@@ -93,8 +166,18 @@ class ReviewsCubit extends Cubit<ReviewsState> {
     emit(state.copyWith(rate: rate));
   }
 
+  /// set updated rate in state
+  void setUpdatedRate(double rate) {
+    emit(state.copyWith(updatedrate: rate));
+  }
+
   /// set comment
   void setComment(String comment) {
     emit(state.copyWith(comment: comment));
+  }
+
+  /// set updated comment
+  void setUpdatedComment(String comment) {
+    emit(state.copyWith(updatedcomment: comment));
   }
 }
