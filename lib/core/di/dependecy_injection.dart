@@ -141,8 +141,8 @@ Future<void> setupGetIt() async {
 
     // reviews
     ..registerLazySingleton<ReviewsRepo>(() => ReviewsRepo(getIt<ApiService>()))
-    ..registerFactory<ReviewsCubit>(() => ReviewsCubit(getIt<ReviewsRepo>()));
-  
+    ..registerFactory<ReviewsCubit>(() => ReviewsCubit(getIt<ReviewsRepo>()))
+
     // chat Bot
     ..registerLazySingleton<ChatBotRepo>(
         () => ChatBotRepo(getIt<ApiLocalService>()))
