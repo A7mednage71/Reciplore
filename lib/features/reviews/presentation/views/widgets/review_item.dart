@@ -9,7 +9,7 @@ import 'package:looqma/features/home/presentation/views/widgets/rating_stars.dar
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
 import 'package:looqma/features/reviews/presentation/cubit/reviews_cubit/reviews_cubit.dart';
 import 'package:looqma/features/reviews/presentation/views/widgets/like_and_dislike.dart';
-import 'package:looqma/features/reviews/presentation/views/widgets/review_options_menu.dart';
+import 'package:looqma/features/reviews/presentation/views/widgets/review_options_speed_dial.dart';
 
 class ReviewItem extends StatelessWidget {
   const ReviewItem({super.key, required this.review});
@@ -39,12 +39,11 @@ class ReviewItem extends StatelessWidget {
             ),
             const Spacer(),
             RatingStars(rating: review.rate.toDouble()),
-            const Spacer(),
+            SizedBox(width: 10.w),
             Visibility(
-              visible: review.user.id ==
-                  context.read<ReviewsCubit>().state.currentUserId,
-              child: ReviewOptionsMenu(review: review),
-            ),
+                visible: review.user.id ==
+                    context.read<ReviewsCubit>().state.currentUserId,
+                child: ReviewOptionsSpeedDial(review: review)),
             Visibility(
               visible: review.user.id !=
                   context.read<ReviewsCubit>().state.currentUserId,
