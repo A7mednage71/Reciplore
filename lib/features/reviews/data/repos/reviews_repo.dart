@@ -7,6 +7,7 @@ import 'package:looqma/features/reviews/data/models/add_review_request_model.dar
 import 'package:looqma/features/reviews/data/models/add_review_response_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
 import 'package:looqma/features/reviews/data/models/make_reaction_response_model.dart';
+import 'package:looqma/features/reviews/data/models/update_review_request_model.dart';
 
 class ReviewsRepo {
   final ApiService _apiService;
@@ -29,6 +30,31 @@ class ReviewsRepo {
       AddReviewRequestModel model) async {
     try {
       final result = await _apiService.addReview(model);
+      return ApiResult.success(result);
+    } catch (e) {
+      if (e is DioException) {
+        return ApiResult.failure(ServerFailure.fromDioError(e));
+      }
+      return ApiResult.failure(ApiError(e.toString()));
+    }
+  }
+
+  Future<ApiResult<ResponseMessageModel>> deleteReview(String id) async {
+    try {
+      final result = await _apiService.deleteReview(id);
+      return ApiResult.success(result);
+    } catch (e) {
+      if (e is DioException) {
+        return ApiResult.failure(ServerFailure.fromDioError(e));
+      }
+      return ApiResult.failure(ApiError(e.toString()));
+    }
+  }
+
+  Future<ApiResult<ResponseMessageModel>> updateReview(
+      String id, UpdateReviewRequestModel model) async {
+    try {
+      final result = await _apiService.updateReview(id, model);
       return ApiResult.success(result);
     } catch (e) {
       if (e is DioException) {

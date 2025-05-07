@@ -24,6 +24,7 @@ import 'package:looqma/features/reviews/data/models/add_review_request_model.dar
 import 'package:looqma/features/reviews/data/models/add_review_response_model.dart';
 import 'package:looqma/features/reviews/data/models/get_reviews_response_model.dart';
 import 'package:looqma/features/reviews/data/models/make_reaction_response_model.dart';
+import 'package:looqma/features/reviews/data/models/update_review_request_model.dart';
 import 'package:looqma/features/sigh_up/data/models/sign_up_request_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -136,6 +137,15 @@ abstract class ApiService {
   @POST(ApiConstants.addReview)
   Future<AddReviewResponseModel> addReview(
     @Body() AddReviewRequestModel body,
+  );
+
+  @DELETE(ApiConstants.deleteReview)
+  Future<ResponseMessageModel> deleteReview(@Path('id') String id);
+
+  @PUT(ApiConstants.updateReview)
+  Future<ResponseMessageModel> updateReview(
+    @Path('id') String id,
+    @Body() UpdateReviewRequestModel body,
   );
 
   @POST(ApiConstants.makeReaction)
