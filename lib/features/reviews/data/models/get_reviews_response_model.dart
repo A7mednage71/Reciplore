@@ -28,7 +28,7 @@ class ReviewModel {
   @JsonKey(name: '_id')
   final String id;
   final String? comment;
-  final int rate;
+  final double rate;
   final String? recipe;
   final String? ingredient;
   final String createdAt;
@@ -59,7 +59,7 @@ class ReviewModel {
   ReviewModel copyWith({
     String? id,
     String? comment,
-    int? rate,
+    double? rate,
     String? recipe,
     String? ingredient,
     String? createdAt,
