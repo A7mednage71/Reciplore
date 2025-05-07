@@ -40,6 +40,8 @@ class AppAssets {
 
   static const String imagesLoadingChatbot = "assets/images/loading_chatbot.json";
 
+  static const String imagesNoDataFound = "assets/images/no_data_found.json";
+
   static const String imagesNoInternet = "assets/images/no_internet.json";
 
   static const String imagesOnboardingBackground = "assets/images/onboarding_background.png";
