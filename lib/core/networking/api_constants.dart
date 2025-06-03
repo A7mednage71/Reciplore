@@ -30,7 +30,8 @@ class ApiConstants {
   static const String getSavedRecipes = '/auth/get-favourite';
 
   // Ai end points
-  static const String chatBot = '/ai/chat/ingredients';
+  static const String chatBotByIngredients = '/ai/chat/ingredients';
+  static const String chatBotByMood = '/ai/chat/mood';
 
   // market end points
   static const String getIngredients = '/ingredient/list';

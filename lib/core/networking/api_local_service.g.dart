@@ -20,7 +20,7 @@ class _ApiLocalService implements ApiLocalService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ChatBotResponseModel> chatBotRecommendation(
+  Future<ChatBotResponseModel> recommendationByIngrdients(
     ChatBotRequestModel body,
   ) async {
     final _extra = <String, dynamic>{};
@@ -33,6 +33,36 @@ class _ApiLocalService implements ApiLocalService {
           .compose(
             _dio.options,
             '/ai/chat/ingredients',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ChatBotResponseModel _value;
+    try {
+      _value = ChatBotResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ChatBotResponseModel> recommendationByMood(
+    ChatBotRequestModel body,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<ChatBotResponseModel>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            '/ai/chat/mood',
             queryParameters: queryParameters,
             data: _data,
           )
