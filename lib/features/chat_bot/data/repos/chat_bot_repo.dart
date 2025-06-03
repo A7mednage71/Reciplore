@@ -10,10 +10,23 @@ class ChatBotRepo {
 
   ChatBotRepo(this._apiService);
 
-  Future<ApiResult<ChatBotResponseModel>> chatBotRecommendation(
+  Future<ApiResult<ChatBotResponseModel>> recommendationByIngredients(
       {required ChatBotRequestModel message}) async {
     try {
-      final result = await _apiService.chatBotRecommendation(message);
+      final result = await _apiService.recommendationByIngrdients(message);
+      return ApiResult.success(result);
+    } catch (e) {
+      if (e is DioException) {
+        return ApiResult.failure(ServerFailure.fromDioError(e));
+      }
+      return ApiResult.failure(ApiError(e.toString()));
+    }
+  }
+
+  Future<ApiResult<ChatBotResponseModel>> recommendationByMood(
+      {required ChatBotRequestModel message}) async {
+    try {
+      final result = await _apiService.recommendationByMood(message);
       return ApiResult.success(result);
     } catch (e) {
       if (e is DioException) {
