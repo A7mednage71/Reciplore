@@ -16,7 +16,7 @@ class ChatBotHome extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Column(
           children: [
-            SizedBox(height: 40.h),
+            SizedBox(height: 30.h),
             Align(
                 alignment: Alignment.centerLeft,
                 child: Text('ChatBot', style: AppStyles.mediumBoldText)),
@@ -24,13 +24,14 @@ class ChatBotHome extends StatelessWidget {
             Lottie.asset(AppAssets.imagesAnimation),
             Text(
               "Hi, I’m RecipeBot 👩‍🍳\n\n"
-              "I’m here to be your personal cooking assistant.\n\n"
-              "Tell me what ingredients you have,\n"
-              "and I’ll help you whip up delicious meals in no time.\n\n"
-              "Let’s create something tasty together! 🍲",
+              "I’m here to be your personal cooking assistant!\n\n"
+              "🥦 Got ingredients?\n"
+              "😊 Feeling a mood?\n"
+              "📋 Need a diet plan?\n\n"
+              "Tap a tool below and let’s create something tasty and healthy together! 🍲💪",
               style: AppStyles.smallRegularText,
             ),
-            SizedBox(height: 70.h),
+            SizedBox(height: 20.h),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context, rootNavigator: true)
@@ -47,6 +48,25 @@ class ChatBotHome extends StatelessWidget {
               ),
               child: Text(
                 "Start Chat",
+                style: AppStyles.normalBoldWhiteText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context, rootNavigator: true)
+                    .pushNamed(Routes.chatScreen);
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.primaryDark,
+                minimumSize: Size(200.w, 40.h),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                elevation: 2,
+                shadowColor: Colors.grey,
+              ),
+              child: Text(
+                "Diet Plan",
                 style: AppStyles.normalBoldWhiteText,
               ),
             )

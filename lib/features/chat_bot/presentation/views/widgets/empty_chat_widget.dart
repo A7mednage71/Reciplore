@@ -23,9 +23,8 @@ class EmptyChatWidget extends StatelessWidget {
           Text("👋 Let’s cooking!", style: AppStyles.mediumBoldText),
           SizedBox(height: 20.h),
           Text(
-            "1) Enter your ingredients, separated by commas\n"
-            "(e.g., pasta, tomatoes, olive oil)\n\n"
-            "2) Tap Send to discover delicious recipes 🍲",
+            "1) Write what you have in mind✨ below 👇\n"
+            "2) Hit Send and let’s cook up something tasty! 🍽️",
             style: AppStyles.smallRegularText,
           ),
           SizedBox(height: 20.h),
