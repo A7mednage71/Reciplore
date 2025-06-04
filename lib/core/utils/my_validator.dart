@@ -92,4 +92,11 @@ class MyValidators {
     }
     return null;
   }
+
+  static String? couponValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a coupon';
+    }
+    return null;
+  }
 }
