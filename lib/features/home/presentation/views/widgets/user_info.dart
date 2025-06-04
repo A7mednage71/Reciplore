@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/extensions/string_ex.dart';
+import 'package:looqma/core/services/notifiers/user_data_notifier.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage.dart';
 import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:lottie/lottie.dart';
 
 class UserInfo extends StatefulWidget {
   const UserInfo({super.key});
@@ -15,7 +17,6 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
-  String userName = "";
   @override
   void initState() {
     getUserName();
@@ -25,9 +26,7 @@ class _UserInfoState extends State<UserInfo> {
   Future<void> getUserName() async {
     String name =
         await SecureStorage.getSecuredData(SecureStorageKeys.userName);
-    setState(() {
-      userName = name;
-    });
+    UserDataNotifier.userNameNotifier.value = name;
   }
 
   @override
@@ -41,8 +40,12 @@ class _UserInfoState extends State<UserInfo> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Hello ${userName.isEmpty ? "" : userName.firstName}",
-                  style: AppStyles.largeBoldText),
+              ValueListenableBuilder(
+                valueListenable: UserDataNotifier.userNameNotifier,
+                builder: (context, name, child) => Text(
+                    "Hello ${name.isEmpty ? "Foodie" : name.firstName} 👋",
+                    style: AppStyles.largeBoldText),
+              ),
               SizedBox(height: 5.h),
               Text("What are you cooking today?",
                   style: AppStyles.smallRegularGrayLightText),
@@ -50,18 +53,23 @@ class _UserInfoState extends State<UserInfo> {
           ),
           const Spacer(),
           Container(
-            width: 40.w,
-            height: 40.w,
-            decoration: const BoxDecoration(
-              color: AppColors.secondaryLight,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              image: DecorationImage(
-                image: AssetImage(AppAssets.imagesUserImage),
+            height: 50.h,
+            width: 50.w,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.secondaryLight,
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(15.r),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.r),
+              child: Lottie.asset(
+                AppAssets.imagesCookingLottie,
                 fit: BoxFit.cover,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

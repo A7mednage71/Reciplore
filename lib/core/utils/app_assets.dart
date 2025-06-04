@@ -14,6 +14,8 @@ class AppAssets {
 
   static const String imagesCookingAnimation = "assets/images/cooking_animation.json";
 
+  static const String imagesCookingLottie = "assets/images/cooking_lottie.json";
+
   static const String imagesDiscord = "assets/images/discord.png";
 
   static const String imagesEmptyBox = "assets/images/empty_box.json";
