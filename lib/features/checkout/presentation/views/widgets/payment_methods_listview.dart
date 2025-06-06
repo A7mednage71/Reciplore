@@ -29,12 +29,14 @@ class _PaymentMethodslistViewState extends State<PaymentMethodslistView> {
         scrollDirection: Axis.horizontal,
         itemCount: paymentmethodsitems.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
+          return InkWell(
             onTap: () {
               setState(() {
                 isactive = index;
               });
             },
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
             child: Padding(
               padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
               child: PaymentMethodItem(

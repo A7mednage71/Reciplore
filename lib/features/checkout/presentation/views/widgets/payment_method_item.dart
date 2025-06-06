@@ -25,14 +25,6 @@ class PaymentMethodItem extends StatelessWidget {
             color: isactive ? AppColors.primarybright : AppColors.grayLight,
           ),
         ),
-        shadows: [
-          BoxShadow(
-            color: isactive ? AppColors.primarybright : AppColors.white,
-            spreadRadius: 0,
-            blurRadius: 1,
-            offset: const Offset(0, 0),
-          ),
-        ],
       ),
       child: Container(
         decoration: ShapeDecoration(
