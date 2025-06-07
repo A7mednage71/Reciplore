@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/add_and_edit_address_bottomsheet.dart';
 
 class DeliveryAddressCard extends StatelessWidget {
-  final String title;
-  final String address;
+  final AddressModel address;
   final bool isactive;
 
   const DeliveryAddressCard({
     super.key,
-    required this.title,
     required this.address,
     this.isactive = true,
   });
@@ -27,7 +28,9 @@ class DeliveryAddressCard extends StatelessWidget {
         children: [
           SizedBox(width: 5.w),
           SlidableAction(
-            onPressed: (context) async {},
+            onPressed: (context) async {
+              await context.read<CheckoutCubit>().deleteAddress(id: address.id);
+            },
             backgroundColor: AppColors.red,
             foregroundColor: AppColors.white,
             icon: Icons.delete_outline,
@@ -56,8 +59,9 @@ class DeliveryAddressCard extends StatelessWidget {
           ),
           child: ListTile(
             leading: Icon(Icons.location_on, size: 30.r),
-            title: Text(title, style: AppStyles.smallBoldText),
-            subtitle: Text(address, style: AppStyles.smallRegularText),
+            title: Text(address.addressLabel, style: AppStyles.smallBoldText),
+            subtitle: Text("${address.country}, ${address.city}",
+                style: AppStyles.smallRegularText),
             trailing: IconButton(
               onPressed: () {
                 showAddAndEditAddressBottomSheet(context);
@@ -71,12 +75,16 @@ class DeliveryAddressCard extends StatelessWidget {
   }
 
   void showAddAndEditAddressBottomSheet(BuildContext context) {
+    final checkoutCubit = context.read<CheckoutCubit>();
     showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.r)),
       context: context,
       builder: (context) {
-        return const AddAndEditAddressBottomSheet(isEdit: true);
+        return BlocProvider.value(
+          value: checkoutCubit,
+          child: AddAndEditAddressBottomSheet(isEdit: true, address: address),
+        );
       },
     );
   }

@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:looqma/core/common/widgets/custom_text_field.dart';
+import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/core/utils/my_validator.dart';
+import 'package:looqma/features/checkout/data/models/add_and_update_address_request_model.dart';
+import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 
 class AddAndEditAddressBottomSheet extends StatefulWidget {
-  const AddAndEditAddressBottomSheet({super.key, this.isEdit = false});
+  const AddAndEditAddressBottomSheet(
+      {super.key, this.isEdit = false, this.address});
   final bool isEdit;
+  final AddressModel? address;
+
   @override
   State<AddAndEditAddressBottomSheet> createState() =>
       _AddAndEditAddressBottomSheetState();
@@ -28,13 +37,17 @@ class _AddAndEditAddressBottomSheetState
   @override
   void initState() {
     super.initState();
-    addressController = TextEditingController();
-    countryController = TextEditingController();
-    cityController = TextEditingController();
-    postalCodeController = TextEditingController();
-    buildingController = TextEditingController();
-    floorController = TextEditingController();
-    notesController = TextEditingController();
+    addressController =
+        TextEditingController(text: widget.address?.addressLabel);
+    countryController = TextEditingController(text: widget.address?.country);
+    cityController = TextEditingController(text: widget.address?.city);
+    postalCodeController =
+        TextEditingController(text: widget.address?.postalCode.toString());
+    buildingController =
+        TextEditingController(text: widget.address?.buildingNumber);
+    floorController =
+        TextEditingController(text: widget.address?.floorNumber.toString());
+    notesController = TextEditingController(text: widget.address?.notes);
   }
 
   @override
@@ -138,7 +151,6 @@ class _AddAndEditAddressBottomSheetState
               SizedBox(height: 20.h),
               CustomTextField(
                 controller: notesController,
-                validator: MyValidators.requiredValidator,
                 keyboardType: TextInputType.text,
                 hintText: "Notes",
               ),
@@ -165,22 +177,98 @@ class _AddAndEditAddressBottomSheetState
                     ),
                   ),
                   const Spacer(),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      height: 40.h,
-                      width: 150.w,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryDark,
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                      child: Center(
-                        child: Text(
-                          widget.isEdit ? "Edit" : "Add",
-                          style: AppStyles.smallBoldWhiteText,
-                        ),
-                      ),
-                    ),
+                  BlocConsumer<CheckoutCubit, CheckoutState>(
+                    listenWhen: (previous, current) =>
+                        previous.addressActionStatus !=
+                        current.addressActionStatus,
+                    listener: (context, state) {
+                      if (state.addressActionStatus ==
+                          AddressActionStatus.failure) {
+                        ShowToast.showFailureToast(
+                            state.addressActionMessage ?? '');
+                      } else if (state.addressActionStatus ==
+                          AddressActionStatus.success) {
+                        Navigator.pop(context);
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state.addressActionStatus ==
+                          AddressActionStatus.loading) {
+                        return Container(
+                          height: 40.h,
+                          width: 150.w,
+                          decoration: BoxDecoration(
+                            color: AppColors.primaryDark,
+                            borderRadius: BorderRadius.circular(10.r),
+                          ),
+                          child: Center(
+                            child: SpinKitFadingCircle(
+                                color: AppColors.white, size: 20.r),
+                          ),
+                        );
+                      } else {
+                        return InkWell(
+                          onTap: () async {
+                            if (_formKey.currentState!.validate()) {
+                              if (widget.isEdit) {
+                                await context
+                                    .read<CheckoutCubit>()
+                                    .updateAddress(
+                                      id: widget.address!.id,
+                                      addressModel:
+                                          AddAndUpdateAddressRequestModel(
+                                        addressLabel: addressController.text,
+                                        country: countryController.text,
+                                        city: cityController.text,
+                                        postalCode: int.parse(
+                                            postalCodeController.text),
+                                        buildingNumber: buildingController.text,
+                                        floorNumber: floorController
+                                                .text.isNotEmpty
+                                            ? int.parse(floorController.text)
+                                            : null,
+                                        notes: notesController.text,
+                                      ),
+                                    );
+                              } else {
+                                await context
+                                    .read<CheckoutCubit>()
+                                    .addNewAddress(
+                                      addressModel:
+                                          AddAndUpdateAddressRequestModel(
+                                        addressLabel: addressController.text,
+                                        country: countryController.text,
+                                        city: cityController.text,
+                                        postalCode: int.parse(
+                                            postalCodeController.text),
+                                        buildingNumber: buildingController.text,
+                                        floorNumber: floorController
+                                                .text.isNotEmpty
+                                            ? int.parse(floorController.text)
+                                            : null,
+                                        notes: notesController.text,
+                                      ),
+                                    );
+                              }
+                            }
+                          },
+                          child: Container(
+                            height: 40.h,
+                            width: 150.w,
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryDark,
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
+                            child: Center(
+                              child: Text(
+                                widget.isEdit ? "Edit" : "Add",
+                                style: AppStyles.smallBoldWhiteText,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ],
               ),
