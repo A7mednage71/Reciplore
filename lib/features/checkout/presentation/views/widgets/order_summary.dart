@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/checkout/data/models/cart_overview_response_model.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({
     super.key,
+    required this.cartOverview,
   });
+  final CartOverviewResponseModel cartOverview;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 150.h,
+      height: 200.h,
       decoration: BoxDecoration(
         color: AppColors.grayLighter,
         borderRadius: BorderRadius.circular(10.r),
@@ -26,21 +29,32 @@ class OrderSummary extends StatelessWidget {
               children: [
                 Text("Subtotal", style: AppStyles.smallRegularText),
                 const Spacer(),
-                Text("100\$", style: AppStyles.smallRegularText),
-              ],
-            ),
-            Row(
-              children: [
-                Text("Delivery", style: AppStyles.smallRegularText),
-                const Spacer(),
-                Text("10\$", style: AppStyles.smallRegularText),
+                Text("${cartOverview.subTotal}\$",
+                    style: AppStyles.smallRegularText),
               ],
             ),
             Row(
               children: [
                 Text("Discount", style: AppStyles.smallRegularText),
                 const Spacer(),
-                Text("10\$", style: AppStyles.smallRegularText),
+                Text("${cartOverview.coupondiscount}\$",
+                    style: AppStyles.smallRegularText),
+              ],
+            ),
+            Row(
+              children: [
+                Text("Shipping Fee", style: AppStyles.smallRegularText),
+                const Spacer(),
+                Text("${cartOverview.shippingFee}\$",
+                    style: AppStyles.smallRegularText),
+              ],
+            ),
+            Row(
+              children: [
+                Text("Vat", style: AppStyles.smallRegularText),
+                const Spacer(),
+                Text("${cartOverview.vatAmount}\$",
+                    style: AppStyles.smallRegularText),
               ],
             ),
             const Divider(
@@ -51,7 +65,7 @@ class OrderSummary extends StatelessWidget {
               children: [
                 Text("Total", style: AppStyles.smallBoldText),
                 const Spacer(),
-                Text("110\$", style: AppStyles.smallBoldText),
+                Text("${cartOverview.total}\$", style: AppStyles.smallBoldText),
               ],
             ),
           ],
