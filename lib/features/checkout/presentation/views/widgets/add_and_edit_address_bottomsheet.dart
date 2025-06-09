@@ -27,6 +27,7 @@ class _AddAndEditAddressBottomSheetState
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController addressController;
+  late TextEditingController streetNameController;
   late TextEditingController countryController;
   late TextEditingController cityController;
   late TextEditingController postalCodeController;
@@ -39,6 +40,8 @@ class _AddAndEditAddressBottomSheetState
     super.initState();
     addressController =
         TextEditingController(text: widget.address?.addressLabel);
+    streetNameController =
+        TextEditingController(text: widget.address?.streetName);
     countryController = TextEditingController(text: widget.address?.country);
     cityController = TextEditingController(text: widget.address?.city);
     postalCodeController =
@@ -53,6 +56,7 @@ class _AddAndEditAddressBottomSheetState
   @override
   void dispose() {
     addressController.dispose();
+    streetNameController.dispose();
     countryController.dispose();
     cityController.dispose();
     postalCodeController.dispose();
@@ -126,10 +130,10 @@ class _AddAndEditAddressBottomSheetState
                 children: [
                   Expanded(
                     child: CustomTextField(
-                      controller: postalCodeController,
+                      controller: streetNameController,
                       validator: MyValidators.requiredValidator,
-                      keyboardType: TextInputType.number,
-                      hintText: "postal code",
+                      keyboardType: TextInputType.text,
+                      hintText: "Street Name",
                     ),
                   ),
                   SizedBox(width: 10.w),
@@ -137,18 +141,34 @@ class _AddAndEditAddressBottomSheetState
                     child: CustomTextField(
                       controller: buildingController,
                       validator: MyValidators.requiredValidator,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.text,
                       hintText: "building No",
                     ),
                   ),
                 ],
               ),
               SizedBox(height: 20.h),
-              CustomTextField(
-                controller: floorController,
-                validator: MyValidators.requiredValidator,
-                keyboardType: TextInputType.text,
-                hintText: "Floor No",
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      controller: floorController,
+                      validator: MyValidators.requiredValidator,
+                      keyboardType: TextInputType.number,
+                      hintText: "Floor No",
+                    ),
+                  ),
+                  SizedBox(width: 10.w),
+                  Expanded(
+                    child: CustomTextField(
+                      controller: postalCodeController,
+                      validator: MyValidators.requiredValidator,
+                      keyboardType: TextInputType.number,
+                      hintText: "postal code",
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 20.h),
               CustomTextField(
@@ -219,17 +239,21 @@ class _AddAndEditAddressBottomSheetState
                                       id: widget.address!.id,
                                       addressModel:
                                           AddAndUpdateAddressRequestModel(
-                                        addressLabel: addressController.text,
-                                        country: countryController.text,
-                                        city: cityController.text,
+                                        addressLabel:
+                                            addressController.text.trim(),
+                                        streetName:
+                                            streetNameController.text.trim(),
+                                        country: countryController.text.trim(),
+                                        city: cityController.text.trim(),
                                         postalCode: int.parse(
                                             postalCodeController.text),
-                                        buildingNumber: buildingController.text,
+                                        buildingNumber:
+                                            buildingController.text.trim(),
                                         floorNumber: floorController
                                                 .text.isNotEmpty
                                             ? int.parse(floorController.text)
                                             : null,
-                                        notes: notesController.text,
+                                        notes: notesController.text.trim(),
                                       ),
                                     );
                               } else {
@@ -238,17 +262,21 @@ class _AddAndEditAddressBottomSheetState
                                     .addNewAddress(
                                       addressModel:
                                           AddAndUpdateAddressRequestModel(
-                                        addressLabel: addressController.text,
-                                        country: countryController.text,
-                                        city: cityController.text,
+                                        addressLabel:
+                                            addressController.text.trim(),
+                                        streetName:
+                                            streetNameController.text.trim(),
+                                        country: countryController.text.trim(),
+                                        city: cityController.text.trim(),
                                         postalCode: int.parse(
                                             postalCodeController.text),
-                                        buildingNumber: buildingController.text,
+                                        buildingNumber:
+                                            buildingController.text.trim(),
                                         floorNumber: floorController
                                                 .text.isNotEmpty
                                             ? int.parse(floorController.text)
                                             : null,
-                                        notes: notesController.text,
+                                        notes: notesController.text.trim(),
                                       ),
                                     );
                               }

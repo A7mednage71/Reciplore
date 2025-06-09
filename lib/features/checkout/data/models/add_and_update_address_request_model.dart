@@ -5,6 +5,7 @@ part 'add_and_update_address_request_model.g.dart';
 @JsonSerializable()
 class AddAndUpdateAddressRequestModel {
   final String addressLabel;
+  final String streetName;
   final String country;
   final String city;
   final int postalCode;
@@ -14,6 +15,7 @@ class AddAndUpdateAddressRequestModel {
 
   AddAndUpdateAddressRequestModel({
     required this.addressLabel,
+    required this.streetName,
     required this.country,
     required this.city,
     required this.postalCode,

@@ -13,6 +13,7 @@ class DeliveryAddressListViewLoadingSkeleton extends StatelessWidget {
         3,
         (index) => AddressModel(
               addressLabel: 'test address',
+              streetName: '',
               id: '',
               userId: '',
               country: 'test',

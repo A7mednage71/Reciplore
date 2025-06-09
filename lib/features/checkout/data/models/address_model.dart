@@ -8,6 +8,7 @@ class AddressModel {
   final String id;
   final String userId;
   final String addressLabel;
+  final String streetName;
   final String country;
   final String city;
   final int postalCode;
@@ -21,6 +22,7 @@ class AddressModel {
     required this.id,
     required this.userId,
     required this.addressLabel,
+    required this.streetName,
     required this.country,
     required this.city,
     required this.postalCode,
@@ -40,6 +42,7 @@ class AddressModel {
     String? id,
     String? userId,
     String? addressLabel,
+    String? streetName,
     String? country,
     String? city,
     int? postalCode,
@@ -53,6 +56,7 @@ class AddressModel {
       id: id ?? this.id,
       userId: userId ?? this.userId,
       addressLabel: addressLabel ?? this.addressLabel,
+      streetName: streetName ?? this.streetName,
       country: country ?? this.country,
       city: city ?? this.city,
       postalCode: postalCode ?? this.postalCode,
