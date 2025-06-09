@@ -55,6 +55,8 @@ class ApiConstants {
   static const String addNewAddress = '/address/add';
   // using put method to update and delete address
   static const String addressWithId = '/address/{id}';
-
   static const String getCartOverview = '/order/cart-overview';
+  static const String checkCoupon = '/order/check-coupon';
+  static const String placeOrder = '/order/cart';
+  static const String payWithStripe = '/order/stripe/{id}';
 }

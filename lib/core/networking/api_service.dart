@@ -13,6 +13,11 @@ import 'package:looqma/features/change_password/data/models/change_password_requ
 import 'package:looqma/features/checkout/data/models/add_and_update_address_request_model.dart';
 import 'package:looqma/features/checkout/data/models/add_and_update_address_response_model.dart';
 import 'package:looqma/features/checkout/data/models/cart_overview_response_model.dart';
+import 'package:looqma/features/checkout/data/models/check_coupon_request_model.dart';
+import 'package:looqma/features/checkout/data/models/check_coupon_response_model.dart';
+import 'package:looqma/features/checkout/data/models/checkout_session_response_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_request_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
@@ -166,6 +171,19 @@ abstract class ApiService {
   // checkout and payment services
   @POST(ApiConstants.getCartOverview)
   Future<CartOverviewResponseModel> getCartOverview();
+
+  @POST(ApiConstants.checkCoupon)
+  Future<CheckCouponResponseModel> checkCoupon(
+    @Body() CheckCouponRequestModel body,
+  );
+
+  @POST(ApiConstants.placeOrder)
+  Future<PlaceOrderResponseModel> placeOrder(
+    @Body() PlaceOrderRequestModel body,
+  );
+
+  @POST(ApiConstants.payWithStripe)
+  Future<CheckoutSessionResponseModel> payWithStripe(@Path('id') String id);
 
   @POST(ApiConstants.addNewAddress)
   Future<AddAndUpdateAddressResponseModel> addNewAddress(
