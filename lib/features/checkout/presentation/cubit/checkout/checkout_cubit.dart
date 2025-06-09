@@ -1,7 +1,12 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:looqma/features/checkout/data/models/add_and_update_address_request_model.dart';
 import 'package:looqma/features/checkout/data/models/cart_overview_response_model.dart';
+import 'package:looqma/features/checkout/data/models/check_coupon_request_model.dart';
+import 'package:looqma/features/checkout/data/models/checkout_session_response_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_request_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_response_model.dart';
 import 'package:looqma/features/checkout/data/repos/checkout_repo.dart';
 
 part 'checkout_cubit.freezed.dart';
@@ -12,6 +17,9 @@ class CheckoutCubit extends Cubit<CheckoutState> {
 
   final CheckoutRepo _checkoutRepo;
 
+  TextEditingController contactNumberController = TextEditingController();
+  GlobalKey<FormState> contactNumberFormKey = GlobalKey<FormState>();
+
   Future<void> getCartOverview() async {
     emit(state.copyWith(status: CheckoutStatus.loading));
     final result = await _checkoutRepo.getCartOverview();
@@ -19,12 +27,95 @@ class CheckoutCubit extends Cubit<CheckoutState> {
     result.when(
       success: (successResponse) {
         emit(state.copyWith(
-            status: CheckoutStatus.success, cartOverview: successResponse));
+            status: CheckoutStatus.success,
+            cartOverview: successResponse,
+            originalTotal: successResponse.total));
       },
       failure: (failureResponse) {
         emit(state.copyWith(
             status: CheckoutStatus.failure,
             message: failureResponse.errMessages));
+      },
+    );
+  }
+
+  Future<void> setshippingAddressID({required String addressID}) async {
+    emit(state.copyWith(shippingAddressID: addressID));
+  }
+
+  Future<void> setPaymentMethod({required String paymentMethod}) async {
+    emit(state.copyWith(paymentMethod: paymentMethod));
+  }
+
+  Future<void> placeOrder() async {
+    emit(state.copyWith(placeOrderStatus: PlaceOrderStatus.loading));
+
+    final result = await _checkoutRepo.placeOrder(
+        placeOrderRequestModel: PlaceOrderRequestModel(
+            shippingAddressID: state.shippingAddressID!,
+            paymentMethod: state.paymentMethod!,
+            contactNumber: contactNumberController.text.trim(),
+            couponCode: state.couponCode));
+
+    result.when(
+      success: (successResponse) {
+        emit(state.copyWith(
+          placeOrderStatus: PlaceOrderStatus.success,
+          placeOrderMessage: successResponse.message,
+          placeOrderResponse: successResponse,
+        ));
+      },
+      failure: (failureResponse) {
+        emit(state.copyWith(
+            placeOrderStatus: PlaceOrderStatus.failure,
+            placeOrderMessage: failureResponse.errMessages));
+      },
+    );
+  }
+
+  Future<void> payWithStripe({required String orderId}) async {
+    emit(state.copyWith(paymentMethodStatus: PaymentMethodStatus.loading));
+
+    final result = await _checkoutRepo.payWithStripe(orderId: orderId);
+
+    result.when(
+      success: (successResponse) {
+        emit(state.copyWith(
+            paymentMethodStatus: PaymentMethodStatus.success,
+            checkoutSessionResponse: successResponse,
+            paymentMethodMessage: 'payment session created successfully'));
+      },
+      failure: (failureResponse) {
+        emit(state.copyWith(
+            paymentMethodStatus: PaymentMethodStatus.failure,
+            paymentMethodMessage: failureResponse.errMessages));
+      },
+    );
+  }
+
+  Future<void> checkCoupon({required String code}) async {
+    emit(state.copyWith(couponStatus: CouponCodeStatus.loading));
+
+    final result = await _checkoutRepo.chechCoupon(
+        checkCouponRequestModel: CheckCouponRequestModel(
+            couponCode: code, total: state.cartOverview!.total));
+
+    result.when(
+      success: (successResponse) {
+        final newCartOverview = state.cartOverview!.copyWith(
+          coupondiscount: successResponse.discount,
+          total: successResponse.totalAfterDiscount,
+        );
+
+        emit(state.copyWith(
+            couponStatus: CouponCodeStatus.success,
+            cartOverview: newCartOverview,
+            couponCode: code));
+      },
+      failure: (failureResponse) {
+        emit(state.copyWith(
+            couponStatus: CouponCodeStatus.failure,
+            checkCouponMessage: failureResponse.errMessages));
       },
     );
   }
