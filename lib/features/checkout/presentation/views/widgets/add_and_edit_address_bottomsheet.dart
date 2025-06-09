@@ -99,6 +99,7 @@ class _AddAndEditAddressBottomSheetState
               ),
               SizedBox(height: 20.h),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: CustomTextField(
@@ -121,6 +122,7 @@ class _AddAndEditAddressBottomSheetState
               ),
               SizedBox(height: 20.h),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     child: CustomTextField(
