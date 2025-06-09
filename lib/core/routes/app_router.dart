@@ -46,6 +46,8 @@ import 'package:looqma/features/search_market/presentation/cubit/search_market/s
 import 'package:looqma/features/search_market/presentation/views/search_market_screen.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
+import 'package:looqma/features/search_recipes_with_ai/presentation/cubit/search_recipes_with_ai/search_recipes_with_ai_cubit.dart';
+import 'package:looqma/features/search_recipes_with_ai/presentation/views/search_recipes_with_ai_screen.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 import 'package:looqma/features/sigh_up/presentation/views/sighn_up_screen.dart';
@@ -206,6 +208,13 @@ class AppRouter {
               ),
             ],
             child: const SearchMarketScreen(),
+          ),
+        );
+      case Routes.searchRecipeWithAi:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<SearchRecipesWithAiCubit>(),
+            child: const SearchRecipesWithAiScreen(),
           ),
         );
       case Routes.profile:
