@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/add_and_edit_address_bottomsheet.dart';
 

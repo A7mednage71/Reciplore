@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/delivery_addresse_card.dart';
 

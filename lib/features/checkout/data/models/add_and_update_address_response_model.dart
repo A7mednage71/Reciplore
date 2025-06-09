@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 
 part 'add_and_update_address_response_model.g.dart';
 
