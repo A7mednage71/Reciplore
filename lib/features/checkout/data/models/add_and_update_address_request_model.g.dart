@@ -10,6 +10,7 @@ AddAndUpdateAddressRequestModel _$AddAndUpdateAddressRequestModelFromJson(
         Map<String, dynamic> json) =>
     AddAndUpdateAddressRequestModel(
       addressLabel: json['addressLabel'] as String,
+      streetName: json['streetName'] as String,
       country: json['country'] as String,
       city: json['city'] as String,
       postalCode: (json['postalCode'] as num).toInt(),
@@ -22,6 +23,7 @@ Map<String, dynamic> _$AddAndUpdateAddressRequestModelToJson(
         AddAndUpdateAddressRequestModel instance) =>
     <String, dynamic>{
       'addressLabel': instance.addressLabel,
+      'streetName': instance.streetName,
       'country': instance.country,
       'city': instance.city,
       'postalCode': instance.postalCode,
