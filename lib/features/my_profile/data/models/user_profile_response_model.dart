@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 
 part 'user_profile_response_model.g.dart';
 
@@ -16,7 +17,7 @@ class UserProfileResponseModel {
   final List<String> phoneNumbers;
 
   @JsonKey(name: 'addresses')
-  final List<String> userAddresses;
+  final List<AddressModel> userAddresses;
 
   @JsonKey(name: 'role')
   final String userRole;

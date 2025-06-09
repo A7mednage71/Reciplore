@@ -8,7 +8,7 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/core/utils/my_validator.dart';
 import 'package:looqma/features/checkout/data/models/add_and_update_address_request_model.dart';
-import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 
 class AddAndEditAddressBottomSheet extends StatefulWidget {

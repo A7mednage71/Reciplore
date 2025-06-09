@@ -14,8 +14,6 @@ UpdateUserInfoRequestModel _$UpdateUserInfoRequestModelFromJson(
       phoneNumbers: (json['phoneNumbers'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      addresses:
-          (json['addresses'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$UpdateUserInfoRequestModelToJson(
@@ -24,5 +22,4 @@ Map<String, dynamic> _$UpdateUserInfoRequestModelToJson(
       'name': instance.name,
       'age': instance.age,
       'phoneNumbers': instance.phoneNumbers,
-      'addresses': instance.addresses,
     };

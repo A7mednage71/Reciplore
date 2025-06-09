@@ -19,8 +19,9 @@ UserProfileResponseModel _$UserProfileResponseModelFromJson(
       phoneNumbers: (json['phoneNumbers'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      userAddresses:
-          (json['addresses'] as List<dynamic>).map((e) => e as String).toList(),
+      userAddresses: (json['addresses'] as List<dynamic>)
+          .map((e) => AddressModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       userRole: json['role'] as String,
       createdAt: json['createdAt'] as String,
       updatedAt: json['updatedAt'] as String,

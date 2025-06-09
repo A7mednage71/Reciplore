@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/extensions/string_ex.dart';
 import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/user_data_item.dart';
 import 'package:looqma/features/my_profile/presentation/views/widgets/my_profile/user_image_section.dart';
@@ -40,8 +41,7 @@ class ShowUserData extends StatelessWidget {
         if (userProfileModel?.userAddresses.isNotEmpty ?? false)
           UserDataItem(
             icon: Icons.location_on_outlined,
-            content: userProfileModel?.userAddresses.first ??
-                "123 Main Street, Cairo, Egypt",
+            content: formataddress() ?? "123 Main Street, Cairo, Egypt",
           ),
         SizedBox(height: 5.h),
         if (userProfileModel?.userAge != null)
@@ -51,5 +51,13 @@ class ShowUserData extends StatelessWidget {
           )
       ],
     );
+  }
+
+  String? formataddress() {
+    if (userProfileModel?.userAddresses.isNotEmpty ?? false) {
+      final AddressModel address = userProfileModel!.userAddresses.first;
+      return "${address.streetName}, ${address.city}, ${address.country}";
+    }
+    return null;
   }
 }

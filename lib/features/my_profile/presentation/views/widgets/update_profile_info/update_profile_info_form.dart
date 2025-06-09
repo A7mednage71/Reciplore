@@ -61,14 +61,6 @@ class _UpdateProfileInfoFormState extends State<UpdateProfileInfoForm> {
               hintText: "Enter Your age",
             ),
             SizedBox(height: 15.h),
-            Text("Address", style: AppStyles.smallRegularText),
-            SizedBox(height: 5.h),
-            CustomTextField(
-              controller: updateUserCubit.addressController,
-              validator: MyValidators.addressValidator,
-              keyboardType: TextInputType.text,
-              hintText: "Enter Your Address",
-            ),
           ],
         ));
   }

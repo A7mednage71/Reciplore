@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/delivery_address_listview.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

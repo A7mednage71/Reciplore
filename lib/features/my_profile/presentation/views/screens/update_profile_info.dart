@@ -24,6 +24,7 @@ class UpdateProfileInfo extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(height: 50.h),
                 Lottie.asset(
                   AppAssets.imagesUpdateProfile,
                   height: 180.h,
