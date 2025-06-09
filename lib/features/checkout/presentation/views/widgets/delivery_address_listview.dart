@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/features/checkout/data/models/address_model.dart';
+import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/delivery_addresse_card.dart';
 
 class DeliveryAddressListView extends StatefulWidget {
@@ -16,7 +18,7 @@ class DeliveryAddressListView extends StatefulWidget {
 }
 
 class _DeliveryAddressListViewState extends State<DeliveryAddressListView> {
-  int isactive = 0;
+  int isactive = -1;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,10 +27,13 @@ class _DeliveryAddressListViewState extends State<DeliveryAddressListView> {
         itemCount: widget.addresses.length,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () {
+            onTap: () async {
               setState(() {
                 isactive = index;
               });
+              await context
+                  .read<CheckoutCubit>()
+                  .setshippingAddressID(addressID: widget.addresses[index].id);
             },
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
