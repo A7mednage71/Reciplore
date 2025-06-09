@@ -10,6 +10,14 @@ import 'package:looqma/features/cart/data/models/add_to_cart_request_model.dart'
 import 'package:looqma/features/cart/data/models/get_cart_reponse_model.dart';
 import 'package:looqma/features/cart/data/models/update_cart_request_model.dart';
 import 'package:looqma/features/change_password/data/models/change_password_request_model.dart';
+import 'package:looqma/features/checkout/data/models/add_and_update_address_request_model.dart';
+import 'package:looqma/features/checkout/data/models/add_and_update_address_response_model.dart';
+import 'package:looqma/features/checkout/data/models/cart_overview_response_model.dart';
+import 'package:looqma/features/checkout/data/models/check_coupon_request_model.dart';
+import 'package:looqma/features/checkout/data/models/check_coupon_response_model.dart';
+import 'package:looqma/features/checkout/data/models/checkout_session_response_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_request_model.dart';
+import 'package:looqma/features/checkout/data/models/place_order_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';
 import 'package:looqma/features/home/data/models/all_categories_model.dart';
 import 'package:looqma/features/home/data/models/all_countries_model.dart';
@@ -159,4 +167,35 @@ abstract class ApiService {
     @Query('recipeId') String? recipeId,
     @Query('ingredientId') String? ingredientId,
   );
+
+  // checkout and payment services
+  @POST(ApiConstants.getCartOverview)
+  Future<CartOverviewResponseModel> getCartOverview();
+
+  @POST(ApiConstants.checkCoupon)
+  Future<CheckCouponResponseModel> checkCoupon(
+    @Body() CheckCouponRequestModel body,
+  );
+
+  @POST(ApiConstants.placeOrder)
+  Future<PlaceOrderResponseModel> placeOrder(
+    @Body() PlaceOrderRequestModel body,
+  );
+
+  @POST(ApiConstants.payWithStripe)
+  Future<CheckoutSessionResponseModel> payWithStripe(@Path('id') String id);
+
+  @POST(ApiConstants.addNewAddress)
+  Future<AddAndUpdateAddressResponseModel> addNewAddress(
+    @Body() AddAndUpdateAddressRequestModel addressModel,
+  );
+
+  @PUT(ApiConstants.addressWithId)
+  Future<AddAndUpdateAddressResponseModel> updateAddress(
+    @Path('id') String id,
+    @Body() AddAndUpdateAddressRequestModel addressModel,
+  );
+
+  @DELETE(ApiConstants.addressWithId)
+  Future<ResponseMessageModel> deleteAddress(@Path('id') String id);
 }

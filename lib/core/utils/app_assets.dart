@@ -16,6 +16,8 @@ class AppAssets {
 
   static const String imagesDiscord = "assets/images/discord.png";
 
+  static const String imagesDoneCorrectly = "assets/images/done_correctly.json";
+
   static const String imagesEmptyBox = "assets/images/empty_box.json";
 
   static const String imagesEmptyChatLottie = "assets/images/emptyChatLottie.json";
@@ -40,6 +42,10 @@ class AppAssets {
 
   static const String imagesLoadingChatbot = "assets/images/loading_chatbot.json";
 
+  static const String imagesMastercard = "assets/images/mastercard.svg";
+
+  static const String imagesMoneyOnDelievery = "assets/images/money_on_delievery.svg";
+
   static const String imagesNoDataFound = "assets/images/no_data_found.json";
 
   static const String imagesNoInternet = "assets/images/no_internet.json";
@@ -47,6 +53,10 @@ class AppAssets {
   static const String imagesOnboardingBackground = "assets/images/onboarding_background.png";
 
   static const String imagesOnboardingTopLogo = "assets/images/onboarding_top_logo.png";
+
+  static const String imagesPaymob = "assets/images/paymob.svg";
+
+  static const String imagesPaypal = "assets/images/paypal.svg";
 
   static const String imagesRateStar = "assets/images/rateStar.png";
 

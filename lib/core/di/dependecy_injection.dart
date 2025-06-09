@@ -12,6 +12,8 @@ import 'package:looqma/features/change_password/data/repos/change_password_repo.
 import 'package:looqma/features/change_password/presentation/cubit/change_password/change_password_cubit.dart';
 import 'package:looqma/features/chat_bot/data/repos/chat_bot_repo.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
+import 'package:looqma/features/checkout/data/repos/checkout_repo.dart';
+import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
@@ -146,5 +148,11 @@ Future<void> setupGetIt() async {
     // chat Bot
     ..registerLazySingleton<ChatBotRepo>(
         () => ChatBotRepo(getIt<ApiLocalService>()))
-    ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()));
+    ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()))
+
+    // checkout and payment
+    ..registerLazySingleton<CheckoutRepo>(
+        () => CheckoutRepo(getIt<ApiService>()))
+    ..registerFactory<CheckoutCubit>(
+        () => CheckoutCubit(getIt<CheckoutRepo>()));
 }

@@ -17,7 +17,10 @@ class Routes {
   static const String watchRecipeVideo = 'watchRecipeVideo_Screen';
   static const String categoryRecipes = 'categoryRecipes_Screen';
   static const String cart = 'cart_Screen';
-  static const String marketIngredientsDetails = 'marketIngredientsDetails_Screen';
+  static const String checkout = 'checkout_Screen';
+  static const String paymentWebView = 'paymentWebView_Screen';
+  static const String marketIngredientsDetails =
+      'marketIngredientsDetails_Screen';
   static const String searchMarket = 'searchMarket_Screen';
   static const String allIngredients = 'allIngredients_Screen';
 }

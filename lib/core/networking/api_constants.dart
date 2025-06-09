@@ -49,4 +49,14 @@ class ApiConstants {
   static const String removeFromCart = '/cart/remove/{id}';
   static const String updateCart = '/cart/update/{id}';
   static const String clearCart = '/cart/clear';
+
+  // checkout and payment end points
+  static const String getAddresses = '/address/';
+  static const String addNewAddress = '/address/add';
+  // using put method to update and delete address
+  static const String addressWithId = '/address/{id}';
+  static const String getCartOverview = '/order/cart-overview';
+  static const String checkCoupon = '/order/check-coupon';
+  static const String placeOrder = '/order/cart';
+  static const String payWithStripe = '/order/stripe/{id}';
 }

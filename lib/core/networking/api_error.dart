@@ -50,9 +50,10 @@ class ServerFailure extends ApiError {
       // 'Your request not found, Please try later!'
       return ServerFailure(response as String);
     } else if (statusCode == 500) {
-      return ServerFailure(
-        'There is the problem with server, Please try later',
-      );
+      return ServerFailure(response as String);
+      // return ServerFailure(
+      //   'There is the problem with server, Please try later',
+      // );
     } else {
       return ServerFailure('Opps There was an Error, Please try again');
     }
