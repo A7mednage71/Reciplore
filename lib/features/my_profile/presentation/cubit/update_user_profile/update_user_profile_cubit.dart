@@ -19,7 +19,6 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController ageController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
 
   Future<void> updateUserProfile() async {
     emit(const UpdateUserProfileState.loading());
@@ -31,7 +30,6 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
           phoneController.text.trim(),
         ],
         age: int.parse(ageController.text.trim()),
-        addresses: [addressController.text.trim()],
       ),
     );
 
@@ -51,8 +49,5 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
     phoneController.text = userProfile.phoneNumbers.first;
     ageController.text =
         userProfile.userAge == null ? '' : userProfile.userAge.toString();
-    addressController.text = userProfile.userAddresses.isNotEmpty
-        ? userProfile.userAddresses.first
-        : '';
   }
 }
