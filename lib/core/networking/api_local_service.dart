@@ -11,8 +11,13 @@ abstract class ApiLocalService {
   factory ApiLocalService(Dio dio) => _ApiLocalService(dio);
 
   // AI services
-  @POST(ApiConstants.chatBot)
-  Future<ChatBotResponseModel> chatBotRecommendation(
+  @POST(ApiConstants.chatBotByIngredients)
+  Future<ChatBotResponseModel> recommendationByIngrdients(
+    @Body() ChatBotRequestModel body,
+  );
+
+  @POST(ApiConstants.chatBotByMood)
+  Future<ChatBotResponseModel> recommendationByMood(
     @Body() ChatBotRequestModel body,
   );
 }

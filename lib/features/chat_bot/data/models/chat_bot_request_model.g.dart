@@ -8,11 +8,13 @@ part of 'chat_bot_request_model.dart';
 
 ChatBotRequestModel _$ChatBotRequestModelFromJson(Map<String, dynamic> json) =>
     ChatBotRequestModel(
-      ingredients: json['ingredients'] as String,
+      ingredients: json['ingredients'] as String?,
+      mood: json['mood'] as String?,
     );
 
 Map<String, dynamic> _$ChatBotRequestModelToJson(
         ChatBotRequestModel instance) =>
     <String, dynamic>{
       'ingredients': instance.ingredients,
+      'mood': instance.mood,
     };

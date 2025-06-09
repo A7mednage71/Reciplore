@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_message.dart';
+import 'package:lottie/lottie.dart';
 
 class AssistantMessage extends StatelessWidget {
   final ChatMessage message;
@@ -60,7 +62,11 @@ class AssistantMessage extends StatelessWidget {
                   height: 200.h,
                   color: AppColors.grayMediumlight,
                   alignment: Alignment.center,
-                  child: const Icon(Icons.broken_image, color: AppColors.red),
+                  child: Lottie.asset(
+                    AppAssets.imagesFailureState,
+                    height: 100,
+                    width: 100,
+                  ),
                 ),
               ),
             ),

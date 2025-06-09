@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:looqma/core/services/notifiers/user_data_notifier.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage.dart';
+import 'package:looqma/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
 import 'package:looqma/features/my_profile/data/repos/user_profile_repo.dart';
@@ -34,7 +37,10 @@ class UpdateUserProfileCubit extends Cubit<UpdateUserProfileState> {
     );
 
     result.when(
-      success: (successResponse) {
+      success: (successResponse) async {
+        await SecureStorage.setSecuredData(
+            SecureStorageKeys.userName, nameController.text.trim());
+        UserDataNotifier.userNameNotifier.value = nameController.text.trim();
         emit(UpdateUserProfileState.success(message: successResponse.message));
       },
       failure: (failureResponse) {

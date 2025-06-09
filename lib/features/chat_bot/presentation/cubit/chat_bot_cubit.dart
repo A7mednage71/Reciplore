@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:looqma/core/networking/api_result.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_bot_request_model.dart';
+import 'package:looqma/features/chat_bot/data/models/chat_bot_response_model.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_message.dart';
 import 'package:looqma/features/chat_bot/data/repos/chat_bot_repo.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_state.dart';
+import 'package:looqma/features/chat_bot/presentation/views/widgets/chat_text_field_send_Button.dart';
 
 class ChatBotCubit extends Cubit<ChatBotState> {
   final ChatBotRepo _chatBotRepo;
@@ -12,7 +15,7 @@ class ChatBotCubit extends Cubit<ChatBotState> {
 
   TextEditingController userMessageController = TextEditingController();
 
-  Future<void> sendMessage() async {
+  Future<void> sendMessage(RecipeGenerationType selectedType) async {
     final userInput = userMessageController.text.trim();
     if (userInput.isEmpty) return;
 
@@ -24,9 +27,19 @@ class ChatBotCubit extends Cubit<ChatBotState> {
 
     userMessageController.clear();
 
-    final response = await _chatBotRepo.chatBotRecommendation(
-      message: ChatBotRequestModel(ingredients: userInput),
-    );
+    ApiResult<ChatBotResponseModel> response;
+
+    switch (selectedType) {
+      case RecipeGenerationType.mood:
+        response = await _chatBotRepo.recommendationByMood(
+          message: ChatBotRequestModel(mood: userInput),
+        );
+        break;
+      default:
+        response = await _chatBotRepo.recommendationByIngredients(
+          message: ChatBotRequestModel(ingredients: userInput),
+        );
+    }
 
     response.when(success: (chatBotResponse) {
       final botMessage = ChatMessage.fromBot(
