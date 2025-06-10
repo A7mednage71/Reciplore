@@ -51,8 +51,10 @@ EnhancedRecipeData _$EnhancedRecipeDataFromJson(Map<String, dynamic> json) =>
       tipsAndVariations: (json['tipsAndVariations'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      nutrition: EnhancedRecipeNutrition.fromJson(
-          json['nutrition'] as Map<String, dynamic>),
+      nutrition: json['nutrition'] == null
+          ? null
+          : EnhancedRecipeNutrition.fromJson(
+              json['nutrition'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EnhancedRecipeDataToJson(EnhancedRecipeData instance) =>
@@ -69,12 +71,12 @@ Map<String, dynamic> _$EnhancedRecipeDataToJson(EnhancedRecipeData instance) =>
 EnhancedRecipeOverView _$EnhancedRecipeOverViewFromJson(
         Map<String, dynamic> json) =>
     EnhancedRecipeOverView(
-      cuisine: json['cuisine'] as String,
-      difficulty: json['difficulty'] as String,
-      servings: json['servings'] as String,
-      prepTime: json['prepTime'] as String,
-      cookTime: json['cookTime'] as String,
-      totalTime: json['totalTime'] as String,
+      cuisine: json['cuisine'] as String?,
+      difficulty: json['difficulty'] as String?,
+      servings: json['servings'] as String?,
+      preptime: json['preptime'] as String?,
+      cooktime: json['cooktime'] as String?,
+      totaltime: json['totaltime'] as String?,
     );
 
 Map<String, dynamic> _$EnhancedRecipeOverViewToJson(
@@ -83,9 +85,9 @@ Map<String, dynamic> _$EnhancedRecipeOverViewToJson(
       'cuisine': instance.cuisine,
       'difficulty': instance.difficulty,
       'servings': instance.servings,
-      'prepTime': instance.prepTime,
-      'cookTime': instance.cookTime,
-      'totalTime': instance.totalTime,
+      'preptime': instance.preptime,
+      'cooktime': instance.cooktime,
+      'totaltime': instance.totaltime,
     };
 
 EnhancedRecipeIngredient _$EnhancedRecipeIngredientFromJson(
@@ -93,7 +95,7 @@ EnhancedRecipeIngredient _$EnhancedRecipeIngredientFromJson(
     EnhancedRecipeIngredient(
       name: json['name'] as String,
       quantity: json['quantity'] as String,
-      notes: json['notes'] as String,
+      notes: json['notes'] as String?,
     );
 
 Map<String, dynamic> _$EnhancedRecipeIngredientToJson(
@@ -107,7 +109,7 @@ Map<String, dynamic> _$EnhancedRecipeIngredientToJson(
 EnhancedRecipeInstruction _$EnhancedRecipeInstructionFromJson(
         Map<String, dynamic> json) =>
     EnhancedRecipeInstruction(
-      step: json['step'] as String,
+      step: (json['step'] as num).toInt(),
       action: json['action'] as String,
     );
 
@@ -121,10 +123,10 @@ Map<String, dynamic> _$EnhancedRecipeInstructionToJson(
 EnhancedRecipeNutrition _$EnhancedRecipeNutritionFromJson(
         Map<String, dynamic> json) =>
     EnhancedRecipeNutrition(
-      calories: json['calories'] as String,
-      protein: json['protein'] as String,
-      carbohydrates: json['carbohydrates'] as String,
-      fat: json['fat'] as String,
+      calories: json['calories'] as String?,
+      protein: json['protein'] as String?,
+      carbohydrates: json['carbohydrates'] as String?,
+      fat: json['fat'] as String?,
     );
 
 Map<String, dynamic> _$EnhancedRecipeNutritionToJson(

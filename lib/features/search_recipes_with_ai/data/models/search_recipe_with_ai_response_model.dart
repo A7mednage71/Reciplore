@@ -38,7 +38,7 @@ class EnhancedRecipeData {
   final List<EnhancedRecipeIngredient> ingredients;
   final List<EnhancedRecipeInstruction> instructions;
   final List<String> tipsAndVariations;
-  final EnhancedRecipeNutrition nutrition;
+  final EnhancedRecipeNutrition? nutrition;
 
   EnhancedRecipeData({
     required this.title,
@@ -58,20 +58,20 @@ class EnhancedRecipeData {
 
 @JsonSerializable()
 class EnhancedRecipeOverView {
-  final String cuisine;
-  final String difficulty;
-  final String servings;
-  final String prepTime;
-  final String cookTime;
-  final String totalTime;
+  final String? cuisine;
+  final String? difficulty;
+  final String? servings;
+  final String? preptime;
+  final String? cooktime;
+  final String? totaltime;
 
   EnhancedRecipeOverView({
     required this.cuisine,
     required this.difficulty,
     required this.servings,
-    required this.prepTime,
-    required this.cookTime,
-    required this.totalTime,
+    required this.preptime,
+    required this.cooktime,
+    required this.totaltime,
   });
 
   factory EnhancedRecipeOverView.fromJson(Map<String, dynamic> json) =>
@@ -84,7 +84,7 @@ class EnhancedRecipeOverView {
 class EnhancedRecipeIngredient {
   final String name;
   final String quantity;
-  final String notes;
+  final String? notes;
 
   EnhancedRecipeIngredient({
     required this.name,
@@ -100,7 +100,7 @@ class EnhancedRecipeIngredient {
 
 @JsonSerializable()
 class EnhancedRecipeInstruction {
-  final String step;
+  final int step;
   final String action;
 
   EnhancedRecipeInstruction({
@@ -116,10 +116,10 @@ class EnhancedRecipeInstruction {
 
 @JsonSerializable()
 class EnhancedRecipeNutrition {
-  final String calories;
-  final String protein;
-  final String carbohydrates;
-  final String fat;
+  final String? calories;
+  final String? protein;
+  final String? carbohydrates;
+  final String? fat;
 
   EnhancedRecipeNutrition({
     required this.calories,
