@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
@@ -18,32 +17,19 @@ class CreatePlanButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final dietPlanCubit = context.read<DietPlanCubit>();
     return BlocConsumer<DietPlanCubit, DietPlanState>(
-      listenWhen: (previous, current) => previous.status != current.status,
-      listener: (context, state) {
-        if (state.status == DietPlanStatus.success) {
-          showDialog(
-            context: context,
-            builder: (context) => const DietPlanCreatedSuccessDialog(),
-          );
-        } else if (state.status == DietPlanStatus.failure) {
-          ShowToast.showFailureToast(state.message ?? '');
-        }
-      },
-      buildWhen: (previous, current) => previous.status != current.status,
-      builder: (context, state) {
-        if (state.status == DietPlanStatus.loading) {
-          return Container(
-            width: double.infinity,
-            height: 60.h,
-            decoration: BoxDecoration(
-              color: AppColors.primaryDark,
-              borderRadius: BorderRadius.circular(10.r),
-            ),
-            child: Center(
-              child: SpinKitFadingCircle(color: AppColors.white, size: 30.r),
-            ),
-          );
-        } else {
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (context, state) {
+          if (state.status == DietPlanStatus.success) {
+            showDialog(
+              context: context,
+              builder: (context) => const DietPlanCreatedSuccessDialog(),
+            );
+          } else if (state.status == DietPlanStatus.failure) {
+            ShowToast.showFailureToast(state.message ?? '');
+          }
+        },
+        buildWhen: (previous, current) => previous.status != current.status,
+        builder: (context, state) {
           return InkWell(
             onTap: () async {
               if (dietPlanCubit.formKey.currentState!.validate()) {
@@ -73,8 +59,6 @@ class CreatePlanButton extends StatelessWidget {
               ),
             ),
           );
-        }
-      },
-    );
+        });
   }
 }
