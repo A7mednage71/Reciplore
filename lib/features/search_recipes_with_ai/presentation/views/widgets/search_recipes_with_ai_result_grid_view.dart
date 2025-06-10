@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/search_recipe_with_ai_item.dart';
 
@@ -20,7 +22,10 @@ class SearchRecipeWithAiResultGridView extends StatelessWidget {
         itemCount: recipes.length,
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              context.pushNamed(Routes.aiRecommendedRecipeDetails,
+                  arguments: recipes[index]);
+            },
             child: AnimationConfiguration.staggeredGrid(
               columnCount: 2,
               position: index,
