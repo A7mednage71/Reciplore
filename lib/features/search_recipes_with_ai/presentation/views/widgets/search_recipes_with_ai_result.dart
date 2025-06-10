@@ -21,8 +21,6 @@ class SearchRecipeWithAiResult extends StatelessWidget {
             return const SearchRecipeWithAiResultLoadingSkeleton();
           },
           success: (recipes) {
-            return const SearchRecipeWithAiResultLoadingSkeleton();
-
             return SearchRecipeWithAiResultGridView(recipes: recipes);
           },
           failure: (message) {
