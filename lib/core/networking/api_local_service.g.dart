@@ -110,9 +110,7 @@ class _ApiLocalService implements ApiLocalService {
   }
 
   @override
-  Future<ResponseMessageModel> dietPlan(
-    DietPlanRequestModel body,
-  ) async {
+  Future<ResponseMessageModel> dietPlan(DietPlanRequestModel body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
