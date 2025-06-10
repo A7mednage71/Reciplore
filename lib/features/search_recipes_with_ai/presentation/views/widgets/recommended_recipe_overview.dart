@@ -50,7 +50,9 @@ class RecommendedRecipeOverView extends StatelessWidget {
                   children: [
                     Text("servings", style: AppStyles.smallRegularText),
                     const Spacer(),
-                    Text("${recipe.recipeData.overview.servings}",
+                    Text(
+                        extractNumberWithWord(
+                            recipe.recipeData.overview.servings),
                         style: AppStyles.smallRegularText),
                   ],
                 ),
@@ -66,8 +68,13 @@ class RecommendedRecipeOverView extends StatelessWidget {
                   children: [
                     Text("cooktime", style: AppStyles.smallRegularText),
                     const Spacer(),
-                    Text("${recipe.recipeData.overview.cooktime}",
-                        style: AppStyles.smallRegularText),
+                    Text(
+                      extractNumberWithWord(
+                          recipe.recipeData.overview.cooktime),
+                      style: AppStyles.smallRegularText,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ],
                 ),
                 const Divider(
@@ -78,7 +85,9 @@ class RecommendedRecipeOverView extends StatelessWidget {
                   children: [
                     Text("Total Time", style: AppStyles.smallBoldText),
                     const Spacer(),
-                    Text("${recipe.recipeData.overview.totaltime}",
+                    Text(
+                        extractNumberWithWord(
+                            recipe.recipeData.overview.totaltime),
                         style: AppStyles.smallBoldText),
                   ],
                 ),
@@ -88,5 +97,11 @@ class RecommendedRecipeOverView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  String extractNumberWithWord(String? input) {
+    if (input == null || input.isEmpty) return '';
+    final match = RegExp(r'(\d+)\s+([a-zA-Z]+)').firstMatch(input);
+    return match != null ? '${match.group(1)} ${match.group(2)}' : '';
   }
 }
