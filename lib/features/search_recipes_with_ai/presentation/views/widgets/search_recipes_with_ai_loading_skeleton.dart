@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/search_recipes_with_ai_result_grid_view.dart';
@@ -58,9 +59,10 @@ class SearchRecipeWithAiResultLoadingSkeleton extends StatelessWidget {
     );
     return Skeletonizer(
       enabled: true,
-      effect: ShimmerEffect(
-        baseColor: Colors.grey.shade300,
-        highlightColor: Colors.grey.shade100,
+      effect: const PulseEffect(
+        duration: Duration(milliseconds: 1000),
+        from: AppColors.grayMediumlight,
+        to: AppColors.grayLighter,
       ),
       child: SearchRecipeWithAiResultGridView(
         recipes: recipes,
