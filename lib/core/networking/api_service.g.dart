@@ -84,7 +84,7 @@ class _ApiService implements ApiService {
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<VerifyResponseModel>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             'auth/verify-login',
@@ -114,7 +114,7 @@ class _ApiService implements ApiService {
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<ResponseMessageModel>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/auth/forget-password',
@@ -170,7 +170,7 @@ class _ApiService implements ApiService {
     final _data = <String, dynamic>{};
     _data.addAll(body.toJson());
     final _options = _setStreamType<ResponseMessageModel>(
-      Options(method: 'GET', headers: _headers, extra: _extra)
+      Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
             '/auth/resend-otp',

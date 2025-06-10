@@ -14,9 +14,9 @@ class DietPlanGoalsList extends StatefulWidget {
 class _DietPlanGoalsListState extends State<DietPlanGoalsList> {
   int active = -1;
   final List<String> dietPlanGoals = [
-    "Muscle Gain",
-    "Weight Loss",
-    "Maintainance",
+    "muscle gain",
+    "weight loss",
+    "maintenance",
   ];
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _DietPlanGoalsListState extends State<DietPlanGoalsList> {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           child: DietPlanGoalChip(
-            goal: goal.value,
+            goal: goal.value.toUpperCase(),
             isActive: active == goal.key,
           ),
         );
