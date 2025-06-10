@@ -40,6 +40,7 @@ class SearchRecipeWithAiResultLoadingSkeleton extends StatelessWidget {
               return EnhancedRecipeInstruction(
                 step: 2,
                 action: "action",
+                description: "description",
               );
             },
           ),

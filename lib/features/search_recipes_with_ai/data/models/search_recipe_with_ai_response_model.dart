@@ -102,10 +102,12 @@ class EnhancedRecipeIngredient {
 class EnhancedRecipeInstruction {
   final int step;
   final String action;
+  final String? description;
 
   EnhancedRecipeInstruction({
     required this.step,
     required this.action,
+    required this.description,
   });
 
   factory EnhancedRecipeInstruction.fromJson(Map<String, dynamic> json) =>

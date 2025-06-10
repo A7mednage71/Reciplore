@@ -111,6 +111,7 @@ EnhancedRecipeInstruction _$EnhancedRecipeInstructionFromJson(
     EnhancedRecipeInstruction(
       step: (json['step'] as num).toInt(),
       action: json['action'] as String,
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$EnhancedRecipeInstructionToJson(
@@ -118,6 +119,7 @@ Map<String, dynamic> _$EnhancedRecipeInstructionToJson(
     <String, dynamic>{
       'step': instance.step,
       'action': instance.action,
+      'description': instance.description,
     };
 
 EnhancedRecipeNutrition _$EnhancedRecipeNutritionFromJson(
