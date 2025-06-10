@@ -52,12 +52,12 @@ abstract class ApiService {
     @Body() LoginRequestModel body,
   );
 
-  @GET(ApiConstants.verifyLogin)
+  @POST(ApiConstants.verifyLogin)
   Future<VerifyResponseModel> verifyLogin(
     @Body() VerifyRequestModel body,
   );
 
-  @GET(ApiConstants.forgetPassword)
+  @POST(ApiConstants.forgetPassword)
   Future<ResponseMessageModel> forgetPassword(
     @Body() ForgetPasswordRequestModel body,
   );
@@ -67,7 +67,7 @@ abstract class ApiService {
     @Body() SignUpRequestModel body,
   );
 
-  @GET(ApiConstants.resendOtp)
+  @POST(ApiConstants.resendOtp)
   Future<ResponseMessageModel> resendOtp(
     @Body() ResendOtpRequestModel body,
   );

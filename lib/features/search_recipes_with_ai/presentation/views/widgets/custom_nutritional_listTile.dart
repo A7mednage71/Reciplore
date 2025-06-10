@@ -24,8 +24,23 @@ class CustomNutritionalListTile extends StatelessWidget {
         ),
       ),
       title: Text(title ?? "", style: AppStyles.smallBoldText),
-      trailing:
-          Text(trailing ?? "", style: AppStyles.smallRegularPrimaryDarkerText),
+      trailing: Flexible(
+        child: Text(
+          extractValueWithUnit(trailing),
+          style: AppStyles.smallRegularPrimaryDarkerText,
+        ),
+      ),
     );
+  }
+
+  String extractValueWithUnit(String? input) {
+    if (input == null || input.isEmpty) return '';
+    final cleanedText = input
+        .replaceFirst("Approximately ", "")
+        .replaceAll(RegExp(r'[^0-9.kcalg\s]'), '')
+        .trim();
+    final match = RegExp(r'(\d+\.?\d*)\s*(g|kcal)').firstMatch(cleanedText);
+
+    return match != null ? '${match.group(1)} ${match.group(2)}' : '';
   }
 }

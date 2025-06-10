@@ -54,7 +54,7 @@ class ChatBotHome extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context, rootNavigator: true)
-                    .pushNamed(Routes.chatScreen);
+                    .pushNamed(Routes.dietPlan);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryDark,

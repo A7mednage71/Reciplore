@@ -14,6 +14,8 @@ import 'package:looqma/features/chat_bot/data/repos/chat_bot_repo.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/checkout/data/repos/checkout_repo.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
+import 'package:looqma/features/diet_plan/data/repo/diet_plan_repo.dart';
+import 'package:looqma/features/diet_plan/presentation/cubit/diet_plan_cubit.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/home/data/repos/home_repo.dart';
@@ -157,6 +159,10 @@ Future<void> setupGetIt() async {
         () => SearchRecipesWithAiRepo(getIt<ApiLocalService>()))
     ..registerFactory<SearchRecipesWithAiCubit>(
         () => SearchRecipesWithAiCubit(getIt<SearchRecipesWithAiRepo>()))
+    // diet plan
+    ..registerLazySingleton<DietPlanRepo>(
+        () => DietPlanRepo(getIt<ApiLocalService>()))
+    ..registerFactory<DietPlanCubit>(() => DietPlanCubit(getIt<DietPlanRepo>()))
 
     // checkout and payment
     ..registerLazySingleton<CheckoutRepo>(

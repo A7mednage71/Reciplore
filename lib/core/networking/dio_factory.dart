@@ -38,6 +38,12 @@ class DioFactory {
       ..options.connectTimeout = timeOut
       ..options.receiveTimeout = timeOut;
 
+    localDio!.options.headers = {
+      'Content-Type': 'application/json',
+      'accessToken':
+          '${ApiConstants.accessTokenPrefix}${await _readAccessToken()}',
+    };
+
     localDio?.interceptors.add(
       PrettyDioLogger(
         requestBody: true,
