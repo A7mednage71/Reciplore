@@ -193,6 +193,13 @@ class AppStyles {
     color: Colors.black,
   );
 
+  static TextStyle smallRegularPrimaryDarkerText = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 14.sp,
+    fontWeight: FontWeight.normal,
+    color: AppColors.primaryDarker,
+  );
+
   static TextStyle smallRegularWhiteText = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 14.sp,
