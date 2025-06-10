@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
-import 'package:looqma/core/common/widgets/custom_rate.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/search_recipe_image.dart';
+import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
 
-class SearchRecipeItem extends StatelessWidget {
-  const SearchRecipeItem({super.key, required this.recipeModel});
-  final RecipeModel recipeModel;
+class SearchRecipeWithAiItem extends StatelessWidget {
+  const SearchRecipeWithAiItem({super.key, required this.recipe});
+  final EnhancedRecipe recipe;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SearchRecipeImage(image: recipeModel.images.urls.first.secureUrl),
+        SearchRecipeImage(image: recipe.image.imageUrl),
         Container(
           width: 150.w,
           height: 150.h,
@@ -33,10 +32,9 @@ class SearchRecipeItem extends StatelessWidget {
             padding: EdgeInsets.all(10.w),
             child: Column(
               children: [
-                CustomRate(rate: "${recipeModel.averageRating}"),
                 const Spacer(),
                 Text(
-                  recipeModel.name,
+                  recipe.recipeData.title,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppStyles.smallBoldWhiteText,
