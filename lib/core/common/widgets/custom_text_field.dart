@@ -81,7 +81,7 @@ class CustomTextField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         hintText: hintText,
-        hintStyle: AppStyles.smallRegularGrayLightText,
+        hintStyle: hintStyle ?? AppStyles.smallRegularGrayLightText,
         errorStyle: AppStyles.extraSmallRegularRedText,
       ),
     );

@@ -2,6 +2,9 @@ class Routes {
   static const String onBording = 'onBording_Screen';
   static const String home = 'Home_Screen';
   static const String searchRecipeScreen = 'Search_Screen';
+  static const String searchRecipeWithAi = 'SearchRecipeWithAi_Screen';
+  static const String aiRecommendedRecipeDetails =
+      'Ai_recommendedRecipeDetails_Screen';
   static const String chatScreen = 'Chat_Screen';
   static const String profile = 'Profile_Screen';
   static const String updateProfileInfo = 'UpdateProfile_Screen';

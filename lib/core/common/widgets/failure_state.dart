@@ -26,7 +26,7 @@ class FailureState extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Text(
-              message ?? 'Oops ,try again\n or pull to refresh',
+              message ?? 'Oops ,try again',
               style: AppStyles.smallBoldsecondaryDarkerText,
               textAlign: TextAlign.center,
             ),

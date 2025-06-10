@@ -32,6 +32,7 @@ class ApiConstants {
   // Ai end points
   static const String chatBotByIngredients = '/ai/chat/ingredients';
   static const String chatBotByMood = '/ai/chat/mood';
+  static const String searchAi = '/ai/serach-ai';
 
   // market end points
   static const String getIngredients = '/ingredient/list';

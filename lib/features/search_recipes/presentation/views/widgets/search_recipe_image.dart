@@ -3,21 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class SearchRecipeImage extends StatelessWidget {
   const SearchRecipeImage({
     super.key,
-    required this.recipeModel,
+    required this.image,
   });
-
-  final RecipeModel recipeModel;
-
+  final String image;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: recipeModel.images.urls.first.secureUrl,
+      imageUrl: image,
       imageBuilder: (context, imageProvider) {
         return Container(
           width: 150.w,

@@ -41,6 +41,8 @@ import 'package:looqma/features/search_market/data/repos/search_market_repo.dart
 import 'package:looqma/features/search_market/presentation/cubit/search_market/search_market_cubit.dart';
 import 'package:looqma/features/search_recipes/data/repos/search_repo.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
+import 'package:looqma/features/search_recipes_with_ai/data/repos/search_with_ai_repo.dart';
+import 'package:looqma/features/search_recipes_with_ai/presentation/cubit/search_recipes_with_ai/search_recipes_with_ai_cubit.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
 
@@ -149,6 +151,12 @@ Future<void> setupGetIt() async {
     ..registerLazySingleton<ChatBotRepo>(
         () => ChatBotRepo(getIt<ApiLocalService>()))
     ..registerFactory<ChatBotCubit>(() => ChatBotCubit(getIt<ChatBotRepo>()))
+
+    // search wit Ai
+    ..registerLazySingleton<SearchRecipesWithAiRepo>(
+        () => SearchRecipesWithAiRepo(getIt<ApiLocalService>()))
+    ..registerFactory<SearchRecipesWithAiCubit>(
+        () => SearchRecipesWithAiCubit(getIt<SearchRecipesWithAiRepo>()))
 
     // checkout and payment
     ..registerLazySingleton<CheckoutRepo>(
