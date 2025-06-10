@@ -46,7 +46,9 @@ import 'package:looqma/features/search_market/presentation/cubit/search_market/s
 import 'package:looqma/features/search_market/presentation/views/search_market_screen.dart';
 import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/search_recipes.dart';
+import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/cubit/search_recipes_with_ai/search_recipes_with_ai_cubit.dart';
+import 'package:looqma/features/search_recipes_with_ai/presentation/views/ai_recommended_recipe_details_screen.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/search_recipes_with_ai_screen.dart';
 import 'package:looqma/features/sigh_up/data/repos/sighn_up_repo.dart';
 import 'package:looqma/features/sigh_up/presentation/cubit/sighn_up_cubit.dart';
@@ -216,6 +218,12 @@ class AppRouter {
             create: (context) => getIt<SearchRecipesWithAiCubit>(),
             child: const SearchRecipesWithAiScreen(),
           ),
+        );
+      case Routes.aiRecommendedRecipeDetails:
+        final recipeModel = argument as EnhancedRecipe;
+        return MaterialPageRoute(
+          builder: (context) =>
+              AiRecommendedRecipeDetailsScreen(recipe: recipeModel),
         );
       case Routes.profile:
         return MaterialPageRoute(
