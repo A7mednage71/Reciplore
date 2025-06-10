@@ -1,14 +1,18 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppColors {
   static const Color white = Color(0xffffffff);
   static const Color black = Color(0xff000000);
+  static const Color black26 = Colors.black26;
+  static const Color red = Colors.red;
+  static const Color blue = Colors.blue;
 
   // Netural Colour
   static const Color grayDark = Color(0xff484848);
   static const Color grayMedium = Color(0xff797979);
   static const Color grayLight = Color(0xffA9A9A9);
-  static const Color grayLighter = Color(0xffD9D9D9);
+  static const Color grayMediumlight = Color(0xffCCCCCC);
+  static const Color grayLighter = Color(0xffECECEC);
 
   // Primary Color
   static const Color primaryDark = Color(0xff129575);
@@ -16,6 +20,7 @@ class AppColors {
   static const Color primaryMedium = Color(0xffAFD3CA);
   static const Color primaryLight = Color(0xffDBEBE7);
   static const Color primaryLighter = Color(0xffF6FAF9);
+  static const Color primarybright = Color(0xff31B057);
 
   // secondary Color
   static const Color secondaryDark = Color(0xffFF9C00);
@@ -31,6 +36,6 @@ class AppColors {
   static const Color warningColor = Color(0xffFD3654);
   static const Color warningColorLight = Color(0xffFFE1E7);
 
-  // Success Color
-  static const Color successColor = Color(0xff31B057);
+  // loading Color
+  static const Color loadingColor = Color(0xffEBEBF4);
 }

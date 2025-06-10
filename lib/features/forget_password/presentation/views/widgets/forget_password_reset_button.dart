@@ -41,7 +41,7 @@ class ForgetPasswordResetButton extends StatelessWidget {
         }, orElse: () {
           return InkWell(
             onTap: () {
-              context.read<ForgetPasswordCubit>().forgetPassword();
+              validate(context);
             },
             child: Container(
               width: double.infinity,
@@ -53,7 +53,7 @@ class ForgetPasswordResetButton extends StatelessWidget {
               child: Center(
                 child: Text(
                   "Reset Password",
-                  style: AppStyles.normalBoldText.copyWith(color: Colors.white),
+                  style: AppStyles.normalBoldWhiteText,
                 ),
               ),
             ),
@@ -61,5 +61,12 @@ class ForgetPasswordResetButton extends StatelessWidget {
         });
       },
     );
+  }
+
+  void validate(BuildContext context) {
+    final cubit = context.read<ForgetPasswordCubit>();
+    if (cubit.formKey.currentState!.validate()) {
+      cubit.forgetPassword();
+    }
   }
 }

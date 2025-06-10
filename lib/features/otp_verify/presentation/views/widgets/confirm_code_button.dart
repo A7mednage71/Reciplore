@@ -6,7 +6,7 @@ import 'package:looqma/core/extensions/navigation_context.dart';
 import 'package:looqma/core/routes/routes.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit.dart';
+import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
 
 class ConfirmCodeButton extends StatelessWidget {
   const ConfirmCodeButton({super.key});
@@ -18,7 +18,7 @@ class ConfirmCodeButton extends StatelessWidget {
         state.whenOrNull(
           success: (successMessage) {
             ShowToast.showSuccessToast(successMessage);
-            context.pushNamedAndRemoveUntil(Routes.home);
+            context.pushNamedAndRemoveUntil(Routes.navBarScreensSwitcher);
           },
           failure: (failureMessage) {
             ShowToast.showFailureToast(failureMessage);
@@ -56,8 +56,7 @@ class ConfirmCodeButton extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Confirm Code",
-                    style:
-                        AppStyles.normalBoldText.copyWith(color: Colors.white),
+                    style: AppStyles.normalBoldWhiteText,
                   ),
                 ),
               ),
