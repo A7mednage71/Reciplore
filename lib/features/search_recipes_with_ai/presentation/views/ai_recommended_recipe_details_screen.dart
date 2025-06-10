@@ -1,9 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/custom_back_arrow_app_bar.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
+import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/recommended_recipe_cached_network_image.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/recommended_recipe_ingredients_list.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/recommended_recipe_instructions_list.dart';
 import 'package:looqma/features/search_recipes_with_ai/presentation/views/widgets/recommended_recipe_nutriational_information.dart';
@@ -21,27 +21,7 @@ class AiRecommendedRecipeDetailsScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              CachedNetworkImage(
-                imageUrl: recipe.image.imageUrl,
-                imageBuilder: (context, imageProvider) {
-                  return Container(
-                    height: 250.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: imageProvider,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  );
-                },
-                placeholder: (context, url) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
+              RecommendedRecipeCachedNetworkImage(image: recipe.image.imageUrl),
               SizedBox(height: 20.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
