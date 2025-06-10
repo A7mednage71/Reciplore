@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:looqma/core/networking/api_constants.dart';
+import 'package:looqma/core/networking/response_message_model.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_bot_request_model.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_bot_response_model.dart';
+import 'package:looqma/features/diet_plan/data/models/diet_plan_request_model.dart';
 import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_request_model.dart';
 import 'package:looqma/features/search_recipes_with_ai/data/models/search_recipe_with_ai_response_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -26,5 +28,10 @@ abstract class ApiLocalService {
   @POST(ApiConstants.searchAi)
   Future<SearchRecipeWithAiResponseModel> searchRecipeWithAi(
     @Body() SearchRecipeWithAiRequestModel body,
+  );
+
+  @POST(ApiConstants.dietPlan)
+  Future<ResponseMessageModel> dietPlan(
+    @Body() DietPlanRequestModel body,
   );
 }
