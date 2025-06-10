@@ -5,6 +5,7 @@ class Routes {
   static const String searchRecipeWithAi = 'SearchRecipeWithAi_Screen';
   static const String aiRecommendedRecipeDetails =
       'Ai_recommendedRecipeDetails_Screen';
+  static const String dietPlan = 'Diet_Plan_Screen';
   static const String chatScreen = 'Chat_Screen';
   static const String profile = 'Profile_Screen';
   static const String updateProfileInfo = 'UpdateProfile_Screen';

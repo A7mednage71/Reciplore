@@ -17,6 +17,8 @@ import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/checkout_screen.dart';
 import 'package:looqma/features/checkout/presentation/views/payment_webview.dart';
+import 'package:looqma/features/diet_plan/presentation/cubit/diet_plan_cubit.dart';
+import 'package:looqma/features/diet_plan/presentation/views/diet_plan_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
 import 'package:looqma/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:looqma/features/forget_password/presentation/views/forget_password_screen.dart';
@@ -224,6 +226,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) =>
               AiRecommendedRecipeDetailsScreen(recipe: recipeModel),
+        );
+      case Routes.dietPlan:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<DietPlanCubit>(),
+            child: const DietPlanScreen(),
+          ),
         );
       case Routes.profile:
         return MaterialPageRoute(
