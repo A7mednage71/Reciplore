@@ -63,16 +63,34 @@ class MyValidators {
   }
 
   static String? ageValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Please enter your age';
-    }
+    if (value == null || value.isEmpty) return 'Enter age';
     final age = int.tryParse(value);
+    if (age == null) return 'Invalid age';
+    if (age < 0 || age > 100) return 'Age 0–100 only';
+    return null;
+  }
 
-    if (age == null) {
-      return 'Please enter a valid age';
-    } else if (age < 0 || age > 100) {
-      return 'Please enter a valid age (0-100)';
-    }
+  static String? heightValidator(String? value) {
+    if (value == null || value.isEmpty) return 'Enter height';
+    final height = int.tryParse(value);
+    if (height == null) return 'Invalid height';
+    if (height < 50 || height > 300) return '50–300 cm only';
+    return null;
+  }
+
+  static String? weightValidator(String? value) {
+    if (value == null || value.isEmpty) return 'Enter weight';
+    final weight = int.tryParse(value);
+    if (weight == null) return 'Invalid weight';
+    if (weight < 20 || weight > 300) return '20–300 kg only';
+    return null;
+  }
+
+  static String? fatPercentageValidator(String? value) {
+    if (value == null || value.isEmpty) return 'Enter fat %';
+    final fat = double.tryParse(value);
+    if (fat == null) return 'Invalid fat %';
+    if (fat < 1 || fat > 60) return '1–60% only';
     return null;
   }
 
