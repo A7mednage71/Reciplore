@@ -82,6 +82,8 @@ class AppAssets {
 
   static const String imagesSearchTest = "assets/images/search_test.png";
 
+  static const String imagesSearchWithAiIcon = "assets/images/search_with_ai_icon.png";
+
   static const String imagesServeIcon = "assets/images/serveIcon.svg";
 
   static const String imagesTestRecipe = "assets/images/testRecipe.jpg";
