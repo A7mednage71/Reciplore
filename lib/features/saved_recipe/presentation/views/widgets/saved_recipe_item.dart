@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/widgets/custom_rate.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/features/saved_recipe/presentation/views/widgets/saved_recipe_details.dart';
 
 class SavedRecipeItem extends StatelessWidget {
