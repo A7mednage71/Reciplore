@@ -42,7 +42,20 @@ class MarketHomeInfoData extends StatelessWidget {
               color: AppColors.secondaryMedium,
               size: 30.w,
             ),
-          )
+          ),
+          SizedBox(width: 10.w),
+          IconButton(
+            onPressed: () async {
+              Navigator.of(context, rootNavigator: true).pushNamed(
+                Routes.ordersScreen,
+              );
+            },
+            icon: Icon(
+              Icons.shopping_bag_outlined,
+              color: AppColors.secondaryMedium,
+              size: 30.w,
+            ),
+          ),
         ],
       ),
     );

@@ -35,6 +35,7 @@ import 'package:looqma/features/my_profile/presentation/views/screens/my_profile
 import 'package:looqma/features/my_profile/presentation/views/screens/update_profile_info.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
+import 'package:looqma/features/orders/presentation/views/orders_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
@@ -169,6 +170,10 @@ class AppRouter {
             value: cartCubit,
             child: const CartScreen(),
           ),
+        );
+      case Routes.ordersScreen:
+        return MaterialPageRoute(
+          builder: (context) => const OrdersScreen(),
         );
       case Routes.checkout:
         return MaterialPageRoute(
