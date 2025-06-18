@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:looqma/features/chat_bot/data/models/chat_message.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 
 class AssistantMessage extends StatelessWidget {
   final ChatMessage message;
@@ -46,28 +46,35 @@ class AssistantMessage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.r),
               child: CachedNetworkImage(
-                imageUrl: message.imageUrl ?? '',
+                imageUrl: '${message.imageUrl}',
                 width: double.infinity,
                 height: 200.h,
                 fit: BoxFit.cover,
-                fadeInDuration: const Duration(milliseconds: 300),
-                placeholder: (context, url) => Container(
-                  width: double.infinity,
-                  height: 200.h,
-                  alignment: Alignment.center,
-                  child: const SpinKitCircle(color: AppColors.primaryDark),
-                ),
-                errorWidget: (context, eror, url) => Container(
-                  width: double.infinity,
-                  height: 200.h,
-                  color: AppColors.grayMediumlight,
-                  alignment: Alignment.center,
-                  child: Lottie.asset(
-                    AppAssets.imagesFailureState,
-                    height: 100,
-                    width: 100,
-                  ),
-                ),
+                placeholder: (context, url) {
+                  return Shimmer.fromColors(
+                    baseColor: AppColors.loadingColor,
+                    highlightColor: AppColors.white,
+                    child: Container(
+                      width: double.infinity,
+                      height: 200.h,
+                      color: AppColors.grayMediumlight,
+                      alignment: Alignment.center,
+                    ),
+                  );
+                },
+                errorWidget: (context, eror, url) {
+                  return Container(
+                    width: double.infinity,
+                    height: 200.h,
+                    color: AppColors.grayMediumlight,
+                    alignment: Alignment.center,
+                    child: Lottie.asset(
+                      AppAssets.imagesFailureState,
+                      height: 100,
+                      width: 100,
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(height: 10.h),

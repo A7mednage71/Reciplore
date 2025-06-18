@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class IngredientsItem extends StatelessWidget {
   const IngredientsItem({super.key, required this.ingredientModel});
@@ -41,8 +41,9 @@ class IngredientsItem extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) {
-                  return Skeleton.leaf(
-                    enabled: true,
+                  return Shimmer.fromColors(
+                    baseColor: AppColors.loadingColor,
+                    highlightColor: AppColors.white,
                     child: Container(
                       width: 52.w,
                       height: 52.h,
@@ -54,7 +55,16 @@ class IngredientsItem extends StatelessWidget {
                   );
                 },
                 errorWidget: (context, url, error) {
-                  return const Center(child: Icon(Icons.error));
+                  return Container(
+                    width: 52.w,
+                    height: 52.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(12.r)),
+                      color: AppColors.loadingColor,
+                    ),
+                    child: const Center(
+                        child: Icon(Icons.error, color: AppColors.red)),
+                  );
                 },
               ),
             ),

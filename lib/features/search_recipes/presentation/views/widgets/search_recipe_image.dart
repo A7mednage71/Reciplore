@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class SearchRecipeImage extends StatelessWidget {
   const SearchRecipeImage({
@@ -44,19 +44,15 @@ class SearchRecipeImage extends StatelessWidget {
         );
       },
       placeholder: (context, url) {
-        return Skeletonizer(
-          enabled: true,
+        return Shimmer.fromColors(
+          baseColor: AppColors.loadingColor,
+          highlightColor: AppColors.white,
           child: Container(
             width: 150.w,
             height: 150.h,
             decoration: BoxDecoration(
               color: AppColors.loadingColor,
               borderRadius: BorderRadius.circular(10.r),
-              image: const DecorationImage(
-                image: CachedNetworkImageProvider(
-                    AppConstants.defaultRecipeItemImage),
-                fit: BoxFit.cover,
-              ),
             ),
           ),
         );

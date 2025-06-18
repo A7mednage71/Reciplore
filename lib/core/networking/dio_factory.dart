@@ -33,7 +33,7 @@ class DioFactory {
   /// Returns a [Dio] instance configured for the local server with a 60-second
   /// connection and receive timeout, used for services like AI running on localhost.
   static Future<Dio> getLocalDio() async {
-    const timeOut = Duration(minutes: 2);
+    const timeOut = Duration(minutes: 3);
     localDio ??= Dio()
       ..options.connectTimeout = timeOut
       ..options.receiveTimeout = timeOut;

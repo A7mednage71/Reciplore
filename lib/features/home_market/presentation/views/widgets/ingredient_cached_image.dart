@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:shimmer/shimmer.dart';
 
 class IngredientCachedImage extends StatelessWidget {
   const IngredientCachedImage({
@@ -30,7 +30,9 @@ class IngredientCachedImage extends StatelessWidget {
         );
       },
       placeholder: (context, url) {
-        return Skeletonizer(
+        return Shimmer.fromColors(
+          baseColor: AppColors.loadingColor,
+          highlightColor: AppColors.white,
           child: Container(
             height: 110.h,
             decoration: BoxDecoration(
