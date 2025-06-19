@@ -53,6 +53,10 @@ class ApiConstants {
   static const String updateCart = '/cart/update/{id}';
   static const String clearCart = '/cart/clear';
 
+  // order end points
+  static const String getOrders = '/order';
+  static const String cancelOrder = '/order/cancel/{id}';
+
   // checkout and payment end points
   static const String getAddresses = '/address/';
   static const String addNewAddress = '/address/add';

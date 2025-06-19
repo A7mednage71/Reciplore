@@ -25,6 +25,7 @@ import 'package:looqma/features/home_market/data/models/market_banners_reponse_m
 import 'package:looqma/features/login/data/models/login_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/update_user_info_request_model.dart';
 import 'package:looqma/features/my_profile/data/models/user_profile_response_model.dart';
+import 'package:looqma/features/orders/data/models/get_orders_response_model.dart';
 import 'package:looqma/features/otp_verify/data/models/resend_otp_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_request_model.dart';
 import 'package:looqma/features/otp_verify/data/models/verify_response_model.dart';
@@ -198,4 +199,10 @@ abstract class ApiService {
 
   @DELETE(ApiConstants.addressWithId)
   Future<ResponseMessageModel> deleteAddress(@Path('id') String id);
+
+  @GET(ApiConstants.getOrders)
+  Future<GetOrdersResponseModel> getOrders();
+
+  @PUT(ApiConstants.cancelOrder)
+  Future<ResponseMessageModel> cancelOrder(@Path('id') String id);
 }
