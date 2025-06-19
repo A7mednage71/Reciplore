@@ -5,7 +5,7 @@ part 'place_order_response_model.g.dart';
 @JsonSerializable()
 class PlaceOrderResponseModel {
   final String message;
-  final OrderModel order;
+  final PlacedOrderModel order;
 
   PlaceOrderResponseModel({required this.order, required this.message});
 
@@ -16,7 +16,7 @@ class PlaceOrderResponseModel {
 }
 
 @JsonSerializable()
-class OrderModel {
+class PlacedOrderModel {
   @JsonKey(name: '_id')
   final String id;
   final String userId;
@@ -27,7 +27,7 @@ class OrderModel {
   final String orderStatus;
   final String orderedAt;
 
-  OrderModel({
+  PlacedOrderModel({
     required this.id,
     required this.userId,
     required this.subTotal,
@@ -38,8 +38,8 @@ class OrderModel {
     required this.orderedAt,
   });
 
-  factory OrderModel.fromJson(Map<String, dynamic> json) =>
-      _$OrderModelFromJson(json);
+  factory PlacedOrderModel.fromJson(Map<String, dynamic> json) =>
+      _$PlacedOrderModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$OrderModelToJson(this);
+  Map<String, dynamic> toJson() => _$PlacedOrderModelToJson(this);
 }

@@ -13,6 +13,14 @@ class GetOrdersResponseModel {
       _$GetOrdersResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$GetOrdersResponseModelToJson(this);
+
+  GetOrdersResponseModel copyWith({
+    List<OrderModel>? orders,
+  }) {
+    return GetOrdersResponseModel(
+      orders: orders ?? this.orders,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -22,11 +30,16 @@ class OrderModel {
   final String userId;
   final int subTotal;
   final int total;
+  final int shippingFee;
+  final int vat;
   final String paymentMethod;
   final String orderStatus;
-  final String shippingAddress;
+  final String shippingAddressID;
   final String orderedAt;
   final String estimatedDeliveryDate;
+  final String contactNumber;
+  final String? couponId;
+  @JsonKey(name: 'items')
   final List<OrderIngredientModel> orderIngredients;
 
   OrderModel({
@@ -34,11 +47,15 @@ class OrderModel {
     required this.userId,
     required this.subTotal,
     required this.total,
+    required this.shippingFee,
+    required this.vat,
     required this.paymentMethod,
     required this.orderStatus,
-    required this.shippingAddress,
+    required this.shippingAddressID,
     required this.orderedAt,
     required this.estimatedDeliveryDate,
+    required this.contactNumber,
+    required this.couponId,
     required this.orderIngredients,
   });
 
@@ -46,6 +63,41 @@ class OrderModel {
       _$OrderModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderModelToJson(this);
+
+  OrderModel copyWith({
+    String? id,
+    String? userId,
+    int? subTotal,
+    int? total,
+    int? shippingFee,
+    int? vat,
+    String? paymentMethod,
+    String? orderStatus,
+    String? shippingAddressID,
+    String? orderedAt,
+    String? estimatedDeliveryDate,
+    String? contactNumber,
+    String? couponId,
+    List<OrderIngredientModel>? orderIngredients,
+  }) {
+    return OrderModel(
+      id: id ?? this.id,
+      userId: userId ?? this.userId,
+      subTotal: subTotal ?? this.subTotal,
+      total: total ?? this.total,
+      shippingFee: shippingFee ?? this.shippingFee,
+      vat: vat ?? this.vat,
+      paymentMethod: paymentMethod ?? this.paymentMethod,
+      orderStatus: orderStatus ?? this.orderStatus,
+      shippingAddressID: shippingAddressID ?? this.shippingAddressID,
+      orderedAt: orderedAt ?? this.orderedAt,
+      estimatedDeliveryDate:
+          estimatedDeliveryDate ?? this.estimatedDeliveryDate,
+      contactNumber: contactNumber ?? this.contactNumber,
+      couponId: couponId ?? this.couponId,
+      orderIngredients: orderIngredients ?? this.orderIngredients,
+    );
+  }
 }
 
 @JsonSerializable()

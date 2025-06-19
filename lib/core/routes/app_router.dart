@@ -35,6 +35,9 @@ import 'package:looqma/features/my_profile/presentation/views/screens/my_profile
 import 'package:looqma/features/my_profile/presentation/views/screens/update_profile_info.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
+import 'package:looqma/features/orders/data/models/order_details_argument.dart';
+import 'package:looqma/features/orders/presentation/cubit/orders_cubit/orders_cubit.dart';
+import 'package:looqma/features/orders/presentation/views/order_details.dart';
 import 'package:looqma/features/orders/presentation/views/orders_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
@@ -173,7 +176,18 @@ class AppRouter {
         );
       case Routes.ordersScreen:
         return MaterialPageRoute(
-          builder: (context) => const OrdersScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<OrdersCubit>()..getOrders(),
+            child: const OrdersScreen(),
+          ),
+        );
+      case Routes.orderDetails:
+        final orderDetails = argument as OrderDetailsArgument;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: orderDetails.orderCubit,
+            child: OrderDetails(order: orderDetails.order),
+          ),
         );
       case Routes.checkout:
         return MaterialPageRoute(

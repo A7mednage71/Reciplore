@@ -32,6 +32,8 @@ import 'package:looqma/features/my_profile/presentation/cubit/delete_user_image/
 import 'package:looqma/features/my_profile/presentation/cubit/get_user_profile/get_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/update_user_profile/update_user_profile_cubit.dart';
 import 'package:looqma/features/my_profile/presentation/cubit/upload_user_image/upload_user_image_cubit.dart';
+import 'package:looqma/features/orders/data/repos/orders_repo.dart';
+import 'package:looqma/features/orders/presentation/cubit/orders_cubit/orders_cubit.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
@@ -167,6 +169,9 @@ Future<void> setupGetIt() async {
     // checkout and payment
     ..registerLazySingleton<CheckoutRepo>(
         () => CheckoutRepo(getIt<ApiService>()))
-    ..registerFactory<CheckoutCubit>(
-        () => CheckoutCubit(getIt<CheckoutRepo>()));
+    ..registerFactory<CheckoutCubit>(() => CheckoutCubit(getIt<CheckoutRepo>()))
+
+    // orders
+    ..registerLazySingleton<OrdersRepo>(() => OrdersRepo(getIt<ApiService>()))
+    ..registerFactory<OrdersCubit>(() => OrdersCubit(getIt<OrdersRepo>()));
 }

@@ -25,12 +25,16 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       userId: json['userId'] as String,
       subTotal: (json['subTotal'] as num).toInt(),
       total: (json['total'] as num).toInt(),
+      shippingFee: (json['shippingFee'] as num).toInt(),
+      vat: (json['vat'] as num).toInt(),
       paymentMethod: json['paymentMethod'] as String,
       orderStatus: json['orderStatus'] as String,
-      shippingAddress: json['shippingAddress'] as String,
+      shippingAddressID: json['shippingAddressID'] as String,
       orderedAt: json['orderedAt'] as String,
       estimatedDeliveryDate: json['estimatedDeliveryDate'] as String,
-      orderIngredients: (json['orderIngredients'] as List<dynamic>)
+      contactNumber: json['contactNumber'] as String,
+      couponId: json['couponId'] as String?,
+      orderIngredients: (json['items'] as List<dynamic>)
           .map((e) => OrderIngredientModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -41,12 +45,16 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'userId': instance.userId,
       'subTotal': instance.subTotal,
       'total': instance.total,
+      'shippingFee': instance.shippingFee,
+      'vat': instance.vat,
       'paymentMethod': instance.paymentMethod,
       'orderStatus': instance.orderStatus,
-      'shippingAddress': instance.shippingAddress,
+      'shippingAddressID': instance.shippingAddressID,
       'orderedAt': instance.orderedAt,
       'estimatedDeliveryDate': instance.estimatedDeliveryDate,
-      'orderIngredients': instance.orderIngredients,
+      'contactNumber': instance.contactNumber,
+      'couponId': instance.couponId,
+      'items': instance.orderIngredients,
     };
 
 OrderIngredientModel _$OrderIngredientModelFromJson(
