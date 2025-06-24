@@ -4,6 +4,13 @@
 
 Reciplore allows users to explore and discover recipes based on categories, countries, and available ingredients. Users can watch recipe preparation videos, leave reviews, and find marketplaces to buy necessary ingredients.
 
+## Screenshots
+
+![Reciplore1](https://github.com/user-attachments/assets/6553a364-2d15-4c53-997d-3cc8c6cbe563)
+![Reciplore_2](https://github.com/user-attachments/assets/2076dff3-0ae2-4a78-93d9-9be680d2d921)
+![Group 5](https://github.com/user-attachments/assets/e1a233df-7750-48ce-b5dc-4a2f48186c47)
+
+
 ## ✨ Features
 
 - 🔍 **Browse Recipes by Category** – Explore recipes in categories like Desserts, Main Dishes, and Beverages.
