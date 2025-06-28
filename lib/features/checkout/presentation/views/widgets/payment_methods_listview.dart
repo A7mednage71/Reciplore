@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:looqma/core/common/widgets/show_toast.dart';
 import 'package:looqma/core/utils/app_assets.dart';
 import 'package:looqma/features/checkout/data/models/payment_method_model.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
@@ -23,11 +24,13 @@ class _PaymentMethodslistViewState extends State<PaymentMethodslistView> {
     ),
     PaymentMethodModel(
       image: AppAssets.imagesPaymob,
-      name: "stripe",
+      name: "Paymob",
+      isAvailable: false,
     ),
     PaymentMethodModel(
       image: AppAssets.imagesPaypal,
-      name: "stripe",
+      name: "Paypal",
+      isAvailable: false,
     ),
     PaymentMethodModel(
       image: AppAssets.imagesMoneyOnDelievery,
@@ -43,9 +46,15 @@ class _PaymentMethodslistViewState extends State<PaymentMethodslistView> {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: paymentmethodsitems.length,
+        clipBehavior: Clip.none,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () async {
+              if (paymentmethodsitems[index].isAvailable == false) {
+                ShowToast.showFailureToast(
+                    '${paymentmethodsitems[index].name} is Not Available Right Now');
+                return;
+              }
               setState(() {
                 isactive = index;
               });
@@ -58,7 +67,7 @@ class _PaymentMethodslistViewState extends State<PaymentMethodslistView> {
               padding: EdgeInsets.only(left: index == 0 ? 0 : 15.w),
               child: PaymentMethodItem(
                 isactive: isactive == index,
-                image: paymentmethodsitems[index].image,
+                methodModel: paymentmethodsitems[index],
               ),
             ),
           );

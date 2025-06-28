@@ -58,7 +58,7 @@ class MyCartAppBar extends StatelessWidget implements PreferredSizeWidget {
                     return WarningAlertDailog(
                       title: 'Clear Cart',
                       subtitle: 'Are you sure you want to clear your cart?',
-                      onOkPressed: () async {
+                      onConfirm: () async {
                         await context.read<CartCubit>().clearCart();
                         if (context.mounted) {
                           context.pop();

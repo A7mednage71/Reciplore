@@ -65,7 +65,7 @@ class ReviewOptionsSpeedDial extends StatelessWidget {
       builder: (context) => WarningAlertDailog(
         title: 'Delete Review',
         subtitle: 'Are you sure you want to delete Your review?',
-        onOkPressed: () async {
+        onConfirm: () async {
           await cubit.deleteReview(review.id);
           if (context.mounted) {
             Navigator.pop(context);
