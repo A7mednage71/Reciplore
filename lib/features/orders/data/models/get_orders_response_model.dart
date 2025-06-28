@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
 
 part 'get_orders_response_model.g.dart';
@@ -34,7 +35,8 @@ class OrderModel {
   final int vat;
   final String paymentMethod;
   final String orderStatus;
-  final String shippingAddressID;
+  @JsonKey(name: 'shippingAddressID')
+  final AddressModel deliveryAddress;
   final String orderedAt;
   final String estimatedDeliveryDate;
   final String contactNumber;
@@ -51,7 +53,7 @@ class OrderModel {
     required this.vat,
     required this.paymentMethod,
     required this.orderStatus,
-    required this.shippingAddressID,
+    required this.deliveryAddress,
     required this.orderedAt,
     required this.estimatedDeliveryDate,
     required this.contactNumber,
@@ -73,7 +75,7 @@ class OrderModel {
     int? vat,
     String? paymentMethod,
     String? orderStatus,
-    String? shippingAddressID,
+    AddressModel? deliveryAddress,
     String? orderedAt,
     String? estimatedDeliveryDate,
     String? contactNumber,
@@ -89,7 +91,7 @@ class OrderModel {
       vat: vat ?? this.vat,
       paymentMethod: paymentMethod ?? this.paymentMethod,
       orderStatus: orderStatus ?? this.orderStatus,
-      shippingAddressID: shippingAddressID ?? this.shippingAddressID,
+      deliveryAddress: deliveryAddress ?? this.deliveryAddress,
       orderedAt: orderedAt ?? this.orderedAt,
       estimatedDeliveryDate:
           estimatedDeliveryDate ?? this.estimatedDeliveryDate,

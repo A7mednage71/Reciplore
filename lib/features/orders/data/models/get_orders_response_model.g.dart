@@ -29,7 +29,8 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       vat: (json['vat'] as num).toInt(),
       paymentMethod: json['paymentMethod'] as String,
       orderStatus: json['orderStatus'] as String,
-      shippingAddressID: json['shippingAddressID'] as String,
+      deliveryAddress: AddressModel.fromJson(
+          json['shippingAddressID'] as Map<String, dynamic>),
       orderedAt: json['orderedAt'] as String,
       estimatedDeliveryDate: json['estimatedDeliveryDate'] as String,
       contactNumber: json['contactNumber'] as String,
@@ -49,7 +50,7 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'vat': instance.vat,
       'paymentMethod': instance.paymentMethod,
       'orderStatus': instance.orderStatus,
-      'shippingAddressID': instance.shippingAddressID,
+      'shippingAddressID': instance.deliveryAddress,
       'orderedAt': instance.orderedAt,
       'estimatedDeliveryDate': instance.estimatedDeliveryDate,
       'contactNumber': instance.contactNumber,
