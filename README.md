@@ -7,8 +7,8 @@ Reciplore allows users to explore and discover recipes based on categories, coun
 ## 📸 Screenshots
 
 ![Reciplore1](https://github.com/user-attachments/assets/6553a364-2d15-4c53-997d-3cc8c6cbe563)
-![Reciplore_2](https://github.com/user-attachments/assets/2076dff3-0ae2-4a78-93d9-9be680d2d921)
-![Group 5](https://github.com/user-attachments/assets/4d887c56-9278-4c1c-b4a6-86310ec0761e)
+![Group 16](https://github.com/user-attachments/assets/66842a7d-23ce-4fbe-a45d-a50459a7b5e4)
+![Group 17](https://github.com/user-attachments/assets/d8084e74-8a0d-487d-a34f-e6d6ceb43932)
 
 
 
