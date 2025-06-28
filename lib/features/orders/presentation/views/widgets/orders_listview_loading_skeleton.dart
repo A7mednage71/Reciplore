@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:looqma/core/common/models/address_model.dart';
 import 'package:looqma/core/common/models/get_recipes_response_model.dart';
 import 'package:looqma/core/common/models/ingredient_model.dart';
+import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
 import 'package:looqma/features/orders/data/models/get_orders_response_model.dart';
-import 'package:looqma/features/orders/presentation/views/widgets/order_list_item.dart';
+import 'package:looqma/features/orders/presentation/views/widgets/orders_list_item.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class OrdersListViewLoadingSkeleton extends StatelessWidget {
@@ -22,7 +24,20 @@ class OrdersListViewLoadingSkeleton extends StatelessWidget {
         total: 12345,
         userId: '888',
         estimatedDeliveryDate: '2023-05-22T10:00:00.000Z',
-        shippingAddressID: '',
+        deliveryAddress: AddressModel(
+          streetName: '',
+          city: '',
+          country: '',
+          postalCode: 00000,
+          addressLabel: '',
+          buildingNumber: "",
+          createdAt: '',
+          floorNumber: 0,
+          id: '',
+          isDefault: false,
+          notes: '',
+          userId: '',
+        ),
         contactNumber: '',
         couponId: '',
         shippingFee: 0,
@@ -84,10 +99,11 @@ class OrdersListViewLoadingSkeleton extends StatelessWidget {
     );
 
     return Skeletonizer(
+      containersColor: AppColors.white,
       child: ListView.builder(
         itemCount: orders.length,
         itemBuilder: (context, index) {
-          return OrderListItem(orderModel: orders[index]);
+          return OrdersListItem(orderModel: orders[index]);
         },
       ),
     );

@@ -3,8 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/common/widgets/empty_state.dart';
 import 'package:looqma/core/common/widgets/failure_state.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/routes/routes.dart';
+import 'package:looqma/features/orders/data/models/order_details_argument.dart';
 import 'package:looqma/features/orders/presentation/cubit/orders_cubit/orders_cubit.dart';
-import 'package:looqma/features/orders/presentation/views/widgets/order_list_item.dart';
+import 'package:looqma/features/orders/presentation/views/widgets/orders_list_item.dart';
 import 'package:looqma/features/orders/presentation/views/widgets/orders_listview_loading_skeleton.dart';
 
 class OrdersListView extends StatelessWidget {
@@ -25,7 +28,16 @@ class OrdersListView extends StatelessWidget {
             return ListView.builder(
               itemCount: state.filteredOrders!.length,
               itemBuilder: (context, index) {
-                return OrderListItem(orderModel: state.filteredOrders![index]);
+                return GestureDetector(
+                    onTap: () {
+                      context.pushNamed(Routes.orderDetails,
+                          arguments: OrderDetailsArgument(
+                            orderCubit: context.read<OrdersCubit>(),
+                            order: state.filteredOrders![index],
+                          ));
+                    },
+                    child: OrdersListItem(
+                        orderModel: state.filteredOrders![index]));
               },
             );
           } else if (state.status == OrdersStatus.success &&

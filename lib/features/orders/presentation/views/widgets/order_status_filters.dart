@@ -25,7 +25,7 @@ class OrderStatusFilters extends StatefulWidget {
 }
 
 class _OrderStatusFiltersState extends State<OrderStatusFilters> {
-  String selectedStatus = '';
+  String selectedStatus = 'all';
   @override
   Widget build(BuildContext context) {
     return Wrap(

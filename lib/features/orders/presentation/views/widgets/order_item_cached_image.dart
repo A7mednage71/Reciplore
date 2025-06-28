@@ -5,18 +5,28 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:shimmer/shimmer.dart';
 
 class OrderItemCachedImage extends StatelessWidget {
-  const OrderItemCachedImage({super.key, required this.image});
+  const OrderItemCachedImage(
+      {super.key,
+      required this.image,
+      this.width,
+      this.height,
+      this.withOutBackground = false});
   final String image;
+  final double? width;
+  final double? height;
+  final bool withOutBackground;
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
       imageUrl: image,
       imageBuilder: (context, imageProvider) {
         return Container(
-          height: 75.h,
-          width: 75.w,
+          height: height ?? 75.h,
+          width: width ?? 75.w,
           decoration: BoxDecoration(
-            color: AppColors.grayMediumlight,
+            color: withOutBackground
+                ? Colors.transparent
+                : AppColors.grayMediumlight,
             borderRadius: BorderRadius.all(Radius.circular(12.r)),
             border: Border.all(color: AppColors.grayLighter, width: 3),
             image: DecorationImage(
@@ -31,8 +41,8 @@ class OrderItemCachedImage extends StatelessWidget {
           baseColor: AppColors.loadingColor,
           highlightColor: AppColors.white,
           child: Container(
-            height: 75.h,
-            width: 75.w,
+            height: height ?? 75.h,
+            width: width ?? 75.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(12.r)),
               color: AppColors.loadingColor,
@@ -42,10 +52,11 @@ class OrderItemCachedImage extends StatelessWidget {
       },
       errorWidget: (context, url, error) => Center(
         child: Container(
-          height: 75.h,
-          width: 75.w,
+          height: height ?? 75.h,
+          width: width ?? 75.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(12.r)),
+            border: Border.all(color: AppColors.grayLighter, width: 3),
           ),
           child: const Icon(
             Icons.error,
