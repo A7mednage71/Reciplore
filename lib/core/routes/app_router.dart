@@ -14,9 +14,10 @@ import 'package:looqma/features/change_password/presentation/cubit/change_passwo
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
+import 'package:looqma/features/checkout/data/models/payment_web_view_argument.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/checkout_screen.dart';
-import 'package:looqma/features/checkout/presentation/views/payment_webview.dart';
+import 'package:looqma/features/payment/payment_webview.dart';
 import 'package:looqma/features/diet_plan/presentation/cubit/diet_plan_cubit.dart';
 import 'package:looqma/features/diet_plan/presentation/views/diet_plan_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
@@ -35,6 +36,10 @@ import 'package:looqma/features/my_profile/presentation/views/screens/my_profile
 import 'package:looqma/features/my_profile/presentation/views/screens/update_profile_info.dart';
 import 'package:looqma/features/nav_bar_screen_switcher.dart';
 import 'package:looqma/features/on_boarding/on_boarding_screen.dart';
+import 'package:looqma/features/orders/data/models/order_details_argument.dart';
+import 'package:looqma/features/orders/presentation/cubit/orders_cubit/orders_cubit.dart';
+import 'package:looqma/features/orders/presentation/views/order_details.dart';
+import 'package:looqma/features/orders/presentation/views/orders_screen.dart';
 import 'package:looqma/features/otp_verify/data/repos/verfication_repo.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/resend_otp/resend_otp_cubit.dart';
 import 'package:looqma/features/otp_verify/presentation/cubit/verification_cubit/verification_cubit.dart';
@@ -170,17 +175,40 @@ class AppRouter {
             child: const CartScreen(),
           ),
         );
-      case Routes.checkout:
+      case Routes.ordersScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<CheckoutCubit>()..getCartOverview(),
+            create: (context) => getIt<OrdersCubit>()..getOrders(),
+            child: const OrdersScreen(),
+          ),
+        );
+      case Routes.orderDetails:
+        final orderDetails = argument as OrderDetailsArgument;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: orderDetails.orderCubit,
+            child: OrderDetails(order: orderDetails.order),
+          ),
+        );
+      case Routes.checkout:
+        final cartCubit = argument as CartCubit;
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<CheckoutCubit>()..getCartOverview(),
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              ),
+            ],
             child: const CheckoutScreen(),
           ),
         );
       case Routes.paymentWebView:
-        final paymentUrl = argument as String;
+        final paymentArg = argument as PaymentWebViewArgument;
         return MaterialPageRoute(
-          builder: (context) => PaymentWebView(paymentUrl: paymentUrl),
+          builder: (context) => PaymentWebView(argument: paymentArg),
         );
       case Routes.allIngredients:
         final args = argument as Map<String, dynamic>;

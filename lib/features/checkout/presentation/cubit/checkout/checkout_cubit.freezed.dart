@@ -34,11 +34,6 @@ mixin _$CheckoutState {
   PlaceOrderResponseModel? get placeOrderResponse =>
       throw _privateConstructorUsedError;
   String? get placeOrderMessage => throw _privateConstructorUsedError;
-  PaymentMethodStatus get paymentMethodStatus =>
-      throw _privateConstructorUsedError;
-  CheckoutSessionResponseModel? get checkoutSessionResponse =>
-      throw _privateConstructorUsedError;
-  String? get paymentMethodMessage => throw _privateConstructorUsedError;
 
   /// Create a copy of CheckoutState
   /// with the given fields replaced by the non-null parameter values.
@@ -68,10 +63,7 @@ abstract class $CheckoutStateCopyWith<$Res> {
       String? checkCouponMessage,
       PlaceOrderStatus? placeOrderStatus,
       PlaceOrderResponseModel? placeOrderResponse,
-      String? placeOrderMessage,
-      PaymentMethodStatus paymentMethodStatus,
-      CheckoutSessionResponseModel? checkoutSessionResponse,
-      String? paymentMethodMessage});
+      String? placeOrderMessage});
 }
 
 /// @nodoc
@@ -104,9 +96,6 @@ class _$CheckoutStateCopyWithImpl<$Res, $Val extends CheckoutState>
     Object? placeOrderStatus = freezed,
     Object? placeOrderResponse = freezed,
     Object? placeOrderMessage = freezed,
-    Object? paymentMethodStatus = null,
-    Object? checkoutSessionResponse = freezed,
-    Object? paymentMethodMessage = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -169,18 +158,6 @@ class _$CheckoutStateCopyWithImpl<$Res, $Val extends CheckoutState>
           ? _value.placeOrderMessage
           : placeOrderMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodStatus: null == paymentMethodStatus
-          ? _value.paymentMethodStatus
-          : paymentMethodStatus // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodStatus,
-      checkoutSessionResponse: freezed == checkoutSessionResponse
-          ? _value.checkoutSessionResponse
-          : checkoutSessionResponse // ignore: cast_nullable_to_non_nullable
-              as CheckoutSessionResponseModel?,
-      paymentMethodMessage: freezed == paymentMethodMessage
-          ? _value.paymentMethodMessage
-          : paymentMethodMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -208,10 +185,7 @@ abstract class _$$CheckoutStateImplCopyWith<$Res>
       String? checkCouponMessage,
       PlaceOrderStatus? placeOrderStatus,
       PlaceOrderResponseModel? placeOrderResponse,
-      String? placeOrderMessage,
-      PaymentMethodStatus paymentMethodStatus,
-      CheckoutSessionResponseModel? checkoutSessionResponse,
-      String? paymentMethodMessage});
+      String? placeOrderMessage});
 }
 
 /// @nodoc
@@ -242,9 +216,6 @@ class __$$CheckoutStateImplCopyWithImpl<$Res>
     Object? placeOrderStatus = freezed,
     Object? placeOrderResponse = freezed,
     Object? placeOrderMessage = freezed,
-    Object? paymentMethodStatus = null,
-    Object? checkoutSessionResponse = freezed,
-    Object? paymentMethodMessage = freezed,
   }) {
     return _then(_$CheckoutStateImpl(
       status: null == status
@@ -307,18 +278,6 @@ class __$$CheckoutStateImplCopyWithImpl<$Res>
           ? _value.placeOrderMessage
           : placeOrderMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentMethodStatus: null == paymentMethodStatus
-          ? _value.paymentMethodStatus
-          : paymentMethodStatus // ignore: cast_nullable_to_non_nullable
-              as PaymentMethodStatus,
-      checkoutSessionResponse: freezed == checkoutSessionResponse
-          ? _value.checkoutSessionResponse
-          : checkoutSessionResponse // ignore: cast_nullable_to_non_nullable
-              as CheckoutSessionResponseModel?,
-      paymentMethodMessage: freezed == paymentMethodMessage
-          ? _value.paymentMethodMessage
-          : paymentMethodMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -341,10 +300,7 @@ class _$CheckoutStateImpl implements _CheckoutState {
       this.checkCouponMessage,
       this.placeOrderStatus = PlaceOrderStatus.initial,
       this.placeOrderResponse,
-      this.placeOrderMessage,
-      this.paymentMethodStatus = PaymentMethodStatus.initial,
-      this.checkoutSessionResponse,
-      this.paymentMethodMessage});
+      this.placeOrderMessage});
 
   @override
   @JsonKey()
@@ -381,17 +337,10 @@ class _$CheckoutStateImpl implements _CheckoutState {
   final PlaceOrderResponseModel? placeOrderResponse;
   @override
   final String? placeOrderMessage;
-  @override
-  @JsonKey()
-  final PaymentMethodStatus paymentMethodStatus;
-  @override
-  final CheckoutSessionResponseModel? checkoutSessionResponse;
-  @override
-  final String? paymentMethodMessage;
 
   @override
   String toString() {
-    return 'CheckoutState(status: $status, cartOverview: $cartOverview, originalTotal: $originalTotal, shippingAddressID: $shippingAddressID, paymentMethod: $paymentMethod, message: $message, addressActionStatus: $addressActionStatus, addressActionType: $addressActionType, addressActionMessage: $addressActionMessage, couponStatus: $couponStatus, couponCode: $couponCode, checkCouponMessage: $checkCouponMessage, placeOrderStatus: $placeOrderStatus, placeOrderResponse: $placeOrderResponse, placeOrderMessage: $placeOrderMessage, paymentMethodStatus: $paymentMethodStatus, checkoutSessionResponse: $checkoutSessionResponse, paymentMethodMessage: $paymentMethodMessage)';
+    return 'CheckoutState(status: $status, cartOverview: $cartOverview, originalTotal: $originalTotal, shippingAddressID: $shippingAddressID, paymentMethod: $paymentMethod, message: $message, addressActionStatus: $addressActionStatus, addressActionType: $addressActionType, addressActionMessage: $addressActionMessage, couponStatus: $couponStatus, couponCode: $couponCode, checkCouponMessage: $checkCouponMessage, placeOrderStatus: $placeOrderStatus, placeOrderResponse: $placeOrderResponse, placeOrderMessage: $placeOrderMessage)';
   }
 
   @override
@@ -426,14 +375,7 @@ class _$CheckoutStateImpl implements _CheckoutState {
             (identical(other.placeOrderResponse, placeOrderResponse) ||
                 other.placeOrderResponse == placeOrderResponse) &&
             (identical(other.placeOrderMessage, placeOrderMessage) ||
-                other.placeOrderMessage == placeOrderMessage) &&
-            (identical(other.paymentMethodStatus, paymentMethodStatus) ||
-                other.paymentMethodStatus == paymentMethodStatus) &&
-            (identical(
-                    other.checkoutSessionResponse, checkoutSessionResponse) ||
-                other.checkoutSessionResponse == checkoutSessionResponse) &&
-            (identical(other.paymentMethodMessage, paymentMethodMessage) ||
-                other.paymentMethodMessage == paymentMethodMessage));
+                other.placeOrderMessage == placeOrderMessage));
   }
 
   @override
@@ -453,10 +395,7 @@ class _$CheckoutStateImpl implements _CheckoutState {
       checkCouponMessage,
       placeOrderStatus,
       placeOrderResponse,
-      placeOrderMessage,
-      paymentMethodStatus,
-      checkoutSessionResponse,
-      paymentMethodMessage);
+      placeOrderMessage);
 
   /// Create a copy of CheckoutState
   /// with the given fields replaced by the non-null parameter values.
@@ -483,10 +422,7 @@ abstract class _CheckoutState implements CheckoutState {
       final String? checkCouponMessage,
       final PlaceOrderStatus? placeOrderStatus,
       final PlaceOrderResponseModel? placeOrderResponse,
-      final String? placeOrderMessage,
-      final PaymentMethodStatus paymentMethodStatus,
-      final CheckoutSessionResponseModel? checkoutSessionResponse,
-      final String? paymentMethodMessage}) = _$CheckoutStateImpl;
+      final String? placeOrderMessage}) = _$CheckoutStateImpl;
 
   @override
   CheckoutStatus get status;
@@ -518,12 +454,6 @@ abstract class _CheckoutState implements CheckoutState {
   PlaceOrderResponseModel? get placeOrderResponse;
   @override
   String? get placeOrderMessage;
-  @override
-  PaymentMethodStatus get paymentMethodStatus;
-  @override
-  CheckoutSessionResponseModel? get checkoutSessionResponse;
-  @override
-  String? get paymentMethodMessage;
 
   /// Create a copy of CheckoutState
   /// with the given fields replaced by the non-null parameter values.

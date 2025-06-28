@@ -7,8 +7,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     super.key,
     required this.title,
+    this.actions,
+    this.onBackTap,
   });
   final String title;
+  final List<Widget>? actions;
+  final void Function()? onBackTap;
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -18,7 +23,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: InkWell(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
-        onTap: () => context.pop(),
+        onTap: onBackTap ?? () => context.pop(),
         child: const Icon(
           Icons.arrow_back_ios_new_sharp,
           color: Colors.black,
@@ -29,6 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style: AppStyles.mediumBoldText,
       ),
       centerTitle: true,
+      actions: actions,
     );
   }
 

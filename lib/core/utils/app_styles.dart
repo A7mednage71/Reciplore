@@ -108,6 +108,13 @@ class AppStyles {
     color: AppColors.secondaryDark,
   );
 
+  static TextStyle verySmallBoldText = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 13.sp,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+  );
+
   static TextStyle extraSmallBoldText = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 11.sp,
@@ -269,4 +276,6 @@ class AppStyles {
     fontWeight: FontWeight.normal,
     color: AppColors.white,
   );
+
+  static var extraSmallBoldWhiteText;
 }

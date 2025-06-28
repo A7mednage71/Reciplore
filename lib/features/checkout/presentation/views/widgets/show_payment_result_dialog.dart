@@ -5,9 +5,9 @@ import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
 import 'package:lottie/lottie.dart';
 
-void showPaymentResultDialog(
-    {required BuildContext context, required bool isSuccess}) {
-  showDialog(
+Future<void> showPaymentResultDialog(
+    {required BuildContext context, required bool isSuccess}) async {
+  await showDialog(
     context: context,
     barrierDismissible: false,
     builder: (context) {

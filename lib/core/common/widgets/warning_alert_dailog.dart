@@ -10,12 +10,14 @@ class WarningAlertDailog extends StatelessWidget {
     super.key,
     required this.title,
     required this.subtitle,
-    this.onOkPressed,
+    this.onConfirm,
+    this.onConfirmTitle,
   });
 
   final String title;
   final String subtitle;
-  final void Function()? onOkPressed;
+  final String? onConfirmTitle;
+  final void Function()? onConfirm;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +52,9 @@ class WarningAlertDailog extends StatelessWidget {
             },
           ),
           TextButton(
-            onPressed: onOkPressed,
+            onPressed: onConfirm,
             child: Text(
-              'Delete',
+              onConfirmTitle ?? 'Delete',
               style: AppStyles.extraSmallBoldWarningText,
             ),
           )

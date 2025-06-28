@@ -44,7 +44,7 @@ class ChatBotAppBar extends StatelessWidget implements PreferredSizeWidget {
                     title: 'New Chat',
                     subtitle:
                         'Are you sure you want to delete this chat and start a new chat ?',
-                    onOkPressed: () {
+                    onConfirm: () {
                       cubit.clearChat();
                       context.pop();
                     },
