@@ -17,12 +17,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$OrdersState {
   OrdersStatus get status => throw _privateConstructorUsedError;
-  OrderActionStatus get orderActionStatus => throw _privateConstructorUsedError;
   GetOrdersResponseModel? get getOrdersResponseModel =>
       throw _privateConstructorUsedError;
   List<OrderModel>? get filteredOrders => throw _privateConstructorUsedError;
   String? get selectedFilterStatus => throw _privateConstructorUsedError;
+  OrderActionStatus get orderActionStatus => throw _privateConstructorUsedError;
+  OrderActionType get orderActionType => throw _privateConstructorUsedError;
+  CheckoutSessionResponseModel? get paymentSession =>
+      throw _privateConstructorUsedError;
   String? get errorMessage => throw _privateConstructorUsedError;
+  OrderModel? get currentOrderDetails => throw _privateConstructorUsedError;
 
   /// Create a copy of OrdersState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,11 +43,14 @@ abstract class $OrdersStateCopyWith<$Res> {
   @useResult
   $Res call(
       {OrdersStatus status,
-      OrderActionStatus orderActionStatus,
       GetOrdersResponseModel? getOrdersResponseModel,
       List<OrderModel>? filteredOrders,
       String? selectedFilterStatus,
-      String? errorMessage});
+      OrderActionStatus orderActionStatus,
+      OrderActionType orderActionType,
+      CheckoutSessionResponseModel? paymentSession,
+      String? errorMessage,
+      OrderModel? currentOrderDetails});
 }
 
 /// @nodoc
@@ -62,21 +69,20 @@ class _$OrdersStateCopyWithImpl<$Res, $Val extends OrdersState>
   @override
   $Res call({
     Object? status = null,
-    Object? orderActionStatus = null,
     Object? getOrdersResponseModel = freezed,
     Object? filteredOrders = freezed,
     Object? selectedFilterStatus = freezed,
+    Object? orderActionStatus = null,
+    Object? orderActionType = null,
+    Object? paymentSession = freezed,
     Object? errorMessage = freezed,
+    Object? currentOrderDetails = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as OrdersStatus,
-      orderActionStatus: null == orderActionStatus
-          ? _value.orderActionStatus
-          : orderActionStatus // ignore: cast_nullable_to_non_nullable
-              as OrderActionStatus,
       getOrdersResponseModel: freezed == getOrdersResponseModel
           ? _value.getOrdersResponseModel
           : getOrdersResponseModel // ignore: cast_nullable_to_non_nullable
@@ -89,10 +95,26 @@ class _$OrdersStateCopyWithImpl<$Res, $Val extends OrdersState>
           ? _value.selectedFilterStatus
           : selectedFilterStatus // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderActionStatus: null == orderActionStatus
+          ? _value.orderActionStatus
+          : orderActionStatus // ignore: cast_nullable_to_non_nullable
+              as OrderActionStatus,
+      orderActionType: null == orderActionType
+          ? _value.orderActionType
+          : orderActionType // ignore: cast_nullable_to_non_nullable
+              as OrderActionType,
+      paymentSession: freezed == paymentSession
+          ? _value.paymentSession
+          : paymentSession // ignore: cast_nullable_to_non_nullable
+              as CheckoutSessionResponseModel?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentOrderDetails: freezed == currentOrderDetails
+          ? _value.currentOrderDetails
+          : currentOrderDetails // ignore: cast_nullable_to_non_nullable
+              as OrderModel?,
     ) as $Val);
   }
 }
@@ -107,11 +129,14 @@ abstract class _$$OrdersStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {OrdersStatus status,
-      OrderActionStatus orderActionStatus,
       GetOrdersResponseModel? getOrdersResponseModel,
       List<OrderModel>? filteredOrders,
       String? selectedFilterStatus,
-      String? errorMessage});
+      OrderActionStatus orderActionStatus,
+      OrderActionType orderActionType,
+      CheckoutSessionResponseModel? paymentSession,
+      String? errorMessage,
+      OrderModel? currentOrderDetails});
 }
 
 /// @nodoc
@@ -128,21 +153,20 @@ class __$$OrdersStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? orderActionStatus = null,
     Object? getOrdersResponseModel = freezed,
     Object? filteredOrders = freezed,
     Object? selectedFilterStatus = freezed,
+    Object? orderActionStatus = null,
+    Object? orderActionType = null,
+    Object? paymentSession = freezed,
     Object? errorMessage = freezed,
+    Object? currentOrderDetails = freezed,
   }) {
     return _then(_$OrdersStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as OrdersStatus,
-      orderActionStatus: null == orderActionStatus
-          ? _value.orderActionStatus
-          : orderActionStatus // ignore: cast_nullable_to_non_nullable
-              as OrderActionStatus,
       getOrdersResponseModel: freezed == getOrdersResponseModel
           ? _value.getOrdersResponseModel
           : getOrdersResponseModel // ignore: cast_nullable_to_non_nullable
@@ -155,10 +179,26 @@ class __$$OrdersStateImplCopyWithImpl<$Res>
           ? _value.selectedFilterStatus
           : selectedFilterStatus // ignore: cast_nullable_to_non_nullable
               as String?,
+      orderActionStatus: null == orderActionStatus
+          ? _value.orderActionStatus
+          : orderActionStatus // ignore: cast_nullable_to_non_nullable
+              as OrderActionStatus,
+      orderActionType: null == orderActionType
+          ? _value.orderActionType
+          : orderActionType // ignore: cast_nullable_to_non_nullable
+              as OrderActionType,
+      paymentSession: freezed == paymentSession
+          ? _value.paymentSession
+          : paymentSession // ignore: cast_nullable_to_non_nullable
+              as CheckoutSessionResponseModel?,
       errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
+      currentOrderDetails: freezed == currentOrderDetails
+          ? _value.currentOrderDetails
+          : currentOrderDetails // ignore: cast_nullable_to_non_nullable
+              as OrderModel?,
     ));
   }
 }
@@ -168,19 +208,19 @@ class __$$OrdersStateImplCopyWithImpl<$Res>
 class _$OrdersStateImpl implements _OrdersState {
   const _$OrdersStateImpl(
       {this.status = OrdersStatus.initial,
-      this.orderActionStatus = OrderActionStatus.initial,
       this.getOrdersResponseModel,
       final List<OrderModel>? filteredOrders,
       this.selectedFilterStatus,
-      this.errorMessage})
+      this.orderActionStatus = OrderActionStatus.initial,
+      this.orderActionType = OrderActionType.none,
+      this.paymentSession,
+      this.errorMessage,
+      this.currentOrderDetails})
       : _filteredOrders = filteredOrders;
 
   @override
   @JsonKey()
   final OrdersStatus status;
-  @override
-  @JsonKey()
-  final OrderActionStatus orderActionStatus;
   @override
   final GetOrdersResponseModel? getOrdersResponseModel;
   final List<OrderModel>? _filteredOrders;
@@ -196,11 +236,21 @@ class _$OrdersStateImpl implements _OrdersState {
   @override
   final String? selectedFilterStatus;
   @override
+  @JsonKey()
+  final OrderActionStatus orderActionStatus;
+  @override
+  @JsonKey()
+  final OrderActionType orderActionType;
+  @override
+  final CheckoutSessionResponseModel? paymentSession;
+  @override
   final String? errorMessage;
+  @override
+  final OrderModel? currentOrderDetails;
 
   @override
   String toString() {
-    return 'OrdersState(status: $status, orderActionStatus: $orderActionStatus, getOrdersResponseModel: $getOrdersResponseModel, filteredOrders: $filteredOrders, selectedFilterStatus: $selectedFilterStatus, errorMessage: $errorMessage)';
+    return 'OrdersState(status: $status, getOrdersResponseModel: $getOrdersResponseModel, filteredOrders: $filteredOrders, selectedFilterStatus: $selectedFilterStatus, orderActionStatus: $orderActionStatus, orderActionType: $orderActionType, paymentSession: $paymentSession, errorMessage: $errorMessage, currentOrderDetails: $currentOrderDetails)';
   }
 
   @override
@@ -209,27 +259,36 @@ class _$OrdersStateImpl implements _OrdersState {
         (other.runtimeType == runtimeType &&
             other is _$OrdersStateImpl &&
             (identical(other.status, status) || other.status == status) &&
-            (identical(other.orderActionStatus, orderActionStatus) ||
-                other.orderActionStatus == orderActionStatus) &&
             (identical(other.getOrdersResponseModel, getOrdersResponseModel) ||
                 other.getOrdersResponseModel == getOrdersResponseModel) &&
             const DeepCollectionEquality()
                 .equals(other._filteredOrders, _filteredOrders) &&
             (identical(other.selectedFilterStatus, selectedFilterStatus) ||
                 other.selectedFilterStatus == selectedFilterStatus) &&
+            (identical(other.orderActionStatus, orderActionStatus) ||
+                other.orderActionStatus == orderActionStatus) &&
+            (identical(other.orderActionType, orderActionType) ||
+                other.orderActionType == orderActionType) &&
+            (identical(other.paymentSession, paymentSession) ||
+                other.paymentSession == paymentSession) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.currentOrderDetails, currentOrderDetails) ||
+                other.currentOrderDetails == currentOrderDetails));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       status,
-      orderActionStatus,
       getOrdersResponseModel,
       const DeepCollectionEquality().hash(_filteredOrders),
       selectedFilterStatus,
-      errorMessage);
+      orderActionStatus,
+      orderActionType,
+      paymentSession,
+      errorMessage,
+      currentOrderDetails);
 
   /// Create a copy of OrdersState
   /// with the given fields replaced by the non-null parameter values.
@@ -243,16 +302,17 @@ class _$OrdersStateImpl implements _OrdersState {
 abstract class _OrdersState implements OrdersState {
   const factory _OrdersState(
       {final OrdersStatus status,
-      final OrderActionStatus orderActionStatus,
       final GetOrdersResponseModel? getOrdersResponseModel,
       final List<OrderModel>? filteredOrders,
       final String? selectedFilterStatus,
-      final String? errorMessage}) = _$OrdersStateImpl;
+      final OrderActionStatus orderActionStatus,
+      final OrderActionType orderActionType,
+      final CheckoutSessionResponseModel? paymentSession,
+      final String? errorMessage,
+      final OrderModel? currentOrderDetails}) = _$OrdersStateImpl;
 
   @override
   OrdersStatus get status;
-  @override
-  OrderActionStatus get orderActionStatus;
   @override
   GetOrdersResponseModel? get getOrdersResponseModel;
   @override
@@ -260,7 +320,15 @@ abstract class _OrdersState implements OrdersState {
   @override
   String? get selectedFilterStatus;
   @override
+  OrderActionStatus get orderActionStatus;
+  @override
+  OrderActionType get orderActionType;
+  @override
+  CheckoutSessionResponseModel? get paymentSession;
+  @override
   String? get errorMessage;
+  @override
+  OrderModel? get currentOrderDetails;
 
   /// Create a copy of OrdersState
   /// with the given fields replaced by the non-null parameter values.
