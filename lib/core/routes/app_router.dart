@@ -14,9 +14,10 @@ import 'package:looqma/features/change_password/presentation/cubit/change_passwo
 import 'package:looqma/features/change_password/presentation/views/change_user_password.dart';
 import 'package:looqma/features/chat_bot/presentation/cubit/chat_bot_cubit.dart';
 import 'package:looqma/features/chat_bot/presentation/views/chat_screen.dart';
+import 'package:looqma/features/checkout/data/models/payment_web_view_argument.dart';
 import 'package:looqma/features/checkout/presentation/cubit/checkout/checkout_cubit.dart';
 import 'package:looqma/features/checkout/presentation/views/checkout_screen.dart';
-import 'package:looqma/features/checkout/presentation/views/payment_webview.dart';
+import 'package:looqma/features/payment/payment_webview.dart';
 import 'package:looqma/features/diet_plan/presentation/cubit/diet_plan_cubit.dart';
 import 'package:looqma/features/diet_plan/presentation/views/diet_plan_screen.dart';
 import 'package:looqma/features/forget_password/data/repos/forget_password_repo.dart';
@@ -190,16 +191,24 @@ class AppRouter {
           ),
         );
       case Routes.checkout:
+        final cartCubit = argument as CartCubit;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<CheckoutCubit>()..getCartOverview(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<CheckoutCubit>()..getCartOverview(),
+              ),
+              BlocProvider.value(
+                value: cartCubit,
+              ),
+            ],
             child: const CheckoutScreen(),
           ),
         );
       case Routes.paymentWebView:
-        final paymentUrl = argument as String;
+        final paymentArg = argument as PaymentWebViewArgument;
         return MaterialPageRoute(
-          builder: (context) => PaymentWebView(paymentUrl: paymentUrl),
+          builder: (context) => PaymentWebView(argument: paymentArg),
         );
       case Routes.allIngredients:
         final args = argument as Map<String, dynamic>;

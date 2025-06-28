@@ -15,7 +15,7 @@ import 'package:looqma/features/checkout/data/models/add_and_update_address_resp
 import 'package:looqma/features/checkout/data/models/cart_overview_response_model.dart';
 import 'package:looqma/features/checkout/data/models/check_coupon_request_model.dart';
 import 'package:looqma/features/checkout/data/models/check_coupon_response_model.dart';
-import 'package:looqma/features/checkout/data/models/checkout_session_response_model.dart';
+import 'package:looqma/features/orders/data/models/checkout_session_response_model.dart';
 import 'package:looqma/features/checkout/data/models/place_order_request_model.dart';
 import 'package:looqma/features/checkout/data/models/place_order_response_model.dart';
 import 'package:looqma/features/forget_password/data/models/forget_password_request_model.dart';

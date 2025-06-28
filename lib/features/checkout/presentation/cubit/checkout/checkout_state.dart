@@ -10,8 +10,6 @@ enum CouponCodeStatus { initial, loading, success, failure }
 
 enum PlaceOrderStatus { initial, loading, success, failure }
 
-enum PaymentMethodStatus { initial, loading, success, failure }
-
 @freezed
 class CheckoutState with _$CheckoutState {
   const factory CheckoutState({
@@ -31,9 +29,5 @@ class CheckoutState with _$CheckoutState {
     @Default(PlaceOrderStatus.initial) PlaceOrderStatus? placeOrderStatus,
     PlaceOrderResponseModel? placeOrderResponse,
     String? placeOrderMessage,
-    @Default(PaymentMethodStatus.initial)
-    PaymentMethodStatus paymentMethodStatus,
-    CheckoutSessionResponseModel? checkoutSessionResponse,
-    String? paymentMethodMessage,
   }) = _CheckoutState;
 }
