@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/utils/app_assets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_styles.dart';
-import 'package:lottie/lottie.dart';
 
-class WarningAlertDailog extends StatelessWidget {
-  const WarningAlertDailog({
+class LoadingAlertDialog extends StatelessWidget {
+  const LoadingAlertDialog({
     super.key,
     required this.title,
     required this.subtitle,
-    this.onConfirm,
-    this.onConfirmTitle,
+    this.onCancel,
   });
 
   final String title;
   final String subtitle;
-  final String? onConfirmTitle;
-  final void Function()? onConfirm;
+  final void Function()? onCancel;
 
   @override
   Widget build(BuildContext context) {
@@ -34,30 +31,21 @@ class WarningAlertDailog extends StatelessWidget {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Lottie.asset(
-              AppAssets.imagesWorningLottie,
-              height: 100.h,
-            ),
+            SizedBox(height: 10.h),
+            SpinKitPouringHourGlassRefined(
+                color: AppColors.secondaryDarker, size: 100.r),
+            SizedBox(height: 20.h),
             Text(subtitle, style: AppStyles.smallRegularText),
           ],
         ),
         actions: [
           TextButton(
+            onPressed: onCancel ?? () => Navigator.of(context).pop(),
             child: Text(
               'Cancel',
               style: AppStyles.extraSmallBoldprimaryDarkerText,
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
           ),
-          TextButton(
-            onPressed: onConfirm,
-            child: Text(
-              onConfirmTitle ?? 'Delete',
-              style: AppStyles.extraSmallBoldWarningText,
-            ),
-          )
         ]);
   }
 }
