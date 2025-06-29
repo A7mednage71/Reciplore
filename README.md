@@ -4,6 +4,12 @@
 
 Reciplore allows users to explore and discover recipes based on categories, countries, and available ingredients. Users can watch recipe preparation videos, leave reviews, and find marketplaces to buy necessary ingredients.
 
+## 🔗 Live Demo & Showcase
+
+Check out the full UI showcase and design details on Behance:  
+👉 [Reciplore – Smart Recipe App on Behance](https://www.behance.net/gallery/229198631/Reciplore-Smart-Cooking-Diet-App)
+
+
 ## 📸 Screenshots
 
 ![Reciplore1](https://github.com/user-attachments/assets/6553a364-2d15-4c53-997d-3cc8c6cbe563)
