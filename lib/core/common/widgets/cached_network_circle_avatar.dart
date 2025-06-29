@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:looqma/core/utils/app_colors.dart';
 import 'package:looqma/core/utils/app_constants.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CachedNetworkCircleAvatar extends StatelessWidget {
   const CachedNetworkCircleAvatar({
@@ -35,11 +36,15 @@ class CachedNetworkCircleAvatar extends StatelessWidget {
         );
       },
       placeholder: (context, url) {
-        return CircleAvatar(
-          radius: radius ?? 40.r,
-          backgroundColor: AppColors.loadingColor,
-          backgroundImage:
-              const AssetImage(AppConstants.defaultRecipeItemImage),
+        return Shimmer.fromColors(
+          baseColor: AppColors.loadingColor,
+          highlightColor: AppColors.white,
+          child: CircleAvatar(
+            radius: radius ?? 40.r,
+            backgroundColor: AppColors.loadingColor,
+            backgroundImage:
+                const AssetImage(AppConstants.defaultRecipeItemImage),
+          ),
         );
       },
     );

@@ -10,7 +10,7 @@ import 'package:looqma/features/checkout/presentation/views/widgets/coupon_code_
 import 'package:looqma/features/checkout/presentation/views/widgets/delivery_addresses_bloc_builder.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/order_summary_bloc_builder.dart';
 import 'package:looqma/features/checkout/presentation/views/widgets/payment_methods_listview.dart';
-import 'package:looqma/features/checkout/presentation/views/widgets/place_order_and_pay_button.dart';
+import 'package:looqma/features/checkout/presentation/views/widgets/place_order_button.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -45,7 +45,7 @@ class CheckoutScreen extends StatelessWidget {
                 SizedBox(height: 5.h),
                 const OrderSummaryBlocBuilder(),
                 SizedBox(height: 20.h),
-                const PlaceOrderAndPayButton(),
+                const PlaceOrderButton(),
                 SizedBox(height: 20.h),
               ],
             ),

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:looqma/core/extensions/navigation_context.dart';
-import 'package:looqma/core/utils/app_styles.dart';
-import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/core/common/widgets/apply_filter.dart';
 import 'package:looqma/core/common/widgets/filter_rates_listview.dart';
 import 'package:looqma/core/common/widgets/reset_filter.dart';
+import 'package:looqma/core/extensions/navigation_context.dart';
+import 'package:looqma/core/utils/app_styles.dart';
+import 'package:looqma/features/search_recipes/presentation/cubit/search_recipe/search_recipe_cubit.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/select_category_drop_down_Button.dart';
 import 'package:looqma/features/search_recipes/presentation/views/widgets/select_country_drop_down_button.dart';
 
@@ -26,6 +26,7 @@ class FilterBottomSheet extends StatelessWidget {
           )),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Align(
             alignment: Alignment.center,
@@ -63,16 +64,16 @@ class FilterBottomSheet extends StatelessWidget {
           SizedBox(height: 20.h),
           Row(
             children: [
-              ApplyFilter(
+              ResetFilter(
                 onTap: () {
-                  searchRecipeCubit.applyFilter();
+                  searchRecipeCubit.resetFilters();
                   context.pop();
                 },
               ),
               const Spacer(),
-              ResetFilter(
+              ApplyFilter(
                 onTap: () {
-                  searchRecipeCubit.resetFilters();
+                  searchRecipeCubit.applyFilter();
                   context.pop();
                 },
               ),

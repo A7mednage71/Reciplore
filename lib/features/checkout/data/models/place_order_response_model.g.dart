@@ -9,7 +9,7 @@ part of 'place_order_response_model.dart';
 PlaceOrderResponseModel _$PlaceOrderResponseModelFromJson(
         Map<String, dynamic> json) =>
     PlaceOrderResponseModel(
-      order: OrderModel.fromJson(json['order'] as Map<String, dynamic>),
+      order: PlacedOrderModel.fromJson(json['order'] as Map<String, dynamic>),
       message: json['message'] as String,
     );
 
@@ -20,7 +20,8 @@ Map<String, dynamic> _$PlaceOrderResponseModelToJson(
       'order': instance.order,
     };
 
-OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
+PlacedOrderModel _$PlacedOrderModelFromJson(Map<String, dynamic> json) =>
+    PlacedOrderModel(
       id: json['_id'] as String,
       userId: json['userId'] as String,
       subTotal: (json['subTotal'] as num).toDouble(),
@@ -31,7 +32,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) => OrderModel(
       orderedAt: json['orderedAt'] as String,
     );
 
-Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
+Map<String, dynamic> _$PlacedOrderModelToJson(PlacedOrderModel instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'userId': instance.userId,

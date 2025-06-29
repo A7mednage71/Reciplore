@@ -114,6 +114,13 @@ class _FilterMarketBottomSheetState extends State<FilterMarketBottomSheet> {
           SizedBox(height: 30.h),
           Row(
             children: [
+              ResetFilter(
+                onTap: () {
+                  searchMarketCubit.resetFilters();
+                  context.pop();
+                },
+              ),
+              const Spacer(),
               ApplyFilter(
                 onTap: () {
                   log(currentRangeValues.start.toString());
@@ -124,13 +131,6 @@ class _FilterMarketBottomSheetState extends State<FilterMarketBottomSheet> {
                     sort: selectedSort,
                     rate: selectedRate,
                   );
-                  context.pop();
-                },
-              ),
-              const Spacer(),
-              ResetFilter(
-                onTap: () {
-                  searchMarketCubit.resetFilters();
                   context.pop();
                 },
               ),
