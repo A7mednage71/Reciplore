@@ -2,7 +2,10 @@
 
 ## 📌 Overview
 
-Reciplore allows users to explore and discover recipes based on categories, countries, and available ingredients. Users can watch recipe preparation videos, leave reviews, and find marketplaces to buy necessary ingredients.
+Reciplore is an intelligent cooking companion that helps you discover recipes based on what you already have.
+It lets you explore meals by category, country, or ingredients, watch step-by-step preparation videos, leave reviews, and even shop online for the needed items — all within the app.
+
+Whether you're managing your diet, cooking for the first time, or just curious to try something new, Reciplore makes the journey easier, smarter, and more personalized.
 
 ## 🔗 Live Demo & Showcase
 
